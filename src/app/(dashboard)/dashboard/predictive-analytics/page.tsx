@@ -35,6 +35,7 @@ import {
   PolarRadiusAxis,
   Radar,
 } from 'recharts';
+import { CustomTooltip, useChartColors } from '@/components/charts/ChartComponents';
 
 // Types
 interface ChurnPrediction {
@@ -205,7 +206,7 @@ function ChurnRiskCard({ prediction }: { prediction: ChurnPrediction }) {
             <h4 className="font-medium text-gray-900 dark:text-white">
               {prediction.userName}
             </h4>
-            <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+            <p className="text-xs text-gray-500 dark:text-gray-400">
               {prediction.totalExchanges} exchanges
             </p>
           </div>
@@ -217,7 +218,7 @@ function ChurnRiskCard({ prediction }: { prediction: ChurnPrediction }) {
 
       <div className="mb-3">
         <div className="flex items-center justify-between text-sm mb-1">
-          <span className="text-gray-600 dark:text-gray-400 dark:text-gray-500">Risk Score</span>
+          <span className="text-gray-600 dark:text-gray-400">Risk Score</span>
           <span className="font-medium text-gray-900 dark:text-white">{prediction.riskScore}%</span>
         </div>
         <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
@@ -271,7 +272,7 @@ function CategoryTrendCard({ category }: { category: CategoryPrediction }) {
       case 'declining':
         return <TrendingDown className="w-4 h-4 text-red-500" />;
       default:
-        return <BarChart3 className="w-4 h-4 text-gray-500 dark:text-gray-400 dark:text-gray-500" />;
+        return <BarChart3 className="w-4 h-4 text-gray-500 dark:text-gray-400" />;
     }
   };
 
@@ -282,7 +283,7 @@ function CategoryTrendCard({ category }: { category: CategoryPrediction }) {
       case 'declining':
         return 'text-red-600';
       default:
-        return 'text-gray-600 dark:text-gray-400 dark:text-gray-500';
+        return 'text-gray-600 dark:text-gray-400';
     }
   };
 
@@ -295,19 +296,19 @@ function CategoryTrendCard({ category }: { category: CategoryPrediction }) {
         <BookOpen className="w-5 h-5 text-amber-500" />
         <div>
           <p className="font-medium text-gray-900 dark:text-white">{category.category}</p>
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+          <p className="text-xs text-gray-500 dark:text-gray-400">
             Confidence: {category.confidence}%
           </p>
         </div>
       </div>
       <div className="flex items-center gap-4">
         <div className="text-right">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Current</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Current</p>
           <p className="font-medium text-gray-900 dark:text-white">{category.currentDemand}</p>
         </div>
         <ChevronRight className="w-4 h-4 text-gray-400 dark:text-gray-500" />
         <div className="text-right">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Predicted</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Predicted</p>
           <p className="font-medium text-gray-900 dark:text-white">{category.predictedDemand}</p>
         </div>
         <div className={`flex items-center gap-1 ${getTrendColor()}`}>
@@ -367,7 +368,7 @@ export default function PredictiveAnalyticsPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <div className="flex items-center gap-3 mb-2">
             <AlertTriangle className="w-5 h-5 text-red-500" />
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
               High Churn Risk
             </span>
           </div>
@@ -382,7 +383,7 @@ export default function PredictiveAnalyticsPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <div className="flex items-center gap-3 mb-2">
             <TrendingUp className="w-5 h-5 text-green-500" />
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
               Rising Categories
             </span>
           </div>
@@ -397,7 +398,7 @@ export default function PredictiveAnalyticsPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <div className="flex items-center gap-3 mb-2">
             <Clock className="w-5 h-5 text-amber-500" />
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
               Peak Activity
             </span>
           </div>
@@ -412,7 +413,7 @@ export default function PredictiveAnalyticsPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <div className="flex items-center gap-3 mb-2">
             <Target className="w-5 h-5 text-purple-500" />
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
               Revenue Forecast
             </span>
           </div>
@@ -432,13 +433,13 @@ export default function PredictiveAnalyticsPage() {
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
               Revenue Forecast
             </h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+            <p className="text-sm text-gray-500 dark:text-gray-400">
               Predicted revenue with confidence intervals
             </p>
           </div>
           <div className="flex items-center gap-2">
             <Info className="w-4 h-4 text-gray-400 dark:text-gray-500" />
-            <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+            <span className="text-xs text-gray-500 dark:text-gray-400">
               Based on historical data and seasonal patterns
             </span>
           </div>
@@ -496,7 +497,7 @@ export default function PredictiveAnalyticsPage() {
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
               User Churn Risk Analysis
             </h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+            <p className="text-sm text-gray-500 dark:text-gray-400">
               Users at risk of becoming inactive based on behavioral patterns
             </p>
           </div>
@@ -521,7 +522,7 @@ export default function PredictiveAnalyticsPage() {
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
               Category Demand Predictions
             </h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+            <p className="text-sm text-gray-500 dark:text-gray-400">
               Predicted demand trends for book categories
             </p>
           </div>
@@ -540,22 +541,22 @@ export default function PredictiveAnalyticsPage() {
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
               Peak Activity Times
             </h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+            <p className="text-sm text-gray-500 dark:text-gray-400">
               Predicted platform activity levels by day and time
             </p>
           </div>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded bg-green-200" />
-              <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Low</span>
+              <span className="text-xs text-gray-500 dark:text-gray-400">Low</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded bg-yellow-500" />
-              <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Medium</span>
+              <span className="text-xs text-gray-500 dark:text-gray-400">Medium</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded bg-red-500" />
-              <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">High</span>
+              <span className="text-xs text-gray-500 dark:text-gray-400">High</span>
             </div>
           </div>
         </div>

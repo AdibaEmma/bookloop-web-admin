@@ -150,7 +150,7 @@ export default function ExchangeTimelinePage() {
       scheduled: 'bg-purple-100 text-purple-700',
       in_progress: 'bg-indigo-100 text-indigo-700',
       completed: 'bg-green-100 text-green-700',
-      cancelled: 'bg-gray-100 text-gray-600 dark:text-gray-400 dark:text-gray-500',
+      cancelled: 'bg-gray-100 text-gray-600 dark:text-gray-400',
       disputed: 'bg-red-100 text-red-700',
     };
     return colors[status];
@@ -218,7 +218,7 @@ export default function ExchangeTimelinePage() {
       case 'system':
         return (
           <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-            <svg className="w-4 h-4 text-gray-600 dark:text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </div>
@@ -226,7 +226,7 @@ export default function ExchangeTimelinePage() {
       default:
         return (
           <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-            <svg className="w-4 h-4 text-gray-600 dark:text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
@@ -296,13 +296,13 @@ export default function ExchangeTimelinePage() {
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-mono text-gray-500 dark:text-gray-400 dark:text-gray-500">{exchange.id}</span>
+                    <span className="text-xs font-mono text-gray-500 dark:text-gray-400">{exchange.id}</span>
                     <span className={`px-2 py-0.5 text-xs rounded-full ${getStatusColor(exchange.status)}`}>
                       {exchange.status}
                     </span>
                   </div>
                   <p className="text-sm font-medium text-gray-900 truncate">{exchange.book_offered.title}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
                     {exchange.initiator.name} ↔ {exchange.recipient.name}
                   </p>
                 </div>
@@ -317,12 +317,12 @@ export default function ExchangeTimelinePage() {
           <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
             <div className="flex items-start justify-between mb-4">
               <div>
-                <p className="text-xs font-mono text-gray-500 dark:text-gray-400 dark:text-gray-500">{selectedExchange.id}</p>
+                <p className="text-xs font-mono text-gray-500 dark:text-gray-400">{selectedExchange.id}</p>
                 <span className={`inline-block px-2 py-0.5 text-xs rounded-full mt-1 ${getStatusColor(selectedExchange.status)}`}>
                   {selectedExchange.status}
                 </span>
               </div>
-              <div className="text-right text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+              <div className="text-right text-xs text-gray-500 dark:text-gray-400">
                 <p>Created: {new Date(selectedExchange.created_at).toLocaleDateString()}</p>
                 <p>Updated: {new Date(selectedExchange.updated_at).toLocaleDateString()}</p>
               </div>
@@ -333,14 +333,14 @@ export default function ExchangeTimelinePage() {
               <div className="p-3 bg-gray-50 rounded-lg">
                 <p className="text-xs text-gray-500 mb-1">Book Offered</p>
                 <p className="font-medium text-gray-900 text-sm">{selectedExchange.book_offered.title}</p>
-                <p className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-500">{selectedExchange.book_offered.author}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">{selectedExchange.book_offered.author}</p>
                 <p className="text-xs text-gray-500 mt-1">Condition: {selectedExchange.book_offered.condition}</p>
               </div>
               {/* Book Requested */}
               <div className="p-3 bg-gray-50 rounded-lg">
                 <p className="text-xs text-gray-500 mb-1">Book Requested</p>
                 <p className="font-medium text-gray-900 text-sm">{selectedExchange.book_requested.title}</p>
-                <p className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-500">{selectedExchange.book_requested.author}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">{selectedExchange.book_requested.author}</p>
                 <p className="text-xs text-gray-500 mt-1">Condition: {selectedExchange.book_requested.condition}</p>
               </div>
             </div>
@@ -352,7 +352,7 @@ export default function ExchangeTimelinePage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-900 dark:text-white">{selectedExchange.initiator.name}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Initiator · ★ {selectedExchange.initiator.rating}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Initiator · ★ {selectedExchange.initiator.rating}</p>
                 </div>
               </div>
               <svg className="w-5 h-5 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -361,7 +361,7 @@ export default function ExchangeTimelinePage() {
               <div className="flex items-center gap-3">
                 <div className="text-right">
                   <p className="text-sm font-medium text-gray-900 dark:text-white">{selectedExchange.recipient.name}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Recipient · ★ {selectedExchange.recipient.rating}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Recipient · ★ {selectedExchange.recipient.rating}</p>
                 </div>
                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-red-500 flex items-center justify-center text-white text-xs font-medium">
                   {selectedExchange.recipient.name.charAt(0)}
@@ -377,7 +377,7 @@ export default function ExchangeTimelinePage() {
                 </svg>
                 <div>
                   <p className="font-medium text-gray-900 text-sm">{selectedExchange.meeting_spot.name}</p>
-                  <p className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-500">{selectedExchange.meeting_spot.address}</p>
+                  <p className="text-xs text-gray-600 dark:text-gray-400">{selectedExchange.meeting_spot.address}</p>
                   {selectedExchange.meeting_time && (
                     <p className="text-xs text-purple-600 mt-1">
                       {new Date(selectedExchange.meeting_time).toLocaleString()}
@@ -409,7 +409,7 @@ export default function ExchangeTimelinePage() {
                     className={`px-3 py-1 text-xs rounded-full ${
                       eventTypeFilter.includes(type) || eventTypeFilter.length === 0
                         ? 'bg-indigo-100 text-indigo-700'
-                        : 'bg-gray-200 text-gray-500 dark:text-gray-400 dark:text-gray-500'
+                        : 'bg-gray-200 text-gray-500 dark:text-gray-400'
                     }`}
                   >
                     {type.replace('_', ' ')}
@@ -467,7 +467,7 @@ export default function ExchangeTimelinePage() {
                     </div>
                   ))
                 ) : (
-                  <div className="py-8 text-center text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                  <div className="py-8 text-center text-gray-500 dark:text-gray-400">
                     <svg className="w-12 h-12 mx-auto text-gray-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>

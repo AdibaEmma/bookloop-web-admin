@@ -364,7 +364,7 @@ export default function UsersPage() {
               <UserCheck className="w-5 h-5 text-blue-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 Total Users
               </p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -380,7 +380,7 @@ export default function UsersPage() {
               <CheckCircle className="w-5 h-5 text-green-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Active</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Active</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white">
                 {users.filter((u) => u.is_active).length}
               </p>
@@ -394,7 +394,7 @@ export default function UsersPage() {
               <CheckCircle className="w-5 h-5 text-blue-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 Verified
               </p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -410,7 +410,7 @@ export default function UsersPage() {
               <UserX className="w-5 h-5 text-red-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Banned</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Banned</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white">
                 {users.filter((u) => !u.is_active).length}
               </p>
@@ -470,7 +470,7 @@ export default function UsersPage() {
           {/* Table Header with Limit Selector */}
           <div className="flex items-center justify-between px-6 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
             <div className="flex items-center gap-2">
-              <label htmlFor="limit" className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <label htmlFor="limit" className="text-sm text-gray-600 dark:text-gray-400">
                 Show:
               </label>
               <select
@@ -485,9 +485,9 @@ export default function UsersPage() {
                   </option>
                 ))}
               </select>
-              <span className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">entries</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">entries</span>
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+            <div className="text-sm text-gray-600 dark:text-gray-400">
               Showing {((meta.page - 1) * meta.limit) + 1} to {Math.min(meta.page * meta.limit, meta.total)} of {meta.total}
             </div>
           </div>
@@ -553,12 +553,12 @@ export default function UsersPage() {
                     {/* Contact */}
                     <td className="px-6 py-4">
                       <div className="space-y-1">
-                        <div className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                        <div className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400">
                           <Mail className="w-3.5 h-3.5" />
                           <span className="truncate max-w-[180px]">{user.email}</span>
                         </div>
                         {user.phone_number && (
-                          <div className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                          <div className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-500 dark:text-gray-400">
                             <Phone className="w-3.5 h-3.5" />
                             {user.phone_number}
                           </div>
@@ -569,12 +569,12 @@ export default function UsersPage() {
                     {/* Location */}
                     <td className="px-6 py-4 whitespace-nowrap">
                       {user.city ? (
-                        <div className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                        <div className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400">
                           <MapPin className="w-3.5 h-3.5" />
                           {user.city}{user.region && `, ${user.region}`}
                         </div>
                       ) : (
-                        <span className="text-sm text-gray-400 dark:text-gray-500 dark:text-gray-400 dark:text-gray-500">—</span>
+                        <span className="text-sm text-gray-400 dark:text-gray-500 dark:text-gray-400">—</span>
                       )}
                     </td>
 
@@ -599,7 +599,7 @@ export default function UsersPage() {
 
                     {/* Joined Date */}
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                      <span className="text-sm text-gray-600 dark:text-gray-400">
                         {new Date(user.created_at).toLocaleDateString('en-US', {
                           month: 'short',
                           day: 'numeric',
@@ -621,7 +621,7 @@ export default function UsersPage() {
           {/* Pagination Controls */}
           <div className="flex items-center justify-between px-6 py-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
             {/* Results info - left */}
-            <div className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+            <div className="text-sm text-gray-600 dark:text-gray-400">
               Showing {((meta.page - 1) * meta.limit) + 1} to {Math.min(meta.page * meta.limit, meta.total)} of {meta.total}
             </div>
 
@@ -677,7 +677,7 @@ export default function UsersPage() {
 
                   return pages.map((pageNum, idx) =>
                     pageNum === '...' ? (
-                      <span key={`ellipsis-${idx}`} className="px-2 text-gray-400 dark:text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                      <span key={`ellipsis-${idx}`} className="px-2 text-gray-400 dark:text-gray-500 dark:text-gray-400">
                         ...
                       </span>
                     ) : (
@@ -723,7 +723,7 @@ export default function UsersPage() {
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
             No users found
           </h3>
-          <p className="text-gray-600 dark:text-gray-400 dark:text-gray-500">
+          <p className="text-gray-600 dark:text-gray-400">
             Try adjusting your search or filters
           </p>
         </div>
@@ -884,21 +884,21 @@ function UserDetailsModal({
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">
                   {displayUser.listings_count || 0}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Listings</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Listings</p>
               </div>
               <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 text-center">
                 <RefreshCw className="w-6 h-6 text-green-500 mx-auto mb-2" />
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">
                   {displayUser.total_exchanges || displayUser.exchanges_count || 0}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Exchanges</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Exchanges</p>
               </div>
               <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 text-center">
                 <Star className="w-6 h-6 text-yellow-500 mx-auto mb-2" />
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">
                   {displayUser.rating?.toFixed(1) || 'N/A'}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
                   Rating ({displayUser.total_ratings || 0})
                 </p>
               </div>
@@ -907,7 +907,7 @@ function UserDetailsModal({
                 <p className="text-2xl font-bold text-gray-900 dark:text-white capitalize">
                   {displayUser.subscription_tier || 'Free'}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Plan</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Plan</p>
               </div>
             </div>
 
@@ -966,7 +966,7 @@ function UserDetailsModal({
                   <p className={`text-xs ${
                     displayUser.email_verified
                       ? 'text-green-600 dark:text-green-400'
-                      : 'text-gray-500 dark:text-gray-400 dark:text-gray-500'
+                      : 'text-gray-500 dark:text-gray-400'
                   }`}>
                     {displayUser.email_verified ? 'Verified' : 'Not Verified'}
                   </p>
@@ -983,7 +983,7 @@ function UserDetailsModal({
                   <p className={`text-xs ${
                     displayUser.phone_verified
                       ? 'text-green-600 dark:text-green-400'
-                      : 'text-gray-500 dark:text-gray-400 dark:text-gray-500'
+                      : 'text-gray-500 dark:text-gray-400'
                   }`}>
                     {displayUser.phone_verified ? 'Verified' : 'Not Verified'}
                   </p>
@@ -1000,7 +1000,7 @@ function UserDetailsModal({
                   <p className={`text-xs ${
                     displayUser.ghana_card_verified
                       ? 'text-green-600 dark:text-green-400'
-                      : 'text-gray-500 dark:text-gray-400 dark:text-gray-500'
+                      : 'text-gray-500 dark:text-gray-400'
                   }`}>
                     {displayUser.ghana_card_verified ? 'Verified' : 'Not Verified'}
                   </p>

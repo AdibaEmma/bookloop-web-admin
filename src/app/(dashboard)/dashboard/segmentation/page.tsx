@@ -22,6 +22,7 @@ import {
   PolarRadiusAxis,
   Radar,
 } from 'recharts';
+import { CustomTooltip, useChartColors } from '@/components/charts/ChartComponents';
 
 interface UserSegment {
   id: string;
@@ -197,7 +198,7 @@ export default function SegmentationPage() {
         );
       default:
         return (
-          <svg className="w-4 h-4 text-gray-500 dark:text-gray-400 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+          <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clipRule="evenodd" />
           </svg>
         );
@@ -245,22 +246,22 @@ export default function SegmentationPage() {
       {/* Stats Overview */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Total Users</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Total Users</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">15,650</p>
           <p className="text-xs text-green-600 mt-1">+12% this month</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Active Segments</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Active Segments</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">6</p>
           <p className="text-xs text-gray-500 mt-1">Custom segments</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Avg. Retention</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Avg. Retention</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">68%</p>
           <p className="text-xs text-green-600 mt-1">+3% vs last month</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">At Risk Users</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">At Risk Users</p>
           <p className="text-2xl font-bold text-red-600 mt-1">1,200</p>
           <p className="text-xs text-gray-500 mt-1">8% of total</p>
         </div>
@@ -302,15 +303,15 @@ export default function SegmentationPage() {
                 <p className="text-sm text-gray-600 mb-3">{segment.description}</p>
                 <div className="grid grid-cols-3 gap-2 pt-3 border-t">
                   <div className="text-center">
-                    <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Avg Exchanges</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">Avg Exchanges</p>
                     <p className="font-semibold text-gray-900 dark:text-white">{segment.avgExchanges}</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Avg Rating</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">Avg Rating</p>
                     <p className="font-semibold text-gray-900 dark:text-white">{segment.avgRating}</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Retention</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">Retention</p>
                     <p className="font-semibold text-gray-900 dark:text-white">{segment.retentionRate}%</p>
                   </div>
                 </div>
@@ -424,7 +425,7 @@ export default function SegmentationPage() {
                           </div>
                           <div>
                             <p className="font-medium text-gray-900 dark:text-white">{user.name}</p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{user.email}</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">{user.email}</p>
                           </div>
                         </div>
                       </td>
@@ -485,36 +486,36 @@ export default function SegmentationPage() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{selectedSegment.name}</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">{selectedSegment.userCount.toLocaleString()} users</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{selectedSegment.userCount.toLocaleString()} users</p>
                 </div>
               </div>
               <button
                 onClick={() => setSelectedSegment(null)}
                 className="p-2 hover:bg-gray-100 rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
             <div className="p-4 overflow-y-auto flex-1 space-y-4">
-              <p className="text-gray-600 dark:text-gray-400 dark:text-gray-500">{selectedSegment.description}</p>
+              <p className="text-gray-600 dark:text-gray-400">{selectedSegment.description}</p>
 
               <div className="grid grid-cols-4 gap-4">
                 <div className="p-3 bg-gray-50 rounded-lg text-center">
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Users</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Users</p>
                   <p className="text-xl font-bold text-gray-900 dark:text-white">{selectedSegment.userCount.toLocaleString()}</p>
                 </div>
                 <div className="p-3 bg-gray-50 rounded-lg text-center">
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Avg Exchanges</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Avg Exchanges</p>
                   <p className="text-xl font-bold text-gray-900 dark:text-white">{selectedSegment.avgExchanges}</p>
                 </div>
                 <div className="p-3 bg-gray-50 rounded-lg text-center">
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Avg Rating</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Avg Rating</p>
                   <p className="text-xl font-bold text-gray-900 dark:text-white">{selectedSegment.avgRating}</p>
                 </div>
                 <div className="p-3 bg-gray-50 rounded-lg text-center">
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Retention</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Retention</p>
                   <p className="text-xl font-bold text-gray-900 dark:text-white">{selectedSegment.retentionRate}%</p>
                 </div>
               </div>
@@ -592,7 +593,7 @@ export default function SegmentationPage() {
                 onClick={() => setShowCreateModal(false)}
                 className="p-2 hover:bg-gray-100 rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>

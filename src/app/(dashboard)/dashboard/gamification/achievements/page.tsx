@@ -269,19 +269,19 @@ export default function AchievementsPage() {
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Total Achievements</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Total Achievements</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{stats.total}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Active</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Active</p>
           <p className="text-2xl font-bold text-green-600 mt-1">{stats.active}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Total Earned</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Total Earned</p>
           <p className="text-2xl font-bold text-indigo-600 mt-1">{stats.totalEarned.toLocaleString()}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Legendary</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Legendary</p>
           <p className="text-2xl font-bold text-yellow-600 mt-1">{stats.legendary}</p>
         </div>
       </div>
@@ -380,7 +380,7 @@ export default function AchievementsPage() {
 
             <p className="text-sm text-gray-500 mb-3">{achievement.description}</p>
 
-            <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+            <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
               <div className="flex items-center gap-1">
                 <span>{getCategoryIcon(achievement.category)}</span>
                 <span className="capitalize">{achievement.category}</span>
@@ -395,7 +395,7 @@ export default function AchievementsPage() {
 
             {achievement.reward && (
               <div className="mt-3 pt-3 border-t border-gray-100 flex items-center gap-2">
-                <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Reward:</span>
+                <span className="text-xs text-gray-500 dark:text-gray-400">Reward:</span>
                 <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded-full">
                   {achievement.reward.type === 'points' ? `${achievement.reward.value} pts` :
                    achievement.reward.type === 'badge' ? `🏅 ${achievement.reward.value}` :
@@ -414,7 +414,7 @@ export default function AchievementsPage() {
             <h3 className="font-semibold text-gray-900 dark:text-white">Achievement Details</h3>
             <button
               onClick={() => setSelectedAchievement(null)}
-              className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:text-gray-500"
+              className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -441,11 +441,11 @@ export default function AchievementsPage() {
             <div className="grid grid-cols-2 gap-4">
               <div className="p-3 bg-gray-50 rounded-lg text-center">
                 <p className="text-2xl font-bold text-indigo-600">{selectedAchievement.total_earned.toLocaleString()}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Users Earned</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Users Earned</p>
               </div>
               <div className="p-3 bg-gray-50 rounded-lg text-center">
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">{selectedAchievement.criteria.target}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Target</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Target</p>
               </div>
             </div>
 
@@ -478,23 +478,23 @@ export default function AchievementsPage() {
             <div className="space-y-3">
               <h4 className="font-medium text-gray-900 dark:text-white">Settings</h4>
               <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                <span className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Active</span>
+                <span className="text-sm text-gray-600 dark:text-gray-400">Active</span>
                 <span className={`px-2 py-0.5 text-xs rounded-full ${
-                  selectedAchievement.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-200 text-gray-600 dark:text-gray-400 dark:text-gray-500'
+                  selectedAchievement.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-200 text-gray-600 dark:text-gray-400'
                 }`}>
                   {selectedAchievement.is_active ? 'Yes' : 'No'}
                 </span>
               </div>
               <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                <span className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Hidden</span>
+                <span className="text-sm text-gray-600 dark:text-gray-400">Hidden</span>
                 <span className={`px-2 py-0.5 text-xs rounded-full ${
-                  selectedAchievement.is_hidden ? 'bg-purple-100 text-purple-700' : 'bg-gray-200 text-gray-600 dark:text-gray-400 dark:text-gray-500'
+                  selectedAchievement.is_hidden ? 'bg-purple-100 text-purple-700' : 'bg-gray-200 text-gray-600 dark:text-gray-400'
                 }`}>
                   {selectedAchievement.is_hidden ? 'Yes' : 'No'}
                 </span>
               </div>
               <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                <span className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Category</span>
+                <span className="text-sm text-gray-600 dark:text-gray-400">Category</span>
                 <span className="text-sm text-gray-900 capitalize">{selectedAchievement.category}</span>
               </div>
             </div>
@@ -520,7 +520,7 @@ export default function AchievementsPage() {
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Create Achievement</h2>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:text-gray-500"
+                className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

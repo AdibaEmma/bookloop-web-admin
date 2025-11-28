@@ -13,6 +13,7 @@ import {
   Pie,
   Cell,
 } from 'recharts';
+import { CustomTooltip, useChartColors } from '@/components/charts/ChartComponents';
 
 interface SuggestedSpot {
   id: string;
@@ -243,7 +244,7 @@ export default function SuggestedSpotsPage() {
         {statusStats.map((stat) => (
           <div key={stat.status} className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
             <div className="flex items-center justify-between">
-              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">{stat.status}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{stat.status}</p>
               <div
                 className="w-3 h-3 rounded-full"
                 style={{ backgroundColor: stat.color }}
@@ -293,7 +294,7 @@ export default function SuggestedSpotsPage() {
             {spotsByType.map((item) => (
               <div key={item.type} className="flex items-center gap-2 text-xs">
                 <div className="w-2 h-2 rounded-full" style={{ backgroundColor: item.color }} />
-                <span className="text-gray-600 dark:text-gray-400 dark:text-gray-500">{item.type}</span>
+                <span className="text-gray-600 dark:text-gray-400">{item.type}</span>
               </div>
             ))}
           </div>
@@ -327,7 +328,7 @@ export default function SuggestedSpotsPage() {
             <option value="Volta">Volta</option>
           </select>
           <div className="flex-1" />
-          <span className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+          <span className="text-sm text-gray-500 dark:text-gray-400">
             {filteredSpots.length} suggestions
           </span>
         </div>
@@ -351,7 +352,7 @@ export default function SuggestedSpotsPage() {
                     </span>
                   </div>
                   <p className="text-sm text-gray-500 truncate">{spot.address}</p>
-                  <div className="flex items-center gap-4 mt-2 text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                  <div className="flex items-center gap-4 mt-2 text-xs text-gray-500 dark:text-gray-400">
                     <span className="flex items-center gap-1">
                       <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clipRule="evenodd" />
@@ -370,7 +371,7 @@ export default function SuggestedSpotsPage() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Suggested by</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Suggested by</p>
                   <div className="flex items-center gap-2 mt-1">
                     <span className="text-sm font-medium text-gray-900 dark:text-white">{spot.suggestedBy.name}</span>
                     <div className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-medium">
@@ -398,14 +399,14 @@ export default function SuggestedSpotsPage() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{selectedSpot.name}</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">{selectedSpot.address}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{selectedSpot.address}</p>
                 </div>
               </div>
               <button
                 onClick={() => setSelectedSpot(null)}
                 className="p-2 hover:bg-gray-100 rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -435,25 +436,25 @@ export default function SuggestedSpotsPage() {
               {/* Description */}
               <div>
                 <h4 className="font-medium text-gray-900 mb-2">Description</h4>
-                <p className="text-gray-600 dark:text-gray-400 dark:text-gray-500">{selectedSpot.description}</p>
+                <p className="text-gray-600 dark:text-gray-400">{selectedSpot.description}</p>
               </div>
 
               {/* Details Grid */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-3 bg-gray-50 rounded-lg">
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Region</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Region</p>
                   <p className="font-medium text-gray-900 dark:text-white">{selectedSpot.region}</p>
                 </div>
                 <div className="p-3 bg-gray-50 rounded-lg">
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Type</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Type</p>
                   <p className="font-medium text-gray-900 capitalize">{selectedSpot.type.replace('_', ' ')}</p>
                 </div>
                 <div className="p-3 bg-gray-50 rounded-lg">
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Operating Hours</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Operating Hours</p>
                   <p className="font-medium text-gray-900 dark:text-white">{selectedSpot.operatingHours}</p>
                 </div>
                 <div className="p-3 bg-gray-50 rounded-lg">
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Submitted</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Submitted</p>
                   <p className="font-medium text-gray-900 dark:text-white">
                     {new Date(selectedSpot.submittedAt).toLocaleString()}
                   </p>
@@ -479,7 +480,7 @@ export default function SuggestedSpotsPage() {
                 </div>
                 <div>
                   <p className="font-medium text-gray-900 dark:text-white">{selectedSpot.suggestedBy.name}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Suggested this location</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Suggested this location</p>
                 </div>
                 <button className="ml-auto text-sm text-indigo-600 hover:text-indigo-700">
                   View Profile
@@ -490,11 +491,11 @@ export default function SuggestedSpotsPage() {
               <div className="flex items-center gap-4">
                 <button className="flex-1 p-3 border border-gray-200 rounded-lg text-center hover:bg-gray-50 dark:bg-gray-900">
                   <span className="text-2xl block">📷</span>
-                  <span className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">{selectedSpot.photos} Photos</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-400">{selectedSpot.photos} Photos</span>
                 </button>
                 <button className="flex-1 p-3 border border-gray-200 rounded-lg text-center hover:bg-gray-50 dark:bg-gray-900">
                   <span className="text-2xl block">💬</span>
-                  <span className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">{selectedSpot.comments} Comments</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-400">{selectedSpot.comments} Comments</span>
                 </button>
               </div>
 
@@ -506,7 +507,7 @@ export default function SuggestedSpotsPage() {
                   'bg-gray-50 border border-gray-200 dark:border-gray-700'
                 }`}>
                   <h4 className="font-medium text-gray-900 mb-1">Review Notes</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">{selectedSpot.reviewNotes}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">{selectedSpot.reviewNotes}</p>
                 </div>
               )}
             </div>
@@ -553,7 +554,7 @@ export default function SuggestedSpotsPage() {
                 }}
                 className="p-2 hover:bg-gray-100 rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -561,7 +562,7 @@ export default function SuggestedSpotsPage() {
             <div className="p-4 space-y-4">
               <div className="p-3 bg-gray-50 rounded-lg">
                 <p className="font-medium text-gray-900 dark:text-white">{selectedSpot.name}</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">{selectedSpot.address}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">{selectedSpot.address}</p>
               </div>
 
               <div>

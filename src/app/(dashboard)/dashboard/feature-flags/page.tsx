@@ -223,19 +223,19 @@ export default function FeatureFlagsPage() {
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Total Flags</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Total Flags</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{stats.total}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Enabled</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Enabled</p>
           <p className="text-2xl font-bold text-green-600 mt-1">{stats.enabled}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">In Production</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">In Production</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{stats.production}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Full Rollout</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Full Rollout</p>
           <p className="text-2xl font-bold text-indigo-600 mt-1">{stats.fullRollout}</p>
         </div>
       </div>
@@ -298,13 +298,13 @@ export default function FeatureFlagsPage() {
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
                   <h3 className="font-semibold text-gray-900 dark:text-white">{flag.name}</h3>
-                  <span className="text-xs font-mono bg-gray-100 px-2 py-0.5 rounded text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                  <span className="text-xs font-mono bg-gray-100 px-2 py-0.5 rounded text-gray-600 dark:text-gray-400">
                     {flag.key}
                   </span>
                   <span className={`text-xs px-2 py-0.5 rounded-full ${getEnvironmentColor(flag.environment)}`}>
                     {flag.environment}
                   </span>
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 dark:text-gray-400">
                     {flag.category}
                   </span>
                 </div>
@@ -344,7 +344,7 @@ export default function FeatureFlagsPage() {
                 {/* Target Info */}
                 {(flag.target_segments || flag.target_users) && (
                   <div className="mt-3 flex items-center gap-2">
-                    <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Targeting:</span>
+                    <span className="text-xs text-gray-500 dark:text-gray-400">Targeting:</span>
                     {flag.target_segments?.map((seg) => (
                       <span key={seg} className="text-xs px-2 py-0.5 bg-purple-100 text-purple-700 rounded-full">
                         {seg}
@@ -501,7 +501,7 @@ export default function FeatureFlagsPage() {
                 onClick={() => setSelectedFlag(null)}
                 className="p-2 hover:bg-gray-100 rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>

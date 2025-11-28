@@ -257,7 +257,7 @@ function MeetupSpotDetailsModal({
               {spot.is_verified ? (
                 <Shield className="w-6 h-6 text-green-600" />
               ) : (
-                <MapPin className="w-6 h-6 text-gray-600 dark:text-gray-400 dark:text-gray-500" />
+                <MapPin className="w-6 h-6 text-gray-600 dark:text-gray-400" />
               )}
             </div>
             <div>
@@ -297,21 +297,21 @@ function MeetupSpotDetailsModal({
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-gray-400 mt-0.5" />
                 <div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Address</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Address</p>
                   <p className="text-gray-900 dark:text-white">{spot.address}</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Navigation className="w-5 h-5 text-gray-400 mt-0.5" />
                 <div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">City & Region</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">City & Region</p>
                   <p className="text-gray-900 dark:text-white">{spot.city}, {spot.region}</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-gray-400 mt-0.5" />
                 <div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Coordinates</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Coordinates</p>
                   <p className="text-gray-900 dark:text-white font-mono text-sm">
                     {lat.toFixed(6)}, {lng.toFixed(6)}
                   </p>
@@ -326,25 +326,25 @@ function MeetupSpotDetailsModal({
               <p className="text-2xl font-bold text-gray-900 dark:text-white">
                 {spot.usage_count || 0}
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Times Used</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Times Used</p>
             </div>
             <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 text-center">
               <div className="flex justify-center mb-1">
                 <SafetyRating rating={spot.safety_rating} />
               </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Safety Rating</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Safety Rating</p>
             </div>
             <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 text-center">
               <p className="text-lg font-semibold text-gray-900 dark:text-white">
                 {categoryLabels[spot.category] || spot.category}
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Category</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Category</p>
             </div>
             <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 text-center">
               <p className="text-lg font-semibold text-gray-900 dark:text-white">
                 {new Date(spot.created_at).toLocaleDateString()}
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Created</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Created</p>
             </div>
           </div>
 
@@ -684,7 +684,7 @@ export default function MeetupSpotsPage() {
               <MapPin className="w-5 h-5 text-amber-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 Total Spots
               </p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -700,7 +700,7 @@ export default function MeetupSpotsPage() {
               <Shield className="w-5 h-5 text-green-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Verified</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Verified</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white">
                 {spots?.filter((s) => s.is_verified).length || 0}
               </p>
@@ -714,7 +714,7 @@ export default function MeetupSpotsPage() {
               <CheckCircle className="w-5 h-5 text-blue-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Active</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Active</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white">
                 {spots?.filter((s) => s.is_active).length || 0}
               </p>
@@ -728,7 +728,7 @@ export default function MeetupSpotsPage() {
               <Navigation className="w-5 h-5 text-purple-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 Total Usage
               </p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -805,7 +805,7 @@ export default function MeetupSpotsPage() {
           {/* Table Header with Limit Selector */}
           <div className="flex items-center justify-between px-6 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
             <div className="flex items-center gap-2">
-              <label htmlFor="limit" className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <label htmlFor="limit" className="text-sm text-gray-600 dark:text-gray-400">
                 Show:
               </label>
               <select
@@ -820,9 +820,9 @@ export default function MeetupSpotsPage() {
                   </option>
                 ))}
               </select>
-              <span className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">entries</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">entries</span>
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+            <div className="text-sm text-gray-600 dark:text-gray-400">
               Showing {((meta.page - 1) * meta.limit) + 1} to {Math.min(meta.page * meta.limit, meta.total)} of {meta.total}
             </div>
           </div>
@@ -872,7 +872,7 @@ export default function MeetupSpotsPage() {
                             {spot.is_verified ? (
                               <Shield className="w-5 h-5 text-green-600" />
                             ) : (
-                              <MapPin className="w-5 h-5 text-gray-500 dark:text-gray-400 dark:text-gray-500" />
+                              <MapPin className="w-5 h-5 text-gray-500 dark:text-gray-400" />
                             )}
                           </div>
                           <div className="min-w-0">
@@ -893,7 +893,7 @@ export default function MeetupSpotsPage() {
                       <td className="px-6 py-4">
                         <div className="text-sm">
                           <p className="text-gray-900 dark:text-white">{spot.city}</p>
-                          <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500">{spot.region}</p>
+                          <p className="text-gray-500 dark:text-gray-400">{spot.region}</p>
                         </div>
                       </td>
 
@@ -921,7 +921,7 @@ export default function MeetupSpotsPage() {
                       </td>
 
                       {/* Created Date */}
-                      <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                      <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
                         {new Date(spot.created_at).toLocaleDateString()}
                       </td>
 
@@ -939,7 +939,7 @@ export default function MeetupSpotsPage() {
           {/* Pagination Controls */}
           <div className="flex items-center justify-between px-6 py-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
             {/* Results info - left */}
-            <div className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+            <div className="text-sm text-gray-600 dark:text-gray-400">
               Showing {((meta.page - 1) * meta.limit) + 1} to {Math.min(meta.page * meta.limit, meta.total)} of {meta.total}
             </div>
 
@@ -995,7 +995,7 @@ export default function MeetupSpotsPage() {
 
                   return pages.map((pageNum, idx) =>
                     pageNum === '...' ? (
-                      <span key={`ellipsis-${idx}`} className="px-2 text-gray-400 dark:text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                      <span key={`ellipsis-${idx}`} className="px-2 text-gray-400 dark:text-gray-500 dark:text-gray-400">
                         ...
                       </span>
                     ) : (
@@ -1060,7 +1060,7 @@ export default function MeetupSpotsPage() {
           onClose={() => setShowAddModal(false)}
           onSuccess={() => {
             setShowAddModal(false);
-            refetch();
+            // TODO: Refresh data when API is implemented
           }}
         />
       )}
@@ -1450,7 +1450,7 @@ function AddMeetupSpotModal({
               </div>
 
               {/* Help text for coordinates */}
-              <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-xs text-gray-500 dark:text-gray-400">
                 Tip: You can get coordinates from Google Maps by right-clicking on a location.
               </p>
             </div>
@@ -1476,13 +1476,13 @@ function AddMeetupSpotModal({
                     className={`w-10 h-10 rounded-full border-2 transition-all ${
                       formData.safety_rating >= rating
                         ? 'bg-green-500 border-green-500 text-white'
-                        : 'bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 dark:text-gray-500'
+                        : 'bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400'
                     }`}
                   >
                     {rating}
                   </button>
                 ))}
-                <span className="ml-3 text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                <span className="ml-3 text-sm text-gray-600 dark:text-gray-400">
                   {formData.safety_rating === 1 && 'Poor'}
                   {formData.safety_rating === 2 && 'Fair'}
                   {formData.safety_rating === 3 && 'Good'}

@@ -19,6 +19,7 @@ import {
   PolarRadiusAxis,
   Radar,
 } from 'recharts';
+import { CustomTooltip, useChartColors } from '@/components/charts/ChartComponents';
 import type { UserSegment, SegmentCriteria, User } from '@/types/admin';
 
 // Extended Segment interface
@@ -289,7 +290,7 @@ export default function SegmentsPage() {
             <button
               onClick={() => setViewMode('overview')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'overview' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400 dark:text-gray-500'
+                viewMode === 'overview' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
               }`}
             >
               Overview
@@ -297,7 +298,7 @@ export default function SegmentsPage() {
             <button
               onClick={() => setViewMode('compare')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'compare' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400 dark:text-gray-500'
+                viewMode === 'compare' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
               }`}
             >
               Compare
@@ -305,7 +306,7 @@ export default function SegmentsPage() {
             <button
               onClick={() => setViewMode('builder')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'builder' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400 dark:text-gray-500'
+                viewMode === 'builder' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
               }`}
             >
               Builder
@@ -326,22 +327,22 @@ export default function SegmentsPage() {
       {/* Summary Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Total Segments</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Total Segments</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{mockSegments.length}</p>
           <p className="text-xs text-gray-500 mt-1">Active segments</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Segmented Users</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Segmented Users</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{totalUsers.toLocaleString()}</p>
           <p className="text-xs text-green-600 mt-1">92% of total users</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Largest Segment</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Largest Segment</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">Casual Browsers</p>
           <p className="text-xs text-gray-500 mt-1">2,456 users (45%)</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Fastest Growing</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Fastest Growing</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">New Enthusiasts</p>
           <p className="text-xs text-green-600 mt-1">+34.2% this month</p>
         </div>
@@ -388,11 +389,11 @@ export default function SegmentsPage() {
                       <p className="text-lg font-bold text-gray-900 dark:text-white">
                         {segment.user_count.toLocaleString()}
                       </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Users</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">Users</p>
                     </div>
                     <div className="text-right">
                       <p className="text-lg font-semibold text-gray-700 dark:text-gray-300">{segment.avgEngagement}%</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Engagement</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">Engagement</p>
                     </div>
                   </div>
                 </button>
@@ -428,7 +429,7 @@ export default function SegmentsPage() {
                   <div key={seg.name} className="flex items-center justify-between text-sm">
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 rounded-full" style={{ backgroundColor: seg.color }} />
-                      <span className="text-gray-600 dark:text-gray-400 dark:text-gray-500">{seg.name}</span>
+                      <span className="text-gray-600 dark:text-gray-400">{seg.name}</span>
                     </div>
                     <span className="font-medium text-gray-900 dark:text-white">
                       {((seg.value / totalUsers) * 100).toFixed(1)}%
@@ -472,13 +473,13 @@ export default function SegmentsPage() {
                   {/* Metrics */}
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Avg Lifetime Value</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">Avg Lifetime Value</p>
                       <p className="text-lg font-bold text-gray-900 dark:text-white">
                         GH₵{selectedSegment.avgLifetimeValue}
                       </p>
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Engagement Score</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">Engagement Score</p>
                       <p className="text-lg font-bold text-gray-900 dark:text-white">
                         {selectedSegment.avgEngagement}%
                       </p>
@@ -806,7 +807,7 @@ export default function SegmentsPage() {
             <div className="space-y-4">
               <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 dark:border-gray-700">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Estimated Users</span>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">Estimated Users</span>
                   <span className="text-2xl font-bold text-gray-900 dark:text-white">~1,250</span>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">Based on current criteria</p>
@@ -828,7 +829,7 @@ export default function SegmentsPage() {
                         <p className="font-medium text-gray-900 truncate">
                           {user.first_name} {user.last_name}
                         </p>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
                           {user.location?.city} · {user.stats?.total_exchanges} exchanges
                         </p>
                       </div>
@@ -845,19 +846,19 @@ export default function SegmentsPage() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="text-center p-3 bg-gray-50 rounded-lg">
                     <p className="text-lg font-bold text-gray-900 dark:text-white">68%</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Avg Engagement</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">Avg Engagement</p>
                   </div>
                   <div className="text-center p-3 bg-gray-50 rounded-lg">
                     <p className="text-lg font-bold text-gray-900 dark:text-white">GH₵45</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Avg LTV</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">Avg LTV</p>
                   </div>
                   <div className="text-center p-3 bg-gray-50 rounded-lg">
                     <p className="text-lg font-bold text-gray-900 dark:text-white">4.5</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Avg Rating</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">Avg Rating</p>
                   </div>
                   <div className="text-center p-3 bg-gray-50 rounded-lg">
                     <p className="text-lg font-bold text-gray-900 dark:text-white">72%</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">30d Retention</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">30d Retention</p>
                   </div>
                 </div>
               </div>

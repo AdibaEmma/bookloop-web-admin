@@ -13,6 +13,7 @@ import {
   Line,
   Legend,
 } from 'recharts';
+import { CustomTooltip, useChartColors } from '@/components/charts/ChartComponents';
 import type { AuditLog } from '@/types/admin';
 
 // Extended Audit Log
@@ -304,22 +305,22 @@ export default function AuditLogsPage() {
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Total Actions (24h)</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Total Actions (24h)</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">2,847</p>
           <p className="text-xs text-green-600 mt-1">+12% from yesterday</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Admin Actions</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Admin Actions</p>
           <p className="text-2xl font-bold text-indigo-600 mt-1">156</p>
           <p className="text-xs text-gray-500 mt-1">By 8 active admins</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Critical Events</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Critical Events</p>
           <p className="text-2xl font-bold text-red-600 mt-1">3</p>
           <p className="text-xs text-red-600 mt-1">Requires attention</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Failed Logins</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Failed Logins</p>
           <p className="text-2xl font-bold text-yellow-600 mt-1">12</p>
           <p className="text-xs text-gray-500 mt-1">From 4 IPs</p>
         </div>
@@ -442,7 +443,7 @@ export default function AuditLogsPage() {
                       </div>
                       <div>
                         <p className="text-sm text-gray-900 dark:text-white">{log.actor_name}</p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{log.actor_role}</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">{log.actor_role}</p>
                       </div>
                     </div>
                   </td>
@@ -470,7 +471,7 @@ export default function AuditLogsPage() {
 
         {/* Pagination */}
         <div className="p-4 border-t border-gray-200 flex items-center justify-between">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Showing {filteredLogs.length} of {mockAuditLogs.length} logs</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Showing {filteredLogs.length} of {mockAuditLogs.length} logs</p>
           <div className="flex items-center gap-2">
             <button className="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50 dark:bg-gray-900">Previous</button>
             <button className="px-3 py-1 bg-indigo-600 text-white rounded-lg text-sm">1</button>
@@ -491,7 +492,7 @@ export default function AuditLogsPage() {
                 onClick={() => setSelectedLog(null)}
                 className="p-2 hover:bg-gray-100 rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>

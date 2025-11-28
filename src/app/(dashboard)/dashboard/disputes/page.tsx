@@ -273,27 +273,27 @@ export default function DisputesPage() {
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Open</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Open</p>
           <p className="text-2xl font-bold text-blue-600 mt-1">{disputeStats.open}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Investigating</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Investigating</p>
           <p className="text-2xl font-bold text-yellow-600 mt-1">{disputeStats.investigating}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">In Mediation</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">In Mediation</p>
           <p className="text-2xl font-bold text-orange-600 mt-1">{disputeStats.mediation}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Resolved</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Resolved</p>
           <p className="text-2xl font-bold text-green-600 mt-1">{disputeStats.resolved}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Avg Resolution</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Avg Resolution</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{disputeStats.avgResolutionTime}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Satisfaction</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Satisfaction</p>
           <p className="text-2xl font-bold text-green-600 mt-1">{disputeStats.satisfactionRate}%</p>
         </div>
       </div>
@@ -563,7 +563,7 @@ export default function DisputesPage() {
             </div>
           ) : (
             <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-12">
-              <div className="text-center text-gray-500 dark:text-gray-400 dark:text-gray-500">
+              <div className="text-center text-gray-500 dark:text-gray-400">
                 <svg className="w-16 h-16 mx-auto text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                 </svg>

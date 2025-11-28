@@ -16,6 +16,7 @@ import {
   Pie,
   Cell,
 } from 'recharts';
+import { CustomTooltip, useChartColors } from '@/components/charts/ChartComponents';
 import type { Payout } from '@/types/admin';
 
 // Extended Payout with additional fields
@@ -297,7 +298,7 @@ export default function PayoutsPage() {
               <div key={method.name} className="flex items-center justify-between text-sm">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: method.color }} />
-                  <span className="text-gray-600 dark:text-gray-400 dark:text-gray-500">{method.name}</span>
+                  <span className="text-gray-600 dark:text-gray-400">{method.name}</span>
                 </div>
                 <span className="font-medium text-gray-900 dark:text-white">{method.value}%</span>
               </div>
@@ -363,23 +364,23 @@ export default function PayoutsPage() {
                     </div>
                     <div>
                       <p className="font-medium text-gray-900 dark:text-white">{payout.user.first_name} {payout.user.last_name}</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{payout.user.email}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">{payout.user.email}</p>
                     </div>
                   </div>
                 </td>
                 <td className="py-4 px-4">
                   <p className="font-semibold text-gray-900 dark:text-white">GH₵{payout.amount.toLocaleString()}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Fee: GH₵{payout.transaction_fee}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Fee: GH₵{payout.transaction_fee}</p>
                 </td>
                 <td className="py-4 px-4">
                   <span className="text-sm text-gray-700 capitalize">{payout.method.replace('_', ' ')}</span>
                   {payout.account_details.provider && (
-                    <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{payout.account_details.provider}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{payout.account_details.provider}</p>
                   )}
                 </td>
                 <td className="py-4 px-4">
                   <p className="text-sm text-gray-700 dark:text-gray-300">{payout.account_details.account_number}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{payout.account_details.account_name}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{payout.account_details.account_name}</p>
                 </td>
                 <td className="py-4 px-4">
                   <span className={`text-xs px-2 py-1 rounded-full capitalize ${getStatusColor(payout.status)}`}>
@@ -388,7 +389,7 @@ export default function PayoutsPage() {
                 </td>
                 <td className="py-4 px-4">
                   <p className="text-sm text-gray-700 dark:text-gray-300">{new Date(payout.created_at).toLocaleDateString()}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{new Date(payout.created_at).toLocaleTimeString()}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{new Date(payout.created_at).toLocaleTimeString()}</p>
                 </td>
                 <td className="py-4 px-4">
                   {payout.status === 'pending' && (
@@ -427,21 +428,21 @@ export default function PayoutsPage() {
 
             <div className="p-4 bg-gray-50 rounded-lg mb-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-gray-600 dark:text-gray-400 dark:text-gray-500">Recipient</span>
+                <span className="text-gray-600 dark:text-gray-400">Recipient</span>
                 <span className="font-medium text-gray-900 dark:text-white">
                   {selectedPayout.user.first_name} {selectedPayout.user.last_name}
                 </span>
               </div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-gray-600 dark:text-gray-400 dark:text-gray-500">Amount</span>
+                <span className="text-gray-600 dark:text-gray-400">Amount</span>
                 <span className="font-bold text-gray-900 dark:text-white">GH₵{selectedPayout.amount}</span>
               </div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-gray-600 dark:text-gray-400 dark:text-gray-500">Transaction Fee</span>
+                <span className="text-gray-600 dark:text-gray-400">Transaction Fee</span>
                 <span className="text-gray-700 dark:text-gray-300">-GH₵{selectedPayout.transaction_fee}</span>
               </div>
               <div className="flex items-center justify-between pt-2 border-t border-gray-200 dark:border-gray-700">
-                <span className="text-gray-600 dark:text-gray-400 dark:text-gray-500">Net Amount</span>
+                <span className="text-gray-600 dark:text-gray-400">Net Amount</span>
                 <span className="font-bold text-green-600">GH₵{selectedPayout.net_amount}</span>
               </div>
             </div>
@@ -457,7 +458,7 @@ export default function PayoutsPage() {
               <div>
                 <p className="text-xs text-gray-500 mb-1">Account</p>
                 <p className="text-sm font-medium text-gray-900 dark:text-white">{selectedPayout.account_details.account_number}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{selectedPayout.account_details.account_name}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">{selectedPayout.account_details.account_name}</p>
               </div>
             </div>
 

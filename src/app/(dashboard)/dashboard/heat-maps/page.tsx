@@ -24,6 +24,7 @@ import {
   ResponsiveContainer,
   Treemap,
 } from 'recharts';
+import { CustomTooltip, useChartColors } from '@/components/charts/ChartComponents';
 
 // Ghana regions data with coordinates and activity
 interface RegionData {
@@ -121,15 +122,15 @@ function RegionCard({ region, isSelected, onClick }: { region: RegionData; isSel
       </div>
       <div className="grid grid-cols-3 gap-2 text-sm">
         <div>
-          <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Users</p>
+          <p className="text-gray-500 dark:text-gray-400">Users</p>
           <p className="font-semibold text-gray-900 dark:text-white">{region.users.toLocaleString()}</p>
         </div>
         <div>
-          <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Listings</p>
+          <p className="text-gray-500 dark:text-gray-400">Listings</p>
           <p className="font-semibold text-gray-900 dark:text-white">{region.listings.toLocaleString()}</p>
         </div>
         <div>
-          <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Exchanges</p>
+          <p className="text-gray-500 dark:text-gray-400">Exchanges</p>
           <p className="font-semibold text-gray-900 dark:text-white">{region.exchanges.toLocaleString()}</p>
         </div>
       </div>
@@ -213,15 +214,15 @@ function GhanaMapVisualization({ regions, selectedRegion, onRegionClick }: {
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1">
             <div className="w-3 h-3 rounded-full bg-green-200" />
-            <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Low</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">Low</span>
           </div>
           <div className="flex items-center gap-1">
             <div className="w-3 h-3 rounded-full bg-yellow-500" />
-            <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Medium</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">Medium</span>
           </div>
           <div className="flex items-center gap-1">
             <div className="w-3 h-3 rounded-full bg-red-500" />
-            <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">High</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">High</span>
           </div>
         </div>
       </div>
@@ -229,10 +230,10 @@ function GhanaMapVisualization({ regions, selectedRegion, onRegionClick }: {
       {/* Controls */}
       <div className="absolute top-4 right-4 flex flex-col gap-2">
         <button className="p-2 bg-white dark:bg-gray-800 rounded-lg shadow hover:bg-gray-50 dark:hover:bg-gray-700">
-          <Layers className="w-4 h-4 text-gray-600 dark:text-gray-400 dark:text-gray-500" />
+          <Layers className="w-4 h-4 text-gray-600 dark:text-gray-400" />
         </button>
         <button className="p-2 bg-white dark:bg-gray-800 rounded-lg shadow hover:bg-gray-50 dark:hover:bg-gray-700">
-          <Eye className="w-4 h-4 text-gray-600 dark:text-gray-400 dark:text-gray-500" />
+          <Eye className="w-4 h-4 text-gray-600 dark:text-gray-400" />
         </button>
       </div>
     </div>
@@ -318,7 +319,7 @@ export default function HeatMapsPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <div className="flex items-center gap-3 mb-2">
             <Users className="w-5 h-5 text-blue-500" />
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">Total Users</span>
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Users</span>
           </div>
           <p className="text-3xl font-bold text-gray-900 dark:text-white">
             {ghanaRegions.reduce((sum, r) => sum + r.users, 0).toLocaleString()}
@@ -329,7 +330,7 @@ export default function HeatMapsPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <div className="flex items-center gap-3 mb-2">
             <BookOpen className="w-5 h-5 text-amber-500" />
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">Total Listings</span>
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Listings</span>
           </div>
           <p className="text-3xl font-bold text-gray-900 dark:text-white">
             {ghanaRegions.reduce((sum, r) => sum + r.listings, 0).toLocaleString()}
@@ -340,7 +341,7 @@ export default function HeatMapsPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <div className="flex items-center gap-3 mb-2">
             <RefreshCw className="w-5 h-5 text-green-500" />
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">Total Exchanges</span>
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Exchanges</span>
           </div>
           <p className="text-3xl font-bold text-gray-900 dark:text-white">
             {ghanaRegions.reduce((sum, r) => sum + r.exchanges, 0).toLocaleString()}
@@ -351,7 +352,7 @@ export default function HeatMapsPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <div className="flex items-center gap-3 mb-2">
             <MapPin className="w-5 h-5 text-purple-500" />
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">Active Regions</span>
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Active Regions</span>
           </div>
           <p className="text-3xl font-bold text-gray-900 dark:text-white">
             {ghanaRegions.length}
@@ -450,12 +451,12 @@ export default function HeatMapsPage() {
                     </span>
                     <div>
                       <p className="font-medium text-gray-900 dark:text-white">{region.name}</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">{region.capital}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">{region.capital}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-6">
                     <div className="text-right">
-                      <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
                         {metricType.charAt(0).toUpperCase() + metricType.slice(1)}
                       </p>
                       <p className="font-semibold text-gray-900 dark:text-white">
@@ -483,31 +484,31 @@ export default function HeatMapsPage() {
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Capital</span>
+                  <span className="text-gray-500 dark:text-gray-400">Capital</span>
                   <span className="font-medium text-gray-900 dark:text-white">{selectedRegionData.capital}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Users</span>
+                  <span className="text-gray-500 dark:text-gray-400">Users</span>
                   <span className="font-medium text-gray-900 dark:text-white">{selectedRegionData.users.toLocaleString()}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Listings</span>
+                  <span className="text-gray-500 dark:text-gray-400">Listings</span>
                   <span className="font-medium text-gray-900 dark:text-white">{selectedRegionData.listings.toLocaleString()}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Exchanges</span>
+                  <span className="text-gray-500 dark:text-gray-400">Exchanges</span>
                   <span className="font-medium text-gray-900 dark:text-white">{selectedRegionData.exchanges.toLocaleString()}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Revenue</span>
+                  <span className="text-gray-500 dark:text-gray-400">Revenue</span>
                   <span className="font-medium text-gray-900 dark:text-white">GH₵{selectedRegionData.revenue.toLocaleString()}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Meetup Spots</span>
+                  <span className="text-gray-500 dark:text-gray-400">Meetup Spots</span>
                   <span className="font-medium text-gray-900 dark:text-white">{selectedRegionData.activeSpots}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Growth</span>
+                  <span className="text-gray-500 dark:text-gray-400">Growth</span>
                   <span className={`font-medium ${selectedRegionData.growth >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                     {selectedRegionData.growth >= 0 ? '+' : ''}{selectedRegionData.growth}%
                   </span>
@@ -522,7 +523,7 @@ export default function HeatMapsPage() {
                     .slice(0, 5)
                     .map(city => (
                       <div key={city.name} className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600 dark:text-gray-400 dark:text-gray-500">{city.name}</span>
+                        <span className="text-gray-600 dark:text-gray-400">{city.name}</span>
                         <span className="font-medium text-gray-900 dark:text-white">{city.exchanges} exchanges</span>
                       </div>
                     ))}
@@ -532,7 +533,7 @@ export default function HeatMapsPage() {
           ) : (
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 text-center">
               <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-              <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-gray-500 dark:text-gray-400">
                 Select a region to view details
               </p>
             </div>
@@ -563,7 +564,7 @@ export default function HeatMapsPage() {
                   </span>
                   <div className="flex-1">
                     <p className="text-sm font-medium text-gray-900 dark:text-white">{region.name}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
                       {region[metricType].toLocaleString()} {metricType}
                     </p>
                   </div>

@@ -16,6 +16,7 @@ import {
   Line,
   Legend,
 } from 'recharts';
+import { CustomTooltip, useChartColors } from '@/components/charts/ChartComponents';
 import type { UserReputation, Badge, Review, Violation } from '@/types/admin';
 
 // Extended types
@@ -298,7 +299,7 @@ export default function ReputationPage() {
             <button
               onClick={() => setViewMode('users')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'users' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400 dark:text-gray-500'
+                viewMode === 'users' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
               }`}
             >
               Users
@@ -306,7 +307,7 @@ export default function ReputationPage() {
             <button
               onClick={() => setViewMode('badges')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'badges' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400 dark:text-gray-500'
+                viewMode === 'badges' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
               }`}
             >
               Badges
@@ -314,7 +315,7 @@ export default function ReputationPage() {
             <button
               onClick={() => setViewMode('violations')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'violations' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400 dark:text-gray-500'
+                viewMode === 'violations' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
               }`}
             >
               Violations
@@ -326,27 +327,27 @@ export default function ReputationPage() {
       {/* Summary Stats */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Avg Trust Score</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Avg Trust Score</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">76.4</p>
           <p className="text-xs text-green-600 mt-1">+2.1 from last month</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Platinum Users</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Platinum Users</p>
           <p className="text-2xl font-bold text-indigo-600 mt-1">45</p>
           <p className="text-xs text-gray-500 mt-1">Top 2% of users</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Badges Earned</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Badges Earned</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">3,373</p>
           <p className="text-xs text-green-600 mt-1">+156 this month</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Active Violations</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Active Violations</p>
           <p className="text-2xl font-bold text-red-600 mt-1">23</p>
           <p className="text-xs text-gray-500 mt-1">12 warnings, 11 suspensions</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Avg Rating</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Avg Rating</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">4.6</p>
           <p className="text-xs text-gray-500 mt-1">Based on 12,456 reviews</p>
         </div>
@@ -408,13 +409,13 @@ export default function ReputationPage() {
                           </span>
                         )}
                       </div>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">{user.email}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">{user.email}</p>
                       <div className="flex items-center gap-4 mt-2">
                         <div className="flex items-center gap-1">
                           <span className={`text-lg font-bold ${getTrustScoreColor(user.trust_score)}`}>
                             {user.trust_score}
                           </span>
-                          <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">trust score</span>
+                          <span className="text-xs text-gray-500 dark:text-gray-400">trust score</span>
                         </div>
                         <div className="flex items-center gap-1">
                           <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{user.avg_rating}</span>
@@ -422,7 +423,7 @@ export default function ReputationPage() {
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                           </svg>
                         </div>
-                        <span className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                        <span className="text-sm text-gray-500 dark:text-gray-400">
                           {user.successful_exchanges}/{user.total_exchanges} exchanges
                         </span>
                       </div>
@@ -477,7 +478,7 @@ export default function ReputationPage() {
                   <div key={level.name} className="flex items-center justify-between text-sm">
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 rounded-full" style={{ backgroundColor: level.color }} />
-                      <span className="text-gray-600 dark:text-gray-400 dark:text-gray-500">{level.name}</span>
+                      <span className="text-gray-600 dark:text-gray-400">{level.name}</span>
                     </div>
                     <span className="font-medium text-gray-900 dark:text-white">{level.value}</span>
                   </div>
@@ -493,7 +494,7 @@ export default function ReputationPage() {
                   {trustScoreFactors.map((factor) => (
                     <div key={factor.factor}>
                       <div className="flex items-center justify-between text-sm mb-1">
-                        <span className="text-gray-600 dark:text-gray-400 dark:text-gray-500">{factor.factor}</span>
+                        <span className="text-gray-600 dark:text-gray-400">{factor.factor}</span>
                         <span className="font-medium text-gray-900 dark:text-white">
                           {factor.score}/{factor.maxScore}
                         </span>
@@ -591,7 +592,7 @@ export default function ReputationPage() {
                   <h3 className="font-semibold text-gray-900 mt-3">{badge.name}</h3>
                   <p className="text-sm text-gray-500 mt-1">{badge.description}</p>
                   <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
-                    <span className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">{badge.earned_count} earned</span>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">{badge.earned_count} earned</span>
                     <button className="text-sm text-indigo-600 hover:text-indigo-700">Edit</button>
                   </div>
                 </div>

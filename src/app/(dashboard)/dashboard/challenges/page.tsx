@@ -13,6 +13,7 @@ import {
   Line,
   Legend,
 } from 'recharts';
+import { CustomTooltip, useChartColors } from '@/components/charts/ChartComponents';
 import type { Challenge } from '@/types/admin';
 
 // Extended Challenge with analytics
@@ -271,15 +272,15 @@ export default function ChallengesPage() {
           <p className="text-3xl font-bold mt-1">{challengeStats.activeChallengers.toLocaleString()}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Total Completions</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Total Completions</p>
           <p className="text-2xl font-bold text-green-600 mt-1">{challengeStats.totalCompletions}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Avg Completion Rate</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Avg Completion Rate</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{challengeStats.avgCompletionRate}%</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Rewards Given</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Rewards Given</p>
           <p className="text-2xl font-bold text-yellow-600 mt-1">{challengeStats.rewardsGiven}</p>
         </div>
       </div>
@@ -333,7 +334,7 @@ export default function ChallengesPage() {
                         {challenge.type}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">{challenge.description}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{challenge.description}</p>
                   </div>
                   <div className="flex items-center gap-2">
                     {getRewardIcon(challenge.reward.type)}
@@ -344,7 +345,7 @@ export default function ChallengesPage() {
                 {/* Progress Bar */}
                 <div className="mb-4">
                   <div className="flex items-center justify-between text-sm mb-1">
-                    <span className="text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                    <span className="text-gray-600 dark:text-gray-400">
                       {challenge.completions} / {challenge.participants} completed
                     </span>
                     <span className="font-medium text-indigo-600">{challenge.progress_percentage}%</span>
@@ -358,7 +359,7 @@ export default function ChallengesPage() {
                 </div>
 
                 {/* Meta Info */}
-                <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
                   <span>{challenge.participants.toLocaleString()} participants</span>
                   <span>Goal: {challenge.goal} {challenge.type}s</span>
                   <span className={isEnded ? 'text-gray-400 dark:text-gray-500' : daysRemaining <= 7 ? 'text-red-500' : ''}>
@@ -396,7 +397,7 @@ export default function ChallengesPage() {
                             style={{ width: `${(participant.progress / selectedChallenge.goal) * 100}%` }}
                           />
                         </div>
-                        <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                        <span className="text-xs text-gray-500 dark:text-gray-400">
                           {participant.progress}/{selectedChallenge.goal}
                         </span>
                       </div>
@@ -422,19 +423,19 @@ export default function ChallengesPage() {
                 <h3 className="font-semibold text-gray-900 mb-4">Challenge Details</h3>
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Start Date</span>
+                    <span className="text-gray-500 dark:text-gray-400">Start Date</span>
                     <span className="text-gray-900 dark:text-white">{new Date(selectedChallenge.start_date).toLocaleDateString()}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500">End Date</span>
+                    <span className="text-gray-500 dark:text-gray-400">End Date</span>
                     <span className="text-gray-900 dark:text-white">{new Date(selectedChallenge.end_date).toLocaleDateString()}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Reward Type</span>
+                    <span className="text-gray-500 dark:text-gray-400">Reward Type</span>
                     <span className="text-gray-900 capitalize">{selectedChallenge.reward.type.replace('_', ' ')}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Created By</span>
+                    <span className="text-gray-500 dark:text-gray-400">Created By</span>
                     <span className="text-gray-900 dark:text-white">{selectedChallenge.created_by}</span>
                   </div>
                 </div>
@@ -450,7 +451,7 @@ export default function ChallengesPage() {
             </>
           ) : (
             <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-              <div className="text-center text-gray-500 dark:text-gray-400 dark:text-gray-500">
+              <div className="text-center text-gray-500 dark:text-gray-400">
                 <svg className="w-12 h-12 mx-auto text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                 </svg>

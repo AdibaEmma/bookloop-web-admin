@@ -212,12 +212,12 @@ export default function UserImpersonationPage() {
                             </svg>
                           )}
                         </div>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">{user.email}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">{user.email}</p>
                       </div>
                     </div>
                     <div className="text-right">
                       <span className={`text-xs px-2 py-0.5 rounded-full ${
-                        user.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500 dark:text-gray-400 dark:text-gray-500'
+                        user.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500 dark:text-gray-400'
                       }`}>
                         {user.is_active ? 'Active' : 'Inactive'}
                       </span>
@@ -249,7 +249,7 @@ export default function UserImpersonationPage() {
                       <p className="font-medium text-gray-900 dark:text-white">
                         {selectedUser.first_name} {selectedUser.last_name}
                       </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">{selectedUser.email}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">{selectedUser.email}</p>
                     </div>
                   </div>
                   <button
@@ -297,14 +297,14 @@ export default function UserImpersonationPage() {
                         session.status === 'active' ? 'bg-amber-100' : 'bg-gray-100 dark:bg-gray-700'
                       }`}>
                         <svg className={`w-5 h-5 ${
-                          session.status === 'active' ? 'text-amber-600' : 'text-gray-500 dark:text-gray-400 dark:text-gray-500'
+                          session.status === 'active' ? 'text-amber-600' : 'text-gray-500 dark:text-gray-400'
                         }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                       </div>
                       <div>
                         <p className="font-medium text-gray-900 dark:text-white">{session.user_name}</p>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
                           Impersonated by {session.admin_name}
                         </p>
                         <p className="text-xs text-gray-400 mt-1">{session.reason}</p>
@@ -314,7 +314,7 @@ export default function UserImpersonationPage() {
                       <span className={`text-xs px-2 py-0.5 rounded-full ${
                         session.status === 'active'
                           ? 'bg-amber-100 text-amber-700'
-                          : 'bg-gray-100 text-gray-600 dark:text-gray-400 dark:text-gray-500'
+                          : 'bg-gray-100 text-gray-600 dark:text-gray-400'
                       }`}>
                         {session.status === 'active' ? 'Active' : 'Ended'}
                       </span>
@@ -326,7 +326,7 @@ export default function UserImpersonationPage() {
                       </p>
                     </div>
                   </div>
-                  <div className="mt-3 flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                  <div className="mt-3 flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
                     <span className="flex items-center gap-1">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -355,19 +355,19 @@ export default function UserImpersonationPage() {
             <h3 className="font-semibold text-gray-900 mb-4">Impersonation Stats</h3>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Total Sessions (30d)</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Total Sessions (30d)</p>
                 <p className="font-semibold text-gray-900 dark:text-white">47</p>
               </div>
               <div className="flex items-center justify-between">
-                <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Active Sessions</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Active Sessions</p>
                 <p className="font-semibold text-amber-600">1</p>
               </div>
               <div className="flex items-center justify-between">
-                <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Avg. Duration</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Avg. Duration</p>
                 <p className="font-semibold text-gray-900 dark:text-white">18m</p>
               </div>
               <div className="flex items-center justify-between">
-                <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Unique Admins</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Unique Admins</p>
                 <p className="font-semibold text-gray-900 dark:text-white">5</p>
               </div>
             </div>
@@ -376,7 +376,7 @@ export default function UserImpersonationPage() {
           {/* Guidelines */}
           <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
             <h3 className="font-semibold text-gray-900 mb-4">Usage Guidelines</h3>
-            <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+            <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
               <li className="flex items-start gap-2">
                 <svg className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -446,7 +446,7 @@ export default function UserImpersonationPage() {
               </div>
               <div>
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Start Impersonation</h2>
-                <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-gray-400">
                   {selectedUser.first_name} {selectedUser.last_name}
                 </p>
               </div>

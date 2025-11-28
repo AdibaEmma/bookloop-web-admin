@@ -24,6 +24,7 @@ import {
   PolarRadiusAxis,
   Radar,
 } from 'recharts';
+import { CustomTooltip, useChartColors } from '@/components/charts/ChartComponents';
 
 type TimeRange = '7d' | '30d' | '90d' | '1y' | 'all';
 
@@ -231,29 +232,29 @@ export default function RevenueDashboardPage() {
           </div>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">This Month</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">This Month</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">GH₵{stats.currentMonth.toLocaleString()}</p>
           <p className="text-xs text-gray-500 mt-2">Projected: GH₵{stats.projectedMonth.toLocaleString()}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Month-over-Month</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Month-over-Month</p>
           <p className={`text-2xl font-bold mt-1 ${stats.monthOverMonth >= 0 ? 'text-green-600' : 'text-red-600'}`}>
             {stats.monthOverMonth >= 0 ? '+' : ''}{stats.monthOverMonth}%
           </p>
           <p className="text-xs text-gray-500 mt-2">vs last month</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Avg. Daily Revenue</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Avg. Daily Revenue</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">GH₵{stats.avgDaily.toLocaleString()}</p>
           <p className="text-xs text-gray-500 mt-2">Last 7 days</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Total Transactions</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Total Transactions</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{stats.totalTransactions.toLocaleString()}</p>
           <p className="text-xs text-gray-500 mt-2">YTD</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Avg. Transaction</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Avg. Transaction</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">
             GH₵{(stats.totalRevenue / stats.totalTransactions).toFixed(2)}
           </p>
@@ -293,7 +294,7 @@ export default function RevenueDashboardPage() {
                 </div>
                 <div className="flex items-baseline gap-1 mb-2">
                   <span className="text-xl font-bold text-gray-900 dark:text-white">GH₵{target.current.toLocaleString()}</span>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">/ GH₵{target.target.toLocaleString()}</span>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">/ GH₵{target.target.toLocaleString()}</span>
                 </div>
                 <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                   <div className={`h-full ${colors.bar} rounded-full transition-all`} style={{ width: `${progress}%` }} />
@@ -375,15 +376,15 @@ export default function RevenueDashboardPage() {
           </ResponsiveContainer>
           <div className="flex items-center justify-between mt-4 pt-4 border-t">
             <div className="text-center">
-              <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Peak Hour</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">Peak Hour</p>
               <p className="font-semibold text-gray-900 dark:text-white">5pm - 6pm</p>
             </div>
             <div className="text-center">
-              <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Peak Revenue</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">Peak Revenue</p>
               <p className="font-semibold text-indigo-600">GH₵1,580</p>
             </div>
             <div className="text-center">
-              <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Slow Period</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">Slow Period</p>
               <p className="font-semibold text-gray-900 dark:text-white">6am - 8am</p>
             </div>
           </div>
@@ -466,11 +467,11 @@ export default function RevenueDashboardPage() {
             <div className="flex items-center justify-center gap-6 mt-4 pt-4 border-t">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-indigo-500" />
-                <span className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Current Period: <span className="font-semibold">GH₵{dailyRevenue.reduce((acc, d) => acc + d.revenue, 0).toLocaleString()}</span></span>
+                <span className="text-sm text-gray-600 dark:text-gray-400">Current Period: <span className="font-semibold">GH₵{dailyRevenue.reduce((acc, d) => acc + d.revenue, 0).toLocaleString()}</span></span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-gray-400" />
-                <span className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Previous Period: <span className="font-semibold">GH₵{dailyRevenue.reduce((acc, d) => acc + (d.previousRevenue || 0), 0).toLocaleString()}</span></span>
+                <span className="text-sm text-gray-600 dark:text-gray-400">Previous Period: <span className="font-semibold">GH₵{dailyRevenue.reduce((acc, d) => acc + (d.previousRevenue || 0), 0).toLocaleString()}</span></span>
               </div>
               <div className="px-2 py-1 bg-green-100 text-green-700 rounded text-sm font-medium">
                 +{((dailyRevenue.reduce((acc, d) => acc + d.revenue, 0) / dailyRevenue.reduce((acc, d) => acc + (d.previousRevenue || 0), 0) - 1) * 100).toFixed(1)}%
@@ -507,7 +508,7 @@ export default function RevenueDashboardPage() {
               <div key={source.name} className="flex items-center justify-between text-sm">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: source.color }} />
-                  <span className="text-gray-600 dark:text-gray-400 dark:text-gray-500">{source.name}</span>
+                  <span className="text-gray-600 dark:text-gray-400">{source.name}</span>
                 </div>
                 <span className="font-medium text-gray-900 dark:text-white">GH₵{source.amount.toLocaleString()}</span>
               </div>
@@ -547,7 +548,7 @@ export default function RevenueDashboardPage() {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="month" tick={{ fontSize: 12 }} />
               <YAxis tick={{ fontSize: 12 }} />
-              <Tooltip formatter={(value: number | null) => value ? `GH₵${value.toLocaleString()}` : 'N/A'} />
+              <Tooltip formatter={(value) => typeof value === 'number' ? `GH₵${value.toLocaleString()}` : 'N/A'} />
               <Legend />
               <Area
                 type="monotone"
@@ -606,13 +607,13 @@ export default function RevenueDashboardPage() {
                   index === 0 ? 'bg-yellow-100 text-yellow-700' :
                   index === 1 ? 'bg-gray-200 text-gray-700 dark:text-gray-300' :
                   index === 2 ? 'bg-orange-100 text-orange-700' :
-                  'bg-gray-100 text-gray-600 dark:text-gray-400 dark:text-gray-500'
+                  'bg-gray-100 text-gray-600 dark:text-gray-400'
                 }`}>
                   {index + 1}
                 </span>
                 <div className="flex-1">
                   <p className="font-medium text-gray-900 dark:text-white">{day.date}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{day.reason}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{day.reason}</p>
                 </div>
                 <p className="font-bold text-gray-900 dark:text-white">GH₵{day.revenue.toLocaleString()}</p>
               </div>
@@ -694,7 +695,7 @@ export default function RevenueDashboardPage() {
                 onClick={() => setShowExportModal(false)}
                 className="p-2 hover:bg-gray-100 rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -772,7 +773,7 @@ export default function RevenueDashboardPage() {
                 onClick={() => setShowTargetModal(false)}
                 className="p-2 hover:bg-gray-100 rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -789,7 +790,7 @@ export default function RevenueDashboardPage() {
                       <div>
                         <label className="block text-xs text-gray-500 mb-1">Target Amount</label>
                         <div className="flex items-center gap-1">
-                          <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500">GH₵</span>
+                          <span className="text-gray-500 dark:text-gray-400">GH₵</span>
                           <input
                             type="number"
                             defaultValue={target.target}
@@ -813,7 +814,7 @@ export default function RevenueDashboardPage() {
                           style={{ width: `${Math.min((target.current / target.target) * 100, 100)}%` }}
                         />
                       </div>
-                      <span className="text-sm font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                      <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
                         {((target.current / target.target) * 100).toFixed(0)}%
                       </span>
                     </div>

@@ -10,6 +10,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+import { CustomTooltip, useChartColors } from '@/components/charts/ChartComponents';
 import type { LeaderboardEntry } from '@/types/admin';
 
 // Extended types
@@ -265,7 +266,7 @@ export default function LeaderboardsPage() {
                 <p className="font-medium text-gray-900 text-sm">{selectedCategory.entries[1]?.user_name}</p>
                 <p className="text-lg font-bold text-gray-700 dark:text-gray-300">{selectedCategory.entries[1]?.score}</p>
                 <div className="w-20 h-16 bg-gray-200 rounded-t-lg mt-2 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-gray-500 dark:text-gray-400 dark:text-gray-500">2</span>
+                  <span className="text-2xl font-bold text-gray-500 dark:text-gray-400">2</span>
                 </div>
               </div>
               {/* 1st Place */}
@@ -309,7 +310,7 @@ export default function LeaderboardsPage() {
                   </div>
                   <div>
                     <p className="font-medium text-gray-900 dark:text-white">{entry.user_name}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{entry.score} {selectedCategory.metric.toLowerCase()}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{entry.score} {selectedCategory.metric.toLowerCase()}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -348,13 +349,13 @@ export default function LeaderboardsPage() {
                       index === 0 ? 'bg-yellow-100 text-yellow-700' :
                       index === 1 ? 'bg-gray-100 text-gray-700 dark:text-gray-300' :
                       index === 2 ? 'bg-orange-100 text-orange-700' :
-                      'bg-gray-50 text-gray-600 dark:text-gray-400 dark:text-gray-500'
+                      'bg-gray-50 text-gray-600 dark:text-gray-400'
                     }`}>
                       {index + 1}
                     </span>
                     <div>
                       <p className="text-sm font-medium text-gray-900 dark:text-white">{region.region}</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{region.users.toLocaleString()} users</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">{region.users.toLocaleString()} users</p>
                     </div>
                   </div>
                   <div className="text-right">
@@ -383,7 +384,7 @@ export default function LeaderboardsPage() {
                   </div>
                   <div className="flex-1">
                     <p className="text-sm font-medium text-gray-900 dark:text-white">{achievement.user}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Earned "{achievement.badge}"</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">Earned "{achievement.badge}"</p>
                   </div>
                   <span className="text-xs text-gray-400 dark:text-gray-500">{achievement.time}</span>
                 </div>

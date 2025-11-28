@@ -64,7 +64,7 @@ function LiveStatCard({
       )}
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-sm font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">
+          <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
             {title}
           </p>
           <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
@@ -226,7 +226,7 @@ function ExchangeActivity({ exchanges }: { exchanges: ActiveExchange[] }) {
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
           Active Exchanges
         </h3>
-        <span className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+        <span className="text-sm text-gray-500 dark:text-gray-400">
           {exchanges.length} in progress
         </span>
       </div>
@@ -242,7 +242,7 @@ function ExchangeActivity({ exchanges }: { exchanges: ActiveExchange[] }) {
                 <p className="text-sm font-medium text-gray-900 dark:text-white">
                   {exchange.bookTitle}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
                   {exchange.initiator} → {exchange.recipient}
                 </p>
               </div>
@@ -443,7 +443,7 @@ export default function RealTimeDashboardPage() {
             Live platform activity and metrics
           </p>
         </div>
-        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
           <Clock className="w-4 h-4" />
           Last updated: {new Date().toLocaleTimeString()}
         </div>
@@ -492,7 +492,7 @@ export default function RealTimeDashboardPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
                 New Listings Today
               </p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">
@@ -505,7 +505,7 @@ export default function RealTimeDashboardPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
                 Transactions Today
               </p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">
@@ -518,7 +518,7 @@ export default function RealTimeDashboardPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
                 Total Active Users
               </p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">
@@ -551,7 +551,7 @@ export default function RealTimeDashboardPage() {
                 <ActivityFeedItem key={event.id} event={event} />
               ))
             ) : (
-              <div className="p-8 text-center text-gray-500 dark:text-gray-400 dark:text-gray-500">
+              <div className="p-8 text-center text-gray-500 dark:text-gray-400">
                 <Activity className="w-12 h-12 mx-auto mb-2 opacity-50" />
                 <p>Waiting for activity...</p>
               </div>

@@ -31,6 +31,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
+import { CustomTooltip, useChartColors } from '@/components/charts/ChartComponents';
 
 type TimeRange = '7d' | '30d' | '90d' | '12m';
 
@@ -56,7 +57,7 @@ function MetricCard({
     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
       <div className="flex items-center justify-between">
         <div className="flex-1">
-          <p className="text-sm font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500">
+          <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
             {title}
           </p>
           <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">
@@ -124,7 +125,7 @@ function TopPerformerRow({
               ? 'bg-gray-100 text-gray-700 dark:text-gray-300'
               : rank === 3
               ? 'bg-orange-100 text-orange-700'
-              : 'bg-gray-50 text-gray-500 dark:text-gray-400 dark:text-gray-500'
+              : 'bg-gray-50 text-gray-500 dark:text-gray-400'
           }`}
         >
           {rank}
@@ -133,7 +134,7 @@ function TopPerformerRow({
       <td className="py-3 px-4 font-medium text-gray-900 dark:text-white">
         {name}
       </td>
-      <td className="py-3 px-4 text-gray-600 dark:text-gray-400 dark:text-gray-500">{metric}</td>
+      <td className="py-3 px-4 text-gray-600 dark:text-gray-400">{metric}</td>
       <td className="py-3 px-4 font-semibold text-gray-900 dark:text-white">
         {value}
       </td>
@@ -283,7 +284,7 @@ export default function AnalyticsPage() {
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                 User Growth Trend
               </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 New user registrations over time
               </p>
             </div>
@@ -325,7 +326,7 @@ export default function AnalyticsPage() {
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                 Revenue Trend
               </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 Platform revenue over time
               </p>
             </div>
@@ -371,7 +372,7 @@ export default function AnalyticsPage() {
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                 Exchange Statistics
               </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 Exchange status breakdown by period
               </p>
             </div>
@@ -403,7 +404,7 @@ export default function AnalyticsPage() {
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
               Book Categories
             </h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+            <p className="text-sm text-gray-500 dark:text-gray-400">
               Distribution by category
             </p>
           </div>
@@ -439,7 +440,7 @@ export default function AnalyticsPage() {
                   className="w-3 h-3 rounded-full"
                   style={{ backgroundColor: COLORS[index % COLORS.length] }}
                 />
-                <span className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                <span className="text-xs text-gray-600 dark:text-gray-400">
                   {cat.name} ({cat.value}%)
                 </span>
               </div>
@@ -457,7 +458,7 @@ export default function AnalyticsPage() {
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                 Listings Activity
               </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 New vs removed listings
               </p>
             </div>
@@ -503,7 +504,7 @@ export default function AnalyticsPage() {
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                 Users by Region
               </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 Geographic distribution
               </p>
             </div>

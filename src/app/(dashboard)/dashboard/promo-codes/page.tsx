@@ -13,6 +13,7 @@ import {
   Line,
   Legend,
 } from 'recharts';
+import { CustomTooltip, useChartColors } from '@/components/charts/ChartComponents';
 import type { PromoCode } from '@/types/admin';
 
 // Extended PromoCode with analytics
@@ -224,22 +225,22 @@ export default function PromoCodesPage() {
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Total Codes</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Total Codes</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{promoStats.totalCodes}</p>
           <p className="text-xs text-gray-500 mt-1">{promoStats.activeCodes} active</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Total Redemptions</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Total Redemptions</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{promoStats.totalUsage.toLocaleString()}</p>
           <p className="text-xs text-green-600 mt-1">+12% this month</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Revenue Generated</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Revenue Generated</p>
           <p className="text-2xl font-bold text-green-600 mt-1">GH₵{promoStats.totalRevenue.toLocaleString()}</p>
           <p className="text-xs text-gray-500 mt-1">From promo users</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Avg. Discount Given</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Avg. Discount Given</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">GH₵8.50</p>
           <p className="text-xs text-gray-500 mt-1">Per redemption</p>
         </div>
@@ -344,7 +345,7 @@ export default function PromoCodesPage() {
                   <td className="py-4 px-4">
                     <span className="font-medium text-gray-900 dark:text-white">{formatValue(promo)}</span>
                     {promo.min_transaction && (
-                      <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Min: GH₵{promo.min_transaction}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">Min: GH₵{promo.min_transaction}</p>
                     )}
                   </td>
                   <td className="py-4 px-4">
@@ -375,7 +376,7 @@ export default function PromoCodesPage() {
                     <span className={`text-xs px-2 py-1 rounded-full ${
                       promo.is_active && !isExpired(promo)
                         ? 'bg-green-100 text-green-700'
-                        : 'bg-gray-100 text-gray-500 dark:text-gray-400 dark:text-gray-500'
+                        : 'bg-gray-100 text-gray-500 dark:text-gray-400'
                     }`}>
                       {promo.is_active && !isExpired(promo) ? 'Active' : 'Inactive'}
                     </span>
@@ -544,7 +545,7 @@ export default function PromoCodesPage() {
                 onClick={() => setSelectedPromo(null)}
                 className="p-2 hover:bg-gray-100 rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -576,7 +577,7 @@ export default function PromoCodesPage() {
                   <span className={`text-sm px-2 py-1 rounded-full ${
                     selectedPromo.is_active && !isExpired(selectedPromo)
                       ? 'bg-green-100 text-green-700'
-                      : 'bg-gray-100 text-gray-500 dark:text-gray-400 dark:text-gray-500'
+                      : 'bg-gray-100 text-gray-500 dark:text-gray-400'
                   }`}>
                     {selectedPromo.is_active && !isExpired(selectedPromo) ? 'Active' : 'Inactive'}
                   </span>

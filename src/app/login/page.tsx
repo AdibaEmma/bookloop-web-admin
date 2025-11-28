@@ -156,7 +156,7 @@ export default function LoginPage() {
           </form>
 
           {/* Footer */}
-          <div className="text-center text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+          <div className="text-center text-sm text-gray-600 dark:text-gray-400">
             <p>
               Default credentials:{' '}
               <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
@@ -167,7 +167,7 @@ export default function LoginPage() {
         </div>
 
         {/* Version Info */}
-        <div className="text-center mt-6 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+        <div className="text-center mt-6 text-sm text-gray-500 dark:text-gray-400">
           BookLoop Admin Dashboard v1.0.0
         </div>
       </div>

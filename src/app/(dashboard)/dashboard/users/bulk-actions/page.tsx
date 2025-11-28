@@ -133,19 +133,19 @@ export default function BulkActionsPage() {
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Total Users</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Total Users</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{mockUsers.length}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Filtered Results</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Filtered Results</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{filteredUsers.length}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Selected</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Selected</p>
           <p className="text-2xl font-bold text-indigo-600 mt-1">{selectedUsers.size}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Active Users</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Active Users</p>
           <p className="text-2xl font-bold text-green-600 mt-1">
             {mockUsers.filter((u) => u.is_active).length}
           </p>
@@ -269,7 +269,7 @@ export default function BulkActionsPage() {
               />
               <span className="text-sm text-gray-700 dark:text-gray-300">Select all</span>
             </label>
-            <span className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">{filteredUsers.length} users</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">{filteredUsers.length} users</span>
           </div>
           <div className="divide-y divide-gray-100 max-h-[500px] overflow-y-auto">
             {filteredUsers.map((user) => (
@@ -304,9 +304,9 @@ export default function BulkActionsPage() {
                   <p className="text-sm text-gray-500 truncate">{user.email}</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">{user.location?.region}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">{user.location?.region}</p>
                   <span className={`text-xs px-2 py-0.5 rounded-full ${
-                    user.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500 dark:text-gray-400 dark:text-gray-500'
+                    user.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500 dark:text-gray-400'
                   }`}>
                     {user.is_active ? 'Active' : 'Inactive'}
                   </span>
@@ -333,7 +333,7 @@ export default function BulkActionsPage() {
                       {action.status}
                     </span>
                   </div>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
                     {action.users_affected} users · {action.performed_by}
                   </p>
                   <p className="text-xs text-gray-400 mt-1">

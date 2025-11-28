@@ -25,6 +25,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
+import { CustomTooltip, useChartColors } from '@/components/charts/ChartComponents';
 
 // Stats card component
 function StatsCard({
@@ -46,7 +47,7 @@ function StatsCard({
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-sm font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">
+          <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
             {title}
           </p>
           <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
@@ -110,9 +111,9 @@ function ActivityItem({
         <p className="text-sm font-medium text-gray-900 dark:text-white">
           {user}
         </p>
-        <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">{details}</p>
+        <p className="text-sm text-gray-600 dark:text-gray-400">{details}</p>
       </div>
-      <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+      <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
         <Clock className="w-3 h-3" />
         {time}
       </div>
@@ -121,6 +122,8 @@ function ActivityItem({
 }
 
 export default function DashboardPage() {
+  const chartColors = useChartColors();
+
   // Static mock data - Backend admin endpoints not yet implemented
   // TODO: Replace with real API calls when admin endpoints are available
   const stats = {
@@ -254,11 +257,11 @@ export default function DashboardPage() {
           </h3>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={userGrowthData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
+              <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} />
+              <XAxis dataKey="month" stroke={chartColors.text} tick={{ fill: chartColors.text }} />
+              <YAxis stroke={chartColors.text} tick={{ fill: chartColors.text }} />
+              <Tooltip content={<CustomTooltip />} />
+              <Legend wrapperStyle={{ color: chartColors.text }} />
               <Line
                 type="monotone"
                 dataKey="users"
@@ -276,11 +279,11 @@ export default function DashboardPage() {
           </h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={exchangeData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
+              <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} />
+              <XAxis dataKey="month" stroke={chartColors.text} tick={{ fill: chartColors.text }} />
+              <YAxis stroke={chartColors.text} tick={{ fill: chartColors.text }} />
+              <Tooltip content={<CustomTooltip />} />
+              <Legend wrapperStyle={{ color: chartColors.text }} />
               <Bar dataKey="completed" fill="#10b981" />
               <Bar dataKey="pending" fill="#f59e0b" />
               <Bar dataKey="cancelled" fill="#ef4444" />
@@ -317,7 +320,7 @@ export default function DashboardPage() {
                   />
                 ))}
               </Pie>
-              <Tooltip />
+              <Tooltip content={<CustomTooltip />} />
             </PieChart>
           </ResponsiveContainer>
         </div>

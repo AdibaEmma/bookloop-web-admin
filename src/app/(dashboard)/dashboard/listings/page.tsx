@@ -394,7 +394,7 @@ export default function ListingsPage() {
               <BookOpen className="w-5 h-5 text-amber-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 Total Listings
               </p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -410,7 +410,7 @@ export default function ListingsPage() {
               <CheckCircle className="w-5 h-5 text-green-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 Approved
               </p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -426,7 +426,7 @@ export default function ListingsPage() {
               <XCircle className="w-5 h-5 text-orange-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 Pending
               </p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -442,7 +442,7 @@ export default function ListingsPage() {
               <Flag className="w-5 h-5 text-red-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Flagged</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Flagged</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white">
                 {listings.filter((l) => l.is_flagged).length}
               </p>
@@ -513,7 +513,7 @@ export default function ListingsPage() {
           {/* Table Header with Limit Selector */}
           <div className="flex items-center justify-between px-6 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
             <div className="flex items-center gap-2">
-              <label htmlFor="limit" className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <label htmlFor="limit" className="text-sm text-gray-600 dark:text-gray-400">
                 Show:
               </label>
               <select
@@ -528,9 +528,9 @@ export default function ListingsPage() {
                   </option>
                 ))}
               </select>
-              <span className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">entries</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">entries</span>
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+            <div className="text-sm text-gray-600 dark:text-gray-400">
               Showing {((meta.page - 1) * meta.limit) + 1} to {Math.min(meta.page * meta.limit, meta.total)} of {meta.total}
             </div>
           </div>
@@ -621,7 +621,7 @@ export default function ListingsPage() {
 
                     {/* Exchange Type */}
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                      <span className="text-xs text-gray-600 dark:text-gray-400">
                         {listing.exchange_preference === 'swap' ? 'Swap' : listing.exchange_preference === 'sell' ? 'Sell' : 'Both'}
                       </span>
                     </td>
@@ -633,7 +633,7 @@ export default function ListingsPage() {
                           GH₵{listing.price}
                         </span>
                       ) : (
-                        <span className="text-sm text-gray-400 dark:text-gray-500 dark:text-gray-400 dark:text-gray-500">—</span>
+                        <span className="text-sm text-gray-400 dark:text-gray-500 dark:text-gray-400">—</span>
                       )}
                     </td>
 
@@ -672,7 +672,7 @@ export default function ListingsPage() {
 
                     {/* Date */}
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                      <span className="text-sm text-gray-600 dark:text-gray-400">
                         {new Date(listing.created_at).toLocaleDateString('en-US', {
                           month: 'short',
                           day: 'numeric',
@@ -694,7 +694,7 @@ export default function ListingsPage() {
           {/* Pagination Controls */}
           <div className="flex items-center justify-between px-6 py-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
             {/* Results info - left */}
-            <div className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+            <div className="text-sm text-gray-600 dark:text-gray-400">
               Showing {((meta.page - 1) * meta.limit) + 1} to {Math.min(meta.page * meta.limit, meta.total)} of {meta.total}
             </div>
 
@@ -750,7 +750,7 @@ export default function ListingsPage() {
 
                   return pages.map((pageNum, idx) =>
                     pageNum === '...' ? (
-                      <span key={`ellipsis-${idx}`} className="px-2 text-gray-400 dark:text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                      <span key={`ellipsis-${idx}`} className="px-2 text-gray-400 dark:text-gray-500 dark:text-gray-400">
                         ...
                       </span>
                     ) : (
@@ -796,7 +796,7 @@ export default function ListingsPage() {
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
             No listings found
           </h3>
-          <p className="text-gray-600 dark:text-gray-400 dark:text-gray-500">
+          <p className="text-gray-600 dark:text-gray-400">
             Try adjusting your search or filters
           </p>
         </div>
@@ -1024,7 +1024,7 @@ function ListingDetailsModal({
                   <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-2">
                     Description
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                  <p className="text-gray-600 dark:text-gray-400">
                     {displayListing.description}
                   </p>
                 </div>
@@ -1036,14 +1036,14 @@ function ListingDetailsModal({
                     <p className="text-2xl font-bold text-gray-900 dark:text-white">
                       {displayListing.views_count || 0}
                     </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Views</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">Views</p>
                   </div>
                   <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 text-center">
                     <Heart className="w-6 h-6 text-red-500 mx-auto mb-2" />
                     <p className="text-2xl font-bold text-gray-900 dark:text-white">
                       {displayListing.interested_count || 0}
                     </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Interested</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">Interested</p>
                   </div>
                 </div>
 
@@ -1074,7 +1074,7 @@ function ListingDetailsModal({
                 </div>
 
                 {/* Listing Date */}
-                <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                   <Calendar className="w-4 h-4" />
                   Listed on {new Date(displayListing.created_at).toLocaleDateString('en-US', {
                     year: 'numeric',

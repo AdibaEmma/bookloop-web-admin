@@ -198,7 +198,7 @@ export default function CommunitySuggestionsPage() {
       under_review: 'bg-blue-100 text-blue-700',
       approved: 'bg-green-100 text-green-700',
       rejected: 'bg-red-100 text-red-700',
-      duplicate: 'bg-gray-100 text-gray-600 dark:text-gray-400 dark:text-gray-500',
+      duplicate: 'bg-gray-100 text-gray-600 dark:text-gray-400',
     };
     return (
       <span className={`px-2 py-0.5 text-xs rounded-full ${styles[status]}`}>
@@ -281,23 +281,23 @@ export default function CommunitySuggestionsPage() {
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Total Suggestions</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Total Suggestions</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{stats.total}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Pending Review</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Pending Review</p>
           <p className="text-2xl font-bold text-yellow-600 mt-1">{stats.pending}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Under Review</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Under Review</p>
           <p className="text-2xl font-bold text-blue-600 mt-1">{stats.underReview}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Approved</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Approved</p>
           <p className="text-2xl font-bold text-green-600 mt-1">{stats.approved}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Rejected</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Rejected</p>
           <p className="text-2xl font-bold text-red-600 mt-1">{stats.rejected}</p>
         </div>
       </div>
@@ -365,7 +365,7 @@ export default function CommunitySuggestionsPage() {
                   <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
                     suggestion.status === 'approved' ? 'bg-green-100 text-green-600' :
                     suggestion.status === 'rejected' ? 'bg-red-100 text-red-600' :
-                    'bg-gray-100 text-gray-600 dark:text-gray-400 dark:text-gray-500'
+                    'bg-gray-100 text-gray-600 dark:text-gray-400'
                   }`}>
                     {getTypeIcon(suggestion.type)}
                   </div>
@@ -374,7 +374,7 @@ export default function CommunitySuggestionsPage() {
                       <h3 className="font-semibold text-gray-900 dark:text-white">{suggestion.name}</h3>
                       {getStatusBadge(suggestion.status)}
                     </div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">{suggestion.address}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{suggestion.address}</p>
                     <p className="text-xs text-gray-400 dark:text-gray-500">{suggestion.city}, {suggestion.region}</p>
                   </div>
                 </div>
@@ -410,7 +410,7 @@ export default function CommunitySuggestionsPage() {
               )}
 
               <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
-                <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
                   <span>Suggested by {suggestion.suggested_by.name}</span>
                   <span>·</span>
                   <span>{new Date(suggestion.created_at).toLocaleDateString()}</span>
@@ -444,19 +444,19 @@ export default function CommunitySuggestionsPage() {
                 <h3 className="font-semibold text-gray-900 mb-3">Spot Details</h3>
                 <div className="space-y-3 text-sm">
                   <div>
-                    <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Type</p>
+                    <p className="text-gray-500 dark:text-gray-400">Type</p>
                     <p className="text-gray-900 capitalize">{selectedSuggestion.type.replace('_', ' ')}</p>
                   </div>
                   <div>
-                    <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Operating Hours</p>
+                    <p className="text-gray-500 dark:text-gray-400">Operating Hours</p>
                     <p className="text-gray-900 dark:text-white">{selectedSuggestion.operating_hours || 'Not specified'}</p>
                   </div>
                   <div>
-                    <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Photos</p>
+                    <p className="text-gray-500 dark:text-gray-400">Photos</p>
                     <p className="text-gray-900 dark:text-white">{selectedSuggestion.photos.length} uploaded</p>
                   </div>
                   <div>
-                    <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Amenities</p>
+                    <p className="text-gray-500 dark:text-gray-400">Amenities</p>
                     <div className="flex flex-wrap gap-1 mt-1">
                       {selectedSuggestion.amenities.length > 0 ? (
                         selectedSuggestion.amenities.map((a) => (
@@ -478,10 +478,10 @@ export default function CommunitySuggestionsPage() {
                   </div>
                   <div>
                     <p className="font-medium text-gray-900 dark:text-white">{selectedSuggestion.suggested_by.name}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{selectedSuggestion.suggested_by.email}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{selectedSuggestion.suggested_by.email}</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
                   <span>{selectedSuggestion.suggested_by.total_suggestions} suggestions</span>
                   <span>{selectedSuggestion.suggested_by.approved_suggestions} approved</span>
                 </div>
@@ -517,7 +517,7 @@ export default function CommunitySuggestionsPage() {
                     ))}
                   </div>
                 ) : (
-                  <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">No comments yet</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">No comments yet</p>
                 )}
               </div>
 
@@ -532,7 +532,7 @@ export default function CommunitySuggestionsPage() {
               )}
             </>
           ) : (
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6 text-center text-gray-500 dark:text-gray-400 dark:text-gray-500">
+            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6 text-center text-gray-500 dark:text-gray-400">
               <svg className="w-12 h-12 mx-auto text-gray-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -553,7 +553,7 @@ export default function CommunitySuggestionsPage() {
 
             <div className="p-3 bg-gray-50 rounded-lg mb-4">
               <p className="font-medium text-gray-900 dark:text-white">{selectedSuggestion.name}</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">{selectedSuggestion.address}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{selectedSuggestion.address}</p>
             </div>
 
             {reviewAction === 'reject' && (

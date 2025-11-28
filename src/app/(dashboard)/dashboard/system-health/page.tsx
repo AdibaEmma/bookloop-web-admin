@@ -13,6 +13,7 @@ import {
   Line,
   Legend,
 } from 'recharts';
+import { CustomTooltip, useChartColors } from '@/components/charts/ChartComponents';
 import type { SystemHealth, ServiceHealth } from '@/types/admin';
 
 // Mock data generators
@@ -170,7 +171,7 @@ export default function SystemHealthPage() {
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <span className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
+          <span className="text-sm text-gray-500 dark:text-gray-400">
             Last updated: {lastUpdate.toLocaleTimeString()}
           </span>
           <select
@@ -209,7 +210,7 @@ export default function SystemHealthPage() {
           </div>
           <div className="text-right">
             <p className="text-3xl font-bold text-gray-900 dark:text-white">{systemHealth.uptime}%</p>
-            <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Uptime (30 days)</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">Uptime (30 days)</p>
           </div>
         </div>
       </div>
@@ -217,7 +218,7 @@ export default function SystemHealthPage() {
       {/* Key Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">CPU Usage</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">CPU Usage</p>
           <div className="flex items-end justify-between mt-1">
             <p className="text-2xl font-bold text-gray-900 dark:text-white">{systemHealth.cpu_usage}%</p>
             <div className="w-16 h-8">
@@ -230,7 +231,7 @@ export default function SystemHealthPage() {
           </div>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Memory Usage</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Memory Usage</p>
           <div className="flex items-end justify-between mt-1">
             <p className="text-2xl font-bold text-gray-900 dark:text-white">{systemHealth.memory_usage}%</p>
             <div className="w-16 h-8">
@@ -243,17 +244,17 @@ export default function SystemHealthPage() {
           </div>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">API Latency</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">API Latency</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{systemHealth.api_latency}ms</p>
           <p className="text-xs text-green-600 mt-1">Normal</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Error Rate</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Error Rate</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{systemHealth.error_rate}%</p>
           <p className="text-xs text-green-600 mt-1">Below threshold</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Active Connections</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Active Connections</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{systemHealth.active_connections.toLocaleString()}</p>
           <p className="text-xs text-gray-500 mt-1">WebSocket + API</p>
         </div>
@@ -315,7 +316,7 @@ export default function SystemHealthPage() {
                   <span className="text-sm font-medium text-gray-900 dark:text-white">{service.name}</span>
                 </div>
                 <div className="flex items-center gap-4">
-                  <span className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">{service.latency}ms</span>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">{service.latency}ms</span>
                   <span className={`text-xs px-2 py-1 rounded-full capitalize ${getStatusBg(service.status)}`}>
                     {service.status}
                   </span>
@@ -347,11 +348,11 @@ export default function SystemHealthPage() {
                   }`}>
                     {incident.status}
                   </span>
-                  <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                  <span className="text-xs text-gray-500 dark:text-gray-400">
                     {new Date(incident.started_at).toLocaleString()}
                   </span>
                 </div>
-                <div className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                <div className="text-xs text-gray-600 dark:text-gray-400">
                   {incident.updates[0]?.message}
                 </div>
                 {incident.services.map((svc) => (
@@ -402,22 +403,22 @@ export default function SystemHealthPage() {
       {/* Database Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Database Size</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Database Size</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">2.4 GB</p>
           <p className="text-xs text-gray-500 mt-1">Of 10 GB allocated</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Active Queries</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Active Queries</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">23</p>
           <p className="text-xs text-green-600 mt-1">Normal load</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Cache Hit Rate</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Cache Hit Rate</p>
           <p className="text-2xl font-bold text-green-600 mt-1">94.5%</p>
           <p className="text-xs text-gray-500 mt-1">Redis cache</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Storage Used</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Storage Used</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">45.6 GB</p>
           <p className="text-xs text-gray-500 mt-1">Media files</p>
         </div>

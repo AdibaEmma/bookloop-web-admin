@@ -215,7 +215,7 @@ export default function SettingsPage() {
                       <p className="font-medium text-gray-900 dark:text-white">
                         Email Notifications
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
                         Receive notifications via email
                       </p>
                     </div>
@@ -235,7 +235,7 @@ export default function SettingsPage() {
                       <p className="font-medium text-gray-900 dark:text-white">
                         SMS Notifications
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
                         Receive notifications via SMS
                       </p>
                     </div>
@@ -315,7 +315,7 @@ export default function SettingsPage() {
                       <p className="font-medium text-gray-900 dark:text-white">
                         Two-Factor Authentication
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
                         Add an extra layer of security
                       </p>
                     </div>
@@ -382,7 +382,7 @@ export default function SettingsPage() {
                       <p className="font-medium text-gray-900 dark:text-white">
                         Maintenance Mode
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
                         Put the platform in maintenance mode
                       </p>
                     </div>
@@ -402,7 +402,7 @@ export default function SettingsPage() {
                       <p className="font-medium text-gray-900 dark:text-white">
                         User Registration
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
                         Allow new users to register
                       </p>
                     </div>
@@ -422,7 +422,7 @@ export default function SettingsPage() {
                       <p className="font-medium text-gray-900 dark:text-white">
                         Auto-Approve Listings
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
                         Automatically approve new listings
                       </p>
                     </div>

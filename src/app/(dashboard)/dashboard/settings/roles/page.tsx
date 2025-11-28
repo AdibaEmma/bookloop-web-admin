@@ -194,19 +194,19 @@ export default function RolesManagementPage() {
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Total Roles</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Total Roles</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{stats.totalRoles}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Custom Roles</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Custom Roles</p>
           <p className="text-2xl font-bold text-indigo-600 mt-1">{stats.customRoles}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Total Admins</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Total Admins</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{stats.totalAdmins}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Active Admins</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Active Admins</p>
           <p className="text-2xl font-bold text-green-600 mt-1">{stats.activeAdmins}</p>
         </div>
       </div>
@@ -277,7 +277,7 @@ export default function RolesManagementPage() {
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{selectedRole.name}</h3>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">{selectedRole.description}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{selectedRole.description}</p>
                   </div>
                   {!selectedRole.is_system && (
                     <div className="flex gap-2">
@@ -325,7 +325,7 @@ export default function RolesManagementPage() {
                                 </div>
                                 <div>
                                   <p className="text-sm font-medium text-gray-900 dark:text-white">{permission.name}</p>
-                                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{permission.description}</p>
+                                  <p className="text-xs text-gray-500 dark:text-gray-400">{permission.description}</p>
                                 </div>
                               </div>
                             </div>
@@ -350,11 +350,11 @@ export default function RolesManagementPage() {
                             </div>
                             <div>
                               <p className="text-sm font-medium text-gray-900 dark:text-white">{admin.name}</p>
-                              <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{admin.email}</p>
+                              <p className="text-xs text-gray-500 dark:text-gray-400">{admin.email}</p>
                             </div>
                           </div>
                           <span className={`px-2 py-0.5 text-xs rounded-full ${
-                            admin.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500 dark:text-gray-400 dark:text-gray-500'
+                            admin.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500 dark:text-gray-400'
                           }`}>
                             {admin.is_active ? 'Active' : 'Inactive'}
                           </span>
@@ -367,7 +367,7 @@ export default function RolesManagementPage() {
                 </div>
               </div>
             ) : (
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6 text-center text-gray-500 dark:text-gray-400 dark:text-gray-500">
+              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6 text-center text-gray-500 dark:text-gray-400">
                 <svg className="w-12 h-12 mx-auto text-gray-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
@@ -407,7 +407,7 @@ export default function RolesManagementPage() {
                         </div>
                         <div>
                           <p className="font-medium text-gray-900 dark:text-white">{admin.name}</p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{admin.email}</p>
+                          <p className="text-xs text-gray-500 dark:text-gray-400">{admin.email}</p>
                         </div>
                       </div>
                     </td>
@@ -425,7 +425,7 @@ export default function RolesManagementPage() {
                     </td>
                     <td className="py-4 px-4">
                       <span className={`px-2 py-0.5 text-xs rounded-full ${
-                        admin.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500 dark:text-gray-400 dark:text-gray-500'
+                        admin.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500 dark:text-gray-400'
                       }`}>
                         {admin.is_active ? 'Active' : 'Inactive'}
                       </span>
@@ -456,7 +456,7 @@ export default function RolesManagementPage() {
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Create New Role</h2>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:text-gray-500"
+                className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -508,7 +508,7 @@ export default function RolesManagementPage() {
                           />
                           <div>
                             <p className="text-sm font-medium text-gray-900 dark:text-white">{permission.name}</p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{permission.description}</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">{permission.description}</p>
                           </div>
                         </label>
                       ))}

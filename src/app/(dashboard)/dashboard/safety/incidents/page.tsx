@@ -13,6 +13,7 @@ import {
   Pie,
   Cell,
 } from 'recharts';
+import { CustomTooltip, useChartColors } from '@/components/charts/ChartComponents';
 
 type IncidentType = 'no_show' | 'theft' | 'fraud' | 'harassment' | 'property_damage' | 'impersonation' | 'other';
 type IncidentSeverity = 'low' | 'medium' | 'high' | 'critical';
@@ -203,7 +204,7 @@ export default function SafetyIncidentsPage() {
       investigating: 'bg-blue-100 text-blue-700',
       resolved: 'bg-green-100 text-green-700',
       escalated: 'bg-red-100 text-red-700',
-      closed: 'bg-gray-100 text-gray-600 dark:text-gray-400 dark:text-gray-500',
+      closed: 'bg-gray-100 text-gray-600 dark:text-gray-400',
     };
     return (
       <span className={`px-2 py-0.5 text-xs rounded-full ${styles[status]}`}>
@@ -246,19 +247,19 @@ export default function SafetyIncidentsPage() {
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Total Incidents</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Total Incidents</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{stats.total}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Open Cases</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Open Cases</p>
           <p className="text-2xl font-bold text-yellow-600 mt-1">{stats.open}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Critical Severity</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Critical Severity</p>
           <p className="text-2xl font-bold text-red-600 mt-1">{stats.critical}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Resolved (This Month)</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Resolved (This Month)</p>
           <p className="text-2xl font-bold text-green-600 mt-1">{stats.resolvedThisMonth}</p>
         </div>
       </div>
@@ -303,7 +304,7 @@ export default function SafetyIncidentsPage() {
               <div key={item.name} className="flex items-center justify-between text-xs">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full" style={{ backgroundColor: item.color }} />
-                  <span className="text-gray-600 dark:text-gray-400 dark:text-gray-500">{item.name}</span>
+                  <span className="text-gray-600 dark:text-gray-400">{item.name}</span>
                 </div>
                 <span className="font-medium text-gray-900 dark:text-white">{item.value}%</span>
               </div>
@@ -391,7 +392,7 @@ export default function SafetyIncidentsPage() {
                       {getStatusBadge(incident.status)}
                     </div>
                     <p className="text-sm text-gray-500 mt-1 line-clamp-1">{incident.description}</p>
-                    <div className="flex items-center gap-3 mt-2 text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                    <div className="flex items-center gap-3 mt-2 text-xs text-gray-500 dark:text-gray-400">
                       <span>{getTypeLabel(incident.type)}</span>
                       {incident.spot_name && (
                         <>
@@ -422,7 +423,7 @@ export default function SafetyIncidentsPage() {
 
               {incident.actions_taken && incident.actions_taken.length > 0 && (
                 <div className="mt-3 flex items-center gap-2 flex-wrap">
-                  <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Actions:</span>
+                  <span className="text-xs text-gray-500 dark:text-gray-400">Actions:</span>
                   {incident.actions_taken.map((action, index) => (
                     <span key={index} className="px-2 py-0.5 bg-indigo-50 text-indigo-700 text-xs rounded-full">
                       {action}
@@ -442,7 +443,7 @@ export default function SafetyIncidentsPage() {
             <h3 className="font-semibold text-gray-900 dark:text-white">Incident Details</h3>
             <button
               onClick={() => setSelectedIncident(null)}
-              className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:text-gray-500"
+              className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -466,12 +467,12 @@ export default function SafetyIncidentsPage() {
             {/* Type and Location */}
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Type</p>
+                <p className="text-gray-500 dark:text-gray-400">Type</p>
                 <p className="font-medium text-gray-900 dark:text-white">{getTypeLabel(selectedIncident.type)}</p>
               </div>
               {selectedIncident.spot_name && (
                 <div>
-                  <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500">Location</p>
+                  <p className="text-gray-500 dark:text-gray-400">Location</p>
                   <p className="font-medium text-gray-900 dark:text-white">{selectedIncident.spot_name}</p>
                 </div>
               )}
@@ -486,7 +487,7 @@ export default function SafetyIncidentsPage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-900 dark:text-white">{selectedIncident.reporter.name}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{selectedIncident.reporter.email}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{selectedIncident.reporter.email}</p>
                 </div>
               </div>
             </div>
@@ -501,7 +502,7 @@ export default function SafetyIncidentsPage() {
                   </div>
                   <div className="flex-1">
                     <p className="text-sm font-medium text-gray-900 dark:text-white">{selectedIncident.reported_user.name}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{selectedIncident.reported_user.email}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{selectedIncident.reported_user.email}</p>
                   </div>
                   {selectedIncident.reported_user.previous_incidents > 0 && (
                     <span className="px-2 py-1 bg-red-100 text-red-700 text-xs rounded-full">

@@ -16,6 +16,7 @@ import {
   Line,
   Legend,
 } from 'recharts';
+import { CustomTooltip, useChartColors } from '@/components/charts/ChartComponents';
 
 interface MatchResult {
   id: string;
@@ -255,7 +256,7 @@ export default function MatchingPage() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {matchingStats.map((stat) => (
           <div key={stat.label} className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-            <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">{stat.label}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{stat.label}</p>
             <div className="flex items-baseline gap-2 mt-1">
               <p className="text-2xl font-bold text-gray-900 dark:text-white">
                 {stat.label.includes('Rate') ? `${stat.value}%` :
@@ -303,7 +304,7 @@ export default function MatchingPage() {
             </BarChart>
           </ResponsiveContainer>
           <div className="mt-4 pt-4 border-t">
-            <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+            <p className="text-xs text-gray-500 dark:text-gray-400">
               <span className="font-medium text-green-600">72%</span> of matches score above 80
             </p>
           </div>
@@ -337,7 +338,7 @@ export default function MatchingPage() {
               <div key={factor.name} className="flex items-center justify-between text-sm">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: factor.color }} />
-                  <span className="text-gray-600 dark:text-gray-400 dark:text-gray-500">{factor.name}</span>
+                  <span className="text-gray-600 dark:text-gray-400">{factor.name}</span>
                 </div>
                 <span className="font-medium text-gray-900 dark:text-white">{factor.value}%</span>
               </div>
@@ -383,7 +384,7 @@ export default function MatchingPage() {
                       <p className="font-medium text-gray-900 dark:text-white">
                         {match.requester.name} ↔ {match.matched.name}
                       </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                      <p className="text-xs text-gray-500 dark:text-gray-400">
                         {match.requester.bookOffered} ⟷ {match.matched.bookOffered}
                       </p>
                     </div>
@@ -393,7 +394,7 @@ export default function MatchingPage() {
                       <p className={`text-lg font-bold ${getScoreColor(match.matchScore)}`}>
                         {match.matchScore}%
                       </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{match.distance} km</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">{match.distance} km</p>
                     </div>
                     <span className={`px-2 py-1 text-xs rounded-full ${getStatusColor(match.status)}`}>
                       {match.status}
@@ -416,7 +417,7 @@ export default function MatchingPage() {
                 onClick={() => setSelectedMatch(null)}
                 className="p-2 hover:bg-gray-100 rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -429,22 +430,22 @@ export default function MatchingPage() {
                     {selectedMatch.requester.avatar}
                   </div>
                   <p className="font-medium text-gray-900 mt-2">{selectedMatch.requester.name}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Wants: {selectedMatch.requester.bookWanted}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Offers: {selectedMatch.requester.bookOffered}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Wants: {selectedMatch.requester.bookWanted}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Offers: {selectedMatch.requester.bookOffered}</p>
                 </div>
                 <div className="flex flex-col items-center">
                   <div className={`text-3xl font-bold ${getScoreColor(selectedMatch.matchScore)}`}>
                     {selectedMatch.matchScore}%
                   </div>
-                  <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Match Score</span>
+                  <span className="text-xs text-gray-500 dark:text-gray-400">Match Score</span>
                 </div>
                 <div className="text-center">
                   <div className="w-12 h-12 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-lg font-medium mx-auto">
                     {selectedMatch.matched.avatar}
                   </div>
                   <p className="font-medium text-gray-900 mt-2">{selectedMatch.matched.name}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Wants: {selectedMatch.matched.bookWanted}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Offers: {selectedMatch.matched.bookOffered}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Wants: {selectedMatch.matched.bookWanted}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Offers: {selectedMatch.matched.bookOffered}</p>
                 </div>
               </div>
 
@@ -476,17 +477,17 @@ export default function MatchingPage() {
               {/* Info */}
               <div className="grid grid-cols-2 gap-4 pt-4 border-t">
                 <div>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Distance</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Distance</p>
                   <p className="font-medium text-gray-900 dark:text-white">{selectedMatch.distance} km apart</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Status</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Status</p>
                   <span className={`inline-block px-2 py-1 text-xs rounded-full ${getStatusColor(selectedMatch.status)}`}>
                     {selectedMatch.status}
                   </span>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Created</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Created</p>
                   <p className="font-medium text-gray-900 dark:text-white">
                     {new Date(selectedMatch.createdAt).toLocaleString()}
                   </p>
@@ -520,13 +521,13 @@ export default function MatchingPage() {
                 onClick={() => setShowAlgorithmSettings(false)}
                 className="p-2 hover:bg-gray-100 rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
             <div className="p-4 space-y-4">
-              <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 Adjust the weights for each matching factor. Total must equal 100%.
               </p>
               {algorithmWeights.map((item) => (

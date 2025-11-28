@@ -469,7 +469,7 @@ export default function ExchangesPage() {
       <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
           <div className="flex flex-col gap-1">
-            <p className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-500">Total</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400">Total</p>
             <p className="text-2xl font-bold text-gray-900 dark:text-white">
               {meta.total}
             </p>
@@ -478,7 +478,7 @@ export default function ExchangesPage() {
 
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
           <div className="flex flex-col gap-1">
-            <p className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-500">Pending</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400">Pending</p>
             <p className="text-2xl font-bold text-yellow-600">
               {exchanges.filter((e) => e.status === 'pending').length}
             </p>
@@ -487,7 +487,7 @@ export default function ExchangesPage() {
 
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
           <div className="flex flex-col gap-1">
-            <p className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-500">Confirmed</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400">Confirmed</p>
             <p className="text-2xl font-bold text-blue-600">
               {exchanges.filter((e) => e.status === 'confirmed').length}
             </p>
@@ -496,7 +496,7 @@ export default function ExchangesPage() {
 
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
           <div className="flex flex-col gap-1">
-            <p className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-500">In Progress</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400">In Progress</p>
             <p className="text-2xl font-bold text-purple-600">
               {exchanges.filter((e) => e.status === 'in_progress').length}
             </p>
@@ -505,7 +505,7 @@ export default function ExchangesPage() {
 
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
           <div className="flex flex-col gap-1">
-            <p className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-500">Completed</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400">Completed</p>
             <p className="text-2xl font-bold text-green-600">
               {exchanges.filter((e) => e.status === 'completed').length}
             </p>
@@ -514,7 +514,7 @@ export default function ExchangesPage() {
 
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
           <div className="flex flex-col gap-1">
-            <p className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-500">Disputed</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400">Disputed</p>
             <p className="text-2xl font-bold text-red-600">
               {exchanges.filter((e) => e.status === 'disputed').length}
             </p>
@@ -577,7 +577,7 @@ export default function ExchangesPage() {
           {/* Table Header with Limit Selector */}
           <div className="flex items-center justify-between px-6 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
             <div className="flex items-center gap-2">
-              <label htmlFor="limit" className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <label htmlFor="limit" className="text-sm text-gray-600 dark:text-gray-400">
                 Show:
               </label>
               <select
@@ -592,9 +592,9 @@ export default function ExchangesPage() {
                   </option>
                 ))}
               </select>
-              <span className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">entries</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">entries</span>
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+            <div className="text-sm text-gray-600 dark:text-gray-400">
               Showing {((meta.page - 1) * meta.limit) + 1} to {Math.min(meta.page * meta.limit, meta.total)} of {meta.total}
             </div>
           </div>
@@ -718,7 +718,7 @@ export default function ExchangesPage() {
                               {exchange.meetup_spot.name}
                             </p>
                             {exchange.scheduled_date && (
-                              <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                              <p className="text-xs text-gray-500 dark:text-gray-400">
                                 {new Date(exchange.scheduled_date).toLocaleDateString('en-US', {
                                   month: 'short',
                                   day: 'numeric',
@@ -729,13 +729,13 @@ export default function ExchangesPage() {
                             )}
                           </div>
                         ) : (
-                          <span className="text-sm text-gray-400 dark:text-gray-500 dark:text-gray-400 dark:text-gray-500">—</span>
+                          <span className="text-sm text-gray-400 dark:text-gray-500 dark:text-gray-400">—</span>
                         )}
                       </td>
 
                       {/* Created */}
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                        <span className="text-sm text-gray-600 dark:text-gray-400">
                           {new Date(exchange.created_at).toLocaleDateString('en-US', {
                             month: 'short',
                             day: 'numeric',
@@ -758,7 +758,7 @@ export default function ExchangesPage() {
           {/* Pagination Controls */}
           <div className="flex items-center justify-between px-6 py-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
             {/* Results info - left */}
-            <div className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+            <div className="text-sm text-gray-600 dark:text-gray-400">
               Showing {((meta.page - 1) * meta.limit) + 1} to {Math.min(meta.page * meta.limit, meta.total)} of {meta.total}
             </div>
 
@@ -814,7 +814,7 @@ export default function ExchangesPage() {
 
                   return pages.map((pageNum, idx) =>
                     pageNum === '...' ? (
-                      <span key={`ellipsis-${idx}`} className="px-2 text-gray-400 dark:text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                      <span key={`ellipsis-${idx}`} className="px-2 text-gray-400 dark:text-gray-500 dark:text-gray-400">
                         ...
                       </span>
                     ) : (
@@ -860,7 +860,7 @@ export default function ExchangesPage() {
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
             No exchanges found
           </h3>
-          <p className="text-gray-600 dark:text-gray-400 dark:text-gray-500">
+          <p className="text-gray-600 dark:text-gray-400">
             Try adjusting your search or filters
           </p>
         </div>

@@ -18,6 +18,7 @@ import {
   AreaChart,
   Area,
 } from 'recharts';
+import { CustomTooltip, useChartColors } from '@/components/charts/ChartComponents';
 import type { FunnelData } from '@/types/admin';
 
 // Funnel Types
@@ -221,7 +222,7 @@ export default function FunnelsPage() {
             <button
               onClick={() => setViewMode('funnel')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'funnel' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400 dark:text-gray-500'
+                viewMode === 'funnel' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
               }`}
             >
               Funnel
@@ -229,7 +230,7 @@ export default function FunnelsPage() {
             <button
               onClick={() => setViewMode('comparison')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'comparison' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400 dark:text-gray-500'
+                viewMode === 'comparison' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
               }`}
             >
               Compare
@@ -237,7 +238,7 @@ export default function FunnelsPage() {
             <button
               onClick={() => setViewMode('cohort')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'cohort' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400 dark:text-gray-500'
+                viewMode === 'cohort' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
               }`}
             >
               Cohort
@@ -266,13 +267,13 @@ export default function FunnelsPage() {
             <div className="flex items-center justify-between mt-3">
               <div>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">{funnel.overallConversion}%</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Overall conversion</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Overall conversion</p>
               </div>
               <div className="text-right">
                 <p className="text-lg font-semibold text-gray-700 dark:text-gray-300">
                   {funnel.totalUsers.toLocaleString()}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Total users</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Total users</p>
               </div>
             </div>
           </button>
@@ -285,7 +286,7 @@ export default function FunnelsPage() {
           <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white">{selectedFunnel.name}</h2>
-              <span className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">{selectedFunnel.period}</span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">{selectedFunnel.period}</span>
             </div>
 
             {/* Horizontal Funnel */}
@@ -303,7 +304,7 @@ export default function FunnelsPage() {
                     <div className="flex items-center gap-4">
                       <div className="w-40 flex-shrink-0">
                         <p className="text-sm font-medium text-gray-900 dark:text-white">{stage.name}</p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{stage.count.toLocaleString()} users</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">{stage.count.toLocaleString()} users</p>
                       </div>
                       <div className="flex-1">
                         <div className="relative h-10 bg-gray-100 rounded-lg overflow-hidden">
@@ -352,21 +353,21 @@ export default function FunnelsPage() {
                       <p className="text-2xl font-bold text-gray-900 dark:text-white">
                         {selectedStage.count.toLocaleString()}
                       </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Users reached</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Users reached</p>
                     </div>
                     <div>
                       <p className="text-2xl font-bold text-green-600">
                         {selectedStage.conversionRate}%
                       </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Conversion rate</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Conversion rate</p>
                     </div>
                     <div>
                       <p className="text-2xl font-bold text-red-600">{selectedStage.dropOffRate}%</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Drop-off rate</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Drop-off rate</p>
                     </div>
                     <div>
                       <p className="text-2xl font-bold text-gray-900 dark:text-white">{selectedStage.avgTimeToNext}</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Avg. time to next</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Avg. time to next</p>
                     </div>
                   </div>
                 </div>
@@ -389,7 +390,7 @@ export default function FunnelsPage() {
                           </div>
                           <div className="ml-4 text-right">
                             <p className="text-sm font-semibold text-gray-900 dark:text-white">{reason.percentage}%</p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{reason.count} users</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">{reason.count} users</p>
                           </div>
                         </div>
                       ))}
@@ -399,7 +400,7 @@ export default function FunnelsPage() {
               </>
             ) : (
               <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-                <div className="text-center text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                <div className="text-center text-gray-500 dark:text-gray-400">
                   <svg
                     className="w-12 h-12 mx-auto text-gray-300"
                     fill="none"
@@ -425,7 +426,7 @@ export default function FunnelsPage() {
                 {stageInsights.map((insight, index) => (
                   <div key={index} className="p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500">{insight.stage}</span>
+                      <span className="text-xs font-medium text-gray-500 dark:text-gray-400">{insight.stage}</span>
                       <span
                         className={`text-xs px-2 py-0.5 rounded-full ${getImpactColor(insight.impact)}`}
                       >
@@ -541,18 +542,18 @@ export default function FunnelsPage() {
                 <div className="flex items-end justify-between">
                   <div>
                     <p className="text-3xl font-bold text-gray-900 dark:text-white">{funnel.overallConversion}%</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">Overall conversion</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Overall conversion</p>
                   </div>
                   <div className="text-right">
                     <p className="text-lg font-semibold text-gray-700 dark:text-gray-300">
                       {funnel.stages[funnel.stages.length - 1].count.toLocaleString()}
                     </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Completed</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">Completed</p>
                   </div>
                 </div>
                 <div className="mt-4 flex items-center gap-2">
                   <span className="text-green-500 text-sm">+2.3%</span>
-                  <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">vs. previous period</span>
+                  <span className="text-xs text-gray-500 dark:text-gray-400">vs. previous period</span>
                 </div>
               </div>
             ))}
@@ -569,23 +570,23 @@ export default function FunnelsPage() {
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-gray-200 dark:border-gray-700">
-                    <th className="text-left py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500">Cohort</th>
-                    <th className="text-center py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                    <th className="text-left py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">Cohort</th>
+                    <th className="text-center py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">
                       Registered
                     </th>
-                    <th className="text-center py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                    <th className="text-center py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">
                       Profile Complete
                     </th>
-                    <th className="text-center py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                    <th className="text-center py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">
                       First Listing
                     </th>
-                    <th className="text-center py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                    <th className="text-center py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">
                       First Exchange
                     </th>
-                    <th className="text-center py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                    <th className="text-center py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">
                       Completed
                     </th>
-                    <th className="text-center py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                    <th className="text-center py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">
                       Repeat User
                     </th>
                   </tr>

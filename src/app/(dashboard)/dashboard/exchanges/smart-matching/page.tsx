@@ -136,7 +136,7 @@ export default function SmartMatchingPage() {
       sent: 'bg-blue-100 text-blue-700',
       accepted: 'bg-green-100 text-green-700',
       declined: 'bg-red-100 text-red-700',
-      expired: 'bg-gray-100 text-gray-600 dark:text-gray-400 dark:text-gray-500',
+      expired: 'bg-gray-100 text-gray-600 dark:text-gray-400',
     };
     return (
       <span className={`px-2 py-0.5 text-xs rounded-full ${styles[status]}`}>
@@ -199,31 +199,31 @@ export default function SmartMatchingPage() {
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Total Suggestions</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Total Suggestions</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{stats.total}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Pending</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Pending</p>
           <p className="text-2xl font-bold text-yellow-600 mt-1">{stats.pending}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Sent</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Sent</p>
           <p className="text-2xl font-bold text-blue-600 mt-1">{stats.sent}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Accepted</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Accepted</p>
           <p className="text-2xl font-bold text-green-600 mt-1">{stats.accepted}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Declined</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Declined</p>
           <p className="text-2xl font-bold text-red-600 mt-1">{stats.declined}</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Avg. Score</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Avg. Score</p>
           <p className={`text-2xl font-bold mt-1 ${getScoreColor(stats.avgScore)}`}>{stats.avgScore}%</p>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Conversion Rate</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Conversion Rate</p>
           <p className="text-2xl font-bold text-indigo-600 mt-1">{stats.conversionRate}%</p>
         </div>
       </div>
@@ -232,7 +232,7 @@ export default function SmartMatchingPage() {
       <div className={`rounded-xl border p-4 flex items-center justify-between ${config.enabled ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200 dark:border-gray-700'}`}>
         <div className="flex items-center gap-3">
           <div className={`w-10 h-10 rounded-full flex items-center justify-center ${config.enabled ? 'bg-green-100' : 'bg-gray-200'}`}>
-            <svg className={`w-5 h-5 ${config.enabled ? 'text-green-600' : 'text-gray-500 dark:text-gray-400 dark:text-gray-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className={`w-5 h-5 ${config.enabled ? 'text-green-600' : 'text-gray-500 dark:text-gray-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
             </svg>
           </div>
@@ -240,7 +240,7 @@ export default function SmartMatchingPage() {
             <p className={`font-medium ${config.enabled ? 'text-green-800' : 'text-gray-700 dark:text-gray-300'}`}>
               {config.enabled ? 'Smart Matching Active' : 'Smart Matching Disabled'}
             </p>
-            <p className={`text-sm ${config.enabled ? 'text-green-600' : 'text-gray-500 dark:text-gray-400 dark:text-gray-500'}`}>
+            <p className={`text-sm ${config.enabled ? 'text-green-600' : 'text-gray-500 dark:text-gray-400'}`}>
               Min score: {config.min_score}% · Max distance: {config.max_distance}km · Auto-send at {config.auto_send_threshold}%
             </p>
           </div>
@@ -272,7 +272,7 @@ export default function SmartMatchingPage() {
           <option value="expired">Expired</option>
         </select>
         <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Min Score:</span>
+          <span className="text-sm text-gray-600 dark:text-gray-400">Min Score:</span>
           <input
             type="range"
             min="0"
@@ -303,7 +303,7 @@ export default function SmartMatchingPage() {
                   <p className="font-medium text-gray-900 dark:text-white">{suggestion.id}</p>
                   <div className="flex items-center gap-2 mt-1">
                     {getStatusBadge(suggestion.status)}
-                    <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+                    <span className="text-xs text-gray-500 dark:text-gray-400">
                       {suggestion.distance_km}km apart
                     </span>
                   </div>
@@ -323,7 +323,7 @@ export default function SmartMatchingPage() {
                     </button>
                   </>
                 )}
-                <button className="p-1.5 text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:text-gray-500">
+                <button className="p-1.5 text-gray-400 hover:text-gray-600 dark:text-gray-400">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                   </svg>
@@ -340,11 +340,11 @@ export default function SmartMatchingPage() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-gray-900 text-sm truncate">{suggestion.book_a.title}</p>
-                    <p className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-500">{suggestion.book_a.author}</p>
+                    <p className="text-xs text-gray-600 dark:text-gray-400">{suggestion.book_a.author}</p>
                     <div className="flex items-center gap-2 mt-1">
-                      <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{suggestion.book_a.condition}</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">{suggestion.book_a.condition}</span>
                       <span className="text-xs text-gray-400 dark:text-gray-500">·</span>
-                      <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{suggestion.book_a.genre}</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">{suggestion.book_a.genre}</span>
                     </div>
                     <div className="flex items-center gap-1 mt-2">
                       <div className="w-5 h-5 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-700 text-xs font-medium">
@@ -352,9 +352,9 @@ export default function SmartMatchingPage() {
                       </div>
                       <span className="text-xs text-gray-700 dark:text-gray-300">{suggestion.book_a.owner.name}</span>
                       <span className="text-xs text-gray-400 dark:text-gray-500">·</span>
-                      <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">★ {suggestion.book_a.owner.rating}</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">★ {suggestion.book_a.owner.rating}</span>
                       <span className="text-xs text-gray-400 dark:text-gray-500">·</span>
-                      <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{suggestion.book_a.owner.location}</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">{suggestion.book_a.owner.location}</span>
                     </div>
                   </div>
                 </div>
@@ -368,11 +368,11 @@ export default function SmartMatchingPage() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-gray-900 text-sm truncate">{suggestion.book_b.title}</p>
-                    <p className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-500">{suggestion.book_b.author}</p>
+                    <p className="text-xs text-gray-600 dark:text-gray-400">{suggestion.book_b.author}</p>
                     <div className="flex items-center gap-2 mt-1">
-                      <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{suggestion.book_b.condition}</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">{suggestion.book_b.condition}</span>
                       <span className="text-xs text-gray-400 dark:text-gray-500">·</span>
-                      <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{suggestion.book_b.genre}</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">{suggestion.book_b.genre}</span>
                     </div>
                     <div className="flex items-center gap-1 mt-2">
                       <div className="w-5 h-5 rounded-full bg-pink-100 flex items-center justify-center text-pink-700 text-xs font-medium">
@@ -380,9 +380,9 @@ export default function SmartMatchingPage() {
                       </div>
                       <span className="text-xs text-gray-700 dark:text-gray-300">{suggestion.book_b.owner.name}</span>
                       <span className="text-xs text-gray-400 dark:text-gray-500">·</span>
-                      <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">★ {suggestion.book_b.owner.rating}</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">★ {suggestion.book_b.owner.rating}</span>
                       <span className="text-xs text-gray-400 dark:text-gray-500">·</span>
-                      <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{suggestion.book_b.owner.location}</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">{suggestion.book_b.owner.location}</span>
                     </div>
                   </div>
                 </div>
@@ -391,7 +391,7 @@ export default function SmartMatchingPage() {
 
             {/* Match Reasons */}
             <div className="mt-3 flex items-center gap-2 flex-wrap">
-              <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Match reasons:</span>
+              <span className="text-xs text-gray-500 dark:text-gray-400">Match reasons:</span>
               {suggestion.match_reasons.map((reason, index) => (
                 <span key={index} className="px-2 py-0.5 bg-indigo-50 text-indigo-700 text-xs rounded-full">
                   {reason}
@@ -418,7 +418,7 @@ export default function SmartMatchingPage() {
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Matching Algorithm Configuration</h2>
               <button
                 onClick={() => setShowConfigModal(false)}
-                className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:text-gray-500"
+                className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -433,7 +433,7 @@ export default function SmartMatchingPage() {
                 <div className="space-y-4">
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <label className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Minimum Match Score</label>
+                      <label className="text-sm text-gray-600 dark:text-gray-400">Minimum Match Score</label>
                       <span className="text-sm font-medium text-gray-900 dark:text-white">{config.min_score}%</span>
                     </div>
                     <input
@@ -447,7 +447,7 @@ export default function SmartMatchingPage() {
                   </div>
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <label className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Maximum Distance (km)</label>
+                      <label className="text-sm text-gray-600 dark:text-gray-400">Maximum Distance (km)</label>
                       <span className="text-sm font-medium text-gray-900 dark:text-white">{config.max_distance}km</span>
                     </div>
                     <input
@@ -461,7 +461,7 @@ export default function SmartMatchingPage() {
                   </div>
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <label className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Auto-Send Threshold</label>
+                      <label className="text-sm text-gray-600 dark:text-gray-400">Auto-Send Threshold</label>
                       <span className="text-sm font-medium text-gray-900 dark:text-white">{config.auto_send_threshold}%</span>
                     </div>
                     <input
@@ -485,7 +485,7 @@ export default function SmartMatchingPage() {
                 <div className="space-y-4">
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <label className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Same Genre Weight</label>
+                      <label className="text-sm text-gray-600 dark:text-gray-400">Same Genre Weight</label>
                       <span className="text-sm font-medium text-gray-900 dark:text-white">{config.same_genre_weight}%</span>
                     </div>
                     <input
@@ -499,7 +499,7 @@ export default function SmartMatchingPage() {
                   </div>
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <label className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">User Rating Weight</label>
+                      <label className="text-sm text-gray-600 dark:text-gray-400">User Rating Weight</label>
                       <span className="text-sm font-medium text-gray-900 dark:text-white">{config.rating_weight}%</span>
                     </div>
                     <input
@@ -513,7 +513,7 @@ export default function SmartMatchingPage() {
                   </div>
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <label className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Condition Match Weight</label>
+                      <label className="text-sm text-gray-600 dark:text-gray-400">Condition Match Weight</label>
                       <span className="text-sm font-medium text-gray-900 dark:text-white">{config.condition_weight}%</span>
                     </div>
                     <input

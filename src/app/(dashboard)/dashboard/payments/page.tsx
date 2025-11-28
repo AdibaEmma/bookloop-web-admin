@@ -28,6 +28,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
+import { CustomTooltip, useChartColors } from '@/components/charts/ChartComponents';
 
 interface Payment {
   id: string;
@@ -106,7 +107,7 @@ function PaymentRow({ payment, onView }: { payment: Payment; onView: (payment: P
             #{payment.id.slice(0, 8)}
           </p>
           {payment.transaction_reference && (
-            <p className="text-xs text-gray-500 dark:text-gray-500 dark:text-gray-400 dark:text-gray-500">
+            <p className="text-xs text-gray-500 dark:text-gray-500 dark:text-gray-400">
               Ref: {payment.transaction_reference}
             </p>
           )}
@@ -116,7 +117,7 @@ function PaymentRow({ payment, onView }: { payment: Payment; onView: (payment: P
         <p className="text-sm text-gray-900 dark:text-white">
           {payment.payer.first_name} {payment.payer.last_name}
         </p>
-        <p className="text-xs text-gray-500 dark:text-gray-500 dark:text-gray-400 dark:text-gray-500">
+        <p className="text-xs text-gray-500 dark:text-gray-500 dark:text-gray-400">
           → {payment.payee.first_name} {payment.payee.last_name}
         </p>
       </td>
@@ -132,10 +133,10 @@ function PaymentRow({ payment, onView }: { payment: Payment; onView: (payment: P
         <StatusBadge status={payment.status} />
       </td>
       <td className="px-6 py-4">
-        <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+        <p className="text-sm text-gray-600 dark:text-gray-400">
           {new Date(payment.created_at).toLocaleDateString()}
         </p>
-        <p className="text-xs text-gray-500 dark:text-gray-500 dark:text-gray-400 dark:text-gray-500">
+        <p className="text-xs text-gray-500 dark:text-gray-500 dark:text-gray-400">
           {new Date(payment.created_at).toLocaleTimeString()}
         </p>
       </td>
@@ -317,7 +318,7 @@ export default function PaymentsPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
                 Total Revenue
               </p>
               <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
@@ -342,7 +343,7 @@ export default function PaymentsPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
                 Transactions
               </p>
               <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
@@ -367,7 +368,7 @@ export default function PaymentsPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
                 Avg. Transaction
               </p>
               <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
@@ -379,7 +380,7 @@ export default function PaymentsPage() {
             </div>
           </div>
           <div className="mt-4 flex items-center">
-            <span className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+            <span className="text-sm text-gray-600 dark:text-gray-400">
               Based on {stats?.completedTransactions || 0} completed
             </span>
           </div>
@@ -388,7 +389,7 @@ export default function PaymentsPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
                 Success Rate
               </p>
               <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
@@ -402,7 +403,7 @@ export default function PaymentsPage() {
             </div>
           </div>
           <div className="mt-4 flex items-center">
-            <span className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
+            <span className="text-sm text-gray-600 dark:text-gray-400">
               {stats?.completedTransactions || 0} of {stats?.totalTransactions || 0} successful
             </span>
           </div>
@@ -545,7 +546,7 @@ export default function PaymentsPage() {
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                 No payments found
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 dark:text-gray-500">
+              <p className="text-gray-600 dark:text-gray-400">
                 Try adjusting your search or filters
               </p>
             </div>
