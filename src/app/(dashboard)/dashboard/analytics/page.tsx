@@ -153,6 +153,7 @@ function TopPerformerRow({
 
 export default function AnalyticsPage() {
   const [timeRange, setTimeRange] = useState<TimeRange>('30d');
+  const chartColors = useChartColors();
 
   // Use mock data - Backend analytics endpoints not yet implemented
   // TODO: Replace with real API calls when admin analytics endpoints are available
@@ -297,17 +298,10 @@ export default function AnalyticsPage() {
                   <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-              <XAxis dataKey="date" stroke="#9ca3af" fontSize={12} />
-              <YAxis stroke="#9ca3af" fontSize={12} />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: '#1f2937',
-                  border: 'none',
-                  borderRadius: '8px',
-                  color: '#fff',
-                }}
-              />
+              <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} />
+              <XAxis dataKey="date" stroke={chartColors.text} tick={{ fill: chartColors.text }} fontSize={12} />
+              <YAxis stroke={chartColors.text} tick={{ fill: chartColors.text }} fontSize={12} />
+              <Tooltip content={<CustomTooltip />} />
               <Area
                 type="monotone"
                 dataKey="users"
@@ -339,18 +333,10 @@ export default function AnalyticsPage() {
                   <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-              <XAxis dataKey="date" stroke="#9ca3af" fontSize={12} />
-              <YAxis stroke="#9ca3af" fontSize={12} />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: '#1f2937',
-                  border: 'none',
-                  borderRadius: '8px',
-                  color: '#fff',
-                }}
-                formatter={(value: number) => [`GH₵${value}`, 'Revenue']}
-              />
+              <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} />
+              <XAxis dataKey="date" stroke={chartColors.text} tick={{ fill: chartColors.text }} fontSize={12} />
+              <YAxis stroke={chartColors.text} tick={{ fill: chartColors.text }} fontSize={12} />
+              <Tooltip content={<CustomTooltip />} />
               <Area
                 type="monotone"
                 dataKey="amount"
@@ -379,18 +365,11 @@ export default function AnalyticsPage() {
           </div>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={analytics?.charts?.exchanges || []}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-              <XAxis dataKey="date" stroke="#9ca3af" fontSize={12} />
-              <YAxis stroke="#9ca3af" fontSize={12} />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: '#1f2937',
-                  border: 'none',
-                  borderRadius: '8px',
-                  color: '#fff',
-                }}
-              />
-              <Legend />
+              <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} />
+              <XAxis dataKey="date" stroke={chartColors.text} tick={{ fill: chartColors.text }} fontSize={12} />
+              <YAxis stroke={chartColors.text} tick={{ fill: chartColors.text }} fontSize={12} />
+              <Tooltip content={<CustomTooltip />} />
+              <Legend wrapperStyle={{ color: chartColors.text }} />
               <Bar dataKey="completed" name="Completed" fill="#10b981" radius={[4, 4, 0, 0]} />
               <Bar dataKey="pending" name="Pending" fill="#f59e0b" radius={[4, 4, 0, 0]} />
               <Bar dataKey="cancelled" name="Cancelled" fill="#ef4444" radius={[4, 4, 0, 0]} />
@@ -423,14 +402,7 @@ export default function AnalyticsPage() {
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: '#1f2937',
-                  border: 'none',
-                  borderRadius: '8px',
-                  color: '#fff',
-                }}
-              />
+              <Tooltip content={<CustomTooltip />} />
             </PieChart>
           </ResponsiveContainer>
           <div className="mt-4 grid grid-cols-2 gap-2">
@@ -465,18 +437,11 @@ export default function AnalyticsPage() {
           </div>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={analytics?.charts?.listings || []}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-              <XAxis dataKey="date" stroke="#9ca3af" fontSize={12} />
-              <YAxis stroke="#9ca3af" fontSize={12} />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: '#1f2937',
-                  border: 'none',
-                  borderRadius: '8px',
-                  color: '#fff',
-                }}
-              />
-              <Legend />
+              <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} />
+              <XAxis dataKey="date" stroke={chartColors.text} tick={{ fill: chartColors.text }} fontSize={12} />
+              <YAxis stroke={chartColors.text} tick={{ fill: chartColors.text }} fontSize={12} />
+              <Tooltip content={<CustomTooltip />} />
+              <Legend wrapperStyle={{ color: chartColors.text }} />
               <Line
                 type="monotone"
                 dataKey="new"
@@ -511,17 +476,10 @@ export default function AnalyticsPage() {
           </div>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={analytics?.charts?.regions || []} layout="vertical">
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-              <XAxis type="number" stroke="#9ca3af" fontSize={12} />
-              <YAxis dataKey="region" type="category" stroke="#9ca3af" fontSize={12} width={100} />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: '#1f2937',
-                  border: 'none',
-                  borderRadius: '8px',
-                  color: '#fff',
-                }}
-              />
+              <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} />
+              <XAxis type="number" stroke={chartColors.text} tick={{ fill: chartColors.text }} fontSize={12} />
+              <YAxis dataKey="region" type="category" stroke={chartColors.text} tick={{ fill: chartColors.text }} fontSize={12} width={100} />
+              <Tooltip content={<CustomTooltip />} />
               <Bar dataKey="users" fill="#06b6d4" radius={[0, 4, 4, 0]} />
             </BarChart>
           </ResponsiveContainer>

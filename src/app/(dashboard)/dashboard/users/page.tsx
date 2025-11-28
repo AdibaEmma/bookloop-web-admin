@@ -558,7 +558,7 @@ export default function UsersPage() {
                           <span className="truncate max-w-[180px]">{user.email}</span>
                         </div>
                         {user.phone_number && (
-                          <div className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-500 dark:text-gray-400">
+                          <div className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
                             <Phone className="w-3.5 h-3.5" />
                             {user.phone_number}
                           </div>
@@ -574,7 +574,7 @@ export default function UsersPage() {
                           {user.city}{user.region && `, ${user.region}`}
                         </div>
                       ) : (
-                        <span className="text-sm text-gray-400 dark:text-gray-500 dark:text-gray-400">—</span>
+                        <span className="text-sm text-gray-400 dark:text-gray-500">—</span>
                       )}
                     </td>
 
@@ -677,7 +677,7 @@ export default function UsersPage() {
 
                   return pages.map((pageNum, idx) =>
                     pageNum === '...' ? (
-                      <span key={`ellipsis-${idx}`} className="px-2 text-gray-400 dark:text-gray-500 dark:text-gray-400">
+                      <span key={`ellipsis-${idx}`} className="px-2 text-gray-400 dark:text-gray-500">
                         ...
                       </span>
                     ) : (

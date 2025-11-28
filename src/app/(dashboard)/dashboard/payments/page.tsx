@@ -107,7 +107,7 @@ function PaymentRow({ payment, onView }: { payment: Payment; onView: (payment: P
             #{payment.id.slice(0, 8)}
           </p>
           {payment.transaction_reference && (
-            <p className="text-xs text-gray-500 dark:text-gray-500 dark:text-gray-400">
+            <p className="text-xs text-gray-500 dark:text-gray-400">
               Ref: {payment.transaction_reference}
             </p>
           )}
@@ -117,7 +117,7 @@ function PaymentRow({ payment, onView }: { payment: Payment; onView: (payment: P
         <p className="text-sm text-gray-900 dark:text-white">
           {payment.payer.first_name} {payment.payer.last_name}
         </p>
-        <p className="text-xs text-gray-500 dark:text-gray-500 dark:text-gray-400">
+        <p className="text-xs text-gray-500 dark:text-gray-400">
           → {payment.payee.first_name} {payment.payee.last_name}
         </p>
       </td>
@@ -136,7 +136,7 @@ function PaymentRow({ payment, onView }: { payment: Payment; onView: (payment: P
         <p className="text-sm text-gray-600 dark:text-gray-400">
           {new Date(payment.created_at).toLocaleDateString()}
         </p>
-        <p className="text-xs text-gray-500 dark:text-gray-500 dark:text-gray-400">
+        <p className="text-xs text-gray-500 dark:text-gray-400">
           {new Date(payment.created_at).toLocaleTimeString()}
         </p>
       </td>
@@ -261,6 +261,7 @@ export default function PaymentsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filterStatus, setFilterStatus] = useState<Payment['status'] | 'all'>('all');
   const [filterMethod, setFilterMethod] = useState<Payment['payment_method'] | 'all'>('all');
+  const chartColors = useChartColors();
 
   // Use static mock data - no loading state needed
   const stats = mockStats;
@@ -419,11 +420,11 @@ export default function PaymentsPage() {
           </h3>
           <ResponsiveContainer width="100%" height={250}>
             <LineChart data={revenueData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
+              <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} />
+              <XAxis dataKey="month" stroke={chartColors.text} tick={{ fill: chartColors.text }} />
+              <YAxis stroke={chartColors.text} tick={{ fill: chartColors.text }} />
+              <Tooltip content={<CustomTooltip />} />
+              <Legend wrapperStyle={{ color: chartColors.text }} />
               <Line
                 type="monotone"
                 dataKey="revenue"
@@ -441,11 +442,11 @@ export default function PaymentsPage() {
           </h3>
           <ResponsiveContainer width="100%" height={250}>
             <BarChart data={paymentMethodsData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="method" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
+              <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} />
+              <XAxis dataKey="method" stroke={chartColors.text} tick={{ fill: chartColors.text }} />
+              <YAxis stroke={chartColors.text} tick={{ fill: chartColors.text }} />
+              <Tooltip content={<CustomTooltip />} />
+              <Legend wrapperStyle={{ color: chartColors.text }} />
               <Bar dataKey="count" fill="#f59e0b" />
             </BarChart>
           </ResponsiveContainer>

@@ -995,7 +995,7 @@ export default function MeetupSpotsPage() {
 
                   return pages.map((pageNum, idx) =>
                     pageNum === '...' ? (
-                      <span key={`ellipsis-${idx}`} className="px-2 text-gray-400 dark:text-gray-500 dark:text-gray-400">
+                      <span key={`ellipsis-${idx}`} className="px-2 text-gray-400 dark:text-gray-500">
                         ...
                       </span>
                     ) : (

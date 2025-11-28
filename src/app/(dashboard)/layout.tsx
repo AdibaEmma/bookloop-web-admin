@@ -57,10 +57,10 @@ const navigation: NavItem[] = [
     icon: BarChart3,
     children: [
       { name: 'Overview', href: '/dashboard/analytics', icon: PieChart },
-      { name: 'Real-time', href: '/dashboard/analytics/realtime', icon: Activity },
-      { name: 'Predictive', href: '/dashboard/analytics/predictive', icon: TrendingUp },
-      { name: 'Heat Maps', href: '/dashboard/analytics/heatmaps', icon: Map },
-      { name: 'Funnels', href: '/dashboard/analytics/funnels', icon: GitBranch },
+      { name: 'Real-time', href: '/dashboard/real-time', icon: Activity },
+      { name: 'Predictive', href: '/dashboard/predictive-analytics', icon: TrendingUp },
+      { name: 'Heat Maps', href: '/dashboard/heat-maps', icon: Map },
+      { name: 'Funnels', href: '/dashboard/funnels', icon: GitBranch },
     ]
   },
   {
