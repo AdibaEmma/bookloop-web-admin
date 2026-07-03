@@ -68,6 +68,7 @@ const navigation: NavItem[] = [
     icon: Users,
     children: [
       { name: 'All Users', href: '/dashboard/users', icon: Users },
+      { name: 'Ghana Card KYC', href: '/dashboard/users/kyc', icon: Shield },
       { name: 'Segmentation', href: '/dashboard/segmentation', icon: Target },
       { name: 'Bulk Actions', href: '/dashboard/users/bulk-actions', icon: Layers },
       { name: 'Impersonation', href: '/dashboard/users/impersonation', icon: UserCheck },
