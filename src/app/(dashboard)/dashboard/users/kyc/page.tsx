@@ -20,6 +20,7 @@ interface PendingKyc {
   full_name: string;
   phone_number: string;
   ghana_card_number: string;
+  ghana_card_image?: string;
   submitted_at: string;
   profile_picture?: string;
 }
@@ -120,6 +121,24 @@ export default function GhanaCardKycPage() {
                   <div className="w-12 h-12 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center font-semibold">
                     {u.full_name?.split(' ').map((p) => p[0]).slice(0, 2).join('').toUpperCase() || '?'}
                   </div>
+                )}
+
+                {/* Card image */}
+                {u.ghana_card_image && (
+                  <a
+                    href={u.ghana_card_image}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0"
+                    title="Open full Ghana Card image"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={u.ghana_card_image}
+                      alt="Ghana Card"
+                      className="w-24 h-16 rounded-md object-cover border border-gray-200 dark:border-gray-700"
+                    />
+                  </a>
                 )}
 
                 {/* Details */}
