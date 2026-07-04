@@ -209,7 +209,7 @@ export default function DashboardLayout({
   if (isLoading) {
     return (
       <div className="flex h-screen items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
       </div>
     );
   }
@@ -218,13 +218,13 @@ export default function DashboardLayout({
   if (!user) {
     return (
       <div className="flex h-screen items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
       </div>
     );
   }
 
   return (
-    <div className="h-screen flex overflow-hidden bg-gray-100 dark:bg-gray-900">
+    <div className="h-screen flex overflow-hidden bg-background">
       {/* Mobile sidebar backdrop */}
       {sidebarOpen && (
         <div
@@ -235,20 +235,21 @@ export default function DashboardLayout({
 
       {/* Sidebar */}
       <div
-        className={`fixed inset-y-0 left-0 z-30 w-64 bg-white dark:bg-gray-800 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${
+        className={`fixed inset-y-0 left-0 z-30 w-64 bg-white dark:bg-[#1c1712] transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         <div className="flex flex-col h-full">
           {/* Logo */}
-          <div className="flex items-center justify-between h-16 px-6 border-b border-gray-200 dark:border-gray-700">
+          <div className="flex items-center justify-between h-16 px-6 border-b border-[#ECE6DC] dark:border-[#33291f]">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center">
-                <BookOpen className="w-5 h-5 text-white" />
+              <div className="w-9 h-9 bg-primary rounded-[10px] flex items-center justify-center">
+                <BookOpen className="w-5 h-5 text-primary-foreground" />
               </div>
-              <span className="text-xl font-bold text-gray-900 dark:text-white">
-                BookLoop
-              </span>
+              <div className="leading-none">
+                <div className="text-[15px] font-bold text-foreground">BookLoop</div>
+                <div className="text-[9px] font-semibold tracking-[1px] text-muted-foreground mt-0.5">ADMIN</div>
+              </div>
             </div>
             <button
               onClick={() => setSidebarOpen(false)}
@@ -273,7 +274,7 @@ export default function DashboardLayout({
                       onClick={() => toggleSection(item.name)}
                       className={`w-full flex items-center justify-between px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                         isChildActive(item)
-                          ? 'bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400'
+                          ? 'bg-primary/10 text-primary font-semibold'
                           : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
                       }`}
                     >
@@ -288,7 +289,7 @@ export default function DashboardLayout({
                       )}
                     </button>
                     {isExpanded && (
-                      <div className="mt-1 ml-4 pl-4 border-l border-gray-200 dark:border-gray-700 space-y-1">
+                      <div className="mt-1 ml-4 pl-4 border-l border-[#ECE6DC] dark:border-[#33291f] space-y-1">
                         {item.children!.map((child) => {
                           const ChildIcon = child.icon;
                           const isChildItemActive = child.href && pathname === child.href;
@@ -299,7 +300,7 @@ export default function DashboardLayout({
                               href={child.href || '#'}
                               className={`flex items-center gap-3 px-3 py-2 text-sm rounded-lg transition-colors ${
                                 isChildItemActive
-                                  ? 'bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400'
+                                  ? 'bg-primary/10 text-primary font-semibold'
                                   : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
                               }`}
                               onClick={() => setSidebarOpen(false)}
@@ -321,7 +322,7 @@ export default function DashboardLayout({
                   href={item.href || '#'}
                   className={`flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                     isActive
-                      ? 'bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400'
+                      ? 'bg-primary/10 text-primary font-semibold'
                       : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
                   }`}
                   onClick={() => setSidebarOpen(false)}
@@ -334,9 +335,9 @@ export default function DashboardLayout({
           </nav>
 
           {/* User info */}
-          <div className="border-t border-gray-200 dark:border-gray-700 p-4">
+          <div className="border-t border-[#ECE6DC] dark:border-[#33291f] p-4">
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-semibold">
+              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-semibold">
                 {user.first_name?.[0]}
                 {user.last_name?.[0]}
               </div>
@@ -363,7 +364,7 @@ export default function DashboardLayout({
       {/* Main content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Top bar */}
-        <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 h-16 flex items-center justify-between px-6">
+        <header className="bg-white dark:bg-[#1c1712] border-b border-[#ECE6DC] dark:border-[#33291f] h-16 flex items-center justify-between px-6">
           <button
             onClick={() => setSidebarOpen(true)}
             className="lg:hidden text-gray-500 hover:text-gray-700 dark:text-gray-400"
@@ -377,7 +378,7 @@ export default function DashboardLayout({
               <input
                 type="text"
                 placeholder="Search..."
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full pl-10 pr-4 py-2 border border-[#ECE6DC] dark:border-[#33291f] rounded-lg bg-background dark:bg-[#241c16] text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
           </div>
@@ -392,7 +393,7 @@ export default function DashboardLayout({
         </header>
 
         {/* Main content area */}
-        <main className="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-gray-900">
+        <main className="flex-1 overflow-y-auto p-6 bg-background">
           {children}
         </main>
       </div>

@@ -1,36 +1,36 @@
 @import "tailwindcss";
 
 :root {
-  /* Light mode colors */
-  --background: 0 0% 100%;
-  --foreground: 240 10% 3.9%;
+  /* Light mode — warm "cozy library" admin (cream + coffee accent) */
+  --background: 36 33% 97%;      /* #FAF7F2 */
+  --foreground: 25 30% 22%;      /* #4A3528 */
 
   --card: 0 0% 100%;
-  --card-foreground: 240 10% 3.9%;
+  --card-foreground: 25 30% 22%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 240 10% 3.9%;
+  --popover-foreground: 25 30% 22%;
 
-  --primary: 43 96% 56%;
-  --primary-foreground: 0 0% 100%;
+  --primary: 26 40% 39%;         /* #8B5E3C coffee */
+  --primary-foreground: 40 33% 97%;
 
-  --secondary: 240 4.8% 95.9%;
-  --secondary-foreground: 240 5.9% 10%;
+  --secondary: 36 25% 95%;
+  --secondary-foreground: 26 33% 20%;
 
-  --muted: 240 4.8% 95.9%;
-  --muted-foreground: 240 3.8% 46.1%;
+  --muted: 36 25% 95%;
+  --muted-foreground: 32 13% 55%; /* ~#8A7E6F */
 
-  --accent: 240 4.8% 95.9%;
-  --accent-foreground: 240 5.9% 10%;
+  --accent: 30 30% 93%;
+  --accent-foreground: 26 33% 20%;
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
 
-  --border: 240 5.9% 90%;
-  --input: 240 5.9% 90%;
-  --ring: 43 96% 56%;
+  --border: 37 24% 89%;          /* #ECE6DC */
+  --input: 37 24% 89%;
+  --ring: 26 40% 39%;
 
-  --radius: 0.5rem;
+  --radius: 0.625rem;
 }
 
 .dark {
