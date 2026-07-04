@@ -44,36 +44,28 @@ function StatsCard({
   iconColor: string;
 }) {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
-            {title}
-          </p>
-          <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
-            {value}
-          </p>
-        </div>
-        <div className={`p-3 rounded-full ${iconColor}`}>
-          <Icon className="w-6 h-6 text-white" />
+    <div className="bg-white dark:bg-[#241c16] border border-[#ECE6DC] dark:border-[#33291f] rounded-[14px] px-5 py-[18px]">
+      <div className="flex items-start justify-between">
+        <span className="text-[12.5px] font-medium text-muted-foreground">{title}</span>
+        <div className={`w-[34px] h-[34px] rounded-[9px] flex items-center justify-center ${iconColor}`}>
+          <Icon className="w-[18px] h-[18px]" />
         </div>
       </div>
-      <div className="mt-4 flex items-center">
-        {changeType === 'increase' ? (
-          <ArrowUpRight className="w-4 h-4 text-green-600" />
-        ) : (
-          <ArrowDownRight className="w-4 h-4 text-red-600" />
-        )}
+      <div className="text-[28px] font-extrabold text-foreground mt-2 leading-none">{value}</div>
+      <div className="mt-1.5 flex items-center gap-1.5">
         <span
-          className={`text-sm font-medium ml-1 ${
-            changeType === 'increase' ? 'text-green-600' : 'text-red-600'
+          className={`flex items-center gap-0.5 text-xs font-bold ${
+            changeType === 'increase' ? 'text-emerald-700' : 'text-red-600'
           }`}
         >
+          {changeType === 'increase' ? (
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          ) : (
+            <ArrowDownRight className="w-3.5 h-3.5" />
+          )}
           {change}
         </span>
-        <span className="text-sm text-gray-600 dark:text-gray-400 ml-2">
-          vs last month
-        </span>
+        <span className="text-[11.5px] text-muted-foreground">vs last month</span>
       </div>
     </div>
   );
@@ -204,10 +196,10 @@ export default function DashboardPage() {
     <div className="space-y-6">
       {/* Page header */}
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+        <h1 className="text-2xl font-bold text-foreground tracking-tight">
           Dashboard Overview
         </h1>
-        <p className="text-gray-600 dark:text-gray-400 mt-2">
+        <p className="text-muted-foreground mt-1 text-sm">
           Welcome back! Here&apos;s what&apos;s happening with your platform today.
         </p>
       </div>
@@ -220,7 +212,7 @@ export default function DashboardPage() {
           change={stats?.userGrowth || '0%'}
           changeType="increase"
           icon={Users}
-          iconColor="bg-blue-500"
+          iconColor="bg-primary/10 text-primary"
         />
         <StatsCard
           title="Active Listings"
@@ -228,7 +220,7 @@ export default function DashboardPage() {
           change={stats?.listingGrowth || '0%'}
           changeType="increase"
           icon={BookOpen}
-          iconColor="bg-amber-500"
+          iconColor="bg-amber-500/15 text-amber-700"
         />
         <StatsCard
           title="Active Exchanges"
@@ -236,7 +228,7 @@ export default function DashboardPage() {
           change={stats?.exchangeGrowth || '0%'}
           changeType="increase"
           icon={RefreshCw}
-          iconColor="bg-green-500"
+          iconColor="bg-emerald-500/12 text-emerald-700"
         />
         <StatsCard
           title="Meetup Spots"
@@ -244,15 +236,15 @@ export default function DashboardPage() {
           change={stats?.meetupGrowth || '0%'}
           changeType="increase"
           icon={MapPin}
-          iconColor="bg-purple-500"
+          iconColor="bg-blue-500/12 text-blue-700"
         />
       </div>
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* User Growth Chart */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+        <div className="bg-white dark:bg-[#241c16] border border-[#ECE6DC] dark:border-[#33291f] rounded-[14px] p-6">
+          <h3 className="text-[15px] font-bold text-foreground mb-4">
             User Growth
           </h3>
           <ResponsiveContainer width="100%" height={300}>
@@ -273,8 +265,8 @@ export default function DashboardPage() {
         </div>
 
         {/* Exchange Statistics */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+        <div className="bg-white dark:bg-[#241c16] border border-[#ECE6DC] dark:border-[#33291f] rounded-[14px] p-6">
+          <h3 className="text-[15px] font-bold text-foreground mb-4">
             Exchange Statistics
           </h3>
           <ResponsiveContainer width="100%" height={300}>
@@ -295,8 +287,8 @@ export default function DashboardPage() {
       {/* Bottom section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Book Categories */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+        <div className="bg-white dark:bg-[#241c16] border border-[#ECE6DC] dark:border-[#33291f] rounded-[14px] p-6">
+          <h3 className="text-[15px] font-bold text-foreground mb-4">
             Book Categories
           </h3>
           <ResponsiveContainer width="100%" height={250}>
@@ -326,9 +318,9 @@ export default function DashboardPage() {
         </div>
 
         {/* Recent Activity */}
-        <div className="lg:col-span-2 bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <div className="lg:col-span-2 bg-white dark:bg-[#241c16] border border-[#ECE6DC] dark:border-[#33291f] rounded-[14px] p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 className="text-[15px] font-bold text-foreground">
               Recent Activity
             </h3>
             <button className="text-sm text-amber-600 hover:text-amber-700 font-medium">
@@ -350,8 +342,8 @@ export default function DashboardPage() {
       </div>
 
       {/* Quick Actions */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+      <div className="bg-white dark:bg-[#241c16] border border-[#ECE6DC] dark:border-[#33291f] rounded-[14px] p-6">
+        <h3 className="text-[15px] font-bold text-foreground mb-4">
           Quick Actions
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
