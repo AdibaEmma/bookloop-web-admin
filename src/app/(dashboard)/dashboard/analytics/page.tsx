@@ -54,17 +54,17 @@ function MetricCard({
   iconColor: string;
 }) {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+    <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-sm border border-[#ECE6DC] dark:border-[#33291f] p-6">
       <div className="flex items-center justify-between">
         <div className="flex-1">
-          <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+          <p className="text-sm font-medium text-muted-foreground">
             {title}
           </p>
-          <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">
+          <p className="text-2xl font-bold text-foreground mt-1">
             {value}
           </p>
           {subtitle && (
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            <p className="text-xs text-muted-foreground mt-1">
               {subtitle}
             </p>
           )}
@@ -79,7 +79,7 @@ function MetricCard({
         ) : changeType === 'decrease' ? (
           <ArrowDownRight className="w-4 h-4 text-red-500" />
         ) : (
-          <TrendingUp className="w-4 h-4 text-gray-400 dark:text-gray-500" />
+          <TrendingUp className="w-4 h-4 text-muted-foreground dark:text-muted-foreground" />
         )}
         <span
           className={`text-sm font-medium ml-1 ${
@@ -87,12 +87,12 @@ function MetricCard({
               ? 'text-green-500'
               : changeType === 'decrease'
               ? 'text-red-500'
-              : 'text-gray-400 dark:text-gray-500'
+              : 'text-muted-foreground dark:text-muted-foreground'
           }`}
         >
           {change}
         </span>
-        <span className="text-sm text-gray-500 dark:text-gray-400 ml-2">
+        <span className="text-sm text-muted-foreground ml-2">
           vs previous period
         </span>
       </div>
@@ -115,27 +115,27 @@ function TopPerformerRow({
   trend: 'up' | 'down' | 'stable';
 }) {
   return (
-    <tr className="border-b border-gray-100 dark:border-gray-700 last:border-0">
+    <tr className="border-b border-[#F0EBE1] dark:border-[#33291f] last:border-0">
       <td className="py-3 px-4">
         <span
           className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold ${
             rank === 1
               ? 'bg-amber-100 text-amber-700'
               : rank === 2
-              ? 'bg-gray-100 text-gray-700 dark:text-gray-300'
+              ? 'bg-[#F1ECE3] text-foreground'
               : rank === 3
               ? 'bg-orange-100 text-orange-700'
-              : 'bg-gray-50 text-gray-500 dark:text-gray-400'
+              : 'bg-background text-muted-foreground'
           }`}
         >
           {rank}
         </span>
       </td>
-      <td className="py-3 px-4 font-medium text-gray-900 dark:text-white">
+      <td className="py-3 px-4 font-medium text-foreground">
         {name}
       </td>
-      <td className="py-3 px-4 text-gray-600 dark:text-gray-400">{metric}</td>
-      <td className="py-3 px-4 font-semibold text-gray-900 dark:text-white">
+      <td className="py-3 px-4 text-muted-foreground">{metric}</td>
+      <td className="py-3 px-4 font-semibold text-foreground">
         {value}
       </td>
       <td className="py-3 px-4">
@@ -144,7 +144,7 @@ function TopPerformerRow({
         ) : trend === 'down' ? (
           <TrendingDown className="w-4 h-4 text-red-500" />
         ) : (
-          <span className="w-4 h-4 block bg-gray-300 rounded-full" />
+          <span className="w-4 h-4 block bg-[#E4DED2] rounded-full" />
         )}
       </td>
     </tr>
@@ -175,24 +175,24 @@ export default function AnalyticsPage() {
       {/* Page header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+          <h1 className="text-3xl font-bold text-foreground">
             Analytics Dashboard
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-1">
+          <p className="text-muted-foreground mt-1">
             Detailed insights into platform performance and user behavior
           </p>
         </div>
         <div className="flex items-center gap-3">
           {/* Time range selector */}
-          <div className="flex items-center gap-1 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-1">
+          <div className="flex items-center gap-1 bg-white dark:bg-[#241c16] rounded-lg border border-[#ECE6DC] dark:border-[#33291f] p-1">
             {(['7d', '30d', '90d', '12m'] as TimeRange[]).map((range) => (
               <button
                 key={range}
                 onClick={() => setTimeRange(range)}
                 className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
                   timeRange === range
-                    ? 'bg-amber-500 text-white'
-                    : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700'
+                    ? 'bg-primary text-white'
+                    : 'text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#2a2118]'
                 }`}
               >
                 {range === '7d'
@@ -205,7 +205,7 @@ export default function AnalyticsPage() {
               </button>
             ))}
           </div>
-          <button className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+          <button className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-[#241c16] border border-[#ECE6DC] dark:border-[#33291f] rounded-lg text-foreground hover:bg-background dark:hover:bg-[#2a2118] transition-colors">
             <Download className="w-4 h-4" />
             Export
           </button>
@@ -242,7 +242,7 @@ export default function AnalyticsPage() {
           }
           subtitle={`${analytics?.metrics?.newListings || 0} new this period`}
           icon={BookOpen}
-          iconColor="bg-amber-500"
+          iconColor="bg-primary"
         />
         <MetricCard
           title="Completed Exchanges"
@@ -279,13 +279,13 @@ export default function AnalyticsPage() {
       {/* Charts Row 1 */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* User Growth Trend */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-sm border border-[#ECE6DC] dark:border-[#33291f] p-6">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              <h3 className="text-lg font-semibold text-foreground">
                 User Growth Trend
               </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 New user registrations over time
               </p>
             </div>
@@ -314,13 +314,13 @@ export default function AnalyticsPage() {
         </div>
 
         {/* Revenue Trend */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-sm border border-[#ECE6DC] dark:border-[#33291f] p-6">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              <h3 className="text-lg font-semibold text-foreground">
                 Revenue Trend
               </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 Platform revenue over time
               </p>
             </div>
@@ -352,13 +352,13 @@ export default function AnalyticsPage() {
       {/* Charts Row 2 */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Exchange Statistics */}
-        <div className="lg:col-span-2 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div className="lg:col-span-2 bg-white dark:bg-[#241c16] rounded-xl shadow-sm border border-[#ECE6DC] dark:border-[#33291f] p-6">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              <h3 className="text-lg font-semibold text-foreground">
                 Exchange Statistics
               </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 Exchange status breakdown by period
               </p>
             </div>
@@ -378,12 +378,12 @@ export default function AnalyticsPage() {
         </div>
 
         {/* Book Categories Distribution */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-sm border border-[#ECE6DC] dark:border-[#33291f] p-6">
           <div className="mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 className="text-lg font-semibold text-foreground">
               Book Categories
             </h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-muted-foreground">
               Distribution by category
             </p>
           </div>
@@ -412,7 +412,7 @@ export default function AnalyticsPage() {
                   className="w-3 h-3 rounded-full"
                   style={{ backgroundColor: COLORS[index % COLORS.length] }}
                 />
-                <span className="text-xs text-gray-600 dark:text-gray-400">
+                <span className="text-xs text-muted-foreground">
                   {cat.name} ({cat.value}%)
                 </span>
               </div>
@@ -424,13 +424,13 @@ export default function AnalyticsPage() {
       {/* Charts Row 3 */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Listings Activity */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-sm border border-[#ECE6DC] dark:border-[#33291f] p-6">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              <h3 className="text-lg font-semibold text-foreground">
                 Listings Activity
               </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 New vs removed listings
               </p>
             </div>
@@ -463,13 +463,13 @@ export default function AnalyticsPage() {
         </div>
 
         {/* Geographic Distribution */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-sm border border-[#ECE6DC] dark:border-[#33291f] p-6">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              <h3 className="text-lg font-semibold text-foreground">
                 Users by Region
               </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 Geographic distribution
               </p>
             </div>
@@ -489,19 +489,19 @@ export default function AnalyticsPage() {
       {/* Top Performers */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Top Users */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-sm border border-[#ECE6DC] dark:border-[#33291f] p-6">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 className="text-lg font-semibold text-foreground">
               Top Active Users
             </h3>
-            <button className="text-sm text-amber-600 hover:text-amber-700 font-medium">
+            <button className="text-sm text-primary hover:text-amber-700 font-medium">
               View All
             </button>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <tr className="text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                   <th className="py-2 px-4">#</th>
                   <th className="py-2 px-4">User</th>
                   <th className="py-2 px-4">Activity</th>
@@ -526,19 +526,19 @@ export default function AnalyticsPage() {
         </div>
 
         {/* Top Listed Books */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-sm border border-[#ECE6DC] dark:border-[#33291f] p-6">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 className="text-lg font-semibold text-foreground">
               Most Popular Books
             </h3>
-            <button className="text-sm text-amber-600 hover:text-amber-700 font-medium">
+            <button className="text-sm text-primary hover:text-amber-700 font-medium">
               View All
             </button>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <tr className="text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                   <th className="py-2 px-4">#</th>
                   <th className="py-2 px-4">Book</th>
                   <th className="py-2 px-4">Category</th>
@@ -564,56 +564,56 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Performance Summary */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
+      <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-sm border border-[#ECE6DC] dark:border-[#33291f] p-6">
+        <h3 className="text-lg font-semibold text-foreground mb-6">
           Platform Performance Summary
         </h3>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
           <div className="text-center">
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">
+            <p className="text-3xl font-bold text-foreground">
               {analytics?.summary?.avgResponseTime || '0'}ms
             </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            <p className="text-sm text-muted-foreground mt-1">
               Avg Response Time
             </p>
           </div>
           <div className="text-center">
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">
+            <p className="text-3xl font-bold text-foreground">
               {analytics?.summary?.uptime || '99.9'}%
             </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            <p className="text-sm text-muted-foreground mt-1">
               Uptime
             </p>
           </div>
           <div className="text-center">
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">
+            <p className="text-3xl font-bold text-foreground">
               {analytics?.summary?.activeUsers || '0'}
             </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            <p className="text-sm text-muted-foreground mt-1">
               Active Users (24h)
             </p>
           </div>
           <div className="text-center">
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">
+            <p className="text-3xl font-bold text-foreground">
               {analytics?.summary?.conversionRate || '0'}%
             </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            <p className="text-sm text-muted-foreground mt-1">
               Conversion Rate
             </p>
           </div>
           <div className="text-center">
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">
+            <p className="text-3xl font-bold text-foreground">
               {analytics?.summary?.bounceRate || '0'}%
             </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            <p className="text-sm text-muted-foreground mt-1">
               Bounce Rate
             </p>
           </div>
           <div className="text-center">
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">
+            <p className="text-3xl font-bold text-foreground">
               {analytics?.summary?.retention || '0'}%
             </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            <p className="text-sm text-muted-foreground mt-1">
               User Retention
             </p>
           </div>

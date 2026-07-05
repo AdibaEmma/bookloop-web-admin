@@ -236,7 +236,7 @@ export default function SpotCapacityPage() {
   const getStatusBadge = (status: Spot['status']) => {
     const styles = {
       open: 'bg-green-100 text-green-700',
-      closed: 'bg-gray-100 text-gray-600 dark:text-gray-400',
+      closed: 'bg-[#F1ECE3] text-muted-foreground',
       busy: 'bg-yellow-100 text-yellow-700',
       at_capacity: 'bg-red-100 text-red-700',
     };
@@ -283,13 +283,13 @@ export default function SpotCapacityPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Spot Capacity & Availability</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">Spot Capacity & Availability</h1>
+          <p className="text-muted-foreground mt-1">
             Monitor and manage exchange spot capacity in real-time
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 text-sm font-medium">
+          <button className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background text-sm font-medium">
             Export Report
           </button>
           <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm font-medium">
@@ -300,32 +300,32 @@ export default function SpotCapacityPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Total Spots</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">{stats.totalSpots}</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Total Spots</p>
+          <p className="text-2xl font-bold text-foreground mt-1">{stats.totalSpots}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Total Capacity</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">{stats.totalCapacity}</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Total Capacity</p>
+          <p className="text-2xl font-bold text-foreground mt-1">{stats.totalCapacity}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Current Occupancy</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Current Occupancy</p>
           <p className="text-2xl font-bold text-indigo-600 mt-1">{stats.currentOccupancy}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Utilization</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Utilization</p>
           <p className="text-2xl font-bold text-blue-600 mt-1">{stats.utilization}%</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">At Capacity</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">At Capacity</p>
           <p className="text-2xl font-bold text-red-600 mt-1">{stats.atCapacity}</p>
         </div>
       </div>
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Hourly Usage Pattern (Today)</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Hourly Usage Pattern (Today)</h3>
           <ResponsiveContainer width="100%" height={200}>
             <LineChart data={hourlyUsageData}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -336,8 +336,8 @@ export default function SpotCapacityPage() {
             </LineChart>
           </ResponsiveContainer>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Weekly Capacity Overview</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Weekly Capacity Overview</h3>
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={weeklyCapacityData}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -357,7 +357,7 @@ export default function SpotCapacityPage() {
         <select
           value={filterStatus}
           onChange={(e) => setFilterStatus(e.target.value as Spot['status'] | 'all')}
-          className="px-3 py-2 border border-gray-300 rounded-lg"
+          className="px-3 py-2 border border-[#E4DED2] rounded-lg"
         >
           <option value="all">All Status</option>
           <option value="open">Open</option>
@@ -368,7 +368,7 @@ export default function SpotCapacityPage() {
         <select
           value={filterType}
           onChange={(e) => setFilterType(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg"
+          className="px-3 py-2 border border-[#E4DED2] rounded-lg"
         >
           <option value="all">All Types</option>
           {types.map((type) => (
@@ -378,7 +378,7 @@ export default function SpotCapacityPage() {
         <select
           value={filterRegion}
           onChange={(e) => setFilterRegion(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg"
+          className="px-3 py-2 border border-[#E4DED2] rounded-lg"
         >
           <option value="all">All Regions</option>
           {regions.map((region) => (
@@ -394,39 +394,39 @@ export default function SpotCapacityPage() {
             key={spot.id}
             onClick={() => setSelectedSpot(spot)}
             className={`bg-white rounded-xl border-2 p-4 cursor-pointer transition-all hover:shadow-md ${
-              selectedSpot?.id === spot.id ? 'border-indigo-500' : 'border-gray-200 dark:border-gray-700'
+              selectedSpot?.id === spot.id ? 'border-indigo-500' : 'border-[#ECE6DC] dark:border-[#33291f]'
             }`}
           >
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center text-2xl">
+                <div className="w-12 h-12 rounded-xl bg-[#F1ECE3] flex items-center justify-center text-2xl">
                   {getTypeIcon(spot.type)}
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="font-semibold text-gray-900 dark:text-white">{spot.name}</h3>
+                    <h3 className="font-semibold text-foreground">{spot.name}</h3>
                     {getStatusBadge(spot.status)}
                   </div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">{spot.city}, {spot.region}</p>
+                  <p className="text-sm text-muted-foreground">{spot.city}, {spot.region}</p>
                 </div>
               </div>
               <div className="text-right">
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                <p className="text-2xl font-bold text-foreground">
                   {spot.current_occupancy}/{spot.max_capacity}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">occupancy</p>
+                <p className="text-xs text-muted-foreground">occupancy</p>
               </div>
             </div>
 
             {/* Capacity Bar */}
             <div className="mb-3">
-              <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
+              <div className="h-3 bg-[#F1ECE3] rounded-full overflow-hidden">
                 <div
                   className={`h-full rounded-full transition-all ${getOccupancyColor(spot.current_occupancy, spot.max_capacity)}`}
                   style={{ width: `${(spot.current_occupancy / spot.max_capacity) * 100}%` }}
                 />
               </div>
-              <div className="flex items-center justify-between mt-1 text-xs text-gray-500 dark:text-gray-400">
+              <div className="flex items-center justify-between mt-1 text-xs text-muted-foreground">
                 <span>{Math.round((spot.current_occupancy / spot.max_capacity) * 100)}% full</span>
                 <span>{spot.max_capacity - spot.current_occupancy} available</span>
               </div>
@@ -434,27 +434,27 @@ export default function SpotCapacityPage() {
 
             {/* Quick Stats */}
             <div className="grid grid-cols-4 gap-2 text-center">
-              <div className="p-2 bg-gray-50 rounded-lg">
-                <p className="text-lg font-bold text-gray-900 dark:text-white">{spot.upcoming_exchanges}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Upcoming</p>
+              <div className="p-2 bg-background rounded-lg">
+                <p className="text-lg font-bold text-foreground">{spot.upcoming_exchanges}</p>
+                <p className="text-xs text-muted-foreground">Upcoming</p>
               </div>
-              <div className="p-2 bg-gray-50 rounded-lg">
-                <p className="text-lg font-bold text-gray-900 dark:text-white">{spot.avg_duration_minutes}m</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Avg. Time</p>
+              <div className="p-2 bg-background rounded-lg">
+                <p className="text-lg font-bold text-foreground">{spot.avg_duration_minutes}m</p>
+                <p className="text-xs text-muted-foreground">Avg. Time</p>
               </div>
-              <div className="p-2 bg-gray-50 rounded-lg">
-                <p className="text-lg font-bold text-gray-900 dark:text-white">★ {spot.rating}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Rating</p>
+              <div className="p-2 bg-background rounded-lg">
+                <p className="text-lg font-bold text-foreground">★ {spot.rating}</p>
+                <p className="text-xs text-muted-foreground">Rating</p>
               </div>
-              <div className="p-2 bg-gray-50 rounded-lg">
-                <p className="text-lg font-bold text-gray-900 dark:text-white">{spot.total_exchanges}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Total</p>
+              <div className="p-2 bg-background rounded-lg">
+                <p className="text-lg font-bold text-foreground">{spot.total_exchanges}</p>
+                <p className="text-xs text-muted-foreground">Total</p>
               </div>
             </div>
 
             {/* Peak Hours */}
             <div className="mt-3 flex items-center gap-2">
-              <span className="text-xs text-gray-500 dark:text-gray-400">Peak:</span>
+              <span className="text-xs text-muted-foreground">Peak:</span>
               {spot.peak_hours.map((hour) => (
                 <span key={hour} className="px-2 py-0.5 bg-orange-100 text-orange-700 text-xs rounded-full">
                   {hour}
@@ -467,12 +467,12 @@ export default function SpotCapacityPage() {
 
       {/* Detail Sidebar */}
       {selectedSpot && (
-        <div className="fixed inset-y-0 right-0 w-96 bg-white border-l border-gray-200 shadow-xl z-40 overflow-y-auto">
-          <div className="p-4 border-b border-gray-200 flex items-center justify-between sticky top-0 bg-white">
-            <h3 className="font-semibold text-gray-900 dark:text-white">Spot Details</h3>
+        <div className="fixed inset-y-0 right-0 w-96 bg-white border-l border-[#ECE6DC] shadow-xl z-40 overflow-y-auto">
+          <div className="p-4 border-b border-[#ECE6DC] flex items-center justify-between sticky top-0 bg-white">
+            <h3 className="font-semibold text-foreground">Spot Details</h3>
             <button
               onClick={() => setSelectedSpot(null)}
-              className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400"
+              className="p-1 text-muted-foreground hover:text-muted-foreground"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -482,61 +482,61 @@ export default function SpotCapacityPage() {
           <div className="p-4 space-y-6">
             {/* Header */}
             <div className="text-center">
-              <div className="w-16 h-16 mx-auto rounded-2xl bg-gray-100 flex items-center justify-center text-3xl">
+              <div className="w-16 h-16 mx-auto rounded-2xl bg-[#F1ECE3] flex items-center justify-center text-3xl">
                 {getTypeIcon(selectedSpot.type)}
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mt-3">{selectedSpot.name}</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">{selectedSpot.address}</p>
+              <h3 className="text-lg font-semibold text-foreground mt-3">{selectedSpot.name}</h3>
+              <p className="text-sm text-muted-foreground">{selectedSpot.address}</p>
               <div className="mt-2">{getStatusBadge(selectedSpot.status)}</div>
             </div>
 
             {/* Live Capacity */}
-            <div className="p-4 bg-gray-50 rounded-xl">
+            <div className="p-4 bg-background rounded-xl">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-gray-600 dark:text-gray-400">Live Capacity</span>
-                <span className="text-lg font-bold text-gray-900 dark:text-white">
+                <span className="text-sm text-muted-foreground">Live Capacity</span>
+                <span className="text-lg font-bold text-foreground">
                   {selectedSpot.current_occupancy} / {selectedSpot.max_capacity}
                 </span>
               </div>
-              <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
+              <div className="h-4 bg-[#ECE6DC] rounded-full overflow-hidden">
                 <div
                   className={`h-full rounded-full ${getOccupancyColor(selectedSpot.current_occupancy, selectedSpot.max_capacity)}`}
                   style={{ width: `${(selectedSpot.current_occupancy / selectedSpot.max_capacity) * 100}%` }}
                 />
               </div>
-              <p className="text-xs text-gray-500 mt-2 text-center">
+              <p className="text-xs text-muted-foreground mt-2 text-center">
                 {selectedSpot.max_capacity - selectedSpot.current_occupancy} spots available
               </p>
             </div>
 
             {/* Schedule */}
             <div>
-              <h4 className="font-medium text-gray-900 mb-3">Weekly Schedule</h4>
+              <h4 className="font-medium text-foreground mb-3">Weekly Schedule</h4>
               <div className="space-y-2">
                 {(['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'] as DayOfWeek[]).map((day) => {
                   const schedule = selectedSpot.schedule[day];
                   return (
-                    <div key={day} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
-                      <span className="text-sm font-medium text-gray-700 capitalize w-20">{day.slice(0, 3)}</span>
+                    <div key={day} className="flex items-center justify-between p-2 bg-background rounded-lg">
+                      <span className="text-sm font-medium text-foreground capitalize w-20">{day.slice(0, 3)}</span>
                       {schedule.is_open ? (
                         <>
-                          <span className="text-xs text-gray-500 dark:text-gray-400">
+                          <span className="text-xs text-muted-foreground">
                             {schedule.slots[0]?.start} - {schedule.slots[0]?.end}
                           </span>
                           <div className="flex items-center gap-1">
-                            <div className="w-12 h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div className="w-12 h-2 bg-[#ECE6DC] rounded-full overflow-hidden">
                               <div
                                 className="h-full bg-indigo-500 rounded-full"
                                 style={{ width: `${(schedule.slots[0]?.booked / schedule.slots[0]?.capacity) * 100}%` }}
                               />
                             </div>
-                            <span className="text-xs text-gray-500 dark:text-gray-400">
+                            <span className="text-xs text-muted-foreground">
                               {schedule.slots[0]?.booked}/{schedule.slots[0]?.capacity}
                             </span>
                           </div>
                         </>
                       ) : (
-                        <span className="text-xs text-gray-400 dark:text-gray-500">Closed</span>
+                        <span className="text-xs text-muted-foreground dark:text-muted-foreground">Closed</span>
                       )}
                     </div>
                   );
@@ -546,27 +546,27 @@ export default function SpotCapacityPage() {
 
             {/* Stats */}
             <div className="grid grid-cols-2 gap-3">
-              <div className="p-3 bg-gray-50 rounded-lg text-center">
+              <div className="p-3 bg-background rounded-lg text-center">
                 <p className="text-xl font-bold text-indigo-600">{selectedSpot.upcoming_exchanges}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Upcoming Exchanges</p>
+                <p className="text-xs text-muted-foreground">Upcoming Exchanges</p>
               </div>
-              <div className="p-3 bg-gray-50 rounded-lg text-center">
-                <p className="text-xl font-bold text-gray-900 dark:text-white">{selectedSpot.avg_duration_minutes}m</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Avg. Duration</p>
+              <div className="p-3 bg-background rounded-lg text-center">
+                <p className="text-xl font-bold text-foreground">{selectedSpot.avg_duration_minutes}m</p>
+                <p className="text-xs text-muted-foreground">Avg. Duration</p>
               </div>
-              <div className="p-3 bg-gray-50 rounded-lg text-center">
+              <div className="p-3 bg-background rounded-lg text-center">
                 <p className="text-xl font-bold text-yellow-600">★ {selectedSpot.rating}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">User Rating</p>
+                <p className="text-xs text-muted-foreground">User Rating</p>
               </div>
-              <div className="p-3 bg-gray-50 rounded-lg text-center">
+              <div className="p-3 bg-background rounded-lg text-center">
                 <p className="text-xl font-bold text-green-600">{selectedSpot.total_exchanges}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Total Exchanges</p>
+                <p className="text-xs text-muted-foreground">Total Exchanges</p>
               </div>
             </div>
 
             {/* Peak Hours */}
             <div>
-              <h4 className="font-medium text-gray-900 mb-2">Peak Hours</h4>
+              <h4 className="font-medium text-foreground mb-2">Peak Hours</h4>
               <div className="flex flex-wrap gap-2">
                 {selectedSpot.peak_hours.map((hour) => (
                   <span key={hour} className="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">
@@ -577,14 +577,14 @@ export default function SpotCapacityPage() {
             </div>
 
             {/* Actions */}
-            <div className="flex gap-2 pt-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex gap-2 pt-4 border-t border-[#ECE6DC] dark:border-[#33291f]">
               <button
                 onClick={() => setShowEditModal(true)}
                 className="flex-1 px-3 py-2 bg-indigo-600 text-white text-sm rounded-lg hover:bg-indigo-700"
               >
                 Edit Capacity
               </button>
-              <button className="px-3 py-2 border border-gray-300 text-gray-700 text-sm rounded-lg hover:bg-gray-50 dark:bg-gray-900">
+              <button className="px-3 py-2 border border-[#E4DED2] text-foreground text-sm rounded-lg hover:bg-background">
                 View History
               </button>
             </div>

@@ -212,7 +212,7 @@ export default function AuditLogsPage() {
       case 'info':
         return 'bg-blue-100 text-blue-700 border-blue-200';
       default:
-        return 'bg-gray-100 text-gray-700 dark:text-gray-300';
+        return 'bg-[#F1ECE3] text-foreground';
     }
   };
 
@@ -276,8 +276,8 @@ export default function AuditLogsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Audit Logs</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">Audit Logs</h1>
+          <p className="text-muted-foreground mt-1">
             Track all system activities and admin actions
           </p>
         </div>
@@ -285,7 +285,7 @@ export default function AuditLogsPage() {
           <select
             value={dateRange}
             onChange={(e) => setDateRange(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+            className="px-3 py-2 border border-[#E4DED2] rounded-lg text-sm"
           >
             <option value="1h">Last hour</option>
             <option value="24h">Last 24 hours</option>
@@ -304,32 +304,32 @@ export default function AuditLogsPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Total Actions (24h)</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">2,847</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Total Actions (24h)</p>
+          <p className="text-2xl font-bold text-foreground mt-1">2,847</p>
           <p className="text-xs text-green-600 mt-1">+12% from yesterday</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Admin Actions</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Admin Actions</p>
           <p className="text-2xl font-bold text-indigo-600 mt-1">156</p>
-          <p className="text-xs text-gray-500 mt-1">By 8 active admins</p>
+          <p className="text-xs text-muted-foreground mt-1">By 8 active admins</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Critical Events</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Critical Events</p>
           <p className="text-2xl font-bold text-red-600 mt-1">3</p>
           <p className="text-xs text-red-600 mt-1">Requires attention</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Failed Logins</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Failed Logins</p>
           <p className="text-2xl font-bold text-yellow-600 mt-1">12</p>
-          <p className="text-xs text-gray-500 mt-1">From 4 IPs</p>
+          <p className="text-xs text-muted-foreground mt-1">From 4 IPs</p>
         </div>
       </div>
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Activity by Category</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Activity by Category</h3>
           <ResponsiveContainer width="100%" height={250}>
             <BarChart data={activityByCategory} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" />
@@ -340,8 +340,8 @@ export default function AuditLogsPage() {
             </BarChart>
           </ResponsiveContainer>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Activity Trend (Last 7 Days)</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Activity Trend (Last 7 Days)</h3>
           <ResponsiveContainer width="100%" height={250}>
             <LineChart data={activityTrend}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -357,9 +357,9 @@ export default function AuditLogsPage() {
       </div>
 
       {/* Filters and Log List */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] dark:border-[#33291f]">
         {/* Filters */}
-        <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+        <div className="p-4 border-b border-[#ECE6DC] dark:border-[#33291f]">
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex-1 min-w-[200px]">
               <input
@@ -367,13 +367,13 @@ export default function AuditLogsPage() {
                 placeholder="Search logs..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm"
+                className="w-full px-4 py-2 border border-[#E4DED2] rounded-lg text-sm"
               />
             </div>
             <select
               value={filterCategory}
               onChange={(e) => setFilterCategory(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+              className="px-3 py-2 border border-[#E4DED2] rounded-lg text-sm"
             >
               <option value="all">All Categories</option>
               <option value="user">User</option>
@@ -386,7 +386,7 @@ export default function AuditLogsPage() {
             <select
               value={filterSeverity}
               onChange={(e) => setFilterSeverity(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+              className="px-3 py-2 border border-[#E4DED2] rounded-lg text-sm"
             >
               <option value="all">All Severity</option>
               <option value="info">Info</option>
@@ -396,7 +396,7 @@ export default function AuditLogsPage() {
             <select
               value={filterActor}
               onChange={(e) => setFilterActor(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+              className="px-3 py-2 border border-[#E4DED2] rounded-lg text-sm"
             >
               <option value="all">All Actors</option>
               <option value="admin">Admins Only</option>
@@ -409,46 +409,46 @@ export default function AuditLogsPage() {
         {/* Log Table */}
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50 dark:bg-gray-900">
+            <thead className="bg-background">
               <tr>
-                <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase">Time</th>
-                <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase">Action</th>
-                <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase">Actor</th>
-                <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase">Category</th>
-                <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase">Severity</th>
-                <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase">Details</th>
+                <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Time</th>
+                <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Action</th>
+                <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Actor</th>
+                <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Category</th>
+                <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Severity</th>
+                <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Details</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-100">
+            <tbody className="divide-y divide-[#F0EBE1]">
               {filteredLogs.map((log) => (
                 <tr
                   key={log.id}
                   onClick={() => setSelectedLog(log)}
-                  className="hover:bg-gray-50 cursor-pointer"
+                  className="hover:bg-background cursor-pointer"
                 >
                   <td className="py-3 px-4">
-                    <span className="text-sm text-gray-900 dark:text-white">{formatDate(log.created_at)}</span>
+                    <span className="text-sm text-foreground">{formatDate(log.created_at)}</span>
                   </td>
                   <td className="py-3 px-4">
-                    <span className="text-sm font-medium text-gray-900 dark:text-white">{log.action}</span>
+                    <span className="text-sm font-medium text-foreground">{log.action}</span>
                   </td>
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-2">
                       <div className={`w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-medium ${
-                        log.actor_role === 'System' ? 'bg-gray-500' :
+                        log.actor_role === 'System' ? 'bg-background0' :
                         log.actor_role.includes('Admin') ? 'bg-indigo-500' :
                         'bg-green-500'
                       }`}>
                         {log.actor_name === 'System' ? 'S' : log.actor_name.split(' ').map(n => n[0]).join('')}
                       </div>
                       <div>
-                        <p className="text-sm text-gray-900 dark:text-white">{log.actor_name}</p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">{log.actor_role}</p>
+                        <p className="text-sm text-foreground">{log.actor_name}</p>
+                        <p className="text-xs text-muted-foreground">{log.actor_role}</p>
                       </div>
                     </div>
                   </td>
                   <td className="py-3 px-4">
-                    <span className="inline-flex items-center gap-1 text-sm text-gray-600 capitalize">
+                    <span className="inline-flex items-center gap-1 text-sm text-muted-foreground capitalize">
                       {getCategoryIcon(log.category)}
                       {log.category}
                     </span>
@@ -459,7 +459,7 @@ export default function AuditLogsPage() {
                     </span>
                   </td>
                   <td className="py-3 px-4">
-                    <span className="text-sm text-gray-500 truncate max-w-[200px] block">
+                    <span className="text-sm text-muted-foreground truncate max-w-[200px] block">
                       {Object.entries(log.details).slice(0, 2).map(([k, v]) => `${k}: ${v}`).join(', ')}
                     </span>
                   </td>
@@ -470,14 +470,14 @@ export default function AuditLogsPage() {
         </div>
 
         {/* Pagination */}
-        <div className="p-4 border-t border-gray-200 flex items-center justify-between">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Showing {filteredLogs.length} of {mockAuditLogs.length} logs</p>
+        <div className="p-4 border-t border-[#ECE6DC] flex items-center justify-between">
+          <p className="text-sm text-muted-foreground">Showing {filteredLogs.length} of {mockAuditLogs.length} logs</p>
           <div className="flex items-center gap-2">
-            <button className="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50 dark:bg-gray-900">Previous</button>
+            <button className="px-3 py-1 border border-[#E4DED2] rounded-lg text-sm hover:bg-background">Previous</button>
             <button className="px-3 py-1 bg-indigo-600 text-white rounded-lg text-sm">1</button>
-            <button className="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50 dark:bg-gray-900">2</button>
-            <button className="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50 dark:bg-gray-900">3</button>
-            <button className="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50 dark:bg-gray-900">Next</button>
+            <button className="px-3 py-1 border border-[#E4DED2] rounded-lg text-sm hover:bg-background">2</button>
+            <button className="px-3 py-1 border border-[#E4DED2] rounded-lg text-sm hover:bg-background">3</button>
+            <button className="px-3 py-1 border border-[#E4DED2] rounded-lg text-sm hover:bg-background">Next</button>
           </div>
         </div>
       </div>
@@ -485,14 +485,14 @@ export default function AuditLogsPage() {
       {/* Log Detail Modal */}
       {selectedLog && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl p-6 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Log Details</h2>
+              <h2 className="text-lg font-semibold text-foreground">Log Details</h2>
               <button
                 onClick={() => setSelectedLog(null)}
-                className="p-2 hover:bg-gray-100 rounded-lg"
+                className="p-2 hover:bg-[#F1ECE3] rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -503,7 +503,7 @@ export default function AuditLogsPage() {
                 <span className={`text-xs px-2 py-1 rounded-full border capitalize ${getSeverityColor(selectedLog.severity)}`}>
                   {selectedLog.severity}
                 </span>
-                <span className="inline-flex items-center gap-1 text-sm text-gray-600 capitalize">
+                <span className="inline-flex items-center gap-1 text-sm text-muted-foreground capitalize">
                   {getCategoryIcon(selectedLog.category)}
                   {selectedLog.category}
                 </span>
@@ -511,61 +511,61 @@ export default function AuditLogsPage() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Action</p>
-                  <p className="text-sm font-medium text-gray-900 dark:text-white">{selectedLog.action}</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Action</p>
+                  <p className="text-sm font-medium text-foreground">{selectedLog.action}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Timestamp</p>
-                  <p className="text-sm text-gray-900 dark:text-white">{formatDate(selectedLog.created_at)}</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Timestamp</p>
+                  <p className="text-sm text-foreground">{formatDate(selectedLog.created_at)}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Actor</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Actor</p>
                   <div className="flex items-center gap-2">
                     <div className={`w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-medium ${
-                      selectedLog.actor_role === 'System' ? 'bg-gray-500' :
+                      selectedLog.actor_role === 'System' ? 'bg-background0' :
                       selectedLog.actor_role.includes('Admin') ? 'bg-indigo-500' :
                       'bg-green-500'
                     }`}>
                       {selectedLog.actor_name === 'System' ? 'S' : selectedLog.actor_name.split(' ').map(n => n[0]).join('')}
                     </div>
-                    <span className="text-sm text-gray-900 dark:text-white">{selectedLog.actor_name}</span>
+                    <span className="text-sm text-foreground">{selectedLog.actor_name}</span>
                   </div>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Role</p>
-                  <p className="text-sm text-gray-900 dark:text-white">{selectedLog.actor_role}</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Role</p>
+                  <p className="text-sm text-foreground">{selectedLog.actor_role}</p>
                 </div>
                 {selectedLog.target_type && (
                   <>
                     <div>
-                      <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Target Type</p>
-                      <p className="text-sm text-gray-900 capitalize">{selectedLog.target_type}</p>
+                      <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Target Type</p>
+                      <p className="text-sm text-foreground capitalize">{selectedLog.target_type}</p>
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Target ID</p>
-                      <p className="text-sm font-mono text-gray-900 dark:text-white">{selectedLog.target_id}</p>
+                      <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Target ID</p>
+                      <p className="text-sm font-mono text-foreground">{selectedLog.target_id}</p>
                     </div>
                   </>
                 )}
                 {selectedLog.ip_address && (
                   <div>
-                    <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">IP Address</p>
-                    <p className="text-sm font-mono text-gray-900 dark:text-white">{selectedLog.ip_address}</p>
+                    <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">IP Address</p>
+                    <p className="text-sm font-mono text-foreground">{selectedLog.ip_address}</p>
                   </div>
                 )}
               </div>
 
               <div>
-                <p className="text-xs text-gray-500 uppercase tracking-wide mb-2">Details</p>
-                <pre className="p-4 bg-gray-50 rounded-lg text-sm text-gray-700 overflow-x-auto">
+                <p className="text-xs text-muted-foreground uppercase tracking-wide mb-2">Details</p>
+                <pre className="p-4 bg-background rounded-lg text-sm text-foreground overflow-x-auto">
                   {JSON.stringify(selectedLog.details, null, 2)}
                 </pre>
               </div>
 
               {selectedLog.user_agent && (
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">User Agent</p>
-                  <p className="text-xs text-gray-600 font-mono break-all">{selectedLog.user_agent}</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">User Agent</p>
+                  <p className="text-xs text-muted-foreground font-mono break-all">{selectedLog.user_agent}</p>
                 </div>
               )}
             </div>
@@ -573,7 +573,7 @@ export default function AuditLogsPage() {
             <div className="mt-6 flex justify-end gap-2">
               <button
                 onClick={() => setSelectedLog(null)}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 dark:bg-gray-900"
+                className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background"
               >
                 Close
               </button>

@@ -186,21 +186,21 @@ export default function RevenueDashboardPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Revenue Dashboard</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">Revenue Dashboard</h1>
+          <p className="text-muted-foreground mt-1">
             Comprehensive revenue analytics and financial insights
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <div className="flex bg-gray-100 rounded-lg p-1">
+          <div className="flex bg-[#F1ECE3] rounded-lg p-1">
             {(['7d', '30d', '90d', '1y', 'all'] as TimeRange[]).map((range) => (
               <button
                 key={range}
                 onClick={() => setTimeRange(range)}
                 className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
                   timeRange === range
-                    ? 'bg-white text-gray-900 shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900 dark:text-white'
+                    ? 'bg-white text-foreground shadow-sm'
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 {range}
@@ -209,7 +209,7 @@ export default function RevenueDashboardPage() {
           </div>
           <button
               onClick={() => setShowExportModal(true)}
-              className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 text-sm flex items-center gap-2"
+              className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background text-sm flex items-center gap-2"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -231,41 +231,41 @@ export default function RevenueDashboardPage() {
             +23% vs last year
           </div>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">This Month</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">GH₵{stats.currentMonth.toLocaleString()}</p>
-          <p className="text-xs text-gray-500 mt-2">Projected: GH₵{stats.projectedMonth.toLocaleString()}</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">This Month</p>
+          <p className="text-2xl font-bold text-foreground mt-1">GH₵{stats.currentMonth.toLocaleString()}</p>
+          <p className="text-xs text-muted-foreground mt-2">Projected: GH₵{stats.projectedMonth.toLocaleString()}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Month-over-Month</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Month-over-Month</p>
           <p className={`text-2xl font-bold mt-1 ${stats.monthOverMonth >= 0 ? 'text-green-600' : 'text-red-600'}`}>
             {stats.monthOverMonth >= 0 ? '+' : ''}{stats.monthOverMonth}%
           </p>
-          <p className="text-xs text-gray-500 mt-2">vs last month</p>
+          <p className="text-xs text-muted-foreground mt-2">vs last month</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Avg. Daily Revenue</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">GH₵{stats.avgDaily.toLocaleString()}</p>
-          <p className="text-xs text-gray-500 mt-2">Last 7 days</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Avg. Daily Revenue</p>
+          <p className="text-2xl font-bold text-foreground mt-1">GH₵{stats.avgDaily.toLocaleString()}</p>
+          <p className="text-xs text-muted-foreground mt-2">Last 7 days</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Total Transactions</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">{stats.totalTransactions.toLocaleString()}</p>
-          <p className="text-xs text-gray-500 mt-2">YTD</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Total Transactions</p>
+          <p className="text-2xl font-bold text-foreground mt-1">{stats.totalTransactions.toLocaleString()}</p>
+          <p className="text-xs text-muted-foreground mt-2">YTD</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Avg. Transaction</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Avg. Transaction</p>
+          <p className="text-2xl font-bold text-foreground mt-1">
             GH₵{(stats.totalRevenue / stats.totalTransactions).toFixed(2)}
           </p>
-          <p className="text-xs text-gray-500 mt-2">Per exchange</p>
+          <p className="text-xs text-muted-foreground mt-2">Per exchange</p>
         </div>
       </div>
 
       {/* Revenue Targets */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
+      <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-semibold text-gray-900 dark:text-white">Revenue Targets</h3>
+          <h3 className="font-semibold text-foreground">Revenue Targets</h3>
           <button
             onClick={() => setShowTargetModal(true)}
             className="text-sm text-indigo-600 hover:text-indigo-700"
@@ -285,21 +285,21 @@ export default function RevenueDashboardPage() {
             const colors = statusColors[target.status];
 
             return (
-              <div key={target.id} className="p-4 bg-gray-50 rounded-lg">
+              <div key={target.id} className="p-4 bg-background rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{target.name}</span>
+                  <span className="text-sm font-medium text-foreground">{target.name}</span>
                   <span className={`px-2 py-0.5 text-xs rounded-full ${colors.bg} ${colors.text} capitalize`}>
                     {target.status.replace('_', ' ')}
                   </span>
                 </div>
                 <div className="flex items-baseline gap-1 mb-2">
-                  <span className="text-xl font-bold text-gray-900 dark:text-white">GH₵{target.current.toLocaleString()}</span>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">/ GH₵{target.target.toLocaleString()}</span>
+                  <span className="text-xl font-bold text-foreground">GH₵{target.current.toLocaleString()}</span>
+                  <span className="text-sm text-muted-foreground">/ GH₵{target.target.toLocaleString()}</span>
                 </div>
-                <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div className="h-2 bg-[#ECE6DC] rounded-full overflow-hidden">
                   <div className={`h-full ${colors.bar} rounded-full transition-all`} style={{ width: `${progress}%` }} />
                 </div>
-                <p className="text-xs text-gray-500 mt-1">{progress.toFixed(1)}% complete</p>
+                <p className="text-xs text-muted-foreground mt-1">{progress.toFixed(1)}% complete</p>
               </div>
             );
           })}
@@ -308,8 +308,8 @@ export default function RevenueDashboardPage() {
 
       {/* Payment Methods & Hourly Patterns */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Revenue by Payment Method</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Revenue by Payment Method</h3>
           <div className="space-y-4">
             {paymentMethodStats.map((method) => {
               const totalRevenue = paymentMethodStats.reduce((acc, m) => acc + m.revenue, 0);
@@ -343,16 +343,16 @@ export default function RevenueDashboardPage() {
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{method.method}</span>
-                      <span className="text-sm font-semibold text-gray-900 dark:text-white">GH₵{method.revenue.toLocaleString()}</span>
+                      <span className="text-sm font-medium text-foreground">{method.method}</span>
+                      <span className="text-sm font-semibold text-foreground">GH₵{method.revenue.toLocaleString()}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                      <div className="flex-1 h-1.5 bg-[#F1ECE3] rounded-full overflow-hidden">
                         <div className="h-full rounded-full" style={{ width: `${percentage}%`, backgroundColor: method.color }} />
                       </div>
-                      <span className="text-xs text-gray-500 w-10">{percentage.toFixed(0)}%</span>
+                      <span className="text-xs text-muted-foreground w-10">{percentage.toFixed(0)}%</span>
                     </div>
-                    <p className="text-xs text-gray-400 mt-1">{method.transactions.toLocaleString()} txns • Avg GH₵{method.avgValue.toFixed(2)}</p>
+                    <p className="text-xs text-muted-foreground mt-1">{method.transactions.toLocaleString()} txns • Avg GH₵{method.avgValue.toFixed(2)}</p>
                   </div>
                 </div>
               );
@@ -360,8 +360,8 @@ export default function RevenueDashboardPage() {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Hourly Revenue Pattern</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Hourly Revenue Pattern</h3>
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={hourlyRevenueData} barSize={16}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} />
@@ -376,16 +376,16 @@ export default function RevenueDashboardPage() {
           </ResponsiveContainer>
           <div className="flex items-center justify-between mt-4 pt-4 border-t">
             <div className="text-center">
-              <p className="text-xs text-gray-500 dark:text-gray-400">Peak Hour</p>
-              <p className="font-semibold text-gray-900 dark:text-white">5pm - 6pm</p>
+              <p className="text-xs text-muted-foreground">Peak Hour</p>
+              <p className="font-semibold text-foreground">5pm - 6pm</p>
             </div>
             <div className="text-center">
-              <p className="text-xs text-gray-500 dark:text-gray-400">Peak Revenue</p>
+              <p className="text-xs text-muted-foreground">Peak Revenue</p>
               <p className="font-semibold text-indigo-600">GH₵1,580</p>
             </div>
             <div className="text-center">
-              <p className="text-xs text-gray-500 dark:text-gray-400">Slow Period</p>
-              <p className="font-semibold text-gray-900 dark:text-white">6am - 8am</p>
+              <p className="text-xs text-muted-foreground">Slow Period</p>
+              <p className="font-semibold text-foreground">6am - 8am</p>
             </div>
           </div>
         </div>
@@ -393,8 +393,8 @@ export default function RevenueDashboardPage() {
 
       {/* Weekday Performance & Revenue Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Weekday Performance</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Weekday Performance</h3>
           <ResponsiveContainer width="100%" height={200}>
             <RadarChart data={weekdayPerformance}>
               <PolarGrid />
@@ -403,18 +403,18 @@ export default function RevenueDashboardPage() {
               <Radar name="Revenue %" dataKey="revenue" stroke="#6366f1" fill="#6366f1" fillOpacity={0.4} />
             </RadarChart>
           </ResponsiveContainer>
-          <p className="text-xs text-gray-500 text-center mt-2">Revenue performance relative to peak day (Saturday = 100%)</p>
+          <p className="text-xs text-muted-foreground text-center mt-2">Revenue performance relative to peak day (Saturday = 100%)</p>
         </div>
 
-        <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 p-6">
+        <div className="lg:col-span-2 bg-white rounded-xl border border-[#ECE6DC] p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-semibold text-gray-900 dark:text-white">Revenue Trend</h3>
-            <label className="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
+            <h3 className="font-semibold text-foreground">Revenue Trend</h3>
+            <label className="flex items-center gap-2 text-sm text-muted-foreground cursor-pointer">
               <input
                 type="checkbox"
                 checked={compareMode}
                 onChange={(e) => setCompareMode(e.target.checked)}
-                className="rounded border-gray-300"
+                className="rounded border-[#E4DED2]"
               />
               Compare to previous period
             </label>
@@ -467,11 +467,11 @@ export default function RevenueDashboardPage() {
             <div className="flex items-center justify-center gap-6 mt-4 pt-4 border-t">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-indigo-500" />
-                <span className="text-sm text-gray-600 dark:text-gray-400">Current Period: <span className="font-semibold">GH₵{dailyRevenue.reduce((acc, d) => acc + d.revenue, 0).toLocaleString()}</span></span>
+                <span className="text-sm text-muted-foreground">Current Period: <span className="font-semibold">GH₵{dailyRevenue.reduce((acc, d) => acc + d.revenue, 0).toLocaleString()}</span></span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-gray-400" />
-                <span className="text-sm text-gray-600 dark:text-gray-400">Previous Period: <span className="font-semibold">GH₵{dailyRevenue.reduce((acc, d) => acc + (d.previousRevenue || 0), 0).toLocaleString()}</span></span>
+                <span className="text-sm text-muted-foreground">Previous Period: <span className="font-semibold">GH₵{dailyRevenue.reduce((acc, d) => acc + (d.previousRevenue || 0), 0).toLocaleString()}</span></span>
               </div>
               <div className="px-2 py-1 bg-green-100 text-green-700 rounded text-sm font-medium">
                 +{((dailyRevenue.reduce((acc, d) => acc + d.revenue, 0) / dailyRevenue.reduce((acc, d) => acc + (d.previousRevenue || 0), 0) - 1) * 100).toFixed(1)}%
@@ -483,8 +483,8 @@ export default function RevenueDashboardPage() {
 
       {/* Revenue Sources */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Revenue Sources</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Revenue Sources</h3>
           <ResponsiveContainer width="100%" height={180}>
             <PieChart>
               <Pie
@@ -508,17 +508,17 @@ export default function RevenueDashboardPage() {
               <div key={source.name} className="flex items-center justify-between text-sm">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: source.color }} />
-                  <span className="text-gray-600 dark:text-gray-400">{source.name}</span>
+                  <span className="text-muted-foreground">{source.name}</span>
                 </div>
-                <span className="font-medium text-gray-900 dark:text-white">GH₵{source.amount.toLocaleString()}</span>
+                <span className="font-medium text-foreground">GH₵{source.amount.toLocaleString()}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Monthly Performance */}
-        <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Monthly Performance</h3>
+        <div className="lg:col-span-2 bg-white rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Monthly Performance</h3>
           <ResponsiveContainer width="100%" height={250}>
             <ComposedChart data={monthlyRevenue}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -535,8 +535,8 @@ export default function RevenueDashboardPage() {
       </div>
 
       {/* Revenue Projection */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-        <h3 className="font-semibold text-gray-900 mb-4">Revenue Projection</h3>
+      <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+        <h3 className="font-semibold text-foreground mb-4">Revenue Projection</h3>
           <ResponsiveContainer width="100%" height={250}>
             <AreaChart data={projectionData}>
               <defs>
@@ -574,48 +574,48 @@ export default function RevenueDashboardPage() {
 
       {/* Revenue by Region and Top Days */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Revenue by Region</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Revenue by Region</h3>
           <div className="space-y-4">
             {revenueByRegion.map((region) => (
               <div key={region.region}>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{region.region}</span>
-                  <span className="text-sm text-gray-900 font-semibold">GH₵{region.revenue.toLocaleString()}</span>
+                  <span className="text-sm font-medium text-foreground">{region.region}</span>
+                  <span className="text-sm text-foreground font-semibold">GH₵{region.revenue.toLocaleString()}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
+                  <div className="flex-1 h-2 bg-[#F1ECE3] rounded-full overflow-hidden">
                     <div
                       className="h-full bg-indigo-500 rounded-full"
                       style={{ width: `${region.percentage}%` }}
                     />
                   </div>
-                  <span className="text-xs text-gray-500 w-12">{region.percentage}%</span>
+                  <span className="text-xs text-muted-foreground w-12">{region.percentage}%</span>
                 </div>
-                <p className="text-xs text-gray-400 mt-1">{region.exchanges.toLocaleString()} exchanges</p>
+                <p className="text-xs text-muted-foreground mt-1">{region.exchanges.toLocaleString()} exchanges</p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Top Revenue Days</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Top Revenue Days</h3>
           <div className="space-y-3">
             {topRevenueDays.map((day, index) => (
-              <div key={day.date} className="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
+              <div key={day.date} className="flex items-center gap-4 p-3 bg-background rounded-lg">
                 <span className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${
                   index === 0 ? 'bg-yellow-100 text-yellow-700' :
-                  index === 1 ? 'bg-gray-200 text-gray-700 dark:text-gray-300' :
+                  index === 1 ? 'bg-[#ECE6DC] text-foreground' :
                   index === 2 ? 'bg-orange-100 text-orange-700' :
-                  'bg-gray-100 text-gray-600 dark:text-gray-400'
+                  'bg-[#F1ECE3] text-muted-foreground'
                 }`}>
                   {index + 1}
                 </span>
                 <div className="flex-1">
-                  <p className="font-medium text-gray-900 dark:text-white">{day.date}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">{day.reason}</p>
+                  <p className="font-medium text-foreground">{day.date}</p>
+                  <p className="text-xs text-muted-foreground">{day.reason}</p>
                 </div>
-                <p className="font-bold text-gray-900 dark:text-white">GH₵{day.revenue.toLocaleString()}</p>
+                <p className="font-bold text-foreground">GH₵{day.revenue.toLocaleString()}</p>
               </div>
             ))}
           </div>
@@ -623,9 +623,9 @@ export default function RevenueDashboardPage() {
       </div>
 
       {/* Transaction Details */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
+      <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-semibold text-gray-900 dark:text-white">Transaction Breakdown</h3>
+          <h3 className="font-semibold text-foreground">Transaction Breakdown</h3>
           <button className="text-sm text-indigo-600 hover:text-indigo-700">View All Transactions</button>
         </div>
         <ResponsiveContainer width="100%" height={200}>
@@ -688,22 +688,22 @@ export default function RevenueDashboardPage() {
       {/* Export Modal */}
       {showExportModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-md w-full mx-4">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-xl max-w-md w-full mx-4">
             <div className="flex items-center justify-between p-4 border-b">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Export Revenue Data</h3>
+              <h3 className="text-lg font-semibold text-foreground">Export Revenue Data</h3>
               <button
                 onClick={() => setShowExportModal(false)}
-                className="p-2 hover:bg-gray-100 rounded-lg"
+                className="p-2 hover:bg-[#F1ECE3] rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
             <div className="p-4 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Date Range</label>
-                <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                <label className="block text-sm font-medium text-foreground mb-2">Date Range</label>
+                <select className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                   <option>Last 7 days</option>
                   <option>Last 30 days</option>
                   <option>Last 90 days</option>
@@ -713,18 +713,18 @@ export default function RevenueDashboardPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Data to Include</label>
+                <label className="block text-sm font-medium text-foreground mb-2">Data to Include</label>
                 <div className="space-y-2">
                   {['Daily Revenue', 'Monthly Summary', 'Revenue by Source', 'Revenue by Region', 'Payment Methods', 'Transactions'].map((item) => (
                     <label key={item} className="flex items-center gap-2">
-                      <input type="checkbox" defaultChecked className="rounded border-gray-300" />
-                      <span className="text-sm text-gray-700 dark:text-gray-300">{item}</span>
+                      <input type="checkbox" defaultChecked className="rounded border-[#E4DED2]" />
+                      <span className="text-sm text-foreground">{item}</span>
                     </label>
                   ))}
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Export Format</label>
+                <label className="block text-sm font-medium text-foreground mb-2">Export Format</label>
                 <div className="grid grid-cols-3 gap-2">
                   {[
                     { format: 'CSV', icon: '📊' },
@@ -733,19 +733,19 @@ export default function RevenueDashboardPage() {
                   ].map((option) => (
                     <button
                       key={option.format}
-                      className="p-3 border border-gray-200 rounded-lg hover:border-indigo-500 hover:bg-indigo-50 text-center transition-colors"
+                      className="p-3 border border-[#ECE6DC] rounded-lg hover:border-indigo-500 hover:bg-indigo-50 text-center transition-colors"
                     >
                       <span className="text-2xl block mb-1">{option.icon}</span>
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{option.format}</span>
+                      <span className="text-sm font-medium text-foreground">{option.format}</span>
                     </button>
                   ))}
                 </div>
               </div>
             </div>
-            <div className="flex items-center justify-end gap-3 p-4 border-t bg-gray-50 rounded-b-xl">
+            <div className="flex items-center justify-end gap-3 p-4 border-t bg-background rounded-b-xl">
               <button
                 onClick={() => setShowExportModal(false)}
-                className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+                className="px-4 py-2 text-foreground hover:bg-[#F1ECE3] rounded-lg"
               >
                 Cancel
               </button>
@@ -766,14 +766,14 @@ export default function RevenueDashboardPage() {
       {/* Target Management Modal */}
       {showTargetModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-hidden flex flex-col">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-hidden flex flex-col">
             <div className="flex items-center justify-between p-4 border-b">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Manage Revenue Targets</h3>
+              <h3 className="text-lg font-semibold text-foreground">Manage Revenue Targets</h3>
               <button
                 onClick={() => setShowTargetModal(false)}
-                className="p-2 hover:bg-gray-100 rounded-lg"
+                className="p-2 hover:bg-[#F1ECE3] rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -781,30 +781,30 @@ export default function RevenueDashboardPage() {
             <div className="p-4 overflow-y-auto flex-1">
               <div className="space-y-4">
                 {revenueTargets.map((target) => (
-                  <div key={target.id} className="p-4 border border-gray-200 rounded-lg">
+                  <div key={target.id} className="p-4 border border-[#ECE6DC] rounded-lg">
                     <div className="flex items-center justify-between mb-3">
-                      <h4 className="font-medium text-gray-900 dark:text-white">{target.name}</h4>
-                      <span className="text-xs text-gray-500 uppercase">{target.period}</span>
+                      <h4 className="font-medium text-foreground">{target.name}</h4>
+                      <span className="text-xs text-muted-foreground uppercase">{target.period}</span>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs text-gray-500 mb-1">Target Amount</label>
+                        <label className="block text-xs text-muted-foreground mb-1">Target Amount</label>
                         <div className="flex items-center gap-1">
-                          <span className="text-gray-500 dark:text-gray-400">GH₵</span>
+                          <span className="text-muted-foreground">GH₵</span>
                           <input
                             type="number"
                             defaultValue={target.target}
-                            className="flex-1 px-2 py-1.5 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                            className="flex-1 px-2 py-1.5 border border-[#E4DED2] rounded focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                           />
                         </div>
                       </div>
                       <div>
-                        <label className="block text-xs text-gray-500 mb-1">Current Progress</label>
-                        <p className="text-lg font-semibold text-gray-900 py-1">GH₵{target.current.toLocaleString()}</p>
+                        <label className="block text-xs text-muted-foreground mb-1">Current Progress</label>
+                        <p className="text-lg font-semibold text-foreground py-1">GH₵{target.current.toLocaleString()}</p>
                       </div>
                     </div>
                     <div className="mt-3 flex items-center gap-2">
-                      <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
+                      <div className="flex-1 h-2 bg-[#F1ECE3] rounded-full overflow-hidden">
                         <div
                           className={`h-full rounded-full ${
                             target.status === 'exceeded' ? 'bg-indigo-500' :
@@ -814,7 +814,7 @@ export default function RevenueDashboardPage() {
                           style={{ width: `${Math.min((target.current / target.target) * 100, 100)}%` }}
                         />
                       </div>
-                      <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                      <span className="text-sm font-medium text-muted-foreground">
                         {((target.current / target.target) * 100).toFixed(0)}%
                       </span>
                     </div>
@@ -831,10 +831,10 @@ export default function RevenueDashboardPage() {
                 </button>
               </div>
             </div>
-            <div className="flex items-center justify-end gap-3 p-4 border-t bg-gray-50 dark:bg-gray-900">
+            <div className="flex items-center justify-end gap-3 p-4 border-t bg-background">
               <button
                 onClick={() => setShowTargetModal(false)}
-                className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+                className="px-4 py-2 text-foreground hover:bg-[#F1ECE3] rounded-lg"
               >
                 Cancel
               </button>

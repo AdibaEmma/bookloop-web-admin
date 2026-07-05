@@ -23,12 +23,12 @@ export function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
     <div
       className={`rounded-lg shadow-lg p-3 border ${
         isDark
-          ? 'bg-gray-800 border-gray-700 text-white'
-          : 'bg-white border-gray-200 text-gray-900'
+          ? 'bg-[#241c16] border-[#33291f] text-white'
+          : 'bg-white border-[#ECE6DC] text-foreground'
       }`}
     >
       {label && (
-        <p className={`font-medium mb-2 ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>
+        <p className={`font-medium mb-2 ${isDark ? 'text-muted-foreground' : 'text-foreground'}`}>
           {label}
         </p>
       )}
@@ -38,7 +38,7 @@ export function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
             className="w-3 h-3 rounded-full"
             style={{ backgroundColor: entry.color }}
           />
-          <span className={isDark ? 'text-gray-300' : 'text-gray-600'}>
+          <span className={isDark ? 'text-muted-foreground' : 'text-muted-foreground'}>
             {entry.name}:
           </span>
           <span className="font-medium">

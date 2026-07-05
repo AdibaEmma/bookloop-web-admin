@@ -202,7 +202,7 @@ export default function ChallengesPage() {
       case 'engagement':
         return 'bg-orange-100 text-orange-700';
       default:
-        return 'bg-gray-100 text-gray-700 dark:text-gray-300';
+        return 'bg-[#F1ECE3] text-foreground';
     }
   };
 
@@ -249,8 +249,8 @@ export default function ChallengesPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Challenge Campaigns</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">Challenge Campaigns</h1>
+          <p className="text-muted-foreground mt-1">
             Create and manage user challenges to boost engagement
           </p>
         </div>
@@ -271,16 +271,16 @@ export default function ChallengesPage() {
           <p className="text-indigo-100">Active Challengers</p>
           <p className="text-3xl font-bold mt-1">{challengeStats.activeChallengers.toLocaleString()}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Total Completions</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Total Completions</p>
           <p className="text-2xl font-bold text-green-600 mt-1">{challengeStats.totalCompletions}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Avg Completion Rate</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">{challengeStats.avgCompletionRate}%</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Avg Completion Rate</p>
+          <p className="text-2xl font-bold text-foreground mt-1">{challengeStats.avgCompletionRate}%</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Rewards Given</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Rewards Given</p>
           <p className="text-2xl font-bold text-yellow-600 mt-1">{challengeStats.rewardsGiven}</p>
         </div>
       </div>
@@ -290,7 +290,7 @@ export default function ChallengesPage() {
         <select
           value={filterStatus}
           onChange={(e) => setFilterStatus(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg"
+          className="px-3 py-2 border border-[#E4DED2] rounded-lg"
         >
           <option value="all">All Status</option>
           <option value="active">Active</option>
@@ -299,7 +299,7 @@ export default function ChallengesPage() {
         <select
           value={filterType}
           onChange={(e) => setFilterType(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg"
+          className="px-3 py-2 border border-[#E4DED2] rounded-lg"
         >
           <option value="all">All Types</option>
           <option value="exchange">Exchange</option>
@@ -323,34 +323,34 @@ export default function ChallengesPage() {
                 className={`bg-white rounded-xl border-2 p-6 cursor-pointer transition-all ${
                   selectedChallenge?.id === challenge.id
                     ? 'border-indigo-500 bg-indigo-50'
-                    : 'border-gray-200 hover:border-gray-300'
+                    : 'border-[#ECE6DC] hover:border-[#E4DED2]'
                 } ${isEnded ? 'opacity-60' : ''}`}
               >
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-semibold text-gray-900 dark:text-white">{challenge.name}</h3>
+                      <h3 className="font-semibold text-foreground">{challenge.name}</h3>
                       <span className={`text-xs px-2 py-0.5 rounded-full capitalize ${getTypeColor(challenge.type)}`}>
                         {challenge.type}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">{challenge.description}</p>
+                    <p className="text-sm text-muted-foreground">{challenge.description}</p>
                   </div>
                   <div className="flex items-center gap-2">
                     {getRewardIcon(challenge.reward.type)}
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{challenge.reward.value}</span>
+                    <span className="text-sm font-medium text-foreground">{challenge.reward.value}</span>
                   </div>
                 </div>
 
                 {/* Progress Bar */}
                 <div className="mb-4">
                   <div className="flex items-center justify-between text-sm mb-1">
-                    <span className="text-gray-600 dark:text-gray-400">
+                    <span className="text-muted-foreground">
                       {challenge.completions} / {challenge.participants} completed
                     </span>
                     <span className="font-medium text-indigo-600">{challenge.progress_percentage}%</span>
                   </div>
-                  <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                  <div className="h-2 bg-[#F1ECE3] rounded-full overflow-hidden">
                     <div
                       className="h-full bg-indigo-500 rounded-full"
                       style={{ width: `${challenge.progress_percentage}%` }}
@@ -359,10 +359,10 @@ export default function ChallengesPage() {
                 </div>
 
                 {/* Meta Info */}
-                <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+                <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <span>{challenge.participants.toLocaleString()} participants</span>
                   <span>Goal: {challenge.goal} {challenge.type}s</span>
-                  <span className={isEnded ? 'text-gray-400 dark:text-gray-500' : daysRemaining <= 7 ? 'text-red-500' : ''}>
+                  <span className={isEnded ? 'text-muted-foreground dark:text-muted-foreground' : daysRemaining <= 7 ? 'text-red-500' : ''}>
                     {isEnded ? 'Ended' : `${daysRemaining} days left`}
                   </span>
                 </div>
@@ -375,29 +375,29 @@ export default function ChallengesPage() {
         <div className="space-y-6">
           {selectedChallenge ? (
             <>
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-                <h3 className="font-semibold text-gray-900 mb-4">Top Participants</h3>
+              <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+                <h3 className="font-semibold text-foreground mb-4">Top Participants</h3>
                 <div className="space-y-3">
                   {selectedChallenge.top_participants.map((participant, index) => (
                     <div key={index} className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium ${
                           index === 0 ? 'bg-yellow-100 text-yellow-700' :
-                          index === 1 ? 'bg-gray-100 text-gray-700 dark:text-gray-300' :
+                          index === 1 ? 'bg-[#F1ECE3] text-foreground' :
                           'bg-orange-100 text-orange-700'
                         }`}>
                           {index + 1}
                         </span>
-                        <span className="text-sm font-medium text-gray-900 dark:text-white">{participant.name}</span>
+                        <span className="text-sm font-medium text-foreground">{participant.name}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <div className="w-20 h-2 bg-gray-100 rounded-full overflow-hidden">
+                        <div className="w-20 h-2 bg-[#F1ECE3] rounded-full overflow-hidden">
                           <div
                             className="h-full bg-indigo-500 rounded-full"
                             style={{ width: `${(participant.progress / selectedChallenge.goal) * 100}%` }}
                           />
                         </div>
-                        <span className="text-xs text-gray-500 dark:text-gray-400">
+                        <span className="text-xs text-muted-foreground">
                           {participant.progress}/{selectedChallenge.goal}
                         </span>
                       </div>
@@ -406,8 +406,8 @@ export default function ChallengesPage() {
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-                <h3 className="font-semibold text-gray-900 mb-4">Daily Progress</h3>
+              <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+                <h3 className="font-semibold text-foreground mb-4">Daily Progress</h3>
                 <ResponsiveContainer width="100%" height={150}>
                   <BarChart data={selectedChallenge.daily_progress}>
                     <CartesianGrid strokeDasharray="3 3" />
@@ -419,40 +419,40 @@ export default function ChallengesPage() {
                 </ResponsiveContainer>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-                <h3 className="font-semibold text-gray-900 mb-4">Challenge Details</h3>
+              <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+                <h3 className="font-semibold text-foreground mb-4">Challenge Details</h3>
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-gray-500 dark:text-gray-400">Start Date</span>
-                    <span className="text-gray-900 dark:text-white">{new Date(selectedChallenge.start_date).toLocaleDateString()}</span>
+                    <span className="text-muted-foreground">Start Date</span>
+                    <span className="text-foreground">{new Date(selectedChallenge.start_date).toLocaleDateString()}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-500 dark:text-gray-400">End Date</span>
-                    <span className="text-gray-900 dark:text-white">{new Date(selectedChallenge.end_date).toLocaleDateString()}</span>
+                    <span className="text-muted-foreground">End Date</span>
+                    <span className="text-foreground">{new Date(selectedChallenge.end_date).toLocaleDateString()}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-500 dark:text-gray-400">Reward Type</span>
-                    <span className="text-gray-900 capitalize">{selectedChallenge.reward.type.replace('_', ' ')}</span>
+                    <span className="text-muted-foreground">Reward Type</span>
+                    <span className="text-foreground capitalize">{selectedChallenge.reward.type.replace('_', ' ')}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-500 dark:text-gray-400">Created By</span>
-                    <span className="text-gray-900 dark:text-white">{selectedChallenge.created_by}</span>
+                    <span className="text-muted-foreground">Created By</span>
+                    <span className="text-foreground">{selectedChallenge.created_by}</span>
                   </div>
                 </div>
-                <div className="mt-4 pt-4 border-t border-gray-100 flex gap-2">
+                <div className="mt-4 pt-4 border-t border-[#F0EBE1] flex gap-2">
                   <button className="flex-1 px-3 py-2 bg-indigo-600 text-white text-sm rounded-lg hover:bg-indigo-700">
                     Edit Challenge
                   </button>
-                  <button className="px-3 py-2 border border-gray-300 text-gray-700 text-sm rounded-lg hover:bg-gray-50 dark:bg-gray-900">
+                  <button className="px-3 py-2 border border-[#E4DED2] text-foreground text-sm rounded-lg hover:bg-background">
                     {selectedChallenge.is_active ? 'End Early' : 'Duplicate'}
                   </button>
                 </div>
               </div>
             </>
           ) : (
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-              <div className="text-center text-gray-500 dark:text-gray-400">
-                <svg className="w-12 h-12 mx-auto text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+              <div className="text-center text-muted-foreground">
+                <svg className="w-12 h-12 mx-auto text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                 </svg>
                 <p className="mt-2">Select a challenge to view details</p>
@@ -465,36 +465,36 @@ export default function ChallengesPage() {
       {/* Create Modal */}
       {showCreateModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
-            <h2 className="text-lg font-semibold text-gray-900 mb-6">Create Challenge</h2>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+            <h2 className="text-lg font-semibold text-foreground mb-6">Create Challenge</h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Challenge Name</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Challenge Name</label>
                 <input
                   type="text"
                   value={newChallenge.name}
                   onChange={(e) => setNewChallenge({ ...newChallenge, name: e.target.value })}
                   placeholder="e.g., Summer Reading Challenge"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Description</label>
                 <textarea
                   value={newChallenge.description}
                   onChange={(e) => setNewChallenge({ ...newChallenge, description: e.target.value })}
                   placeholder="Describe the challenge..."
                   rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Type</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Type</label>
                   <select
                     value={newChallenge.type}
                     onChange={(e) => setNewChallenge({ ...newChallenge, type: e.target.value as Challenge['type'] })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                   >
                     <option value="exchange">Exchange</option>
                     <option value="listing">Listing</option>
@@ -503,42 +503,42 @@ export default function ChallengesPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Goal</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Goal</label>
                   <input
                     type="number"
                     value={newChallenge.goal}
                     onChange={(e) => setNewChallenge({ ...newChallenge, goal: parseInt(e.target.value) })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                   />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Start Date</label>
                   <input
                     type="date"
                     value={newChallenge.start_date}
                     onChange={(e) => setNewChallenge({ ...newChallenge, start_date: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">End Date</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">End Date</label>
                   <input
                     type="date"
                     value={newChallenge.end_date}
                     onChange={(e) => setNewChallenge({ ...newChallenge, end_date: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                   />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Reward Type</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Reward Type</label>
                   <select
                     value={newChallenge.reward_type}
                     onChange={(e) => setNewChallenge({ ...newChallenge, reward_type: e.target.value as any })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                   >
                     <option value="badge">Badge</option>
                     <option value="points">Points</option>
@@ -547,13 +547,13 @@ export default function ChallengesPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Reward Value</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Reward Value</label>
                   <input
                     type="text"
                     value={newChallenge.reward_value}
                     onChange={(e) => setNewChallenge({ ...newChallenge, reward_value: e.target.value })}
                     placeholder={newChallenge.reward_type === 'points' ? 'e.g., 500' : 'e.g., summer_champion'}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                   />
                 </div>
               </div>
@@ -564,7 +564,7 @@ export default function ChallengesPage() {
               </button>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 dark:bg-gray-900"
+                className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background"
               >
                 Cancel
               </button>

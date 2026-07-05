@@ -227,8 +227,8 @@ export default function SuggestedSpotsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Suggested Spots</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">Suggested Spots</h1>
+          <p className="text-muted-foreground mt-1">
             Review and manage community-suggested exchange locations
           </p>
         </div>
@@ -242,23 +242,23 @@ export default function SuggestedSpotsPage() {
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {statusStats.map((stat) => (
-          <div key={stat.status} className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
+          <div key={stat.status} className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
             <div className="flex items-center justify-between">
-              <p className="text-sm text-gray-500 dark:text-gray-400">{stat.status}</p>
+              <p className="text-sm text-muted-foreground">{stat.status}</p>
               <div
                 className="w-3 h-3 rounded-full"
                 style={{ backgroundColor: stat.color }}
               />
             </div>
-            <p className="text-2xl font-bold text-gray-900 mt-1">{stat.count}</p>
+            <p className="text-2xl font-bold text-foreground mt-1">{stat.count}</p>
           </div>
         ))}
       </div>
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Suggestions by Region</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Suggestions by Region</h3>
           <ResponsiveContainer width="100%" height={250}>
             <BarChart data={spotsByRegion} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" />
@@ -270,8 +270,8 @@ export default function SuggestedSpotsPage() {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Spots by Type</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Spots by Type</h3>
           <ResponsiveContainer width="100%" height={200}>
             <PieChart>
               <Pie
@@ -294,7 +294,7 @@ export default function SuggestedSpotsPage() {
             {spotsByType.map((item) => (
               <div key={item.type} className="flex items-center gap-2 text-xs">
                 <div className="w-2 h-2 rounded-full" style={{ backgroundColor: item.color }} />
-                <span className="text-gray-600 dark:text-gray-400">{item.type}</span>
+                <span className="text-muted-foreground">{item.type}</span>
               </div>
             ))}
           </div>
@@ -302,12 +302,12 @@ export default function SuggestedSpotsPage() {
       </div>
 
       {/* Filters & List */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] dark:border-[#33291f]">
         <div className="p-4 border-b flex flex-wrap items-center gap-4">
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500"
+            className="px-3 py-2 border border-[#E4DED2] rounded-lg text-sm focus:ring-2 focus:ring-indigo-500"
           >
             <option value="all">All Status</option>
             <option value="pending">Pending</option>
@@ -318,7 +318,7 @@ export default function SuggestedSpotsPage() {
           <select
             value={regionFilter}
             onChange={(e) => setRegionFilter(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500"
+            className="px-3 py-2 border border-[#E4DED2] rounded-lg text-sm focus:ring-2 focus:ring-indigo-500"
           >
             <option value="all">All Regions</option>
             <option value="Greater Accra">Greater Accra</option>
@@ -328,31 +328,31 @@ export default function SuggestedSpotsPage() {
             <option value="Volta">Volta</option>
           </select>
           <div className="flex-1" />
-          <span className="text-sm text-gray-500 dark:text-gray-400">
+          <span className="text-sm text-muted-foreground">
             {filteredSpots.length} suggestions
           </span>
         </div>
 
-        <div className="divide-y divide-gray-200">
+        <div className="divide-y divide-[#ECE6DC]">
           {filteredSpots.map((spot) => (
             <div
               key={spot.id}
-              className="p-4 hover:bg-gray-50 cursor-pointer"
+              className="p-4 hover:bg-background cursor-pointer"
               onClick={() => setSelectedSpot(spot)}
             >
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center text-2xl">
+                <div className="w-12 h-12 rounded-lg bg-[#F1ECE3] flex items-center justify-center text-2xl">
                   {getTypeIcon(spot.type)}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
-                    <h4 className="font-medium text-gray-900 dark:text-white">{spot.name}</h4>
+                    <h4 className="font-medium text-foreground">{spot.name}</h4>
                     <span className={`px-2 py-0.5 text-xs rounded-full ${getStatusColor(spot.status)}`}>
                       {spot.status.replace('_', ' ')}
                     </span>
                   </div>
-                  <p className="text-sm text-gray-500 truncate">{spot.address}</p>
-                  <div className="flex items-center gap-4 mt-2 text-xs text-gray-500 dark:text-gray-400">
+                  <p className="text-sm text-muted-foreground truncate">{spot.address}</p>
+                  <div className="flex items-center gap-4 mt-2 text-xs text-muted-foreground">
                     <span className="flex items-center gap-1">
                       <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clipRule="evenodd" />
@@ -371,14 +371,14 @@ export default function SuggestedSpotsPage() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Suggested by</p>
+                  <p className="text-xs text-muted-foreground">Suggested by</p>
                   <div className="flex items-center gap-2 mt-1">
-                    <span className="text-sm font-medium text-gray-900 dark:text-white">{spot.suggestedBy.name}</span>
+                    <span className="text-sm font-medium text-foreground">{spot.suggestedBy.name}</span>
                     <div className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-medium">
                       {spot.suggestedBy.avatar}
                     </div>
                   </div>
-                  <p className="text-xs text-gray-400 mt-1">
+                  <p className="text-xs text-muted-foreground mt-1">
                     {new Date(spot.submittedAt).toLocaleDateString()}
                   </p>
                 </div>
@@ -391,22 +391,22 @@ export default function SuggestedSpotsPage() {
       {/* Spot Detail Modal */}
       {selectedSpot && !showReviewModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-hidden flex flex-col">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-hidden flex flex-col">
             <div className="flex items-center justify-between p-4 border-b">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center text-2xl">
+                <div className="w-12 h-12 rounded-lg bg-[#F1ECE3] flex items-center justify-center text-2xl">
                   {getTypeIcon(selectedSpot.type)}
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{selectedSpot.name}</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">{selectedSpot.address}</p>
+                  <h3 className="text-lg font-semibold text-foreground">{selectedSpot.name}</h3>
+                  <p className="text-sm text-muted-foreground">{selectedSpot.address}</p>
                 </div>
               </div>
               <button
                 onClick={() => setSelectedSpot(null)}
-                className="p-2 hover:bg-gray-100 rounded-lg"
+                className="p-2 hover:bg-[#F1ECE3] rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -435,27 +435,27 @@ export default function SuggestedSpotsPage() {
 
               {/* Description */}
               <div>
-                <h4 className="font-medium text-gray-900 mb-2">Description</h4>
-                <p className="text-gray-600 dark:text-gray-400">{selectedSpot.description}</p>
+                <h4 className="font-medium text-foreground mb-2">Description</h4>
+                <p className="text-muted-foreground">{selectedSpot.description}</p>
               </div>
 
               {/* Details Grid */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-3 bg-gray-50 rounded-lg">
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Region</p>
-                  <p className="font-medium text-gray-900 dark:text-white">{selectedSpot.region}</p>
+                <div className="p-3 bg-background rounded-lg">
+                  <p className="text-xs text-muted-foreground">Region</p>
+                  <p className="font-medium text-foreground">{selectedSpot.region}</p>
                 </div>
-                <div className="p-3 bg-gray-50 rounded-lg">
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Type</p>
-                  <p className="font-medium text-gray-900 capitalize">{selectedSpot.type.replace('_', ' ')}</p>
+                <div className="p-3 bg-background rounded-lg">
+                  <p className="text-xs text-muted-foreground">Type</p>
+                  <p className="font-medium text-foreground capitalize">{selectedSpot.type.replace('_', ' ')}</p>
                 </div>
-                <div className="p-3 bg-gray-50 rounded-lg">
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Operating Hours</p>
-                  <p className="font-medium text-gray-900 dark:text-white">{selectedSpot.operatingHours}</p>
+                <div className="p-3 bg-background rounded-lg">
+                  <p className="text-xs text-muted-foreground">Operating Hours</p>
+                  <p className="font-medium text-foreground">{selectedSpot.operatingHours}</p>
                 </div>
-                <div className="p-3 bg-gray-50 rounded-lg">
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Submitted</p>
-                  <p className="font-medium text-gray-900 dark:text-white">
+                <div className="p-3 bg-background rounded-lg">
+                  <p className="text-xs text-muted-foreground">Submitted</p>
+                  <p className="font-medium text-foreground">
                     {new Date(selectedSpot.submittedAt).toLocaleString()}
                   </p>
                 </div>
@@ -463,7 +463,7 @@ export default function SuggestedSpotsPage() {
 
               {/* Amenities */}
               <div>
-                <h4 className="font-medium text-gray-900 mb-2">Amenities</h4>
+                <h4 className="font-medium text-foreground mb-2">Amenities</h4>
                 <div className="flex flex-wrap gap-2">
                   {selectedSpot.amenities.map((amenity) => (
                     <span key={amenity} className="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm rounded-full">
@@ -474,13 +474,13 @@ export default function SuggestedSpotsPage() {
               </div>
 
               {/* Suggested By */}
-              <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <div className="flex items-center gap-3 p-3 bg-background rounded-lg">
                 <div className="w-10 h-10 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-medium">
                   {selectedSpot.suggestedBy.avatar}
                 </div>
                 <div>
-                  <p className="font-medium text-gray-900 dark:text-white">{selectedSpot.suggestedBy.name}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Suggested this location</p>
+                  <p className="font-medium text-foreground">{selectedSpot.suggestedBy.name}</p>
+                  <p className="text-xs text-muted-foreground">Suggested this location</p>
                 </div>
                 <button className="ml-auto text-sm text-indigo-600 hover:text-indigo-700">
                   View Profile
@@ -489,13 +489,13 @@ export default function SuggestedSpotsPage() {
 
               {/* Photos & Comments */}
               <div className="flex items-center gap-4">
-                <button className="flex-1 p-3 border border-gray-200 rounded-lg text-center hover:bg-gray-50 dark:bg-gray-900">
+                <button className="flex-1 p-3 border border-[#ECE6DC] rounded-lg text-center hover:bg-background">
                   <span className="text-2xl block">📷</span>
-                  <span className="text-sm text-gray-600 dark:text-gray-400">{selectedSpot.photos} Photos</span>
+                  <span className="text-sm text-muted-foreground">{selectedSpot.photos} Photos</span>
                 </button>
-                <button className="flex-1 p-3 border border-gray-200 rounded-lg text-center hover:bg-gray-50 dark:bg-gray-900">
+                <button className="flex-1 p-3 border border-[#ECE6DC] rounded-lg text-center hover:bg-background">
                   <span className="text-2xl block">💬</span>
-                  <span className="text-sm text-gray-600 dark:text-gray-400">{selectedSpot.comments} Comments</span>
+                  <span className="text-sm text-muted-foreground">{selectedSpot.comments} Comments</span>
                 </button>
               </div>
 
@@ -504,17 +504,17 @@ export default function SuggestedSpotsPage() {
                 <div className={`p-3 rounded-lg ${
                   selectedSpot.status === 'approved' ? 'bg-green-50 border border-green-200' :
                   selectedSpot.status === 'rejected' ? 'bg-red-50 border border-red-200' :
-                  'bg-gray-50 border border-gray-200 dark:border-gray-700'
+                  'bg-background border border-[#ECE6DC] dark:border-[#33291f]'
                 }`}>
-                  <h4 className="font-medium text-gray-900 mb-1">Review Notes</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">{selectedSpot.reviewNotes}</p>
+                  <h4 className="font-medium text-foreground mb-1">Review Notes</h4>
+                  <p className="text-sm text-muted-foreground">{selectedSpot.reviewNotes}</p>
                 </div>
               )}
             </div>
-            <div className="flex items-center justify-between gap-3 p-4 border-t bg-gray-50 dark:bg-gray-900">
+            <div className="flex items-center justify-between gap-3 p-4 border-t bg-background">
               <button
                 onClick={() => setSelectedSpot(null)}
-                className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+                className="px-4 py-2 text-foreground hover:bg-[#F1ECE3] rounded-lg"
               >
                 Close
               </button>
@@ -542,9 +542,9 @@ export default function SuggestedSpotsPage() {
       {/* Review Modal */}
       {showReviewModal && selectedSpot && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-md w-full mx-4">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-xl max-w-md w-full mx-4">
             <div className="flex items-center justify-between p-4 border-b">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              <h3 className="text-lg font-semibold text-foreground">
                 {reviewAction === 'approve' ? 'Approve Spot' : 'Reject Spot'}
               </h3>
               <button
@@ -552,21 +552,21 @@ export default function SuggestedSpotsPage() {
                   setShowReviewModal(false);
                   setReviewAction(null);
                 }}
-                className="p-2 hover:bg-gray-100 rounded-lg"
+                className="p-2 hover:bg-[#F1ECE3] rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
             <div className="p-4 space-y-4">
-              <div className="p-3 bg-gray-50 rounded-lg">
-                <p className="font-medium text-gray-900 dark:text-white">{selectedSpot.name}</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">{selectedSpot.address}</p>
+              <div className="p-3 bg-background rounded-lg">
+                <p className="font-medium text-foreground">{selectedSpot.name}</p>
+                <p className="text-sm text-muted-foreground">{selectedSpot.address}</p>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2">
                   Review Notes {reviewAction === 'reject' && <span className="text-red-500">*</span>}
                 </label>
                 <textarea
@@ -575,15 +575,15 @@ export default function SuggestedSpotsPage() {
                     ? 'Add any notes about this approval...'
                     : 'Explain why this spot is being rejected...'
                   }
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
 
               {reviewAction === 'approve' && (
                 <div>
                   <label className="flex items-center gap-2">
-                    <input type="checkbox" className="rounded border-gray-300" defaultChecked />
-                    <span className="text-sm text-gray-700 dark:text-gray-300">Notify the user who suggested this spot</span>
+                    <input type="checkbox" className="rounded border-[#E4DED2]" defaultChecked />
+                    <span className="text-sm text-foreground">Notify the user who suggested this spot</span>
                   </label>
                 </div>
               )}
@@ -596,13 +596,13 @@ export default function SuggestedSpotsPage() {
                 </div>
               )}
             </div>
-            <div className="flex items-center justify-end gap-3 p-4 border-t bg-gray-50 rounded-b-xl">
+            <div className="flex items-center justify-end gap-3 p-4 border-t bg-background rounded-b-xl">
               <button
                 onClick={() => {
                   setShowReviewModal(false);
                   setReviewAction(null);
                 }}
-                className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+                className="px-4 py-2 text-foreground hover:bg-[#F1ECE3] rounded-lg"
               >
                 Cancel
               </button>

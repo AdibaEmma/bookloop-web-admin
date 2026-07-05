@@ -96,10 +96,10 @@ export default function SettingsPage() {
     <div className="space-y-6">
       {/* Page header */}
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+        <h1 className="text-3xl font-bold text-foreground">
           Settings
         </h1>
-        <p className="text-gray-600 dark:text-gray-400 mt-2">
+        <p className="text-muted-foreground mt-2">
           Manage platform settings and preferences
         </p>
       </div>
@@ -118,8 +118,8 @@ export default function SettingsPage() {
                   onClick={() => setActiveTab(tab.id as any)}
                   className={`flex items-center gap-3 w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
                     isActive
-                      ? 'bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400'
-                      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                      ? 'bg-amber-50 dark:bg-amber-900/20 text-primary'
+                      : 'text-foreground hover:bg-background dark:hover:bg-[#2a2118]'
                   }`}
                 >
                   <Icon className="w-5 h-5" />
@@ -132,65 +132,65 @@ export default function SettingsPage() {
 
         {/* Content area */}
         <div className="lg:col-span-3">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+          <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
             {/* General Settings */}
             {activeTab === 'general' && (
               <div className="space-y-6">
                 <div>
-                  <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                  <h2 className="text-xl font-semibold text-foreground mb-4">
                     General Settings
                   </h2>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
+                  <p className="text-sm text-muted-foreground mb-6">
                     Update your platform's basic information
                   </p>
                 </div>
 
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label className="block text-sm font-medium text-foreground mb-2">
                       Platform Name
                     </label>
                     <input
                       type="text"
                       value={platformName}
                       onChange={(e) => setPlatformName(e.target.value)}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                      className="w-full px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label className="block text-sm font-medium text-foreground mb-2">
                       Contact Email
                     </label>
                     <input
                       type="email"
                       value={platformEmail}
                       onChange={(e) => setPlatformEmail(e.target.value)}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                      className="w-full px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label className="block text-sm font-medium text-foreground mb-2">
                       Contact Phone
                     </label>
                     <input
                       type="tel"
                       value={platformPhone}
                       onChange={(e) => setPlatformPhone(e.target.value)}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                      className="w-full px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label className="block text-sm font-medium text-foreground mb-2">
                       Platform Description
                     </label>
                     <textarea
                       value={platformDescription}
                       onChange={(e) => setPlatformDescription(e.target.value)}
                       rows={3}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                      className="w-full px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
                 </div>
@@ -201,21 +201,21 @@ export default function SettingsPage() {
             {activeTab === 'notifications' && (
               <div className="space-y-6">
                 <div>
-                  <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                  <h2 className="text-xl font-semibold text-foreground mb-4">
                     Notification Settings
                   </h2>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
+                  <p className="text-sm text-muted-foreground mb-6">
                     Configure how you receive notifications
                   </p>
                 </div>
 
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <div className="flex items-center justify-between p-4 bg-background dark:bg-[#2a2118] rounded-lg">
                     <div>
-                      <p className="font-medium text-gray-900 dark:text-white">
+                      <p className="font-medium text-foreground">
                         Email Notifications
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <p className="text-sm text-muted-foreground">
                         Receive notifications via email
                       </p>
                     </div>
@@ -226,16 +226,16 @@ export default function SettingsPage() {
                         onChange={(e) => setEmailNotifications(e.target.checked)}
                         className="sr-only peer"
                       />
-                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-amber-300 dark:peer-focus:ring-amber-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-amber-600"></div>
+                      <div className="w-11 h-6 bg-[#ECE6DC] peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-amber-300 dark:peer-focus:ring-amber-800 rounded-full peer dark:bg-[#33291f] peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[#E4DED2] after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-[#33291f] peer-checked:bg-primary"></div>
                     </label>
                   </div>
 
-                  <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <div className="flex items-center justify-between p-4 bg-background dark:bg-[#2a2118] rounded-lg">
                     <div>
-                      <p className="font-medium text-gray-900 dark:text-white">
+                      <p className="font-medium text-foreground">
                         SMS Notifications
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <p className="text-sm text-muted-foreground">
                         Receive notifications via SMS
                       </p>
                     </div>
@@ -246,49 +246,49 @@ export default function SettingsPage() {
                         onChange={(e) => setSmsNotifications(e.target.checked)}
                         className="sr-only peer"
                       />
-                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-amber-300 dark:peer-focus:ring-amber-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-amber-600"></div>
+                      <div className="w-11 h-6 bg-[#ECE6DC] peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-amber-300 dark:peer-focus:ring-amber-800 rounded-full peer dark:bg-[#33291f] peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[#E4DED2] after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-[#33291f] peer-checked:bg-primary"></div>
                     </label>
                   </div>
 
-                  <div className="border-t border-gray-200 dark:border-gray-600 pt-4 mt-6">
-                    <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">
+                  <div className="border-t border-[#ECE6DC] dark:border-[#33291f] pt-4 mt-6">
+                    <h3 className="text-sm font-semibold text-foreground mb-4">
                       Alert Types
                     </h3>
 
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-700 dark:text-gray-300">
+                        <span className="text-sm text-foreground">
                           New User Registrations
                         </span>
                         <input
                           type="checkbox"
                           checked={newUserAlerts}
                           onChange={(e) => setNewUserAlerts(e.target.checked)}
-                          className="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500"
+                          className="w-4 h-4 text-primary bg-[#F1ECE3] border-[#E4DED2] rounded focus:ring-primary"
                         />
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-700 dark:text-gray-300">
+                        <span className="text-sm text-foreground">
                           New Listings
                         </span>
                         <input
                           type="checkbox"
                           checked={newListingAlerts}
                           onChange={(e) => setNewListingAlerts(e.target.checked)}
-                          className="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500"
+                          className="w-4 h-4 text-primary bg-[#F1ECE3] border-[#E4DED2] rounded focus:ring-primary"
                         />
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-700 dark:text-gray-300">
+                        <span className="text-sm text-foreground">
                           Disputes
                         </span>
                         <input
                           type="checkbox"
                           checked={disputeAlerts}
                           onChange={(e) => setDisputeAlerts(e.target.checked)}
-                          className="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500"
+                          className="w-4 h-4 text-primary bg-[#F1ECE3] border-[#E4DED2] rounded focus:ring-primary"
                         />
                       </div>
                     </div>
@@ -301,21 +301,21 @@ export default function SettingsPage() {
             {activeTab === 'security' && (
               <div className="space-y-6">
                 <div>
-                  <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                  <h2 className="text-xl font-semibold text-foreground mb-4">
                     Security Settings
                   </h2>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
+                  <p className="text-sm text-muted-foreground mb-6">
                     Manage security and authentication settings
                   </p>
                 </div>
 
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <div className="flex items-center justify-between p-4 bg-background dark:bg-[#2a2118] rounded-lg">
                     <div>
-                      <p className="font-medium text-gray-900 dark:text-white">
+                      <p className="font-medium text-foreground">
                         Two-Factor Authentication
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <p className="text-sm text-muted-foreground">
                         Add an extra layer of security
                       </p>
                     </div>
@@ -326,36 +326,36 @@ export default function SettingsPage() {
                         onChange={(e) => setTwoFactorAuth(e.target.checked)}
                         className="sr-only peer"
                       />
-                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-amber-300 dark:peer-focus:ring-amber-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-amber-600"></div>
+                      <div className="w-11 h-6 bg-[#ECE6DC] peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-amber-300 dark:peer-focus:ring-amber-800 rounded-full peer dark:bg-[#33291f] peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[#E4DED2] after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-[#33291f] peer-checked:bg-primary"></div>
                     </label>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label className="block text-sm font-medium text-foreground mb-2">
                       Session Timeout (minutes)
                     </label>
                     <input
                       type="number"
                       value={sessionTimeout}
                       onChange={(e) => setSessionTimeout(e.target.value)}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                      className="w-full px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label className="block text-sm font-medium text-foreground mb-2">
                       Password Expiry (days)
                     </label>
                     <input
                       type="number"
                       value={passwordExpiry}
                       onChange={(e) => setPasswordExpiry(e.target.value)}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                      className="w-full px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
 
-                  <div className="border-t border-gray-200 dark:border-gray-600 pt-4 mt-6">
-                    <button className="flex items-center gap-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600">
+                  <div className="border-t border-[#ECE6DC] dark:border-[#33291f] pt-4 mt-6">
+                    <button className="flex items-center gap-2 px-4 py-2 bg-[#ECE6DC] dark:bg-[#2a2118] text-foreground rounded-lg hover:bg-[#E4DED2] dark:hover:bg-[#33291f]">
                       <Key className="w-5 h-5" />
                       Change Password
                     </button>
@@ -368,21 +368,21 @@ export default function SettingsPage() {
             {activeTab === 'platform' && (
               <div className="space-y-6">
                 <div>
-                  <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                  <h2 className="text-xl font-semibold text-foreground mb-4">
                     Platform Settings
                   </h2>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
+                  <p className="text-sm text-muted-foreground mb-6">
                     Configure platform behavior and features
                   </p>
                 </div>
 
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <div className="flex items-center justify-between p-4 bg-background dark:bg-[#2a2118] rounded-lg">
                     <div>
-                      <p className="font-medium text-gray-900 dark:text-white">
+                      <p className="font-medium text-foreground">
                         Maintenance Mode
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <p className="text-sm text-muted-foreground">
                         Put the platform in maintenance mode
                       </p>
                     </div>
@@ -393,16 +393,16 @@ export default function SettingsPage() {
                         onChange={(e) => setMaintenanceMode(e.target.checked)}
                         className="sr-only peer"
                       />
-                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-amber-300 dark:peer-focus:ring-amber-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-amber-600"></div>
+                      <div className="w-11 h-6 bg-[#ECE6DC] peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-amber-300 dark:peer-focus:ring-amber-800 rounded-full peer dark:bg-[#33291f] peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[#E4DED2] after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-[#33291f] peer-checked:bg-primary"></div>
                     </label>
                   </div>
 
-                  <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <div className="flex items-center justify-between p-4 bg-background dark:bg-[#2a2118] rounded-lg">
                     <div>
-                      <p className="font-medium text-gray-900 dark:text-white">
+                      <p className="font-medium text-foreground">
                         User Registration
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <p className="text-sm text-muted-foreground">
                         Allow new users to register
                       </p>
                     </div>
@@ -413,16 +413,16 @@ export default function SettingsPage() {
                         onChange={(e) => setUserRegistration(e.target.checked)}
                         className="sr-only peer"
                       />
-                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-amber-300 dark:peer-focus:ring-amber-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-amber-600"></div>
+                      <div className="w-11 h-6 bg-[#ECE6DC] peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-amber-300 dark:peer-focus:ring-amber-800 rounded-full peer dark:bg-[#33291f] peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[#E4DED2] after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-[#33291f] peer-checked:bg-primary"></div>
                     </label>
                   </div>
 
-                  <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <div className="flex items-center justify-between p-4 bg-background dark:bg-[#2a2118] rounded-lg">
                     <div>
-                      <p className="font-medium text-gray-900 dark:text-white">
+                      <p className="font-medium text-foreground">
                         Auto-Approve Listings
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <p className="text-sm text-muted-foreground">
                         Automatically approve new listings
                       </p>
                     </div>
@@ -433,24 +433,24 @@ export default function SettingsPage() {
                         onChange={(e) => setAutoApproveListings(e.target.checked)}
                         className="sr-only peer"
                       />
-                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-amber-300 dark:peer-focus:ring-amber-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-amber-600"></div>
+                      <div className="w-11 h-6 bg-[#ECE6DC] peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-amber-300 dark:peer-focus:ring-amber-800 rounded-full peer dark:bg-[#33291f] peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[#E4DED2] after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-[#33291f] peer-checked:bg-primary"></div>
                     </label>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label className="block text-sm font-medium text-foreground mb-2">
                       Max Listings Per User
                     </label>
                     <input
                       type="number"
                       value={maxListingsPerUser}
                       onChange={(e) => setMaxListingsPerUser(e.target.value)}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                      className="w-full px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
 
-                  <div className="border-t border-gray-200 dark:border-gray-600 pt-4 mt-6">
-                    <button className="flex items-center gap-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600">
+                  <div className="border-t border-[#ECE6DC] dark:border-[#33291f] pt-4 mt-6">
+                    <button className="flex items-center gap-2 px-4 py-2 bg-[#ECE6DC] dark:bg-[#2a2118] text-foreground rounded-lg hover:bg-[#E4DED2] dark:hover:bg-[#33291f]">
                       <Database className="w-5 h-5" />
                       Clear Cache
                     </button>
@@ -460,11 +460,11 @@ export default function SettingsPage() {
             )}
 
             {/* Save button */}
-            <div className="border-t border-gray-200 dark:border-gray-600 pt-6 mt-6">
+            <div className="border-t border-[#ECE6DC] dark:border-[#33291f] pt-6 mt-6">
               <button
                 onClick={handleSaveSettings}
                 disabled={isSaving}
-                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold rounded-lg hover:from-amber-600 hover:to-orange-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                className="flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:from-amber-600 hover:to-orange-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
               >
                 {isSaving ? (
                   <>

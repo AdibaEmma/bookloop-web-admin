@@ -228,7 +228,7 @@ export default function DashboardLayout({
       {/* Mobile sidebar backdrop */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-gray-600 bg-opacity-75 z-20 lg:hidden"
+          className="fixed inset-0 bg-[#33291f] bg-opacity-75 z-20 lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}
@@ -253,7 +253,7 @@ export default function DashboardLayout({
             </div>
             <button
               onClick={() => setSidebarOpen(false)}
-              className="lg:hidden text-gray-500 hover:text-gray-700 dark:text-gray-300"
+              className="lg:hidden text-muted-foreground hover:text-foreground"
             >
               <X className="w-6 h-6" />
             </button>
@@ -275,7 +275,7 @@ export default function DashboardLayout({
                       className={`w-full flex items-center justify-between px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                         isChildActive(item)
                           ? 'bg-primary/10 text-primary font-semibold'
-                          : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                          : 'text-foreground hover:bg-background dark:hover:bg-[#2a2118]'
                       }`}
                     >
                       <span className="flex items-center gap-3">
@@ -301,7 +301,7 @@ export default function DashboardLayout({
                               className={`flex items-center gap-3 px-3 py-2 text-sm rounded-lg transition-colors ${
                                 isChildItemActive
                                   ? 'bg-primary/10 text-primary font-semibold'
-                                  : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
+                                  : 'text-muted-foreground hover:bg-background dark:hover:bg-[#2a2118]'
                               }`}
                               onClick={() => setSidebarOpen(false)}
                             >
@@ -323,7 +323,7 @@ export default function DashboardLayout({
                   className={`flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                     isActive
                       ? 'bg-primary/10 text-primary font-semibold'
-                      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                      : 'text-foreground hover:bg-background dark:hover:bg-[#2a2118]'
                   }`}
                   onClick={() => setSidebarOpen(false)}
                 >
@@ -342,10 +342,10 @@ export default function DashboardLayout({
                 {user.last_name?.[0]}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
+                <p className="text-sm font-medium text-foreground truncate">
                   {user.first_name} {user.last_name}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
+                <p className="text-xs text-muted-foreground truncate">
                   {user.email}
                 </p>
               </div>
@@ -367,14 +367,14 @@ export default function DashboardLayout({
         <header className="bg-white dark:bg-[#1c1712] border-b border-[#ECE6DC] dark:border-[#33291f] h-16 flex items-center justify-between px-6">
           <button
             onClick={() => setSidebarOpen(true)}
-            className="lg:hidden text-gray-500 hover:text-gray-700 dark:text-gray-400"
+            className="lg:hidden text-muted-foreground hover:text-foreground dark:text-muted-foreground"
             >
             <Menu className="w-6 h-6" />
           </button>
 
           <div className="flex-1 max-w-xl mx-4">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground dark:text-muted-foreground" />
               <input
                 type="text"
                 placeholder="Search..."
@@ -385,7 +385,7 @@ export default function DashboardLayout({
 
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <button className="relative p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+            <button className="relative p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#2a2118] rounded-lg transition-colors">
               <Bell className="w-6 h-6" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
             </button>

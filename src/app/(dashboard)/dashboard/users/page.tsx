@@ -83,7 +83,7 @@ function UserActionMenu({ user, onAction }: { user: User; onAction: (action: str
     <div className="relative">
       <button
         onClick={() => setMenuOpen(!menuOpen)}
-        className="p-1.5 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+        className="p-1.5 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#2a2118] rounded-lg"
       >
         <MoreVertical className="w-4 h-4" />
       </button>
@@ -94,13 +94,13 @@ function UserActionMenu({ user, onAction }: { user: User; onAction: (action: str
             className="fixed inset-0 z-10"
             onClick={() => setMenuOpen(false)}
           ></div>
-          <div className="absolute right-0 mt-1 w-44 bg-white dark:bg-gray-700 rounded-lg shadow-lg z-20 py-1">
+          <div className="absolute right-0 mt-1 w-44 bg-white dark:bg-[#2a2118] rounded-lg shadow-lg z-20 py-1">
             <button
               onClick={() => {
                 onAction('view', user);
                 setMenuOpen(false);
               }}
-              className="flex items-center gap-2 w-full px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+              className="flex items-center gap-2 w-full px-3 py-2 text-sm text-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#33291f]"
             >
               <Eye className="w-4 h-4" />
               View Details
@@ -110,7 +110,7 @@ function UserActionMenu({ user, onAction }: { user: User; onAction: (action: str
                 onAction('edit', user);
                 setMenuOpen(false);
               }}
-              className="flex items-center gap-2 w-full px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+              className="flex items-center gap-2 w-full px-3 py-2 text-sm text-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#33291f]"
             >
               <Edit className="w-4 h-4" />
               Edit User
@@ -120,7 +120,7 @@ function UserActionMenu({ user, onAction }: { user: User; onAction: (action: str
                 onAction(user.is_active ? 'ban' : 'unban', user);
                 setMenuOpen(false);
               }}
-              className={`flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 ${
+              className={`flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-[#F1ECE3] dark:hover:bg-[#33291f] ${
                 user.is_active
                   ? 'text-red-600 dark:text-red-400'
                   : 'text-green-600 dark:text-green-400'
@@ -164,7 +164,7 @@ function StatusBadge({ isActive, isVerified }: { isActive: boolean; isVerified: 
     );
   }
   return (
-    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-medium rounded-full">
+    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#F1ECE3] dark:bg-[#2a2118] text-foreground text-xs font-medium rounded-full">
       Unverified
     </span>
   );
@@ -348,70 +348,70 @@ export default function UsersPage() {
     <div className="space-y-6">
       {/* Page header */}
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+        <h1 className="text-3xl font-bold text-foreground">
           Users Management
         </h1>
-        <p className="text-gray-600 dark:text-gray-400 mt-2">
+        <p className="text-muted-foreground mt-2">
           View and manage all users on the platform
         </p>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-4">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
               <UserCheck className="w-5 h-5 text-blue-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 Total Users
               </p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+              <p className="text-2xl font-bold text-foreground">
                 {meta.total}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-4">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
               <CheckCircle className="w-5 h-5 text-green-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Active</p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+              <p className="text-sm text-muted-foreground">Active</p>
+              <p className="text-2xl font-bold text-foreground">
                 {users.filter((u) => u.is_active).length}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-4">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
               <CheckCircle className="w-5 h-5 text-blue-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 Verified
               </p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+              <p className="text-2xl font-bold text-foreground">
                 {users.filter((u) => u.is_verified).length}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-4">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-red-50 dark:bg-red-900/20 rounded-lg">
               <UserX className="w-5 h-5 text-red-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Banned</p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+              <p className="text-sm text-muted-foreground">Banned</p>
+              <p className="text-2xl font-bold text-foreground">
                 {users.filter((u) => !u.is_active).length}
               </p>
             </div>
@@ -420,18 +420,18 @@ export default function UsersPage() {
       </div>
 
       {/* Filters and search */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+      <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
         <div className="flex flex-col md:flex-row gap-4">
           {/* Search */}
           <div className="flex-1">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground dark:text-muted-foreground" />
               <input
                 type="text"
                 placeholder="Search users by name, email, or phone..."
                 value={searchQuery}
                 onChange={(e) => handleFilterChange(setSearchQuery, e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full pl-10 pr-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
           </div>
@@ -440,7 +440,7 @@ export default function UsersPage() {
           <select
             value={filterStatus}
             onChange={(e) => handleFilterChange(setFilterStatus, e.target.value as 'all' | 'active' | 'inactive')}
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <option value="all">All Status</option>
             <option value="active">Active</option>
@@ -451,7 +451,7 @@ export default function UsersPage() {
           <select
             value={filterVerified}
             onChange={(e) => handleFilterChange(setFilterVerified, e.target.value as 'all' | 'verified' | 'unverified')}
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <option value="all">All Verification</option>
             <option value="verified">Verified</option>
@@ -466,18 +466,18 @@ export default function UsersPage() {
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600"></div>
         </div>
       ) : users && users.length > 0 ? (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow overflow-hidden">
           {/* Table Header with Limit Selector */}
-          <div className="flex items-center justify-between px-6 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
+          <div className="flex items-center justify-between px-6 py-3 border-b border-[#ECE6DC] dark:border-[#33291f] bg-background dark:bg-[#2a2118]/50">
             <div className="flex items-center gap-2">
-              <label htmlFor="limit" className="text-sm text-gray-600 dark:text-gray-400">
+              <label htmlFor="limit" className="text-sm text-muted-foreground">
                 Show:
               </label>
               <select
                 id="limit"
                 value={limit}
                 onChange={(e) => handleLimitChange(Number(e.target.value) as typeof LIMIT_OPTIONS[number])}
-                className="px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="px-2 py-1 text-sm border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 {LIMIT_OPTIONS.map((option) => (
                   <option key={option} value={option}>
@@ -485,48 +485,48 @@ export default function UsersPage() {
                   </option>
                 ))}
               </select>
-              <span className="text-sm text-gray-600 dark:text-gray-400">entries</span>
+              <span className="text-sm text-muted-foreground">entries</span>
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-sm text-muted-foreground">
               Showing {((meta.page - 1) * meta.limit) + 1} to {Math.min(meta.page * meta.limit, meta.total)} of {meta.total}
             </div>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50 dark:bg-gray-700/50">
+              <thead className="bg-background dark:bg-[#2a2118]/50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     User
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Contact
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Location
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-center text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Listings
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-center text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Exchanges
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Joined
                   </th>
-                  <th className="px-6 py-3 text-right text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-right text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+              <tbody className="divide-y divide-[#ECE6DC] dark:divide-[#33291f]">
                 {users.map((user) => (
                   <tr
                     key={user.id}
-                    className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors"
+                    className="hover:bg-background dark:hover:bg-[#2a2118]/30 transition-colors"
                   >
                     {/* User Info */}
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -537,7 +537,7 @@ export default function UsersPage() {
                         </div>
                         <div>
                           <div className="flex items-center gap-2">
-                            <p className="font-medium text-gray-900 dark:text-white">
+                            <p className="font-medium text-foreground">
                               {user.first_name} {user.last_name}
                             </p>
                             {user.roles && user.roles.length > 0 && user.roles.includes('admin') && (
@@ -553,12 +553,12 @@ export default function UsersPage() {
                     {/* Contact */}
                     <td className="px-6 py-4">
                       <div className="space-y-1">
-                        <div className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400">
+                        <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
                           <Mail className="w-3.5 h-3.5" />
                           <span className="truncate max-w-[180px]">{user.email}</span>
                         </div>
                         {user.phone_number && (
-                          <div className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
+                          <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
                             <Phone className="w-3.5 h-3.5" />
                             {user.phone_number}
                           </div>
@@ -569,12 +569,12 @@ export default function UsersPage() {
                     {/* Location */}
                     <td className="px-6 py-4 whitespace-nowrap">
                       {user.city ? (
-                        <div className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400">
+                        <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
                           <MapPin className="w-3.5 h-3.5" />
                           {user.city}{user.region && `, ${user.region}`}
                         </div>
                       ) : (
-                        <span className="text-sm text-gray-400 dark:text-gray-500">—</span>
+                        <span className="text-sm text-muted-foreground dark:text-muted-foreground">—</span>
                       )}
                     </td>
 
@@ -585,21 +585,21 @@ export default function UsersPage() {
 
                     {/* Listings */}
                     <td className="px-6 py-4 whitespace-nowrap text-center">
-                      <span className="text-sm font-medium text-gray-900 dark:text-white">
+                      <span className="text-sm font-medium text-foreground">
                         {user.listings_count || 0}
                       </span>
                     </td>
 
                     {/* Exchanges */}
                     <td className="px-6 py-4 whitespace-nowrap text-center">
-                      <span className="text-sm font-medium text-gray-900 dark:text-white">
+                      <span className="text-sm font-medium text-foreground">
                         {user.exchanges_count || 0}
                       </span>
                     </td>
 
                     {/* Joined Date */}
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm text-gray-600 dark:text-gray-400">
+                      <span className="text-sm text-muted-foreground">
                         {new Date(user.created_at).toLocaleDateString('en-US', {
                           month: 'short',
                           day: 'numeric',
@@ -619,9 +619,9 @@ export default function UsersPage() {
           </div>
 
           {/* Pagination Controls */}
-          <div className="flex items-center justify-between px-6 py-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
+          <div className="flex items-center justify-between px-6 py-4 border-t border-[#ECE6DC] dark:border-[#33291f] bg-background dark:bg-[#2a2118]/50">
             {/* Results info - left */}
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-sm text-muted-foreground">
               Showing {((meta.page - 1) * meta.limit) + 1} to {Math.min(meta.page * meta.limit, meta.total)} of {meta.total}
             </div>
 
@@ -630,7 +630,7 @@ export default function UsersPage() {
               <button
                 onClick={() => setPage(1)}
                 disabled={meta.page === 1}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#33291f] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                 title="First page"
               >
                 <ChevronsLeft className="w-5 h-5" />
@@ -639,7 +639,7 @@ export default function UsersPage() {
               <button
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                 disabled={meta.page === 1}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#33291f] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                 title="Previous page"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -677,7 +677,7 @@ export default function UsersPage() {
 
                   return pages.map((pageNum, idx) =>
                     pageNum === '...' ? (
-                      <span key={`ellipsis-${idx}`} className="px-2 text-gray-400 dark:text-gray-500">
+                      <span key={`ellipsis-${idx}`} className="px-2 text-muted-foreground dark:text-muted-foreground">
                         ...
                       </span>
                     ) : (
@@ -686,8 +686,8 @@ export default function UsersPage() {
                         onClick={() => setPage(pageNum as number)}
                         className={`min-w-[36px] h-9 px-3 text-sm font-medium rounded-lg transition-colors ${
                           meta.page === pageNum
-                            ? 'bg-amber-500 text-white'
-                            : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-600'
+                            ? 'bg-primary text-white'
+                            : 'text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#33291f]'
                         }`}
                       >
                         {pageNum}
@@ -700,7 +700,7 @@ export default function UsersPage() {
               <button
                 onClick={() => setPage((p) => Math.min(meta.totalPages, p + 1))}
                 disabled={meta.page === meta.totalPages}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#33291f] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                 title="Next page"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -709,7 +709,7 @@ export default function UsersPage() {
               <button
                 onClick={() => setPage(meta.totalPages)}
                 disabled={meta.page === meta.totalPages}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#33291f] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                 title="Last page"
               >
                 <ChevronsRight className="w-5 h-5" />
@@ -718,12 +718,12 @@ export default function UsersPage() {
           </div>
         </div>
       ) : (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-12 text-center">
-          <UserX className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-12 text-center">
+          <UserX className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
+          <h3 className="text-lg font-semibold text-foreground mb-2">
             No users found
           </h3>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-muted-foreground">
             Try adjusting your search or filters
           </p>
         </div>
@@ -798,15 +798,15 @@ function UserDetailsModal({
 
   return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto my-8">
+      <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto my-8">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700 sticky top-0 bg-white dark:bg-gray-800 z-10">
-          <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+        <div className="flex items-center justify-between p-6 border-b border-[#ECE6DC] dark:border-[#33291f] sticky top-0 bg-white dark:bg-[#241c16] z-10">
+          <h2 className="text-xl font-bold text-foreground">
             User Details
           </h2>
           <button
             onClick={onClose}
-            className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+            className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#2a2118] rounded-lg transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -838,7 +838,7 @@ function UserDetailsModal({
 
               <div className="flex-1">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  <h3 className="text-2xl font-bold text-foreground">
                     {displayUser.first_name} {displayUser.middle_name || ''} {displayUser.last_name}
                   </h3>
                   {displayUser.is_verified && (
@@ -856,7 +856,7 @@ function UserDetailsModal({
                 </div>
 
                 {displayUser.bio && (
-                  <p className="text-gray-600 dark:text-gray-400 mt-2">
+                  <p className="text-muted-foreground mt-2">
                     {displayUser.bio}
                   </p>
                 )}
@@ -879,57 +879,57 @@ function UserDetailsModal({
 
             {/* Stats Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 text-center">
+              <div className="bg-background dark:bg-[#2a2118]/50 rounded-lg p-4 text-center">
                 <BookOpen className="w-6 h-6 text-amber-500 mx-auto mb-2" />
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                <p className="text-2xl font-bold text-foreground">
                   {displayUser.listings_count || 0}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Listings</p>
+                <p className="text-xs text-muted-foreground">Listings</p>
               </div>
-              <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 text-center">
+              <div className="bg-background dark:bg-[#2a2118]/50 rounded-lg p-4 text-center">
                 <RefreshCw className="w-6 h-6 text-green-500 mx-auto mb-2" />
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                <p className="text-2xl font-bold text-foreground">
                   {displayUser.total_exchanges || displayUser.exchanges_count || 0}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Exchanges</p>
+                <p className="text-xs text-muted-foreground">Exchanges</p>
               </div>
-              <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 text-center">
+              <div className="bg-background dark:bg-[#2a2118]/50 rounded-lg p-4 text-center">
                 <Star className="w-6 h-6 text-yellow-500 mx-auto mb-2" />
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                <p className="text-2xl font-bold text-foreground">
                   {displayUser.rating?.toFixed(1) || 'N/A'}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
+                <p className="text-xs text-muted-foreground">
                   Rating ({displayUser.total_ratings || 0})
                 </p>
               </div>
-              <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 text-center">
+              <div className="bg-background dark:bg-[#2a2118]/50 rounded-lg p-4 text-center">
                 <Shield className="w-6 h-6 text-blue-500 mx-auto mb-2" />
-                <p className="text-2xl font-bold text-gray-900 dark:text-white capitalize">
+                <p className="text-2xl font-bold text-foreground capitalize">
                   {displayUser.subscription_tier || 'Free'}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Plan</p>
+                <p className="text-xs text-muted-foreground">Plan</p>
               </div>
             </div>
 
             {/* Contact Information */}
             <div>
-              <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-3">
+              <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-3">
                 Contact Information
               </h4>
-              <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 space-y-3">
+              <div className="bg-background dark:bg-[#2a2118]/50 rounded-lg p-4 space-y-3">
                 <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-gray-400 dark:text-gray-500" />
+                  <Mail className="w-5 h-5 text-muted-foreground dark:text-muted-foreground" />
                   <div className="flex-1">
-                    <p className="text-sm text-gray-900 dark:text-white">{displayUser.email}</p>
+                    <p className="text-sm text-foreground">{displayUser.email}</p>
                     {displayUser.email_verified && (
                       <span className="text-xs text-green-600 dark:text-green-400">Verified</span>
                     )}
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-gray-400 dark:text-gray-500" />
+                  <Phone className="w-5 h-5 text-muted-foreground dark:text-muted-foreground" />
                   <div className="flex-1">
-                    <p className="text-sm text-gray-900 dark:text-white">{displayUser.phone_number}</p>
+                    <p className="text-sm text-foreground">{displayUser.phone_number}</p>
                     {displayUser.phone_verified && (
                       <span className="text-xs text-green-600 dark:text-green-400">Verified</span>
                     )}
@@ -937,8 +937,8 @@ function UserDetailsModal({
                 </div>
                 {(displayUser.city || displayUser.address) && (
                   <div className="flex items-center gap-3">
-                    <MapPin className="w-5 h-5 text-gray-400 dark:text-gray-500" />
-                    <p className="text-sm text-gray-900 dark:text-white">
+                    <MapPin className="w-5 h-5 text-muted-foreground dark:text-muted-foreground" />
+                    <p className="text-sm text-foreground">
                       {displayUser.address && `${displayUser.address}, `}
                       {displayUser.city}
                       {displayUser.region && `, ${displayUser.region}`}
@@ -950,23 +950,23 @@ function UserDetailsModal({
 
             {/* Verification Status */}
             <div>
-              <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-3">
+              <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-3">
                 Verification Status
               </h4>
               <div className="grid grid-cols-3 gap-3">
                 <div className={`rounded-lg p-3 text-center ${
                   displayUser.email_verified
                     ? 'bg-green-50 dark:bg-green-900/20'
-                    : 'bg-gray-50 dark:bg-gray-700/50'
+                    : 'bg-background dark:bg-[#2a2118]/50'
                 }`}>
                   <Mail className={`w-5 h-5 mx-auto mb-1 ${
-                    displayUser.email_verified ? 'text-green-500' : 'text-gray-400 dark:text-gray-500'
+                    displayUser.email_verified ? 'text-green-500' : 'text-muted-foreground dark:text-muted-foreground'
                   }`} />
-                  <p className="text-xs font-medium text-gray-700 dark:text-gray-300">Email</p>
+                  <p className="text-xs font-medium text-foreground">Email</p>
                   <p className={`text-xs ${
                     displayUser.email_verified
                       ? 'text-green-600 dark:text-green-400'
-                      : 'text-gray-500 dark:text-gray-400'
+                      : 'text-muted-foreground'
                   }`}>
                     {displayUser.email_verified ? 'Verified' : 'Not Verified'}
                   </p>
@@ -974,16 +974,16 @@ function UserDetailsModal({
                 <div className={`rounded-lg p-3 text-center ${
                   displayUser.phone_verified
                     ? 'bg-green-50 dark:bg-green-900/20'
-                    : 'bg-gray-50 dark:bg-gray-700/50'
+                    : 'bg-background dark:bg-[#2a2118]/50'
                 }`}>
                   <Phone className={`w-5 h-5 mx-auto mb-1 ${
-                    displayUser.phone_verified ? 'text-green-500' : 'text-gray-400 dark:text-gray-500'
+                    displayUser.phone_verified ? 'text-green-500' : 'text-muted-foreground dark:text-muted-foreground'
                   }`} />
-                  <p className="text-xs font-medium text-gray-700 dark:text-gray-300">Phone</p>
+                  <p className="text-xs font-medium text-foreground">Phone</p>
                   <p className={`text-xs ${
                     displayUser.phone_verified
                       ? 'text-green-600 dark:text-green-400'
-                      : 'text-gray-500 dark:text-gray-400'
+                      : 'text-muted-foreground'
                   }`}>
                     {displayUser.phone_verified ? 'Verified' : 'Not Verified'}
                   </p>
@@ -991,16 +991,16 @@ function UserDetailsModal({
                 <div className={`rounded-lg p-3 text-center ${
                   displayUser.ghana_card_verified
                     ? 'bg-green-50 dark:bg-green-900/20'
-                    : 'bg-gray-50 dark:bg-gray-700/50'
+                    : 'bg-background dark:bg-[#2a2118]/50'
                 }`}>
                   <Shield className={`w-5 h-5 mx-auto mb-1 ${
-                    displayUser.ghana_card_verified ? 'text-green-500' : 'text-gray-400 dark:text-gray-500'
+                    displayUser.ghana_card_verified ? 'text-green-500' : 'text-muted-foreground dark:text-muted-foreground'
                   }`} />
-                  <p className="text-xs font-medium text-gray-700 dark:text-gray-300">Ghana Card</p>
+                  <p className="text-xs font-medium text-foreground">Ghana Card</p>
                   <p className={`text-xs ${
                     displayUser.ghana_card_verified
                       ? 'text-green-600 dark:text-green-400'
-                      : 'text-gray-500 dark:text-gray-400'
+                      : 'text-muted-foreground'
                   }`}>
                     {displayUser.ghana_card_verified ? 'Verified' : 'Not Verified'}
                   </p>
@@ -1010,16 +1010,16 @@ function UserDetailsModal({
 
             {/* Account Activity */}
             <div>
-              <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-3">
+              <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-3">
                 Account Activity
               </h4>
-              <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 space-y-2">
+              <div className="bg-background dark:bg-[#2a2118]/50 rounded-lg p-4 space-y-2">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-600 dark:text-gray-400 flex items-center gap-2">
+                  <span className="text-muted-foreground flex items-center gap-2">
                     <Calendar className="w-4 h-4" />
                     Member Since
                   </span>
-                  <span className="text-gray-900 dark:text-white">
+                  <span className="text-foreground">
                     {new Date(displayUser.created_at).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'long',
@@ -1029,11 +1029,11 @@ function UserDetailsModal({
                 </div>
                 {displayUser.last_login_at && (
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600 dark:text-gray-400 flex items-center gap-2">
+                    <span className="text-muted-foreground flex items-center gap-2">
                       <Clock className="w-4 h-4" />
                       Last Login
                     </span>
-                    <span className="text-gray-900 dark:text-white">
+                    <span className="text-foreground">
                       {new Date(displayUser.last_login_at).toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'short',
@@ -1048,7 +1048,7 @@ function UserDetailsModal({
             </div>
 
             {/* Actions */}
-            <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex items-center justify-between pt-4 border-t border-[#ECE6DC] dark:border-[#33291f]">
               <button
                 onClick={onBanToggle}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
@@ -1073,13 +1073,13 @@ function UserDetailsModal({
               <div className="flex items-center gap-3">
                 <button
                   onClick={onClose}
-                  className="px-4 py-2 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
+                  className="px-4 py-2 text-foreground bg-white dark:bg-[#2a2118] border border-[#E4DED2] dark:border-[#33291f] rounded-lg hover:bg-background dark:hover:bg-[#33291f] transition-colors"
                 >
                   Close
                 </button>
                 <button
                   onClick={onEdit}
-                  className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white font-medium rounded-lg hover:from-amber-600 hover:to-orange-700 transition-all"
+                  className="flex items-center gap-2 px-4 py-2 bg-primary text-white font-medium rounded-lg hover:from-amber-600 hover:to-orange-700 transition-all"
                 >
                   <Edit className="w-4 h-4" />
                   Edit User
@@ -1158,20 +1158,20 @@ function EditUserModal({
 
   return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-xl w-full max-h-[90vh] overflow-y-auto my-8">
+      <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-xl max-w-xl w-full max-h-[90vh] overflow-y-auto my-8">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700 sticky top-0 bg-white dark:bg-gray-800 z-10">
+        <div className="flex items-center justify-between p-6 border-b border-[#ECE6DC] dark:border-[#33291f] sticky top-0 bg-white dark:bg-[#241c16] z-10">
           <div>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+            <h2 className="text-xl font-bold text-foreground">
               Edit User
             </h2>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            <p className="text-sm text-muted-foreground mt-1">
               Update user information
             </p>
           </div>
           <button
             onClick={onClose}
-            className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+            className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#2a2118] rounded-lg transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -1182,7 +1182,7 @@ function EditUserModal({
           {/* Name Fields */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 First Name
               </label>
               <input
@@ -1190,11 +1190,11 @@ function EditUserModal({
                 name="first_name"
                 value={formData.first_name}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full px-3 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 Middle Name
               </label>
               <input
@@ -1202,11 +1202,11 @@ function EditUserModal({
                 name="middle_name"
                 value={formData.middle_name}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full px-3 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 Last Name
               </label>
               <input
@@ -1214,7 +1214,7 @@ function EditUserModal({
                 name="last_name"
                 value={formData.last_name}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full px-3 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
           </div>
@@ -1222,7 +1222,7 @@ function EditUserModal({
           {/* Contact Fields */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 Email
               </label>
               <input
@@ -1230,11 +1230,11 @@ function EditUserModal({
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full px-3 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 Phone Number
               </label>
               <input
@@ -1242,7 +1242,7 @@ function EditUserModal({
                 name="phone_number"
                 value={formData.phone_number}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full px-3 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
           </div>
@@ -1250,7 +1250,7 @@ function EditUserModal({
           {/* Location Fields */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 City
               </label>
               <input
@@ -1258,18 +1258,18 @@ function EditUserModal({
                 name="city"
                 value={formData.city}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full px-3 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 Region
               </label>
               <select
                 name="region"
                 value={formData.region}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full px-3 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="">Select Region</option>
                 {ghanaRegions.map((region) => (
@@ -1283,7 +1283,7 @@ function EditUserModal({
 
           {/* Bio */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-foreground mb-1">
               Bio
             </label>
             <textarea
@@ -1291,13 +1291,13 @@ function EditUserModal({
               value={formData.bio}
               onChange={handleChange}
               rows={3}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none"
+              className="w-full px-3 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
             />
           </div>
 
           {/* Verification Toggles */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+            <label className="block text-sm font-medium text-foreground mb-3">
               Verification Status
             </label>
             <div className="space-y-3">
@@ -1307,9 +1307,9 @@ function EditUserModal({
                   name="email_verified"
                   checked={formData.email_verified}
                   onChange={handleChange}
-                  className="w-4 h-4 text-amber-500 border-gray-300 rounded focus:ring-amber-500"
+                  className="w-4 h-4 text-amber-500 border-[#E4DED2] rounded focus:ring-primary"
                 />
-                <span className="text-sm text-gray-700 dark:text-gray-300">
+                <span className="text-sm text-foreground">
                   Email Verified
                 </span>
               </label>
@@ -1319,9 +1319,9 @@ function EditUserModal({
                   name="phone_verified"
                   checked={formData.phone_verified}
                   onChange={handleChange}
-                  className="w-4 h-4 text-amber-500 border-gray-300 rounded focus:ring-amber-500"
+                  className="w-4 h-4 text-amber-500 border-[#E4DED2] rounded focus:ring-primary"
                 />
-                <span className="text-sm text-gray-700 dark:text-gray-300">
+                <span className="text-sm text-foreground">
                   Phone Verified
                 </span>
               </label>
@@ -1331,9 +1331,9 @@ function EditUserModal({
                   name="ghana_card_verified"
                   checked={formData.ghana_card_verified}
                   onChange={handleChange}
-                  className="w-4 h-4 text-amber-500 border-gray-300 rounded focus:ring-amber-500"
+                  className="w-4 h-4 text-amber-500 border-[#E4DED2] rounded focus:ring-primary"
                 />
-                <span className="text-sm text-gray-700 dark:text-gray-300">
+                <span className="text-sm text-foreground">
                   Ghana Card Verified
                 </span>
               </label>
@@ -1343,9 +1343,9 @@ function EditUserModal({
                   name="is_active"
                   checked={formData.is_active}
                   onChange={handleChange}
-                  className="w-4 h-4 text-amber-500 border-gray-300 rounded focus:ring-amber-500"
+                  className="w-4 h-4 text-amber-500 border-[#E4DED2] rounded focus:ring-primary"
                 />
-                <span className="text-sm text-gray-700 dark:text-gray-300">
+                <span className="text-sm text-foreground">
                   Account Active
                 </span>
               </label>
@@ -1353,19 +1353,19 @@ function EditUserModal({
           </div>
 
           {/* Actions */}
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#ECE6DC] dark:border-[#33291f]">
             <button
               type="button"
               onClick={onClose}
               disabled={updateMutation.isPending}
-              className="px-4 py-2 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors disabled:opacity-50"
+              className="px-4 py-2 text-foreground bg-white dark:bg-[#2a2118] border border-[#E4DED2] dark:border-[#33291f] rounded-lg hover:bg-background dark:hover:bg-[#33291f] transition-colors disabled:opacity-50"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={updateMutation.isPending}
-              className="flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white font-medium rounded-lg hover:from-amber-600 hover:to-orange-700 transition-all disabled:opacity-50"
+              className="flex items-center gap-2 px-6 py-2 bg-primary text-white font-medium rounded-lg hover:from-amber-600 hover:to-orange-700 transition-all disabled:opacity-50"
             >
               {updateMutation.isPending ? (
                 <>

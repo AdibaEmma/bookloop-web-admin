@@ -169,7 +169,7 @@ export default function LeaderboardsPage() {
       );
     }
     return (
-      <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 font-medium">
+      <div className="w-8 h-8 rounded-full bg-[#F1ECE3] flex items-center justify-center text-muted-foreground font-medium">
         {rank}
       </div>
     );
@@ -196,7 +196,7 @@ export default function LeaderboardsPage() {
         </span>
       );
     }
-    return <span className="text-gray-400 text-xs">-</span>;
+    return <span className="text-muted-foreground text-xs">-</span>;
   };
 
   const chartData = selectedCategory.entries.slice(0, 5).map((entry) => ({
@@ -209,8 +209,8 @@ export default function LeaderboardsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Leaderboards</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">Leaderboards</h1>
+          <p className="text-muted-foreground mt-1">
             Celebrate and track top performers in the community
           </p>
         </div>
@@ -218,7 +218,7 @@ export default function LeaderboardsPage() {
           <select
             value={timeRange}
             onChange={(e) => setTimeRange(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+            className="px-3 py-2 border border-[#E4DED2] rounded-lg text-sm"
           >
             <option value="week">This Week</option>
             <option value="month">This Month</option>
@@ -238,7 +238,7 @@ export default function LeaderboardsPage() {
             className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
               selectedCategory.id === category.id
                 ? 'bg-indigo-600 text-white'
-                : 'bg-white border border-gray-200 text-gray-700 hover:border-indigo-300'
+                : 'bg-white border border-[#ECE6DC] text-foreground hover:border-indigo-300'
             }`}
           >
             {getCategoryIcon(category.icon)}
@@ -249,10 +249,10 @@ export default function LeaderboardsPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Main Leaderboard */}
-        <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 dark:border-gray-700">
-          <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">{selectedCategory.name}</h2>
-            <p className="text-sm text-gray-500 mt-1">{selectedCategory.description}</p>
+        <div className="lg:col-span-2 bg-white rounded-xl border border-[#ECE6DC] dark:border-[#33291f]">
+          <div className="p-6 border-b border-[#ECE6DC] dark:border-[#33291f]">
+            <h2 className="text-lg font-semibold text-foreground">{selectedCategory.name}</h2>
+            <p className="text-sm text-muted-foreground mt-1">{selectedCategory.description}</p>
           </div>
 
           {/* Top 3 Podium */}
@@ -263,10 +263,10 @@ export default function LeaderboardsPage() {
                 <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-gray-300 to-gray-500 flex items-center justify-center text-white text-xl font-bold mb-2">
                   {selectedCategory.entries[1]?.user_name.split(' ').map(n => n[0]).join('')}
                 </div>
-                <p className="font-medium text-gray-900 text-sm">{selectedCategory.entries[1]?.user_name}</p>
-                <p className="text-lg font-bold text-gray-700 dark:text-gray-300">{selectedCategory.entries[1]?.score}</p>
-                <div className="w-20 h-16 bg-gray-200 rounded-t-lg mt-2 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-gray-500 dark:text-gray-400">2</span>
+                <p className="font-medium text-foreground text-sm">{selectedCategory.entries[1]?.user_name}</p>
+                <p className="text-lg font-bold text-foreground">{selectedCategory.entries[1]?.score}</p>
+                <div className="w-20 h-16 bg-[#ECE6DC] rounded-t-lg mt-2 flex items-center justify-center">
+                  <span className="text-2xl font-bold text-muted-foreground">2</span>
                 </div>
               </div>
               {/* 1st Place */}
@@ -279,7 +279,7 @@ export default function LeaderboardsPage() {
                     <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5z" />
                   </svg>
                 </div>
-                <p className="font-semibold text-gray-900 dark:text-white">{selectedCategory.entries[0]?.user_name}</p>
+                <p className="font-semibold text-foreground">{selectedCategory.entries[0]?.user_name}</p>
                 <p className="text-xl font-bold text-indigo-600">{selectedCategory.entries[0]?.score}</p>
                 <div className="w-24 h-24 bg-yellow-200 rounded-t-lg mt-2 flex items-center justify-center">
                   <span className="text-3xl font-bold text-yellow-600">1</span>
@@ -290,8 +290,8 @@ export default function LeaderboardsPage() {
                 <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white text-xl font-bold mb-2">
                   {selectedCategory.entries[2]?.user_name.split(' ').map(n => n[0]).join('')}
                 </div>
-                <p className="font-medium text-gray-900 text-sm">{selectedCategory.entries[2]?.user_name}</p>
-                <p className="text-lg font-bold text-gray-700 dark:text-gray-300">{selectedCategory.entries[2]?.score}</p>
+                <p className="font-medium text-foreground text-sm">{selectedCategory.entries[2]?.user_name}</p>
+                <p className="text-lg font-bold text-foreground">{selectedCategory.entries[2]?.score}</p>
                 <div className="w-20 h-12 bg-orange-200 rounded-t-lg mt-2 flex items-center justify-center">
                   <span className="text-2xl font-bold text-orange-600">3</span>
                 </div>
@@ -300,17 +300,17 @@ export default function LeaderboardsPage() {
           </div>
 
           {/* Full List */}
-          <div className="divide-y divide-gray-100">
+          <div className="divide-y divide-[#F0EBE1]">
             {selectedCategory.entries.slice(3).map((entry) => (
-              <div key={entry.user_id} className="flex items-center justify-between p-4 hover:bg-gray-50 dark:bg-gray-900">
+              <div key={entry.user_id} className="flex items-center justify-between p-4 hover:bg-background">
                 <div className="flex items-center gap-4">
                   {getRankBadge(entry.rank)}
                   <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white font-medium">
                     {entry.user_name.split(' ').map(n => n[0]).join('')}
                   </div>
                   <div>
-                    <p className="font-medium text-gray-900 dark:text-white">{entry.user_name}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">{entry.score} {selectedCategory.metric.toLowerCase()}</p>
+                    <p className="font-medium text-foreground">{entry.user_name}</p>
+                    <p className="text-xs text-muted-foreground">{entry.score} {selectedCategory.metric.toLowerCase()}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -325,8 +325,8 @@ export default function LeaderboardsPage() {
         {/* Sidebar */}
         <div className="space-y-6">
           {/* Quick Stats Chart */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-            <h3 className="font-semibold text-gray-900 mb-4">Top 5 Comparison</h3>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+            <h3 className="font-semibold text-foreground mb-4">Top 5 Comparison</h3>
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={chartData} layout="vertical">
                 <CartesianGrid strokeDasharray="3 3" />
@@ -339,27 +339,27 @@ export default function LeaderboardsPage() {
           </div>
 
           {/* Regional Leaders */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-            <h3 className="font-semibold text-gray-900 mb-4">Regional Rankings</h3>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+            <h3 className="font-semibold text-foreground mb-4">Regional Rankings</h3>
             <div className="space-y-3">
               {regionalLeaderboard.map((region, index) => (
                 <div key={region.region} className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium ${
                       index === 0 ? 'bg-yellow-100 text-yellow-700' :
-                      index === 1 ? 'bg-gray-100 text-gray-700 dark:text-gray-300' :
+                      index === 1 ? 'bg-[#F1ECE3] text-foreground' :
                       index === 2 ? 'bg-orange-100 text-orange-700' :
-                      'bg-gray-50 text-gray-600 dark:text-gray-400'
+                      'bg-background text-muted-foreground'
                     }`}>
                       {index + 1}
                     </span>
                     <div>
-                      <p className="text-sm font-medium text-gray-900 dark:text-white">{region.region}</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">{region.users.toLocaleString()} users</p>
+                      <p className="text-sm font-medium text-foreground">{region.region}</p>
+                      <p className="text-xs text-muted-foreground">{region.users.toLocaleString()} users</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm font-semibold text-gray-900 dark:text-white">{region.exchanges.toLocaleString()}</p>
+                    <p className="text-sm font-semibold text-foreground">{region.exchanges.toLocaleString()}</p>
                     <p className="text-xs text-green-600">+{region.growth}%</p>
                   </div>
                 </div>
@@ -368,25 +368,25 @@ export default function LeaderboardsPage() {
           </div>
 
           {/* Achievements Unlocked */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-            <h3 className="font-semibold text-gray-900 mb-4">Recent Achievements</h3>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+            <h3 className="font-semibold text-foreground mb-4">Recent Achievements</h3>
             <div className="space-y-3">
               {[
                 { user: 'Kwame Mensah', badge: 'Super Trader', time: '2h ago' },
                 { user: 'Ama Darko', badge: 'Rising Star', time: '5h ago' },
                 { user: 'Kofi Asante', badge: 'Community Helper', time: '1d ago' },
               ].map((achievement, index) => (
-                <div key={index} className="flex items-center gap-3 p-2 bg-gray-50 rounded-lg">
+                <div key={index} className="flex items-center gap-3 p-2 bg-background rounded-lg">
                   <div className="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center">
                     <svg className="w-4 h-4 text-yellow-600" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5z" />
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-medium text-gray-900 dark:text-white">{achievement.user}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">Earned "{achievement.badge}"</p>
+                    <p className="text-sm font-medium text-foreground">{achievement.user}</p>
+                    <p className="text-xs text-muted-foreground">Earned "{achievement.badge}"</p>
                   </div>
-                  <span className="text-xs text-gray-400 dark:text-gray-500">{achievement.time}</span>
+                  <span className="text-xs text-muted-foreground dark:text-muted-foreground">{achievement.time}</span>
                 </div>
               ))}
             </div>

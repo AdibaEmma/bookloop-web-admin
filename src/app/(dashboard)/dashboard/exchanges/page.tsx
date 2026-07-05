@@ -90,7 +90,7 @@ function StatusBadge({ status }: { status: Exchange['status'] }) {
       icon: CheckCircle,
     },
     cancelled: {
-      color: 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300',
+      color: 'bg-[#F1ECE3] text-foreground dark:bg-[#2a2118] dark:text-foreground',
       icon: XCircle,
     },
     disputed: {
@@ -117,7 +117,7 @@ function ExchangeActionMenu({ exchange, onAction }: { exchange: Exchange; onActi
     <div className="relative">
       <button
         onClick={() => setMenuOpen(!menuOpen)}
-        className="p-1.5 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+        className="p-1.5 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#2a2118] rounded-lg"
       >
         <MoreVertical className="w-4 h-4" />
       </button>
@@ -128,13 +128,13 @@ function ExchangeActionMenu({ exchange, onAction }: { exchange: Exchange; onActi
             className="fixed inset-0 z-10"
             onClick={() => setMenuOpen(false)}
           ></div>
-          <div className="absolute right-0 mt-1 w-44 bg-white dark:bg-gray-700 rounded-lg shadow-lg z-20 py-1">
+          <div className="absolute right-0 mt-1 w-44 bg-white dark:bg-[#2a2118] rounded-lg shadow-lg z-20 py-1">
             <button
               onClick={() => {
                 onAction('view', exchange);
                 setMenuOpen(false);
               }}
-              className="flex items-center gap-2 w-full px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+              className="flex items-center gap-2 w-full px-3 py-2 text-sm text-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#33291f]"
             >
               <Eye className="w-4 h-4" />
               View Details
@@ -145,7 +145,7 @@ function ExchangeActionMenu({ exchange, onAction }: { exchange: Exchange; onActi
                   onAction('resolve', exchange);
                   setMenuOpen(false);
                 }}
-                className="flex items-center gap-2 w-full px-3 py-2 text-sm text-green-600 dark:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-600"
+                className="flex items-center gap-2 w-full px-3 py-2 text-sm text-green-600 dark:text-green-400 hover:bg-[#F1ECE3] dark:hover:bg-[#33291f]"
               >
                 <CheckCircle className="w-4 h-4" />
                 Resolve Dispute
@@ -156,7 +156,7 @@ function ExchangeActionMenu({ exchange, onAction }: { exchange: Exchange; onActi
                 onAction('message', exchange);
                 setMenuOpen(false);
               }}
-              className="flex items-center gap-2 w-full px-3 py-2 text-sm text-blue-600 dark:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-600"
+              className="flex items-center gap-2 w-full px-3 py-2 text-sm text-blue-600 dark:text-blue-400 hover:bg-[#F1ECE3] dark:hover:bg-[#33291f]"
             >
               <MessageSquare className="w-4 h-4" />
               Send Message
@@ -167,7 +167,7 @@ function ExchangeActionMenu({ exchange, onAction }: { exchange: Exchange; onActi
                   onAction('cancel', exchange);
                   setMenuOpen(false);
                 }}
-                className="flex items-center gap-2 w-full px-3 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-600"
+                className="flex items-center gap-2 w-full px-3 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-[#F1ECE3] dark:hover:bg-[#33291f]"
               >
                 <Ban className="w-4 h-4" />
                 Cancel Exchange
@@ -457,64 +457,64 @@ export default function ExchangesPage() {
     <div className="space-y-6">
       {/* Page header */}
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+        <h1 className="text-3xl font-bold text-foreground">
           Exchanges Management
         </h1>
-        <p className="text-gray-600 dark:text-gray-400 mt-2">
+        <p className="text-muted-foreground mt-2">
           Monitor and manage book exchanges on the platform
         </p>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-4">
           <div className="flex flex-col gap-1">
-            <p className="text-xs text-gray-600 dark:text-gray-400">Total</p>
-            <p className="text-2xl font-bold text-gray-900 dark:text-white">
+            <p className="text-xs text-muted-foreground">Total</p>
+            <p className="text-2xl font-bold text-foreground">
               {meta.total}
             </p>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-4">
           <div className="flex flex-col gap-1">
-            <p className="text-xs text-gray-600 dark:text-gray-400">Pending</p>
+            <p className="text-xs text-muted-foreground">Pending</p>
             <p className="text-2xl font-bold text-yellow-600">
               {exchanges.filter((e) => e.status === 'pending').length}
             </p>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-4">
           <div className="flex flex-col gap-1">
-            <p className="text-xs text-gray-600 dark:text-gray-400">Confirmed</p>
+            <p className="text-xs text-muted-foreground">Confirmed</p>
             <p className="text-2xl font-bold text-blue-600">
               {exchanges.filter((e) => e.status === 'confirmed').length}
             </p>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-4">
           <div className="flex flex-col gap-1">
-            <p className="text-xs text-gray-600 dark:text-gray-400">In Progress</p>
+            <p className="text-xs text-muted-foreground">In Progress</p>
             <p className="text-2xl font-bold text-purple-600">
               {exchanges.filter((e) => e.status === 'in_progress').length}
             </p>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-4">
           <div className="flex flex-col gap-1">
-            <p className="text-xs text-gray-600 dark:text-gray-400">Completed</p>
+            <p className="text-xs text-muted-foreground">Completed</p>
             <p className="text-2xl font-bold text-green-600">
               {exchanges.filter((e) => e.status === 'completed').length}
             </p>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-4">
           <div className="flex flex-col gap-1">
-            <p className="text-xs text-gray-600 dark:text-gray-400">Disputed</p>
+            <p className="text-xs text-muted-foreground">Disputed</p>
             <p className="text-2xl font-bold text-red-600">
               {exchanges.filter((e) => e.status === 'disputed').length}
             </p>
@@ -523,18 +523,18 @@ export default function ExchangesPage() {
       </div>
 
       {/* Filters and search */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+      <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
         <div className="flex flex-col md:flex-row gap-4">
           {/* Search */}
           <div className="flex-1">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground dark:text-muted-foreground" />
               <input
                 type="text"
                 placeholder="Search exchanges by ID or participants..."
                 value={searchQuery}
                 onChange={(e) => handleFilterChange(setSearchQuery, e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full pl-10 pr-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
           </div>
@@ -543,7 +543,7 @@ export default function ExchangesPage() {
           <select
             value={filterStatus}
             onChange={(e) => handleFilterChange(setFilterStatus, e.target.value as Exchange['status'] | 'all')}
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <option value="all">All Status</option>
             <option value="pending">Pending</option>
@@ -558,7 +558,7 @@ export default function ExchangesPage() {
           <select
             value={filterType}
             onChange={(e) => handleFilterChange(setFilterType, e.target.value as 'all' | 'swap' | 'purchase')}
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <option value="all">All Types</option>
             <option value="swap">Swap</option>
@@ -573,18 +573,18 @@ export default function ExchangesPage() {
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600"></div>
         </div>
       ) : exchanges && exchanges.length > 0 ? (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow overflow-hidden">
           {/* Table Header with Limit Selector */}
-          <div className="flex items-center justify-between px-6 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
+          <div className="flex items-center justify-between px-6 py-3 border-b border-[#ECE6DC] dark:border-[#33291f] bg-background dark:bg-[#2a2118]/50">
             <div className="flex items-center gap-2">
-              <label htmlFor="limit" className="text-sm text-gray-600 dark:text-gray-400">
+              <label htmlFor="limit" className="text-sm text-muted-foreground">
                 Show:
               </label>
               <select
                 id="limit"
                 value={limit}
                 onChange={(e) => handleLimitChange(Number(e.target.value) as typeof LIMIT_OPTIONS[number])}
-                className="px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="px-2 py-1 text-sm border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 {LIMIT_OPTIONS.map((option) => (
                   <option key={option} value={option}>
@@ -592,58 +592,58 @@ export default function ExchangesPage() {
                   </option>
                 ))}
               </select>
-              <span className="text-sm text-gray-600 dark:text-gray-400">entries</span>
+              <span className="text-sm text-muted-foreground">entries</span>
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-sm text-muted-foreground">
               Showing {((meta.page - 1) * meta.limit) + 1} to {Math.min(meta.page * meta.limit, meta.total)} of {meta.total}
             </div>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50 dark:bg-gray-700/50">
+              <thead className="bg-background dark:bg-[#2a2118]/50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Exchange ID
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Type
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Initiator
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Recipient
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Book Offered
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Meetup
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Created
                   </th>
-                  <th className="px-6 py-3 text-right text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-right text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+              <tbody className="divide-y divide-[#ECE6DC] dark:divide-[#33291f]">
                 {exchanges.map((exchange) => {
                   const isSwap = exchange.exchange_type === 'swap';
                   return (
                     <tr
                       key={exchange.id}
-                      className={`hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors ${exchange.status === 'disputed' ? 'bg-red-50 dark:bg-red-900/10' : ''}`}
+                      className={`hover:bg-background dark:hover:bg-[#2a2118]/30 transition-colors ${exchange.status === 'disputed' ? 'bg-red-50 dark:bg-red-900/10' : ''}`}
                     >
                       {/* Exchange ID */}
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center gap-2">
-                          <span className="font-mono text-sm text-gray-900 dark:text-white">
+                          <span className="font-mono text-sm text-foreground">
                             #{exchange.id.slice(0, 8)}
                           </span>
                           {exchange.status === 'disputed' && (
@@ -670,7 +670,7 @@ export default function ExchangesPage() {
                           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white text-xs font-semibold">
                             {exchange.initiator.first_name?.[0]}{exchange.initiator.last_name?.[0]}
                           </div>
-                          <span className="text-sm text-gray-900 dark:text-white">
+                          <span className="text-sm text-foreground">
                             {exchange.initiator.first_name} {exchange.initiator.last_name}
                           </span>
                         </div>
@@ -682,7 +682,7 @@ export default function ExchangesPage() {
                           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-xs font-semibold">
                             {exchange.recipient.first_name?.[0]}{exchange.recipient.last_name?.[0]}
                           </div>
-                          <span className="text-sm text-gray-900 dark:text-white">
+                          <span className="text-sm text-foreground">
                             {exchange.recipient.first_name} {exchange.recipient.last_name}
                           </span>
                         </div>
@@ -691,14 +691,14 @@ export default function ExchangesPage() {
                       {/* Book */}
                       <td className="px-6 py-4">
                         <div className="max-w-[180px]">
-                          <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
+                          <p className="text-sm font-medium text-foreground truncate">
                             {exchange.initiator_listing.book_title}
                           </p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
+                          <p className="text-xs text-muted-foreground truncate">
                             {exchange.initiator_listing.book_author}
                           </p>
                           {!isSwap && exchange.price && (
-                            <p className="text-xs font-medium text-amber-600 mt-0.5">
+                            <p className="text-xs font-medium text-primary mt-0.5">
                               GH₵{exchange.price}
                             </p>
                           )}
@@ -714,11 +714,11 @@ export default function ExchangesPage() {
                       <td className="px-6 py-4">
                         {exchange.meetup_spot ? (
                           <div className="max-w-[150px]">
-                            <p className="text-sm text-gray-900 dark:text-white truncate">
+                            <p className="text-sm text-foreground truncate">
                               {exchange.meetup_spot.name}
                             </p>
                             {exchange.scheduled_date && (
-                              <p className="text-xs text-gray-500 dark:text-gray-400">
+                              <p className="text-xs text-muted-foreground">
                                 {new Date(exchange.scheduled_date).toLocaleDateString('en-US', {
                                   month: 'short',
                                   day: 'numeric',
@@ -729,13 +729,13 @@ export default function ExchangesPage() {
                             )}
                           </div>
                         ) : (
-                          <span className="text-sm text-gray-400 dark:text-gray-500">—</span>
+                          <span className="text-sm text-muted-foreground dark:text-muted-foreground">—</span>
                         )}
                       </td>
 
                       {/* Created */}
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="text-sm text-gray-600 dark:text-gray-400">
+                        <span className="text-sm text-muted-foreground">
                           {new Date(exchange.created_at).toLocaleDateString('en-US', {
                             month: 'short',
                             day: 'numeric',
@@ -756,9 +756,9 @@ export default function ExchangesPage() {
           </div>
 
           {/* Pagination Controls */}
-          <div className="flex items-center justify-between px-6 py-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
+          <div className="flex items-center justify-between px-6 py-4 border-t border-[#ECE6DC] dark:border-[#33291f] bg-background dark:bg-[#2a2118]/50">
             {/* Results info - left */}
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-sm text-muted-foreground">
               Showing {((meta.page - 1) * meta.limit) + 1} to {Math.min(meta.page * meta.limit, meta.total)} of {meta.total}
             </div>
 
@@ -767,7 +767,7 @@ export default function ExchangesPage() {
               <button
                 onClick={() => setPage(1)}
                 disabled={meta.page === 1}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#33291f] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                 title="First page"
               >
                 <ChevronsLeft className="w-5 h-5" />
@@ -776,7 +776,7 @@ export default function ExchangesPage() {
               <button
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                 disabled={meta.page === 1}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#33291f] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                 title="Previous page"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -814,7 +814,7 @@ export default function ExchangesPage() {
 
                   return pages.map((pageNum, idx) =>
                     pageNum === '...' ? (
-                      <span key={`ellipsis-${idx}`} className="px-2 text-gray-400 dark:text-gray-500">
+                      <span key={`ellipsis-${idx}`} className="px-2 text-muted-foreground dark:text-muted-foreground">
                         ...
                       </span>
                     ) : (
@@ -823,8 +823,8 @@ export default function ExchangesPage() {
                         onClick={() => setPage(pageNum as number)}
                         className={`min-w-[36px] h-9 px-3 text-sm font-medium rounded-lg transition-colors ${
                           meta.page === pageNum
-                            ? 'bg-amber-500 text-white'
-                            : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-600'
+                            ? 'bg-primary text-white'
+                            : 'text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#33291f]'
                         }`}
                       >
                         {pageNum}
@@ -837,7 +837,7 @@ export default function ExchangesPage() {
               <button
                 onClick={() => setPage((p) => Math.min(meta.totalPages, p + 1))}
                 disabled={meta.page === meta.totalPages}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#33291f] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                 title="Next page"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -846,7 +846,7 @@ export default function ExchangesPage() {
               <button
                 onClick={() => setPage(meta.totalPages)}
                 disabled={meta.page === meta.totalPages}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#33291f] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                 title="Last page"
               >
                 <ChevronsRight className="w-5 h-5" />
@@ -855,12 +855,12 @@ export default function ExchangesPage() {
           </div>
         </div>
       ) : (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-12 text-center">
-          <RefreshCw className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-12 text-center">
+          <RefreshCw className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
+          <h3 className="text-lg font-semibold text-foreground mb-2">
             No exchanges found
           </h3>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-muted-foreground">
             Try adjusting your search or filters
           </p>
         </div>

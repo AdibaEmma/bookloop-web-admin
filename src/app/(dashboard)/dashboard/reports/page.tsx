@@ -183,7 +183,7 @@ export default function ReportsPage() {
       case 'operational':
         return 'bg-purple-100 text-purple-700';
       case 'custom':
-        return 'bg-gray-100 text-gray-700 dark:text-gray-300';
+        return 'bg-[#F1ECE3] text-foreground';
     }
   };
 
@@ -205,15 +205,15 @@ export default function ReportsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Reports</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">Reports</h1>
+          <p className="text-muted-foreground mt-1">
             Generate, schedule, and download platform reports
           </p>
         </div>
         <div className="flex items-center gap-3">
           <button
             onClick={() => setShowScheduleModal(true)}
-            className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 flex items-center gap-2"
+            className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background flex items-center gap-2"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -234,32 +234,32 @@ export default function ReportsPage() {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Reports Generated (MTD)</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">42</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-sm text-muted-foreground">Reports Generated (MTD)</p>
+          <p className="text-2xl font-bold text-foreground mt-1">42</p>
           <p className="text-xs text-green-600 mt-1">+8% vs last month</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Downloaded</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">35</p>
-          <p className="text-xs text-gray-500 mt-1">83% download rate</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-sm text-muted-foreground">Downloaded</p>
+          <p className="text-2xl font-bold text-foreground mt-1">35</p>
+          <p className="text-xs text-muted-foreground mt-1">83% download rate</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Scheduled Reports</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">12</p>
-          <p className="text-xs text-gray-500 mt-1">Active schedules</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-sm text-muted-foreground">Scheduled Reports</p>
+          <p className="text-2xl font-bold text-foreground mt-1">12</p>
+          <p className="text-xs text-muted-foreground mt-1">Active schedules</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Custom Reports</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">8</p>
-          <p className="text-xs text-gray-500 mt-1">This month</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-sm text-muted-foreground">Custom Reports</p>
+          <p className="text-2xl font-bold text-foreground mt-1">8</p>
+          <p className="text-xs text-muted-foreground mt-1">This month</p>
         </div>
       </div>
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Report Generation Trends</h3>
+        <div className="lg:col-span-2 bg-white rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Report Generation Trends</h3>
           <ResponsiveContainer width="100%" height={250}>
             <AreaChart data={reportMetrics}>
               <defs>
@@ -292,8 +292,8 @@ export default function ReportsPage() {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Reports by Category</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Reports by Category</h3>
           <ResponsiveContainer width="100%" height={180}>
             <PieChart>
               <Pie
@@ -317,9 +317,9 @@ export default function ReportsPage() {
               <div key={item.name} className="flex items-center justify-between text-sm">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
-                  <span className="text-gray-600 dark:text-gray-400">{item.name}</span>
+                  <span className="text-muted-foreground">{item.name}</span>
                 </div>
-                <span className="font-medium text-gray-900 dark:text-white">{item.value}%</span>
+                <span className="font-medium text-foreground">{item.value}%</span>
               </div>
             ))}
           </div>
@@ -327,8 +327,8 @@ export default function ReportsPage() {
       </div>
 
       {/* Tabs */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
-        <div className="border-b border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] dark:border-[#33291f]">
+        <div className="border-b border-[#ECE6DC] dark:border-[#33291f]">
           <div className="flex">
             {[
               { id: 'templates', label: 'Report Templates' },
@@ -341,7 +341,7 @@ export default function ReportsPage() {
                 className={`px-6 py-3 text-sm font-medium border-b-2 transition-colors ${
                   activeTab === tab.id
                     ? 'border-indigo-600 text-indigo-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-300'
+                    : 'border-transparent text-muted-foreground hover:text-foreground'
                 }`}
               >
                 {tab.label}
@@ -357,7 +357,7 @@ export default function ReportsPage() {
                 <select
                   value={categoryFilter}
                   onChange={(e) => setCategoryFilter(e.target.value)}
-                  className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500"
+                  className="px-3 py-2 border border-[#E4DED2] rounded-lg text-sm focus:ring-2 focus:ring-indigo-500"
                 >
                   <option value="all">All Categories</option>
                   <option value="financial">Financial</option>
@@ -370,13 +370,13 @@ export default function ReportsPage() {
                 {filteredTemplates.map((template) => (
                   <div
                     key={template.id}
-                    className="p-4 border border-gray-200 rounded-lg hover:border-indigo-300 hover:bg-indigo-50/30 transition-colors"
+                    className="p-4 border border-[#ECE6DC] rounded-lg hover:border-indigo-300 hover:bg-indigo-50/30 transition-colors"
                   >
                     <div className="flex items-start justify-between mb-2">
                       <div className="flex items-center gap-2">
                         <span className="text-2xl">{getFormatIcon(template.format)}</span>
                         <div>
-                          <h4 className="font-medium text-gray-900 dark:text-white">{template.name}</h4>
+                          <h4 className="font-medium text-foreground">{template.name}</h4>
                           <span className={`inline-block px-2 py-0.5 text-xs rounded-full mt-1 ${getCategoryColor(template.category)}`}>
                             {template.category}
                           </span>
@@ -388,9 +388,9 @@ export default function ReportsPage() {
                         </span>
                       )}
                     </div>
-                    <p className="text-sm text-gray-600 mb-3">{template.description}</p>
+                    <p className="text-sm text-muted-foreground mb-3">{template.description}</p>
                     <div className="flex items-center justify-between">
-                      <p className="text-xs text-gray-500 dark:text-gray-400">
+                      <p className="text-xs text-muted-foreground">
                         {template.lastGenerated
                           ? `Last: ${new Date(template.lastGenerated).toLocaleDateString()}`
                           : 'Never generated'}
@@ -413,19 +413,19 @@ export default function ReportsPage() {
               {generatedReports.map((report) => (
                 <div
                   key={report.id}
-                  className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 dark:bg-gray-900"
+                  className="flex items-center justify-between p-4 border border-[#ECE6DC] rounded-lg hover:bg-background"
                 >
                   <div className="flex items-center gap-4">
                     <span className="text-2xl">{getFormatIcon(report.format)}</span>
                     <div>
-                      <h4 className="font-medium text-gray-900 dark:text-white">{report.name}</h4>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                      <h4 className="font-medium text-foreground">{report.name}</h4>
+                      <p className="text-sm text-muted-foreground">
                         Generated by {report.generatedBy} • {new Date(report.generatedAt).toLocaleString()}
                       </p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className="text-sm text-gray-500 dark:text-gray-400">{report.size}</span>
+                    <span className="text-sm text-muted-foreground">{report.size}</span>
                     {report.status === 'ready' ? (
                       <button className="px-3 py-1.5 bg-indigo-600 text-white text-sm rounded-lg hover:bg-indigo-700 flex items-center gap-1">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -455,7 +455,7 @@ export default function ReportsPage() {
                 .map((template) => (
                   <div
                     key={template.id}
-                    className="flex items-center justify-between p-4 border border-gray-200 rounded-lg"
+                    className="flex items-center justify-between p-4 border border-[#ECE6DC] rounded-lg"
                   >
                     <div className="flex items-center gap-4">
                       <div className={`p-2 rounded-lg ${
@@ -470,8 +470,8 @@ export default function ReportsPage() {
                         </svg>
                       </div>
                       <div>
-                        <h4 className="font-medium text-gray-900 dark:text-white">{template.name}</h4>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                        <h4 className="font-medium text-foreground">{template.name}</h4>
+                        <p className="text-sm text-muted-foreground">
                           Runs {template.schedule} • Format: {template.format.toUpperCase()}
                         </p>
                       </div>
@@ -483,8 +483,8 @@ export default function ReportsPage() {
                       }`}>
                         {template.schedule}
                       </span>
-                      <button className="p-2 hover:bg-gray-100 rounded-lg">
-                        <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <button className="p-2 hover:bg-[#F1ECE3] rounded-lg">
+                        <svg className="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
@@ -500,27 +500,27 @@ export default function ReportsPage() {
       {/* Generate Report Modal */}
       {selectedTemplate && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-md w-full mx-4">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-xl max-w-md w-full mx-4">
             <div className="flex items-center justify-between p-4 border-b">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Generate Report</h3>
+              <h3 className="text-lg font-semibold text-foreground">Generate Report</h3>
               <button
                 onClick={() => setSelectedTemplate(null)}
-                className="p-2 hover:bg-gray-100 rounded-lg"
+                className="p-2 hover:bg-[#F1ECE3] rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
             <div className="p-4 space-y-4">
-              <div className="p-3 bg-gray-50 rounded-lg">
-                <h4 className="font-medium text-gray-900 dark:text-white">{selectedTemplate.name}</h4>
-                <p className="text-sm text-gray-600 mt-1">{selectedTemplate.description}</p>
+              <div className="p-3 bg-background rounded-lg">
+                <h4 className="font-medium text-foreground">{selectedTemplate.name}</h4>
+                <p className="text-sm text-muted-foreground mt-1">{selectedTemplate.description}</p>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Date Range</label>
-                <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                <label className="block text-sm font-medium text-foreground mb-2">Date Range</label>
+                <select className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg focus:ring-2 focus:ring-indigo-500">
                   <option>Last 7 days</option>
                   <option>Last 30 days</option>
                   <option>Last 90 days</option>
@@ -532,7 +532,7 @@ export default function ReportsPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Format</label>
+                <label className="block text-sm font-medium text-foreground mb-2">Format</label>
                 <div className="grid grid-cols-3 gap-2">
                   {['pdf', 'excel', 'csv'].map((format) => (
                     <button
@@ -540,11 +540,11 @@ export default function ReportsPage() {
                       className={`p-3 border rounded-lg text-center transition-colors ${
                         selectedTemplate.format === format
                           ? 'border-indigo-500 bg-indigo-50'
-                          : 'border-gray-200 hover:border-indigo-300'
+                          : 'border-[#ECE6DC] hover:border-indigo-300'
                       }`}
                     >
                       <span className="text-2xl block mb-1">{getFormatIcon(format)}</span>
-                      <span className="text-sm font-medium text-gray-700 uppercase">{format}</span>
+                      <span className="text-sm font-medium text-foreground uppercase">{format}</span>
                     </button>
                   ))}
                 </div>
@@ -552,15 +552,15 @@ export default function ReportsPage() {
 
               <div>
                 <label className="flex items-center gap-2">
-                  <input type="checkbox" className="rounded border-gray-300" />
-                  <span className="text-sm text-gray-700 dark:text-gray-300">Email report when ready</span>
+                  <input type="checkbox" className="rounded border-[#E4DED2]" />
+                  <span className="text-sm text-foreground">Email report when ready</span>
                 </label>
               </div>
             </div>
-            <div className="flex items-center justify-end gap-3 p-4 border-t bg-gray-50 rounded-b-xl">
+            <div className="flex items-center justify-end gap-3 p-4 border-t bg-background rounded-b-xl">
               <button
                 onClick={() => setSelectedTemplate(null)}
-                className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+                className="px-4 py-2 text-foreground hover:bg-[#F1ECE3] rounded-lg"
               >
                 Cancel
               </button>
@@ -581,31 +581,31 @@ export default function ReportsPage() {
       {/* Create Custom Report Modal */}
       {showCreateModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-lg w-full mx-4 max-h-[90vh] overflow-hidden flex flex-col">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-xl max-w-lg w-full mx-4 max-h-[90vh] overflow-hidden flex flex-col">
             <div className="flex items-center justify-between p-4 border-b">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Create Custom Report</h3>
+              <h3 className="text-lg font-semibold text-foreground">Create Custom Report</h3>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="p-2 hover:bg-gray-100 rounded-lg"
+                className="p-2 hover:bg-[#F1ECE3] rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
             <div className="p-4 space-y-4 overflow-y-auto flex-1">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Report Name</label>
+                <label className="block text-sm font-medium text-foreground mb-2">Report Name</label>
                 <input
                   type="text"
                   placeholder="Enter report name"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Data to Include</label>
-                <div className="space-y-2 max-h-40 overflow-y-auto border border-gray-200 rounded-lg p-3">
+                <label className="block text-sm font-medium text-foreground mb-2">Data to Include</label>
+                <div className="space-y-2 max-h-40 overflow-y-auto border border-[#ECE6DC] rounded-lg p-3">
                   {[
                     'User Demographics',
                     'Exchange Statistics',
@@ -617,19 +617,19 @@ export default function ReportsPage() {
                     'System Performance',
                   ].map((item) => (
                     <label key={item} className="flex items-center gap-2">
-                      <input type="checkbox" className="rounded border-gray-300" />
-                      <span className="text-sm text-gray-700 dark:text-gray-300">{item}</span>
+                      <input type="checkbox" className="rounded border-[#E4DED2]" />
+                      <span className="text-sm text-foreground">{item}</span>
                     </label>
                   ))}
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Filters</label>
+                <label className="block text-sm font-medium text-foreground mb-2">Filters</label>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs text-gray-500 mb-1">Region</label>
-                    <select className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                    <label className="block text-xs text-muted-foreground mb-1">Region</label>
+                    <select className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg text-sm">
                       <option>All Regions</option>
                       <option>Greater Accra</option>
                       <option>Ashanti</option>
@@ -637,8 +637,8 @@ export default function ReportsPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs text-gray-500 mb-1">Date Range</label>
-                    <select className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                    <label className="block text-xs text-muted-foreground mb-1">Date Range</label>
+                    <select className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg text-sm">
                       <option>Last 30 days</option>
                       <option>Last 90 days</option>
                       <option>This Year</option>
@@ -648,24 +648,24 @@ export default function ReportsPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Format</label>
+                <label className="block text-sm font-medium text-foreground mb-2">Format</label>
                 <div className="grid grid-cols-3 gap-2">
                   {['pdf', 'excel', 'csv'].map((format) => (
                     <button
                       key={format}
-                      className="p-3 border border-gray-200 rounded-lg text-center hover:border-indigo-300 transition-colors"
+                      className="p-3 border border-[#ECE6DC] rounded-lg text-center hover:border-indigo-300 transition-colors"
                     >
                       <span className="text-2xl block mb-1">{getFormatIcon(format)}</span>
-                      <span className="text-sm font-medium text-gray-700 uppercase">{format}</span>
+                      <span className="text-sm font-medium text-foreground uppercase">{format}</span>
                     </button>
                   ))}
                 </div>
               </div>
             </div>
-            <div className="flex items-center justify-end gap-3 p-4 border-t bg-gray-50 dark:bg-gray-900">
+            <div className="flex items-center justify-end gap-3 p-4 border-t bg-background">
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+                className="px-4 py-2 text-foreground hover:bg-[#F1ECE3] rounded-lg"
               >
                 Cancel
               </button>
@@ -686,22 +686,22 @@ export default function ReportsPage() {
       {/* Schedule Modal */}
       {showScheduleModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-md w-full mx-4">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-xl max-w-md w-full mx-4">
             <div className="flex items-center justify-between p-4 border-b">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Schedule Settings</h3>
+              <h3 className="text-lg font-semibold text-foreground">Schedule Settings</h3>
               <button
                 onClick={() => setShowScheduleModal(false)}
-                className="p-2 hover:bg-gray-100 rounded-lg"
+                className="p-2 hover:bg-[#F1ECE3] rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
             <div className="p-4 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Select Report</label>
-                <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                <label className="block text-sm font-medium text-foreground mb-2">Select Report</label>
+                <select className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg focus:ring-2 focus:ring-indigo-500">
                   {reportTemplates.map((t) => (
                     <option key={t.id} value={t.id}>{t.name}</option>
                   ))}
@@ -709,12 +709,12 @@ export default function ReportsPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Schedule</label>
+                <label className="block text-sm font-medium text-foreground mb-2">Schedule</label>
                 <div className="grid grid-cols-3 gap-2">
                   {['Daily', 'Weekly', 'Monthly'].map((schedule) => (
                     <button
                       key={schedule}
-                      className="p-2 border border-gray-200 rounded-lg text-sm hover:border-indigo-300"
+                      className="p-2 border border-[#ECE6DC] rounded-lg text-sm hover:border-indigo-300"
                     >
                       {schedule}
                     </button>
@@ -723,27 +723,27 @@ export default function ReportsPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Time</label>
+                <label className="block text-sm font-medium text-foreground mb-2">Time</label>
                 <input
                   type="time"
                   defaultValue="06:00"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Email Recipients</label>
+                <label className="block text-sm font-medium text-foreground mb-2">Email Recipients</label>
                 <input
                   type="text"
                   placeholder="Enter email addresses (comma separated)"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
             </div>
-            <div className="flex items-center justify-end gap-3 p-4 border-t bg-gray-50 rounded-b-xl">
+            <div className="flex items-center justify-end gap-3 p-4 border-t bg-background rounded-b-xl">
               <button
                 onClick={() => setShowScheduleModal(false)}
-                className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+                className="px-4 py-2 text-foreground hover:bg-[#F1ECE3] rounded-lg"
               >
                 Cancel
               </button>

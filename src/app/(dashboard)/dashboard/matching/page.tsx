@@ -211,7 +211,7 @@ export default function MatchingPage() {
       case 'declined':
         return 'bg-red-100 text-red-700';
       case 'expired':
-        return 'bg-gray-100 text-gray-700 dark:text-gray-300';
+        return 'bg-[#F1ECE3] text-foreground';
     }
   };
 
@@ -227,15 +227,15 @@ export default function MatchingPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Book Matching</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">Book Matching</h1>
+          <p className="text-muted-foreground mt-1">
             AI-powered matching system for book exchanges
           </p>
         </div>
         <div className="flex items-center gap-3">
           <button
             onClick={() => setShowAlgorithmSettings(true)}
-            className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 flex items-center gap-2"
+            className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background flex items-center gap-2"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -255,10 +255,10 @@ export default function MatchingPage() {
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {matchingStats.map((stat) => (
-          <div key={stat.label} className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-            <p className="text-sm text-gray-500 dark:text-gray-400">{stat.label}</p>
+          <div key={stat.label} className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+            <p className="text-sm text-muted-foreground">{stat.label}</p>
             <div className="flex items-baseline gap-2 mt-1">
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+              <p className="text-2xl font-bold text-foreground">
                 {stat.label.includes('Rate') ? `${stat.value}%` :
                  stat.label.includes('Time') ? `${stat.value}h` : stat.value}
               </p>
@@ -272,8 +272,8 @@ export default function MatchingPage() {
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Match Trends (Last 7 Days)</h3>
+        <div className="lg:col-span-2 bg-white rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Match Trends (Last 7 Days)</h3>
           <ResponsiveContainer width="100%" height={280}>
             <LineChart data={matchTrendData}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -288,8 +288,8 @@ export default function MatchingPage() {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Match Score Distribution</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Match Score Distribution</h3>
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={matchScoreDistribution} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" />
@@ -304,7 +304,7 @@ export default function MatchingPage() {
             </BarChart>
           </ResponsiveContainer>
           <div className="mt-4 pt-4 border-t">
-            <p className="text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-xs text-muted-foreground">
               <span className="font-medium text-green-600">72%</span> of matches score above 80
             </p>
           </div>
@@ -313,8 +313,8 @@ export default function MatchingPage() {
 
       {/* Match Factors & Recent Matches */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Primary Match Factors</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Primary Match Factors</h3>
           <ResponsiveContainer width="100%" height={180}>
             <PieChart>
               <Pie
@@ -338,22 +338,22 @@ export default function MatchingPage() {
               <div key={factor.name} className="flex items-center justify-between text-sm">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: factor.color }} />
-                  <span className="text-gray-600 dark:text-gray-400">{factor.name}</span>
+                  <span className="text-muted-foreground">{factor.name}</span>
                 </div>
-                <span className="font-medium text-gray-900 dark:text-white">{factor.value}%</span>
+                <span className="font-medium text-foreground">{factor.value}%</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 p-6">
+        <div className="lg:col-span-2 bg-white rounded-xl border border-[#ECE6DC] p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-semibold text-gray-900 dark:text-white">Recent Matches</h3>
+            <h3 className="font-semibold text-foreground">Recent Matches</h3>
             <div className="flex items-center gap-2">
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500"
+                className="px-3 py-1.5 border border-[#E4DED2] rounded-lg text-sm focus:ring-2 focus:ring-indigo-500"
               >
                 <option value="all">All Status</option>
                 <option value="pending">Pending</option>
@@ -368,7 +368,7 @@ export default function MatchingPage() {
               <div
                 key={match.id}
                 onClick={() => setSelectedMatch(match)}
-                className="p-4 border border-gray-200 rounded-lg hover:border-indigo-300 hover:bg-indigo-50/30 cursor-pointer transition-colors"
+                className="p-4 border border-[#ECE6DC] rounded-lg hover:border-indigo-300 hover:bg-indigo-50/30 cursor-pointer transition-colors"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
@@ -381,10 +381,10 @@ export default function MatchingPage() {
                       </div>
                     </div>
                     <div>
-                      <p className="font-medium text-gray-900 dark:text-white">
+                      <p className="font-medium text-foreground">
                         {match.requester.name} ↔ {match.matched.name}
                       </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">
+                      <p className="text-xs text-muted-foreground">
                         {match.requester.bookOffered} ⟷ {match.matched.bookOffered}
                       </p>
                     </div>
@@ -394,7 +394,7 @@ export default function MatchingPage() {
                       <p className={`text-lg font-bold ${getScoreColor(match.matchScore)}`}>
                         {match.matchScore}%
                       </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">{match.distance} km</p>
+                      <p className="text-xs text-muted-foreground">{match.distance} km</p>
                     </div>
                     <span className={`px-2 py-1 text-xs rounded-full ${getStatusColor(match.status)}`}>
                       {match.status}
@@ -410,56 +410,56 @@ export default function MatchingPage() {
       {/* Match Detail Modal */}
       {selectedMatch && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-lg w-full mx-4">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-xl max-w-lg w-full mx-4">
             <div className="flex items-center justify-between p-4 border-b">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Match Details</h3>
+              <h3 className="text-lg font-semibold text-foreground">Match Details</h3>
               <button
                 onClick={() => setSelectedMatch(null)}
-                className="p-2 hover:bg-gray-100 rounded-lg"
+                className="p-2 hover:bg-[#F1ECE3] rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
             <div className="p-4 space-y-4">
               {/* Users */}
-              <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+              <div className="flex items-center justify-between p-4 bg-background rounded-lg">
                 <div className="text-center">
                   <div className="w-12 h-12 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-lg font-medium mx-auto">
                     {selectedMatch.requester.avatar}
                   </div>
-                  <p className="font-medium text-gray-900 mt-2">{selectedMatch.requester.name}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Wants: {selectedMatch.requester.bookWanted}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Offers: {selectedMatch.requester.bookOffered}</p>
+                  <p className="font-medium text-foreground mt-2">{selectedMatch.requester.name}</p>
+                  <p className="text-xs text-muted-foreground">Wants: {selectedMatch.requester.bookWanted}</p>
+                  <p className="text-xs text-muted-foreground">Offers: {selectedMatch.requester.bookOffered}</p>
                 </div>
                 <div className="flex flex-col items-center">
                   <div className={`text-3xl font-bold ${getScoreColor(selectedMatch.matchScore)}`}>
                     {selectedMatch.matchScore}%
                   </div>
-                  <span className="text-xs text-gray-500 dark:text-gray-400">Match Score</span>
+                  <span className="text-xs text-muted-foreground">Match Score</span>
                 </div>
                 <div className="text-center">
                   <div className="w-12 h-12 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-lg font-medium mx-auto">
                     {selectedMatch.matched.avatar}
                   </div>
-                  <p className="font-medium text-gray-900 mt-2">{selectedMatch.matched.name}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Wants: {selectedMatch.matched.bookWanted}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Offers: {selectedMatch.matched.bookOffered}</p>
+                  <p className="font-medium text-foreground mt-2">{selectedMatch.matched.name}</p>
+                  <p className="text-xs text-muted-foreground">Wants: {selectedMatch.matched.bookWanted}</p>
+                  <p className="text-xs text-muted-foreground">Offers: {selectedMatch.matched.bookOffered}</p>
                 </div>
               </div>
 
               {/* Score Breakdown */}
               <div>
-                <h4 className="font-medium text-gray-900 mb-3">Score Breakdown</h4>
+                <h4 className="font-medium text-foreground mb-3">Score Breakdown</h4>
                 <div className="space-y-3">
                   {Object.entries(selectedMatch.factors).map(([key, value]) => (
                     <div key={key}>
                       <div className="flex items-center justify-between mb-1">
-                        <span className="text-sm text-gray-600 capitalize">{key.replace(/([A-Z])/g, ' $1')}</span>
-                        <span className="text-sm font-medium text-gray-900 dark:text-white">{value}%</span>
+                        <span className="text-sm text-muted-foreground capitalize">{key.replace(/([A-Z])/g, ' $1')}</span>
+                        <span className="text-sm font-medium text-foreground">{value}%</span>
                       </div>
-                      <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                      <div className="h-2 bg-[#F1ECE3] rounded-full overflow-hidden">
                         <div
                           className={`h-full rounded-full ${
                             value >= 90 ? 'bg-green-500' :
@@ -477,27 +477,27 @@ export default function MatchingPage() {
               {/* Info */}
               <div className="grid grid-cols-2 gap-4 pt-4 border-t">
                 <div>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Distance</p>
-                  <p className="font-medium text-gray-900 dark:text-white">{selectedMatch.distance} km apart</p>
+                  <p className="text-xs text-muted-foreground">Distance</p>
+                  <p className="font-medium text-foreground">{selectedMatch.distance} km apart</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Status</p>
+                  <p className="text-xs text-muted-foreground">Status</p>
                   <span className={`inline-block px-2 py-1 text-xs rounded-full ${getStatusColor(selectedMatch.status)}`}>
                     {selectedMatch.status}
                   </span>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Created</p>
-                  <p className="font-medium text-gray-900 dark:text-white">
+                  <p className="text-xs text-muted-foreground">Created</p>
+                  <p className="font-medium text-foreground">
                     {new Date(selectedMatch.createdAt).toLocaleString()}
                   </p>
                 </div>
               </div>
             </div>
-            <div className="flex items-center justify-end gap-3 p-4 border-t bg-gray-50 rounded-b-xl">
+            <div className="flex items-center justify-end gap-3 p-4 border-t bg-background rounded-b-xl">
               <button
                 onClick={() => setSelectedMatch(null)}
-                className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+                className="px-4 py-2 text-foreground hover:bg-[#F1ECE3] rounded-lg"
               >
                 Close
               </button>
@@ -514,36 +514,36 @@ export default function MatchingPage() {
       {/* Algorithm Settings Modal */}
       {showAlgorithmSettings && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-md w-full mx-4">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-xl max-w-md w-full mx-4">
             <div className="flex items-center justify-between p-4 border-b">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Algorithm Settings</h3>
+              <h3 className="text-lg font-semibold text-foreground">Algorithm Settings</h3>
               <button
                 onClick={() => setShowAlgorithmSettings(false)}
-                className="p-2 hover:bg-gray-100 rounded-lg"
+                className="p-2 hover:bg-[#F1ECE3] rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
             <div className="p-4 space-y-4">
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 Adjust the weights for each matching factor. Total must equal 100%.
               </p>
               {algorithmWeights.map((item) => (
                 <div key={item.factor}>
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{item.factor}</span>
-                    <span className="text-sm text-gray-900 dark:text-white">{item.weight}%</span>
+                    <span className="text-sm font-medium text-foreground">{item.factor}</span>
+                    <span className="text-sm text-foreground">{item.weight}%</span>
                   </div>
                   <input
                     type="range"
                     min="0"
                     max="100"
                     defaultValue={item.weight}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                    className="w-full h-2 bg-[#ECE6DC] rounded-lg appearance-none cursor-pointer"
                   />
-                  <p className="text-xs text-gray-500 mt-1">{item.description}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{item.description}</p>
                 </div>
               ))}
               <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
@@ -552,10 +552,10 @@ export default function MatchingPage() {
                 </p>
               </div>
             </div>
-            <div className="flex items-center justify-end gap-3 p-4 border-t bg-gray-50 rounded-b-xl">
+            <div className="flex items-center justify-end gap-3 p-4 border-t bg-background rounded-b-xl">
               <button
                 onClick={() => setShowAlgorithmSettings(false)}
-                className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+                className="px-4 py-2 text-foreground hover:bg-[#F1ECE3] rounded-lg"
               >
                 Cancel
               </button>

@@ -100,8 +100,8 @@ export default function UserImpersonationPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">User Impersonation</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">User Impersonation</h1>
+          <p className="text-muted-foreground mt-1">
             View the platform as a specific user for debugging and support
           </p>
         </div>
@@ -112,7 +112,7 @@ export default function UserImpersonationPage() {
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -124,13 +124,13 @@ export default function UserImpersonationPage() {
                   Viewing as <span className="font-medium">{activeSession.user_name}</span> ·
                   Duration: {formatDuration(activeSession.started_at, null)}
                 </p>
-                <p className="text-xs text-amber-600 mt-1">Reason: {activeSession.reason}</p>
+                <p className="text-xs text-primary mt-1">Reason: {activeSession.reason}</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <a
                 href="#"
-                className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 text-sm font-medium"
+                className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 text-sm font-medium"
               >
                 Open User View
               </a>
@@ -164,8 +164,8 @@ export default function UserImpersonationPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Start Impersonation */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-            <h3 className="font-semibold text-gray-900 mb-4">Start New Session</h3>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+            <h3 className="font-semibold text-foreground mb-4">Start New Session</h3>
 
             {/* Search for User */}
             <div className="relative">
@@ -174,10 +174,10 @@ export default function UserImpersonationPage() {
                 placeholder="Search for a user by name or email..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg pr-10"
+                className="w-full px-4 py-3 border border-[#E4DED2] rounded-lg pr-10"
               />
               <svg
-                className="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2"
+                className="w-5 h-5 text-muted-foreground absolute right-3 top-1/2 -translate-y-1/2"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -188,11 +188,11 @@ export default function UserImpersonationPage() {
 
             {/* Search Results */}
             {filteredUsers.length > 0 && (
-              <div className="mt-4 border border-gray-200 rounded-lg divide-y divide-gray-100 max-h-[300px] overflow-y-auto">
+              <div className="mt-4 border border-[#ECE6DC] rounded-lg divide-y divide-[#F0EBE1] max-h-[300px] overflow-y-auto">
                 {filteredUsers.map((user) => (
                   <div
                     key={user.id}
-                    className={`p-4 flex items-center justify-between hover:bg-gray-50 cursor-pointer ${
+                    className={`p-4 flex items-center justify-between hover:bg-background cursor-pointer ${
                       selectedUser?.id === user.id ? 'bg-indigo-50' : ''
                     }`}
                     onClick={() => setSelectedUser(user)}
@@ -203,7 +203,7 @@ export default function UserImpersonationPage() {
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
-                          <p className="font-medium text-gray-900 dark:text-white">
+                          <p className="font-medium text-foreground">
                             {user.first_name} {user.last_name}
                           </p>
                           {user.is_verified && (
@@ -212,16 +212,16 @@ export default function UserImpersonationPage() {
                             </svg>
                           )}
                         </div>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">{user.email}</p>
+                        <p className="text-sm text-muted-foreground">{user.email}</p>
                       </div>
                     </div>
                     <div className="text-right">
                       <span className={`text-xs px-2 py-0.5 rounded-full ${
-                        user.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500 dark:text-gray-400'
+                        user.is_active ? 'bg-green-100 text-green-700' : 'bg-[#F1ECE3] text-muted-foreground'
                       }`}>
                         {user.is_active ? 'Active' : 'Inactive'}
                       </span>
-                      <p className="text-xs text-gray-400 mt-1">{user.location?.city}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{user.location?.city}</p>
                     </div>
                   </div>
                 ))}
@@ -229,8 +229,8 @@ export default function UserImpersonationPage() {
             )}
 
             {searchQuery && filteredUsers.length === 0 && (
-              <div className="mt-4 p-8 text-center text-gray-500 border border-gray-200 rounded-lg">
-                <svg className="w-12 h-12 text-gray-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="mt-4 p-8 text-center text-muted-foreground border border-[#ECE6DC] rounded-lg">
+                <svg className="w-12 h-12 text-muted-foreground mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <p>No users found matching &quot;{searchQuery}&quot;</p>
@@ -246,10 +246,10 @@ export default function UserImpersonationPage() {
                       {selectedUser.first_name[0]}{selectedUser.last_name[0]}
                     </div>
                     <div>
-                      <p className="font-medium text-gray-900 dark:text-white">
+                      <p className="font-medium text-foreground">
                         {selectedUser.first_name} {selectedUser.last_name}
                       </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">{selectedUser.email}</p>
+                      <p className="text-sm text-muted-foreground">{selectedUser.email}</p>
                     </div>
                   </div>
                   <button
@@ -257,7 +257,7 @@ export default function UserImpersonationPage() {
                     disabled={!!activeSession}
                     className={`px-4 py-2 rounded-lg text-sm font-medium ${
                       activeSession
-                        ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                        ? 'bg-[#F1ECE3] text-muted-foreground cursor-not-allowed'
                         : 'bg-indigo-600 text-white hover:bg-indigo-700'
                     }`}
                   >
@@ -269,9 +269,9 @@ export default function UserImpersonationPage() {
           </div>
 
           {/* Impersonation History */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
-            <div className="p-4 border-b border-gray-200 flex items-center justify-between">
-              <h3 className="font-semibold text-gray-900 dark:text-white">Session History</h3>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] dark:border-[#33291f]">
+            <div className="p-4 border-b border-[#ECE6DC] flex items-center justify-between">
+              <h3 className="font-semibold text-foreground">Session History</h3>
               <div className="flex gap-2">
                 {(['all', 'active', 'ended'] as const).map((filter) => (
                   <button
@@ -280,7 +280,7 @@ export default function UserImpersonationPage() {
                     className={`px-3 py-1 text-sm rounded-lg ${
                       historyFilter === filter
                         ? 'bg-indigo-100 text-indigo-700'
-                        : 'text-gray-600 hover:bg-gray-100 dark:bg-gray-700'
+                        : 'text-muted-foreground hover:bg-[#F1ECE3] dark:bg-[#2a2118]'
                     }`}
                   >
                     {filter.charAt(0).toUpperCase() + filter.slice(1)}
@@ -288,45 +288,45 @@ export default function UserImpersonationPage() {
                 ))}
               </div>
             </div>
-            <div className="divide-y divide-gray-100">
+            <div className="divide-y divide-[#F0EBE1]">
               {filteredHistory.map((session) => (
                 <div key={session.id} className="p-4">
                   <div className="flex items-start justify-between">
                     <div className="flex items-start gap-3">
                       <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                        session.status === 'active' ? 'bg-amber-100' : 'bg-gray-100 dark:bg-gray-700'
+                        session.status === 'active' ? 'bg-amber-100' : 'bg-[#F1ECE3] dark:bg-[#2a2118]'
                       }`}>
                         <svg className={`w-5 h-5 ${
-                          session.status === 'active' ? 'text-amber-600' : 'text-gray-500 dark:text-gray-400'
+                          session.status === 'active' ? 'text-primary' : 'text-muted-foreground'
                         }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                       </div>
                       <div>
-                        <p className="font-medium text-gray-900 dark:text-white">{session.user_name}</p>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                        <p className="font-medium text-foreground">{session.user_name}</p>
+                        <p className="text-sm text-muted-foreground">
                           Impersonated by {session.admin_name}
                         </p>
-                        <p className="text-xs text-gray-400 mt-1">{session.reason}</p>
+                        <p className="text-xs text-muted-foreground mt-1">{session.reason}</p>
                       </div>
                     </div>
                     <div className="text-right">
                       <span className={`text-xs px-2 py-0.5 rounded-full ${
                         session.status === 'active'
                           ? 'bg-amber-100 text-amber-700'
-                          : 'bg-gray-100 text-gray-600 dark:text-gray-400'
+                          : 'bg-[#F1ECE3] text-muted-foreground'
                       }`}>
                         {session.status === 'active' ? 'Active' : 'Ended'}
                       </span>
-                      <p className="text-xs text-gray-500 mt-1">
+                      <p className="text-xs text-muted-foreground mt-1">
                         {new Date(session.started_at).toLocaleDateString()}
                       </p>
-                      <p className="text-xs text-gray-400 dark:text-gray-500">
+                      <p className="text-xs text-muted-foreground dark:text-muted-foreground">
                         Duration: {formatDuration(session.started_at, session.ended_at)}
                       </p>
                     </div>
                   </div>
-                  <div className="mt-3 flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
+                  <div className="mt-3 flex items-center gap-4 text-xs text-muted-foreground">
                     <span className="flex items-center gap-1">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -351,32 +351,32 @@ export default function UserImpersonationPage() {
         {/* Side Panel */}
         <div className="space-y-6">
           {/* Quick Stats */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-            <h3 className="font-semibold text-gray-900 mb-4">Impersonation Stats</h3>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+            <h3 className="font-semibold text-foreground mb-4">Impersonation Stats</h3>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <p className="text-sm text-gray-600 dark:text-gray-400">Total Sessions (30d)</p>
-                <p className="font-semibold text-gray-900 dark:text-white">47</p>
+                <p className="text-sm text-muted-foreground">Total Sessions (30d)</p>
+                <p className="font-semibold text-foreground">47</p>
               </div>
               <div className="flex items-center justify-between">
-                <p className="text-sm text-gray-600 dark:text-gray-400">Active Sessions</p>
-                <p className="font-semibold text-amber-600">1</p>
+                <p className="text-sm text-muted-foreground">Active Sessions</p>
+                <p className="font-semibold text-primary">1</p>
               </div>
               <div className="flex items-center justify-between">
-                <p className="text-sm text-gray-600 dark:text-gray-400">Avg. Duration</p>
-                <p className="font-semibold text-gray-900 dark:text-white">18m</p>
+                <p className="text-sm text-muted-foreground">Avg. Duration</p>
+                <p className="font-semibold text-foreground">18m</p>
               </div>
               <div className="flex items-center justify-between">
-                <p className="text-sm text-gray-600 dark:text-gray-400">Unique Admins</p>
-                <p className="font-semibold text-gray-900 dark:text-white">5</p>
+                <p className="text-sm text-muted-foreground">Unique Admins</p>
+                <p className="font-semibold text-foreground">5</p>
               </div>
             </div>
           </div>
 
           {/* Guidelines */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-            <h3 className="font-semibold text-gray-900 mb-4">Usage Guidelines</h3>
-            <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+            <h3 className="font-semibold text-foreground mb-4">Usage Guidelines</h3>
+            <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex items-start gap-2">
                 <svg className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -411,8 +411,8 @@ export default function UserImpersonationPage() {
           </div>
 
           {/* Top Admins */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-            <h3 className="font-semibold text-gray-900 mb-4">Top Admins (30d)</h3>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+            <h3 className="font-semibold text-foreground mb-4">Top Admins (30d)</h3>
             <div className="space-y-3">
               {[
                 { name: 'Sarah Admin', sessions: 18 },
@@ -422,10 +422,10 @@ export default function UserImpersonationPage() {
               ].map((admin, index) => (
                 <div key={admin.name} className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-gray-400 w-4">{index + 1}</span>
-                    <span className="text-sm text-gray-700 dark:text-gray-300">{admin.name}</span>
+                    <span className="text-xs text-muted-foreground w-4">{index + 1}</span>
+                    <span className="text-sm text-foreground">{admin.name}</span>
                   </div>
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">{admin.sessions} sessions</span>
+                  <span className="text-sm font-medium text-foreground">{admin.sessions} sessions</span>
                 </div>
               ))}
             </div>
@@ -436,17 +436,17 @@ export default function UserImpersonationPage() {
       {/* Start Impersonation Modal */}
       {showStartModal && selectedUser && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 w-full max-w-md">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl p-6 w-full max-w-md">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center">
-                <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                 </svg>
               </div>
               <div>
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Start Impersonation</h2>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <h2 className="text-lg font-semibold text-foreground">Start Impersonation</h2>
+                <p className="text-sm text-muted-foreground">
                   {selectedUser.first_name} {selectedUser.last_name}
                 </p>
               </div>
@@ -459,7 +459,7 @@ export default function UserImpersonationPage() {
             </div>
 
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 Reason for Impersonation <span className="text-red-500">*</span>
               </label>
               <textarea
@@ -467,7 +467,7 @@ export default function UserImpersonationPage() {
                 onChange={(e) => setImpersonationReason(e.target.value)}
                 placeholder="e.g., Investigating user-reported issue with listing visibility..."
                 rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
               />
             </div>
 
@@ -477,8 +477,8 @@ export default function UserImpersonationPage() {
                 disabled={!impersonationReason.trim()}
                 className={`flex-1 px-4 py-2 rounded-lg text-white ${
                   impersonationReason.trim()
-                    ? 'bg-amber-600 hover:bg-amber-700'
-                    : 'bg-gray-300 cursor-not-allowed'
+                    ? 'bg-primary hover:bg-primary/90'
+                    : 'bg-[#E4DED2] cursor-not-allowed'
                 }`}
               >
                 Start Session
@@ -488,7 +488,7 @@ export default function UserImpersonationPage() {
                   setShowStartModal(false);
                   setImpersonationReason('');
                 }}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 dark:bg-gray-900"
+                className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background"
               >
                 Cancel
               </button>

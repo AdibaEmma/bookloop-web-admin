@@ -55,7 +55,7 @@ function LiveStatCard({
   isLive?: boolean;
 }) {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 relative overflow-hidden">
+    <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6 relative overflow-hidden">
       {isLive && (
         <div className="absolute top-3 right-3 flex items-center gap-1">
           <Circle className="w-2 h-2 fill-green-500 text-green-500 animate-pulse" />
@@ -64,10 +64,10 @@ function LiveStatCard({
       )}
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+          <p className="text-sm font-medium text-muted-foreground">
             {title}
           </p>
-          <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
+          <p className="text-3xl font-bold text-foreground mt-2">
             {value}
           </p>
         </div>
@@ -89,7 +89,7 @@ function LiveStatCard({
           >
             {change}
           </span>
-          <span className="text-sm text-gray-600 dark:text-gray-400 ml-2">
+          <span className="text-sm text-muted-foreground ml-2">
             vs last hour
           </span>
         </div>
@@ -112,7 +112,7 @@ function ActivityFeedItem({ event }: { event: LiveEvent }) {
       case 'new_listing':
         return {
           icon: BookOpen,
-          color: 'bg-amber-500',
+          color: 'bg-primary',
           title: 'New Listing Created',
           description: `"${event.payload.book_title}" by ${event.payload.owner}`,
         };
@@ -147,7 +147,7 @@ function ActivityFeedItem({ event }: { event: LiveEvent }) {
       default:
         return {
           icon: Bell,
-          color: 'bg-gray-500',
+          color: 'bg-background0',
           title: 'Event',
           description: 'Unknown event',
         };
@@ -159,19 +159,19 @@ function ActivityFeedItem({ event }: { event: LiveEvent }) {
   const timeAgo = getTimeAgo(event.timestamp);
 
   return (
-    <div className="flex items-start gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-lg transition-colors animate-fadeIn">
+    <div className="flex items-start gap-3 p-3 hover:bg-background dark:hover:bg-[#2a2118]/50 rounded-lg transition-colors animate-fadeIn">
       <div className={`p-2 rounded-lg ${config.color}`}>
         <Icon className="w-4 h-4 text-white" />
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-medium text-gray-900 dark:text-white">
+        <p className="text-sm font-medium text-foreground">
           {config.title}
         </p>
-        <p className="text-sm text-gray-600 dark:text-gray-400 truncate">
+        <p className="text-sm text-muted-foreground truncate">
           {config.description}
         </p>
       </div>
-      <span className="text-xs text-gray-500 dark:text-gray-500 whitespace-nowrap">
+      <span className="text-xs text-muted-foreground whitespace-nowrap">
         {timeAgo}
       </span>
     </div>
@@ -181,9 +181,9 @@ function ActivityFeedItem({ event }: { event: LiveEvent }) {
 // Active users map placeholder
 function ActiveUsersMap({ regions }: { regions: RegionActivity[] }) {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+    <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+        <h3 className="text-lg font-semibold text-foreground">
           Active Users by Region
         </h3>
         <div className="flex items-center gap-1">
@@ -195,19 +195,19 @@ function ActiveUsersMap({ regions }: { regions: RegionActivity[] }) {
         {regions.map((region, index) => (
           <div key={region.name} className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-gray-400 dark:text-gray-500" />
-              <span className="text-sm text-gray-900 dark:text-white">
+              <MapPin className="w-4 h-4 text-muted-foreground dark:text-muted-foreground" />
+              <span className="text-sm text-foreground">
                 {region.name}
               </span>
             </div>
             <div className="flex items-center gap-3">
-              <div className="w-32 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+              <div className="w-32 h-2 bg-[#ECE6DC] dark:bg-[#2a2118] rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-amber-500 to-orange-600 rounded-full transition-all duration-500"
+                  className="h-full bg-primary rounded-full transition-all duration-500"
                   style={{ width: `${region.percentage}%` }}
                 />
               </div>
-              <span className="text-sm font-medium text-gray-900 dark:text-white w-12 text-right">
+              <span className="text-sm font-medium text-foreground w-12 text-right">
                 {region.activeUsers}
               </span>
             </div>
@@ -221,12 +221,12 @@ function ActiveUsersMap({ regions }: { regions: RegionActivity[] }) {
 // Real-time exchange activity
 function ExchangeActivity({ exchanges }: { exchanges: ActiveExchange[] }) {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+    <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+        <h3 className="text-lg font-semibold text-foreground">
           Active Exchanges
         </h3>
-        <span className="text-sm text-gray-500 dark:text-gray-400">
+        <span className="text-sm text-muted-foreground">
           {exchanges.length} in progress
         </span>
       </div>
@@ -234,15 +234,15 @@ function ExchangeActivity({ exchanges }: { exchanges: ActiveExchange[] }) {
         {exchanges.map((exchange) => (
           <div
             key={exchange.id}
-            className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg"
+            className="flex items-center justify-between p-3 bg-background dark:bg-[#2a2118]/50 rounded-lg"
           >
             <div className="flex items-center gap-3">
               <div className={`w-2 h-2 rounded-full ${getStatusColor(exchange.status)}`} />
               <div>
-                <p className="text-sm font-medium text-gray-900 dark:text-white">
+                <p className="text-sm font-medium text-foreground">
                   {exchange.bookTitle}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
+                <p className="text-xs text-muted-foreground">
                   {exchange.initiator} → {exchange.recipient}
                 </p>
               </div>
@@ -251,7 +251,7 @@ function ExchangeActivity({ exchanges }: { exchanges: ActiveExchange[] }) {
               <span className={`text-xs font-medium px-2 py-1 rounded ${getStatusBadge(exchange.status)}`}>
                 {exchange.status}
               </span>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              <p className="text-xs text-muted-foreground mt-1">
                 {exchange.location}
               </p>
             </div>
@@ -295,7 +295,7 @@ function getStatusColor(status: string): string {
     case 'in_progress':
       return 'bg-green-500 animate-pulse';
     default:
-      return 'bg-gray-500';
+      return 'bg-background0';
   }
 }
 
@@ -308,7 +308,7 @@ function getStatusBadge(status: string): string {
     case 'in_progress':
       return 'bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-300';
     default:
-      return 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300';
+      return 'bg-[#F1ECE3] text-foreground dark:bg-[#2a2118] dark:text-foreground';
   }
 }
 
@@ -424,7 +424,7 @@ export default function RealTimeDashboardPage() {
       {/* Page header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+          <h1 className="text-3xl font-bold text-foreground flex items-center gap-3">
             Real-Time Dashboard
             <span className="flex items-center gap-1 text-sm font-normal">
               <Circle
@@ -439,11 +439,11 @@ export default function RealTimeDashboardPage() {
               </span>
             </span>
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">
+          <p className="text-muted-foreground mt-2">
             Live platform activity and metrics
           </p>
         </div>
-        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+        <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Clock className="w-4 h-4" />
           Last updated: {new Date().toLocaleTimeString()}
         </div>
@@ -483,45 +483,45 @@ export default function RealTimeDashboardPage() {
           change="+18%"
           changeType="increase"
           icon={DollarSign}
-          iconColor="bg-amber-500"
+          iconColor="bg-primary"
         />
       </div>
 
       {/* Secondary stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              <p className="text-sm font-medium text-muted-foreground">
                 New Listings Today
               </p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">
+              <p className="text-2xl font-bold text-foreground mt-1">
                 {stats.newListingsToday}
               </p>
             </div>
             <BookOpen className="w-8 h-8 text-amber-500" />
           </div>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              <p className="text-sm font-medium text-muted-foreground">
                 Transactions Today
               </p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">
+              <p className="text-2xl font-bold text-foreground mt-1">
                 {stats.transactionsToday}
               </p>
             </div>
             <Zap className="w-8 h-8 text-green-500" />
           </div>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              <p className="text-sm font-medium text-muted-foreground">
                 Total Active Users
               </p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">
+              <p className="text-2xl font-bold text-foreground mt-1">
                 {stats.activeUsers}
               </p>
             </div>
@@ -533,10 +533,10 @@ export default function RealTimeDashboardPage() {
       {/* Main content grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Activity Feed */}
-        <div className="lg:col-span-1 bg-white dark:bg-gray-800 rounded-lg shadow">
-          <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+        <div className="lg:col-span-1 bg-white dark:bg-[#241c16] rounded-lg shadow">
+          <div className="p-4 border-b border-[#ECE6DC] dark:border-[#33291f]">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              <h3 className="text-lg font-semibold text-foreground">
                 Live Activity Feed
               </h3>
               <div className="flex items-center gap-1">
@@ -551,7 +551,7 @@ export default function RealTimeDashboardPage() {
                 <ActivityFeedItem key={event.id} event={event} />
               ))
             ) : (
-              <div className="p-8 text-center text-gray-500 dark:text-gray-400">
+              <div className="p-8 text-center text-muted-foreground">
                 <Activity className="w-12 h-12 mx-auto mb-2 opacity-50" />
                 <p>Waiting for activity...</p>
               </div>

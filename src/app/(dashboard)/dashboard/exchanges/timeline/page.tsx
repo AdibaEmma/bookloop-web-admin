@@ -150,7 +150,7 @@ export default function ExchangeTimelinePage() {
       scheduled: 'bg-purple-100 text-purple-700',
       in_progress: 'bg-indigo-100 text-indigo-700',
       completed: 'bg-green-100 text-green-700',
-      cancelled: 'bg-gray-100 text-gray-600 dark:text-gray-400',
+      cancelled: 'bg-[#F1ECE3] text-muted-foreground',
       disputed: 'bg-red-100 text-red-700',
     };
     return colors[status];
@@ -217,16 +217,16 @@ export default function ExchangeTimelinePage() {
         );
       case 'system':
         return (
-          <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-            <svg className="w-4 h-4 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="w-8 h-8 rounded-full bg-[#F1ECE3] flex items-center justify-center">
+            <svg className="w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </div>
         );
       default:
         return (
-          <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-            <svg className="w-4 h-4 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="w-8 h-8 rounded-full bg-[#F1ECE3] flex items-center justify-center">
+            <svg className="w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
@@ -247,8 +247,8 @@ export default function ExchangeTimelinePage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Exchange Timeline</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">Exchange Timeline</h1>
+          <p className="text-muted-foreground mt-1">
             Detailed event history and timeline view for book exchanges
           </p>
         </div>
@@ -257,19 +257,19 @@ export default function ExchangeTimelinePage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Exchange Selector */}
         <div className="space-y-4">
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Find Exchange</h3>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+            <h3 className="font-semibold text-foreground mb-3">Find Exchange</h3>
             <input
               type="text"
               placeholder="Search by ID, user, or book..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
+              className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg text-sm"
             />
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value as ExchangeStatus | 'all')}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm mt-2"
+              className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg text-sm mt-2"
             >
               <option value="all">All Status</option>
               <option value="proposed">Proposed</option>
@@ -282,27 +282,27 @@ export default function ExchangeTimelinePage() {
             </select>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
-            <div className="p-3 border-b border-gray-200 dark:border-gray-700">
-              <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Recent Exchanges</p>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] dark:border-[#33291f]">
+            <div className="p-3 border-b border-[#ECE6DC] dark:border-[#33291f]">
+              <p className="text-sm font-medium text-foreground">Recent Exchanges</p>
             </div>
-            <div className="divide-y divide-gray-100 max-h-[400px] overflow-y-auto">
+            <div className="divide-y divide-[#F0EBE1] max-h-[400px] overflow-y-auto">
               {recentExchanges.map((exchange) => (
                 <div
                   key={exchange.id}
                   onClick={() => setSelectedExchange(exchange.id === mockExchange.id ? mockExchange : { ...exchange, timeline: [] })}
-                  className={`p-3 hover:bg-gray-50 cursor-pointer ${
+                  className={`p-3 hover:bg-background cursor-pointer ${
                     selectedExchange.id === exchange.id ? 'bg-indigo-50' : ''
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-mono text-gray-500 dark:text-gray-400">{exchange.id}</span>
+                    <span className="text-xs font-mono text-muted-foreground">{exchange.id}</span>
                     <span className={`px-2 py-0.5 text-xs rounded-full ${getStatusColor(exchange.status)}`}>
                       {exchange.status}
                     </span>
                   </div>
-                  <p className="text-sm font-medium text-gray-900 truncate">{exchange.book_offered.title}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                  <p className="text-sm font-medium text-foreground truncate">{exchange.book_offered.title}</p>
+                  <p className="text-xs text-muted-foreground">
                     {exchange.initiator.name} ↔ {exchange.recipient.name}
                   </p>
                 </div>
@@ -314,15 +314,15 @@ export default function ExchangeTimelinePage() {
         {/* Timeline */}
         <div className="lg:col-span-2 space-y-4">
           {/* Exchange Summary */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
             <div className="flex items-start justify-between mb-4">
               <div>
-                <p className="text-xs font-mono text-gray-500 dark:text-gray-400">{selectedExchange.id}</p>
+                <p className="text-xs font-mono text-muted-foreground">{selectedExchange.id}</p>
                 <span className={`inline-block px-2 py-0.5 text-xs rounded-full mt-1 ${getStatusColor(selectedExchange.status)}`}>
                   {selectedExchange.status}
                 </span>
               </div>
-              <div className="text-right text-xs text-gray-500 dark:text-gray-400">
+              <div className="text-right text-xs text-muted-foreground">
                 <p>Created: {new Date(selectedExchange.created_at).toLocaleDateString()}</p>
                 <p>Updated: {new Date(selectedExchange.updated_at).toLocaleDateString()}</p>
               </div>
@@ -330,38 +330,38 @@ export default function ExchangeTimelinePage() {
 
             <div className="grid grid-cols-2 gap-4">
               {/* Book Offered */}
-              <div className="p-3 bg-gray-50 rounded-lg">
-                <p className="text-xs text-gray-500 mb-1">Book Offered</p>
-                <p className="font-medium text-gray-900 text-sm">{selectedExchange.book_offered.title}</p>
-                <p className="text-xs text-gray-600 dark:text-gray-400">{selectedExchange.book_offered.author}</p>
-                <p className="text-xs text-gray-500 mt-1">Condition: {selectedExchange.book_offered.condition}</p>
+              <div className="p-3 bg-background rounded-lg">
+                <p className="text-xs text-muted-foreground mb-1">Book Offered</p>
+                <p className="font-medium text-foreground text-sm">{selectedExchange.book_offered.title}</p>
+                <p className="text-xs text-muted-foreground">{selectedExchange.book_offered.author}</p>
+                <p className="text-xs text-muted-foreground mt-1">Condition: {selectedExchange.book_offered.condition}</p>
               </div>
               {/* Book Requested */}
-              <div className="p-3 bg-gray-50 rounded-lg">
-                <p className="text-xs text-gray-500 mb-1">Book Requested</p>
-                <p className="font-medium text-gray-900 text-sm">{selectedExchange.book_requested.title}</p>
-                <p className="text-xs text-gray-600 dark:text-gray-400">{selectedExchange.book_requested.author}</p>
-                <p className="text-xs text-gray-500 mt-1">Condition: {selectedExchange.book_requested.condition}</p>
+              <div className="p-3 bg-background rounded-lg">
+                <p className="text-xs text-muted-foreground mb-1">Book Requested</p>
+                <p className="font-medium text-foreground text-sm">{selectedExchange.book_requested.title}</p>
+                <p className="text-xs text-muted-foreground">{selectedExchange.book_requested.author}</p>
+                <p className="text-xs text-muted-foreground mt-1">Condition: {selectedExchange.book_requested.condition}</p>
               </div>
             </div>
 
-            <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex items-center justify-between mt-4 pt-4 border-t border-[#ECE6DC] dark:border-[#33291f]">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white text-xs font-medium">
                   {selectedExchange.initiator.name.charAt(0)}
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-900 dark:text-white">{selectedExchange.initiator.name}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Initiator · ★ {selectedExchange.initiator.rating}</p>
+                  <p className="text-sm font-medium text-foreground">{selectedExchange.initiator.name}</p>
+                  <p className="text-xs text-muted-foreground">Initiator · ★ {selectedExchange.initiator.rating}</p>
                 </div>
               </div>
-              <svg className="w-5 h-5 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-muted-foreground dark:text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
               </svg>
               <div className="flex items-center gap-3">
                 <div className="text-right">
-                  <p className="text-sm font-medium text-gray-900 dark:text-white">{selectedExchange.recipient.name}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Recipient · ★ {selectedExchange.recipient.rating}</p>
+                  <p className="text-sm font-medium text-foreground">{selectedExchange.recipient.name}</p>
+                  <p className="text-xs text-muted-foreground">Recipient · ★ {selectedExchange.recipient.rating}</p>
                 </div>
                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-red-500 flex items-center justify-center text-white text-xs font-medium">
                   {selectedExchange.recipient.name.charAt(0)}
@@ -376,8 +376,8 @@ export default function ExchangeTimelinePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <div>
-                  <p className="font-medium text-gray-900 text-sm">{selectedExchange.meeting_spot.name}</p>
-                  <p className="text-xs text-gray-600 dark:text-gray-400">{selectedExchange.meeting_spot.address}</p>
+                  <p className="font-medium text-foreground text-sm">{selectedExchange.meeting_spot.name}</p>
+                  <p className="text-xs text-muted-foreground">{selectedExchange.meeting_spot.address}</p>
                   {selectedExchange.meeting_time && (
                     <p className="text-xs text-purple-600 mt-1">
                       {new Date(selectedExchange.meeting_time).toLocaleString()}
@@ -389,9 +389,9 @@ export default function ExchangeTimelinePage() {
           </div>
 
           {/* Event Filter */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="font-semibold text-gray-900 dark:text-white">Timeline Events</h3>
+              <h3 className="font-semibold text-foreground">Timeline Events</h3>
               <button
                 onClick={() => setShowEventFilter(!showEventFilter)}
                 className="text-sm text-indigo-600 hover:text-indigo-700"
@@ -401,7 +401,7 @@ export default function ExchangeTimelinePage() {
             </div>
 
             {showEventFilter && (
-              <div className="flex flex-wrap gap-2 mb-4 p-3 bg-gray-50 rounded-lg">
+              <div className="flex flex-wrap gap-2 mb-4 p-3 bg-background rounded-lg">
                 {eventTypes.map((type) => (
                   <button
                     key={type}
@@ -409,7 +409,7 @@ export default function ExchangeTimelinePage() {
                     className={`px-3 py-1 text-xs rounded-full ${
                       eventTypeFilter.includes(type) || eventTypeFilter.length === 0
                         ? 'bg-indigo-100 text-indigo-700'
-                        : 'bg-gray-200 text-gray-500 dark:text-gray-400'
+                        : 'bg-[#ECE6DC] text-muted-foreground'
                     }`}
                   >
                     {type.replace('_', ' ')}
@@ -418,7 +418,7 @@ export default function ExchangeTimelinePage() {
                 {eventTypeFilter.length > 0 && (
                   <button
                     onClick={() => setEventTypeFilter([])}
-                    className="px-3 py-1 text-xs text-gray-500 hover:text-gray-700 dark:text-gray-300"
+                    className="px-3 py-1 text-xs text-muted-foreground hover:text-foreground"
                   >
                     Clear
                   </button>
@@ -428,7 +428,7 @@ export default function ExchangeTimelinePage() {
 
             {/* Timeline */}
             <div className="relative">
-              <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200" />
+              <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-[#ECE6DC]" />
               <div className="space-y-4">
                 {filteredTimeline.length > 0 ? (
                   filteredTimeline.map((event, index) => (
@@ -439,16 +439,16 @@ export default function ExchangeTimelinePage() {
                       <div className="flex-1 pb-4">
                         <div className="flex items-start justify-between">
                           <div>
-                            <p className="text-sm text-gray-900 dark:text-white">{event.description}</p>
+                            <p className="text-sm text-foreground">{event.description}</p>
                             <div className="flex items-center gap-2 mt-1">
                               <span className={`text-xs ${
-                                event.actor.role === 'system' ? 'text-gray-400 dark:text-gray-500' :
+                                event.actor.role === 'system' ? 'text-muted-foreground dark:text-muted-foreground' :
                                 event.actor.role === 'admin' ? 'text-orange-600' : 'text-indigo-600'
                               }`}>
                                 {event.actor.name}
                               </span>
-                              <span className="text-xs text-gray-400 dark:text-gray-500">·</span>
-                              <span className="text-xs text-gray-400 dark:text-gray-500">
+                              <span className="text-xs text-muted-foreground dark:text-muted-foreground">·</span>
+                              <span className="text-xs text-muted-foreground dark:text-muted-foreground">
                                 {new Date(event.timestamp).toLocaleString()}
                               </span>
                             </div>
@@ -467,8 +467,8 @@ export default function ExchangeTimelinePage() {
                     </div>
                   ))
                 ) : (
-                  <div className="py-8 text-center text-gray-500 dark:text-gray-400">
-                    <svg className="w-12 h-12 mx-auto text-gray-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="py-8 text-center text-muted-foreground">
+                    <svg className="w-12 h-12 mx-auto text-muted-foreground mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <p>No timeline events for this exchange</p>
@@ -479,16 +479,16 @@ export default function ExchangeTimelinePage() {
           </div>
 
           {/* Admin Actions */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Admin Actions</h3>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+            <h3 className="font-semibold text-foreground mb-3">Admin Actions</h3>
             <div className="flex flex-wrap gap-2">
               <button className="px-3 py-1.5 bg-indigo-600 text-white text-sm rounded-lg hover:bg-indigo-700">
                 Add Note
               </button>
-              <button className="px-3 py-1.5 border border-gray-300 text-gray-700 text-sm rounded-lg hover:bg-gray-50 dark:bg-gray-900">
+              <button className="px-3 py-1.5 border border-[#E4DED2] text-foreground text-sm rounded-lg hover:bg-background">
                 Contact Users
               </button>
-              <button className="px-3 py-1.5 border border-gray-300 text-gray-700 text-sm rounded-lg hover:bg-gray-50 dark:bg-gray-900">
+              <button className="px-3 py-1.5 border border-[#E4DED2] text-foreground text-sm rounded-lg hover:bg-background">
                 View Full Audit Log
               </button>
               {selectedExchange.status !== 'completed' && selectedExchange.status !== 'cancelled' && (

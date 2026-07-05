@@ -198,7 +198,7 @@ export default function SegmentationPage() {
         );
       default:
         return (
-          <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+          <svg className="w-4 h-4 text-muted-foreground" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clipRule="evenodd" />
           </svg>
         );
@@ -210,21 +210,21 @@ export default function SegmentationPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">User Segmentation</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">User Segmentation</h1>
+          <p className="text-muted-foreground mt-1">
             Analyze and manage user segments for targeted engagement
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <div className="flex bg-gray-100 rounded-lg p-1">
+          <div className="flex bg-[#F1ECE3] rounded-lg p-1">
             {(['overview', 'users'] as const).map((mode) => (
               <button
                 key={mode}
                 onClick={() => setViewMode(mode)}
                 className={`px-4 py-1.5 text-sm rounded-md transition-colors capitalize ${
                   viewMode === mode
-                    ? 'bg-white text-gray-900 shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900 dark:text-white'
+                    ? 'bg-white text-foreground shadow-sm'
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 {mode}
@@ -245,25 +245,25 @@ export default function SegmentationPage() {
 
       {/* Stats Overview */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Total Users</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">15,650</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-sm text-muted-foreground">Total Users</p>
+          <p className="text-2xl font-bold text-foreground mt-1">15,650</p>
           <p className="text-xs text-green-600 mt-1">+12% this month</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Active Segments</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">6</p>
-          <p className="text-xs text-gray-500 mt-1">Custom segments</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-sm text-muted-foreground">Active Segments</p>
+          <p className="text-2xl font-bold text-foreground mt-1">6</p>
+          <p className="text-xs text-muted-foreground mt-1">Custom segments</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Avg. Retention</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">68%</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-sm text-muted-foreground">Avg. Retention</p>
+          <p className="text-2xl font-bold text-foreground mt-1">68%</p>
           <p className="text-xs text-green-600 mt-1">+3% vs last month</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400">At Risk Users</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-sm text-muted-foreground">At Risk Users</p>
           <p className="text-2xl font-bold text-red-600 mt-1">1,200</p>
-          <p className="text-xs text-gray-500 mt-1">8% of total</p>
+          <p className="text-xs text-muted-foreground mt-1">8% of total</p>
         </div>
       </div>
 
@@ -275,7 +275,7 @@ export default function SegmentationPage() {
               <div
                 key={segment.id}
                 onClick={() => setSelectedSegment(segment)}
-                className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4 hover:border-indigo-300 hover:shadow-md cursor-pointer transition-all"
+                className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4 hover:border-indigo-300 hover:shadow-md cursor-pointer transition-all"
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-3">
@@ -289,30 +289,30 @@ export default function SegmentationPage() {
                       />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 dark:text-white">{segment.name}</h3>
+                      <h3 className="font-semibold text-foreground">{segment.name}</h3>
                       <div className="flex items-center gap-1">
                         {getTrendIcon(segment.trend)}
-                        <span className="text-xs text-gray-500 capitalize">{segment.trend}</span>
+                        <span className="text-xs text-muted-foreground capitalize">{segment.trend}</span>
                       </div>
                     </div>
                   </div>
-                  <span className="text-lg font-bold text-gray-900 dark:text-white">
+                  <span className="text-lg font-bold text-foreground">
                     {segment.userCount.toLocaleString()}
                   </span>
                 </div>
-                <p className="text-sm text-gray-600 mb-3">{segment.description}</p>
+                <p className="text-sm text-muted-foreground mb-3">{segment.description}</p>
                 <div className="grid grid-cols-3 gap-2 pt-3 border-t">
                   <div className="text-center">
-                    <p className="text-xs text-gray-500 dark:text-gray-400">Avg Exchanges</p>
-                    <p className="font-semibold text-gray-900 dark:text-white">{segment.avgExchanges}</p>
+                    <p className="text-xs text-muted-foreground">Avg Exchanges</p>
+                    <p className="font-semibold text-foreground">{segment.avgExchanges}</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-xs text-gray-500 dark:text-gray-400">Avg Rating</p>
-                    <p className="font-semibold text-gray-900 dark:text-white">{segment.avgRating}</p>
+                    <p className="text-xs text-muted-foreground">Avg Rating</p>
+                    <p className="font-semibold text-foreground">{segment.avgRating}</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-xs text-gray-500 dark:text-gray-400">Retention</p>
-                    <p className="font-semibold text-gray-900 dark:text-white">{segment.retentionRate}%</p>
+                    <p className="text-xs text-muted-foreground">Retention</p>
+                    <p className="font-semibold text-foreground">{segment.retentionRate}%</p>
                   </div>
                 </div>
               </div>
@@ -321,8 +321,8 @@ export default function SegmentationPage() {
 
           {/* Charts */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-              <h3 className="font-semibold text-gray-900 mb-4">Segment Distribution</h3>
+            <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+              <h3 className="font-semibold text-foreground mb-4">Segment Distribution</h3>
               <ResponsiveContainer width="100%" height={250}>
                 <PieChart>
                   <Pie
@@ -345,8 +345,8 @@ export default function SegmentationPage() {
               </ResponsiveContainer>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-              <h3 className="font-semibold text-gray-900 mb-4">Segment Comparison</h3>
+            <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+              <h3 className="font-semibold text-foreground mb-4">Segment Comparison</h3>
               <ResponsiveContainer width="100%" height={250}>
                 <RadarChart data={segmentComparison}>
                   <PolarGrid />
@@ -360,8 +360,8 @@ export default function SegmentationPage() {
             </div>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-            <h3 className="font-semibold text-gray-900 mb-4">Segment Growth Over Time</h3>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+            <h3 className="font-semibold text-foreground mb-4">Segment Growth Over Time</h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={segmentGrowth}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -381,10 +381,10 @@ export default function SegmentationPage() {
       )}
 
       {viewMode === 'users' && (
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] dark:border-[#33291f]">
           <div className="p-4 border-b flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <select className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500">
+              <select className="px-3 py-2 border border-[#E4DED2] rounded-lg text-sm focus:ring-2 focus:ring-indigo-500">
                 <option value="">All Segments</option>
                 {userSegments.map((s) => (
                   <option key={s.id} value={s.id}>{s.name}</option>
@@ -393,7 +393,7 @@ export default function SegmentationPage() {
               <input
                 type="text"
                 placeholder="Search users..."
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500"
+                className="px-3 py-2 border border-[#E4DED2] rounded-lg text-sm focus:ring-2 focus:ring-indigo-500"
               />
             </div>
             <button className="px-3 py-2 text-sm text-indigo-600 hover:bg-indigo-50 rounded-lg">
@@ -402,30 +402,30 @@ export default function SegmentationPage() {
           </div>
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50 dark:bg-gray-900">
+              <thead className="bg-background">
                 <tr>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">User</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Segment</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Exchanges</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Rating</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Joined</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Last Active</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+                  <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase">User</th>
+                  <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase">Segment</th>
+                  <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase">Exchanges</th>
+                  <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase">Rating</th>
+                  <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase">Joined</th>
+                  <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase">Last Active</th>
+                  <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-[#ECE6DC]">
                 {segmentUsers.map((user) => {
                   const segment = userSegments.find((s) => s.name === user.segment);
                   return (
-                    <tr key={user.id} className="hover:bg-gray-50 dark:bg-gray-900">
+                    <tr key={user.id} className="hover:bg-background">
                       <td className="px-4 py-3">
                         <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm font-medium">
+                          <div className="w-8 h-8 rounded-full bg-[#ECE6DC] flex items-center justify-center text-sm font-medium">
                             {user.name.split(' ').map((n) => n[0]).join('')}
                           </div>
                           <div>
-                            <p className="font-medium text-gray-900 dark:text-white">{user.name}</p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">{user.email}</p>
+                            <p className="font-medium text-foreground">{user.name}</p>
+                            <p className="text-xs text-muted-foreground">{user.email}</p>
                           </div>
                         </div>
                       </td>
@@ -440,19 +440,19 @@ export default function SegmentationPage() {
                           {user.segment}
                         </span>
                       </td>
-                      <td className="px-4 py-3 text-gray-900 dark:text-white">{user.exchanges}</td>
+                      <td className="px-4 py-3 text-foreground">{user.exchanges}</td>
                       <td className="px-4 py-3">
                         <div className="flex items-center gap-1">
                           <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                           </svg>
-                          <span className="text-gray-900 dark:text-white">{user.rating}</span>
+                          <span className="text-foreground">{user.rating}</span>
                         </div>
                       </td>
-                      <td className="px-4 py-3 text-gray-500 text-sm">
+                      <td className="px-4 py-3 text-muted-foreground text-sm">
                         {new Date(user.joinedAt).toLocaleDateString()}
                       </td>
-                      <td className="px-4 py-3 text-gray-500 text-sm">
+                      <td className="px-4 py-3 text-muted-foreground text-sm">
                         {new Date(user.lastActive).toLocaleDateString()}
                       </td>
                       <td className="px-4 py-3">
@@ -472,7 +472,7 @@ export default function SegmentationPage() {
       {/* Segment Detail Modal */}
       {selectedSegment && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-hidden flex flex-col">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-hidden flex flex-col">
             <div className="flex items-center justify-between p-4 border-b">
               <div className="flex items-center gap-3">
                 <div
@@ -485,46 +485,46 @@ export default function SegmentationPage() {
                   />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{selectedSegment.name}</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">{selectedSegment.userCount.toLocaleString()} users</p>
+                  <h3 className="text-lg font-semibold text-foreground">{selectedSegment.name}</h3>
+                  <p className="text-sm text-muted-foreground">{selectedSegment.userCount.toLocaleString()} users</p>
                 </div>
               </div>
               <button
                 onClick={() => setSelectedSegment(null)}
-                className="p-2 hover:bg-gray-100 rounded-lg"
+                className="p-2 hover:bg-[#F1ECE3] rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
             <div className="p-4 overflow-y-auto flex-1 space-y-4">
-              <p className="text-gray-600 dark:text-gray-400">{selectedSegment.description}</p>
+              <p className="text-muted-foreground">{selectedSegment.description}</p>
 
               <div className="grid grid-cols-4 gap-4">
-                <div className="p-3 bg-gray-50 rounded-lg text-center">
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Users</p>
-                  <p className="text-xl font-bold text-gray-900 dark:text-white">{selectedSegment.userCount.toLocaleString()}</p>
+                <div className="p-3 bg-background rounded-lg text-center">
+                  <p className="text-xs text-muted-foreground">Users</p>
+                  <p className="text-xl font-bold text-foreground">{selectedSegment.userCount.toLocaleString()}</p>
                 </div>
-                <div className="p-3 bg-gray-50 rounded-lg text-center">
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Avg Exchanges</p>
-                  <p className="text-xl font-bold text-gray-900 dark:text-white">{selectedSegment.avgExchanges}</p>
+                <div className="p-3 bg-background rounded-lg text-center">
+                  <p className="text-xs text-muted-foreground">Avg Exchanges</p>
+                  <p className="text-xl font-bold text-foreground">{selectedSegment.avgExchanges}</p>
                 </div>
-                <div className="p-3 bg-gray-50 rounded-lg text-center">
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Avg Rating</p>
-                  <p className="text-xl font-bold text-gray-900 dark:text-white">{selectedSegment.avgRating}</p>
+                <div className="p-3 bg-background rounded-lg text-center">
+                  <p className="text-xs text-muted-foreground">Avg Rating</p>
+                  <p className="text-xl font-bold text-foreground">{selectedSegment.avgRating}</p>
                 </div>
-                <div className="p-3 bg-gray-50 rounded-lg text-center">
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Retention</p>
-                  <p className="text-xl font-bold text-gray-900 dark:text-white">{selectedSegment.retentionRate}%</p>
+                <div className="p-3 bg-background rounded-lg text-center">
+                  <p className="text-xs text-muted-foreground">Retention</p>
+                  <p className="text-xl font-bold text-foreground">{selectedSegment.retentionRate}%</p>
                 </div>
               </div>
 
               <div>
-                <h4 className="font-medium text-gray-900 mb-2">Segment Criteria</h4>
+                <h4 className="font-medium text-foreground mb-2">Segment Criteria</h4>
                 <div className="flex flex-wrap gap-2">
                   {selectedSegment.criteria.map((criterion) => (
-                    <span key={criterion} className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">
+                    <span key={criterion} className="px-3 py-1 bg-[#F1ECE3] text-foreground text-sm rounded-full">
                       {criterion}
                     </span>
                   ))}
@@ -532,7 +532,7 @@ export default function SegmentationPage() {
               </div>
 
               <div>
-                <h4 className="font-medium text-gray-900 mb-2">Recommended Actions</h4>
+                <h4 className="font-medium text-foreground mb-2">Recommended Actions</h4>
                 <div className="space-y-2">
                   {selectedSegment.trend === 'declining' && (
                     <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
@@ -555,22 +555,22 @@ export default function SegmentationPage() {
                       </p>
                     </div>
                   )}
-                  <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg">
-                    <p className="text-sm text-gray-800">
+                  <div className="p-3 bg-background border border-[#ECE6DC] rounded-lg">
+                    <p className="text-sm text-foreground">
                       <strong>Push Notification:</strong> Send personalized notifications to this segment
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="flex items-center justify-between gap-3 p-4 border-t bg-gray-50 dark:bg-gray-900">
+            <div className="flex items-center justify-between gap-3 p-4 border-t bg-background">
               <button className="px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg text-sm">
                 Delete Segment
               </button>
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => setSelectedSegment(null)}
-                  className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+                  className="px-4 py-2 text-foreground hover:bg-[#F1ECE3] rounded-lg"
                 >
                   Close
                 </button>
@@ -586,46 +586,46 @@ export default function SegmentationPage() {
       {/* Create Segment Modal */}
       {showCreateModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-md w-full mx-4">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-xl max-w-md w-full mx-4">
             <div className="flex items-center justify-between p-4 border-b">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Create New Segment</h3>
+              <h3 className="text-lg font-semibold text-foreground">Create New Segment</h3>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="p-2 hover:bg-gray-100 rounded-lg"
+                className="p-2 hover:bg-[#F1ECE3] rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
             <div className="p-4 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Segment Name</label>
+                <label className="block text-sm font-medium text-foreground mb-2">Segment Name</label>
                 <input
                   type="text"
                   placeholder="e.g., High Value Users"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                <label className="block text-sm font-medium text-foreground mb-2">Description</label>
                 <textarea
                   rows={2}
                   placeholder="Describe this segment..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Criteria</label>
+                <label className="block text-sm font-medium text-foreground mb-2">Criteria</label>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <select className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                    <select className="flex-1 px-3 py-2 border border-[#E4DED2] rounded-lg text-sm">
                       <option>Exchanges per month</option>
                       <option>Rating</option>
                       <option>Days since join</option>
                       <option>Days since last active</option>
                     </select>
-                    <select className="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                    <select className="px-3 py-2 border border-[#E4DED2] rounded-lg text-sm">
                       <option>&gt;</option>
                       <option>&lt;</option>
                       <option>=</option>
@@ -635,7 +635,7 @@ export default function SegmentationPage() {
                     <input
                       type="number"
                       placeholder="Value"
-                      className="w-24 px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                      className="w-24 px-3 py-2 border border-[#E4DED2] rounded-lg text-sm"
                     />
                   </div>
                   <button className="text-sm text-indigo-600 hover:text-indigo-700">
@@ -644,22 +644,22 @@ export default function SegmentationPage() {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Color</label>
+                <label className="block text-sm font-medium text-foreground mb-2">Color</label>
                 <div className="flex gap-2">
                   {['#6366f1', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'].map((color) => (
                     <button
                       key={color}
-                      className="w-8 h-8 rounded-full border-2 border-transparent hover:border-gray-300"
+                      className="w-8 h-8 rounded-full border-2 border-transparent hover:border-[#E4DED2]"
                       style={{ backgroundColor: color }}
                     />
                   ))}
                 </div>
               </div>
             </div>
-            <div className="flex items-center justify-end gap-3 p-4 border-t bg-gray-50 rounded-b-xl">
+            <div className="flex items-center justify-end gap-3 p-4 border-t bg-background rounded-b-xl">
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+                className="px-4 py-2 text-foreground hover:bg-[#F1ECE3] rounded-lg"
               >
                 Cancel
               </button>

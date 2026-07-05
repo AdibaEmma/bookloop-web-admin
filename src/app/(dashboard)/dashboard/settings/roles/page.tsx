@@ -175,8 +175,8 @@ export default function RolesManagementPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Role-Based Access Control</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">Role-Based Access Control</h1>
+          <p className="text-muted-foreground mt-1">
             Manage roles and permissions for admin users
           </p>
         </div>
@@ -193,32 +193,32 @@ export default function RolesManagementPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Total Roles</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">{stats.totalRoles}</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Total Roles</p>
+          <p className="text-2xl font-bold text-foreground mt-1">{stats.totalRoles}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Custom Roles</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Custom Roles</p>
           <p className="text-2xl font-bold text-indigo-600 mt-1">{stats.customRoles}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Total Admins</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">{stats.totalAdmins}</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Total Admins</p>
+          <p className="text-2xl font-bold text-foreground mt-1">{stats.totalAdmins}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Active Admins</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Active Admins</p>
           <p className="text-2xl font-bold text-green-600 mt-1">{stats.activeAdmins}</p>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-4 border-b border-gray-200 dark:border-gray-700">
+      <div className="flex gap-4 border-b border-[#ECE6DC] dark:border-[#33291f]">
         <button
           onClick={() => setActiveTab('roles')}
           className={`pb-3 px-1 text-sm font-medium border-b-2 transition-colors ${
             activeTab === 'roles'
               ? 'border-indigo-600 text-indigo-600'
-              : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-300'
+              : 'border-transparent text-muted-foreground hover:text-foreground'
           }`}
         >
           Roles
@@ -228,7 +228,7 @@ export default function RolesManagementPage() {
           className={`pb-3 px-1 text-sm font-medium border-b-2 transition-colors ${
             activeTab === 'users'
               ? 'border-indigo-600 text-indigo-600'
-              : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-300'
+              : 'border-transparent text-muted-foreground hover:text-foreground'
           }`}
         >
           Admin Users
@@ -246,23 +246,23 @@ export default function RolesManagementPage() {
                 className={`bg-white rounded-xl border-2 p-4 cursor-pointer transition-all ${
                   selectedRole?.id === role.id
                     ? 'border-indigo-500 bg-indigo-50'
-                    : 'border-gray-200 hover:border-gray-300'
+                    : 'border-[#ECE6DC] hover:border-[#E4DED2]'
                 }`}
               >
                 <div className="flex items-start justify-between mb-2">
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="font-semibold text-gray-900 dark:text-white">{role.name}</h3>
+                      <h3 className="font-semibold text-foreground">{role.name}</h3>
                       {role.is_system && (
-                        <span className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-full">
+                        <span className="px-2 py-0.5 bg-[#F1ECE3] text-muted-foreground text-xs rounded-full">
                           System
                         </span>
                       )}
                     </div>
-                    <p className="text-sm text-gray-500 mt-1">{role.description}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{role.description}</p>
                   </div>
                 </div>
-                <div className="flex items-center justify-between text-xs text-gray-500 mt-3">
+                <div className="flex items-center justify-between text-xs text-muted-foreground mt-3">
                   <span>{role.permissions.length} permissions</span>
                   <span>{role.user_count} user{role.user_count !== 1 ? 's' : ''}</span>
                 </div>
@@ -273,11 +273,11 @@ export default function RolesManagementPage() {
           {/* Role Detail */}
           <div className="lg:col-span-2">
             {selectedRole ? (
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
+              <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
                 <div className="flex items-center justify-between mb-6">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{selectedRole.name}</h3>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">{selectedRole.description}</p>
+                    <h3 className="text-lg font-semibold text-foreground">{selectedRole.name}</h3>
+                    <p className="text-sm text-muted-foreground">{selectedRole.description}</p>
                   </div>
                   {!selectedRole.is_system && (
                     <div className="flex gap-2">
@@ -294,13 +294,13 @@ export default function RolesManagementPage() {
                   )}
                 </div>
 
-                <h4 className="font-medium text-gray-900 mb-4">Permissions</h4>
+                <h4 className="font-medium text-foreground mb-4">Permissions</h4>
                 <div className="space-y-6">
                   {permissionCategories.map((category) => {
                     const categoryPermissions = permissions.filter((p) => p.category === category);
                     return (
                       <div key={category}>
-                        <h5 className="text-sm font-medium text-gray-700 mb-2">{category}</h5>
+                        <h5 className="text-sm font-medium text-foreground mb-2">{category}</h5>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                           {categoryPermissions.map((permission) => (
                             <div
@@ -308,14 +308,14 @@ export default function RolesManagementPage() {
                               className={`p-3 rounded-lg border ${
                                 selectedRole.permissions.includes(permission.id)
                                   ? 'bg-indigo-50 border-indigo-200'
-                                  : 'bg-gray-50 border-gray-200 dark:border-gray-700'
+                                  : 'bg-background border-[#ECE6DC] dark:border-[#33291f]'
                               }`}
                             >
                               <div className="flex items-start gap-2">
                                 <div className={`w-4 h-4 rounded flex-shrink-0 mt-0.5 flex items-center justify-center ${
                                   selectedRole.permissions.includes(permission.id)
                                     ? 'bg-indigo-600 text-white'
-                                    : 'bg-gray-300'
+                                    : 'bg-[#E4DED2]'
                                 }`}>
                                   {selectedRole.permissions.includes(permission.id) && (
                                     <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
@@ -324,8 +324,8 @@ export default function RolesManagementPage() {
                                   )}
                                 </div>
                                 <div>
-                                  <p className="text-sm font-medium text-gray-900 dark:text-white">{permission.name}</p>
-                                  <p className="text-xs text-gray-500 dark:text-gray-400">{permission.description}</p>
+                                  <p className="text-sm font-medium text-foreground">{permission.name}</p>
+                                  <p className="text-xs text-muted-foreground">{permission.description}</p>
                                 </div>
                               </div>
                             </div>
@@ -337,38 +337,38 @@ export default function RolesManagementPage() {
                 </div>
 
                 {/* Users with this role */}
-                <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-                  <h4 className="font-medium text-gray-900 mb-4">Users with this Role</h4>
+                <div className="mt-6 pt-6 border-t border-[#ECE6DC] dark:border-[#33291f]">
+                  <h4 className="font-medium text-foreground mb-4">Users with this Role</h4>
                   <div className="space-y-2">
                     {mockAdmins
                       .filter((admin) => admin.role_id === selectedRole.id)
                       .map((admin) => (
-                        <div key={admin.id} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
+                        <div key={admin.id} className="flex items-center justify-between p-2 bg-background rounded-lg">
                           <div className="flex items-center gap-3">
                             <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white text-sm font-medium">
                               {admin.name.charAt(0)}
                             </div>
                             <div>
-                              <p className="text-sm font-medium text-gray-900 dark:text-white">{admin.name}</p>
-                              <p className="text-xs text-gray-500 dark:text-gray-400">{admin.email}</p>
+                              <p className="text-sm font-medium text-foreground">{admin.name}</p>
+                              <p className="text-xs text-muted-foreground">{admin.email}</p>
                             </div>
                           </div>
                           <span className={`px-2 py-0.5 text-xs rounded-full ${
-                            admin.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500 dark:text-gray-400'
+                            admin.is_active ? 'bg-green-100 text-green-700' : 'bg-[#F1ECE3] text-muted-foreground'
                           }`}>
                             {admin.is_active ? 'Active' : 'Inactive'}
                           </span>
                         </div>
                       ))}
                     {mockAdmins.filter((admin) => admin.role_id === selectedRole.id).length === 0 && (
-                      <p className="text-sm text-gray-500 text-center py-4">No users assigned to this role</p>
+                      <p className="text-sm text-muted-foreground text-center py-4">No users assigned to this role</p>
                     )}
                   </div>
                 </div>
               </div>
             ) : (
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6 text-center text-gray-500 dark:text-gray-400">
-                <svg className="w-12 h-12 mx-auto text-gray-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6 text-center text-muted-foreground">
+                <svg className="w-12 h-12 mx-auto text-muted-foreground mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
                 <p>Select a role to view details</p>
@@ -378,36 +378,36 @@ export default function RolesManagementPage() {
         </div>
       ) : (
         /* Admin Users Tab */
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
-          <div className="p-4 border-b border-gray-200 flex items-center justify-between">
-            <h3 className="font-semibold text-gray-900 dark:text-white">Admin Users</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] dark:border-[#33291f]">
+          <div className="p-4 border-b border-[#ECE6DC] flex items-center justify-between">
+            <h3 className="font-semibold text-foreground">Admin Users</h3>
             <button className="px-3 py-1.5 bg-indigo-600 text-white text-sm rounded-lg hover:bg-indigo-700">
               Invite Admin
             </button>
           </div>
           <table className="w-full">
-            <thead className="bg-gray-50 dark:bg-gray-900">
+            <thead className="bg-background">
               <tr>
-                <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase">User</th>
-                <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase">Role</th>
-                <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase">Last Login</th>
-                <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase">Status</th>
-                <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase">Actions</th>
+                <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">User</th>
+                <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Role</th>
+                <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Last Login</th>
+                <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Status</th>
+                <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-100">
+            <tbody className="divide-y divide-[#F0EBE1]">
               {mockAdmins.map((admin) => {
                 const role = getRoleById(admin.role_id);
                 return (
-                  <tr key={admin.id} className="hover:bg-gray-50 dark:bg-gray-900">
+                  <tr key={admin.id} className="hover:bg-background">
                     <td className="py-4 px-4">
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white text-sm font-medium">
                           {admin.name.charAt(0)}
                         </div>
                         <div>
-                          <p className="font-medium text-gray-900 dark:text-white">{admin.name}</p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400">{admin.email}</p>
+                          <p className="font-medium text-foreground">{admin.name}</p>
+                          <p className="text-xs text-muted-foreground">{admin.email}</p>
                         </div>
                       </div>
                     </td>
@@ -417,7 +417,7 @@ export default function RolesManagementPage() {
                       </span>
                     </td>
                     <td className="py-4 px-4">
-                      <p className="text-sm text-gray-700 dark:text-gray-300">
+                      <p className="text-sm text-foreground">
                         {admin.last_login
                           ? new Date(admin.last_login).toLocaleDateString()
                           : 'Never'}
@@ -425,7 +425,7 @@ export default function RolesManagementPage() {
                     </td>
                     <td className="py-4 px-4">
                       <span className={`px-2 py-0.5 text-xs rounded-full ${
-                        admin.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500 dark:text-gray-400'
+                        admin.is_active ? 'bg-green-100 text-green-700' : 'bg-[#F1ECE3] text-muted-foreground'
                       }`}>
                         {admin.is_active ? 'Active' : 'Inactive'}
                       </span>
@@ -451,12 +451,12 @@ export default function RolesManagementPage() {
       {/* Create Role Modal */}
       {showCreateModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Create New Role</h2>
+              <h2 className="text-lg font-semibold text-foreground">Create New Role</h2>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400"
+                className="p-1 text-muted-foreground hover:text-muted-foreground"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -466,49 +466,49 @@ export default function RolesManagementPage() {
 
             <div className="space-y-4 mb-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Role Name</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Role Name</label>
                 <input
                   type="text"
                   value={newRole.name}
                   onChange={(e) => setNewRole({ ...newRole, name: e.target.value })}
                   placeholder="e.g., Content Manager"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Description</label>
                 <textarea
                   value={newRole.description}
                   onChange={(e) => setNewRole({ ...newRole, description: e.target.value })}
                   placeholder="Describe what this role is for..."
                   rows={2}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                 />
               </div>
             </div>
 
-            <h4 className="font-medium text-gray-900 mb-4">Permissions</h4>
+            <h4 className="font-medium text-foreground mb-4">Permissions</h4>
             <div className="space-y-4 mb-6">
               {permissionCategories.map((category) => {
                 const categoryPermissions = permissions.filter((p) => p.category === category);
                 return (
                   <div key={category}>
-                    <h5 className="text-sm font-medium text-gray-700 mb-2">{category}</h5>
+                    <h5 className="text-sm font-medium text-foreground mb-2">{category}</h5>
                     <div className="grid grid-cols-2 gap-2">
                       {categoryPermissions.map((permission) => (
                         <label
                           key={permission.id}
-                          className="flex items-start gap-2 p-2 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer"
+                          className="flex items-start gap-2 p-2 rounded-lg border border-[#ECE6DC] hover:bg-background cursor-pointer"
                         >
                           <input
                             type="checkbox"
                             checked={newRole.permissions.includes(permission.id)}
                             onChange={() => togglePermission(permission.id, true)}
-                            className="mt-0.5 rounded border-gray-300"
+                            className="mt-0.5 rounded border-[#E4DED2]"
                           />
                           <div>
-                            <p className="text-sm font-medium text-gray-900 dark:text-white">{permission.name}</p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">{permission.description}</p>
+                            <p className="text-sm font-medium text-foreground">{permission.name}</p>
+                            <p className="text-xs text-muted-foreground">{permission.description}</p>
                           </div>
                         </label>
                       ))}
@@ -527,7 +527,7 @@ export default function RolesManagementPage() {
               </button>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 dark:bg-gray-900"
+                className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background"
               >
                 Cancel
               </button>

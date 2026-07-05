@@ -88,24 +88,24 @@ function ActivityItem({
       case 'user':
         return <Users className="w-5 h-5 text-blue-600" />;
       case 'listing':
-        return <BookOpen className="w-5 h-5 text-amber-600" />;
+        return <BookOpen className="w-5 h-5 text-primary" />;
       case 'exchange':
         return <RefreshCw className="w-5 h-5 text-green-600" />;
     }
   };
 
   return (
-    <div className="flex items-start gap-4 py-3 border-b border-gray-200 dark:border-gray-700 last:border-0">
-      <div className="p-2 bg-gray-100 dark:bg-gray-700 rounded-lg">
+    <div className="flex items-start gap-4 py-3 border-b border-[#ECE6DC] dark:border-[#33291f] last:border-0">
+      <div className="p-2 bg-[#F1ECE3] dark:bg-[#2a2118] rounded-lg">
         {getIcon()}
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-medium text-gray-900 dark:text-white">
+        <p className="text-sm font-medium text-foreground">
           {user}
         </p>
-        <p className="text-sm text-gray-600 dark:text-gray-400">{details}</p>
+        <p className="text-sm text-muted-foreground">{details}</p>
       </div>
-      <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+      <div className="flex items-center gap-1 text-xs text-muted-foreground">
         <Clock className="w-3 h-3" />
         {time}
       </div>
@@ -220,7 +220,7 @@ export default function DashboardPage() {
           change={stats?.listingGrowth || '0%'}
           changeType="increase"
           icon={BookOpen}
-          iconColor="bg-amber-500/15 text-amber-700"
+          iconColor="bg-primary/15 text-amber-700"
         />
         <StatsCard
           title="Active Exchanges"
@@ -323,7 +323,7 @@ export default function DashboardPage() {
             <h3 className="text-[15px] font-bold text-foreground">
               Recent Activity
             </h3>
-            <button className="text-sm text-amber-600 hover:text-amber-700 font-medium">
+            <button className="text-sm text-primary hover:text-amber-700 font-medium">
               View All
             </button>
           </div>
@@ -347,35 +347,35 @@ export default function DashboardPage() {
           Quick Actions
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <button className="flex items-center gap-3 p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-amber-500 transition-colors">
+          <button className="flex items-center gap-3 p-4 border-2 border-[#ECE6DC] dark:border-[#33291f] rounded-lg hover:border-amber-500 transition-colors">
             <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
               <Users className="w-5 h-5 text-blue-600" />
             </div>
-            <span className="font-medium text-gray-900 dark:text-white">
+            <span className="font-medium text-foreground">
               Add New User
             </span>
           </button>
-          <button className="flex items-center gap-3 p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-amber-500 transition-colors">
+          <button className="flex items-center gap-3 p-4 border-2 border-[#ECE6DC] dark:border-[#33291f] rounded-lg hover:border-amber-500 transition-colors">
             <div className="p-2 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
-              <BookOpen className="w-5 h-5 text-amber-600" />
+              <BookOpen className="w-5 h-5 text-primary" />
             </div>
-            <span className="font-medium text-gray-900 dark:text-white">
+            <span className="font-medium text-foreground">
               Moderate Listings
             </span>
           </button>
-          <button className="flex items-center gap-3 p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-amber-500 transition-colors">
+          <button className="flex items-center gap-3 p-4 border-2 border-[#ECE6DC] dark:border-[#33291f] rounded-lg hover:border-amber-500 transition-colors">
             <div className="p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
               <MapPin className="w-5 h-5 text-green-600" />
             </div>
-            <span className="font-medium text-gray-900 dark:text-white">
+            <span className="font-medium text-foreground">
               Add Meetup Spot
             </span>
           </button>
-          <button className="flex items-center gap-3 p-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:border-amber-500 transition-colors">
+          <button className="flex items-center gap-3 p-4 border-2 border-[#ECE6DC] dark:border-[#33291f] rounded-lg hover:border-amber-500 transition-colors">
             <div className="p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
               <TrendingUp className="w-5 h-5 text-purple-600" />
             </div>
-            <span className="font-medium text-gray-900 dark:text-white">
+            <span className="font-medium text-foreground">
               View Analytics
             </span>
           </button>

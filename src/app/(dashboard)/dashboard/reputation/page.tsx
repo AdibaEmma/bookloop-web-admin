@@ -213,11 +213,11 @@ export default function ReputationPage() {
       case 'gold':
         return 'bg-yellow-100 text-yellow-700 border-yellow-200';
       case 'silver':
-        return 'bg-gray-100 text-gray-700 border-gray-200 dark:border-gray-700';
+        return 'bg-[#F1ECE3] text-foreground border-[#ECE6DC] dark:border-[#33291f]';
       case 'bronze':
         return 'bg-orange-100 text-orange-700 border-orange-200';
       default:
-        return 'bg-gray-100 text-gray-700 dark:text-gray-300';
+        return 'bg-[#F1ECE3] text-foreground';
     }
   };
 
@@ -289,17 +289,17 @@ export default function ReputationPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Reputation System</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">Reputation System</h1>
+          <p className="text-muted-foreground mt-1">
             Manage user trust scores, badges, and violations
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <div className="flex bg-gray-100 rounded-lg p-1">
+          <div className="flex bg-[#F1ECE3] rounded-lg p-1">
             <button
               onClick={() => setViewMode('users')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'users' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
+                viewMode === 'users' ? 'bg-white shadow text-foreground' : 'text-muted-foreground'
               }`}
             >
               Users
@@ -307,7 +307,7 @@ export default function ReputationPage() {
             <button
               onClick={() => setViewMode('badges')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'badges' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
+                viewMode === 'badges' ? 'bg-white shadow text-foreground' : 'text-muted-foreground'
               }`}
             >
               Badges
@@ -315,7 +315,7 @@ export default function ReputationPage() {
             <button
               onClick={() => setViewMode('violations')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'violations' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
+                viewMode === 'violations' ? 'bg-white shadow text-foreground' : 'text-muted-foreground'
               }`}
             >
               Violations
@@ -326,30 +326,30 @@ export default function ReputationPage() {
 
       {/* Summary Stats */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Avg Trust Score</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">76.4</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Avg Trust Score</p>
+          <p className="text-2xl font-bold text-foreground mt-1">76.4</p>
           <p className="text-xs text-green-600 mt-1">+2.1 from last month</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Platinum Users</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Platinum Users</p>
           <p className="text-2xl font-bold text-indigo-600 mt-1">45</p>
-          <p className="text-xs text-gray-500 mt-1">Top 2% of users</p>
+          <p className="text-xs text-muted-foreground mt-1">Top 2% of users</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Badges Earned</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">3,373</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Badges Earned</p>
+          <p className="text-2xl font-bold text-foreground mt-1">3,373</p>
           <p className="text-xs text-green-600 mt-1">+156 this month</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Active Violations</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Active Violations</p>
           <p className="text-2xl font-bold text-red-600 mt-1">23</p>
-          <p className="text-xs text-gray-500 mt-1">12 warnings, 11 suspensions</p>
+          <p className="text-xs text-muted-foreground mt-1">12 warnings, 11 suspensions</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Avg Rating</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">4.6</p>
-          <p className="text-xs text-gray-500 mt-1">Based on 12,456 reviews</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Avg Rating</p>
+          <p className="text-2xl font-bold text-foreground mt-1">4.6</p>
+          <p className="text-xs text-muted-foreground mt-1">Based on 12,456 reviews</p>
         </div>
       </div>
 
@@ -365,13 +365,13 @@ export default function ReputationPage() {
                   placeholder="Search users..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-4 py-2 border border-[#E4DED2] rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 />
               </div>
               <select
                 value={levelFilter}
                 onChange={(e) => setLevelFilter(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg"
+                className="px-3 py-2 border border-[#E4DED2] rounded-lg"
               >
                 <option value="all">All Levels</option>
                 <option value="platinum">Platinum</option>
@@ -390,7 +390,7 @@ export default function ReputationPage() {
                   className={`w-full p-4 rounded-xl border-2 text-left transition-all ${
                     selectedUser?.id === user.id
                       ? 'border-indigo-500 bg-indigo-50'
-                      : 'border-gray-200 bg-white hover:border-gray-300'
+                      : 'border-[#ECE6DC] bg-white hover:border-[#E4DED2]'
                   }`}
                 >
                   <div className="flex items-start gap-4">
@@ -399,7 +399,7 @@ export default function ReputationPage() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
-                        <h3 className="font-semibold text-gray-900 dark:text-white">{user.name}</h3>
+                        <h3 className="font-semibold text-foreground">{user.name}</h3>
                         <span className={`text-xs px-2 py-0.5 rounded-full border capitalize ${getLevelColor(user.level)}`}>
                           {user.level}
                         </span>
@@ -409,21 +409,21 @@ export default function ReputationPage() {
                           </span>
                         )}
                       </div>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">{user.email}</p>
+                      <p className="text-sm text-muted-foreground">{user.email}</p>
                       <div className="flex items-center gap-4 mt-2">
                         <div className="flex items-center gap-1">
                           <span className={`text-lg font-bold ${getTrustScoreColor(user.trust_score)}`}>
                             {user.trust_score}
                           </span>
-                          <span className="text-xs text-gray-500 dark:text-gray-400">trust score</span>
+                          <span className="text-xs text-muted-foreground">trust score</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{user.avg_rating}</span>
+                          <span className="text-sm font-medium text-foreground">{user.avg_rating}</span>
                           <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                           </svg>
                         </div>
-                        <span className="text-sm text-gray-500 dark:text-gray-400">
+                        <span className="text-sm text-muted-foreground">
                           {user.successful_exchanges}/{user.total_exchanges} exchanges
                         </span>
                       </div>
@@ -439,7 +439,7 @@ export default function ReputationPage() {
                         </div>
                       ))}
                       {user.badges.length > 3 && (
-                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 text-xs font-medium border-2 border-white">
+                        <div className="w-8 h-8 rounded-full bg-[#F1ECE3] flex items-center justify-center text-muted-foreground text-xs font-medium border-2 border-white">
                           +{user.badges.length - 3}
                         </div>
                       )}
@@ -453,8 +453,8 @@ export default function ReputationPage() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Level Distribution */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-              <h3 className="font-semibold text-gray-900 mb-4">Level Distribution</h3>
+            <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+              <h3 className="font-semibold text-foreground mb-4">Level Distribution</h3>
               <ResponsiveContainer width="100%" height={200}>
                 <PieChart>
                   <Pie
@@ -478,9 +478,9 @@ export default function ReputationPage() {
                   <div key={level.name} className="flex items-center justify-between text-sm">
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 rounded-full" style={{ backgroundColor: level.color }} />
-                      <span className="text-gray-600 dark:text-gray-400">{level.name}</span>
+                      <span className="text-muted-foreground">{level.name}</span>
                     </div>
-                    <span className="font-medium text-gray-900 dark:text-white">{level.value}</span>
+                    <span className="font-medium text-foreground">{level.value}</span>
                   </div>
                 ))}
               </div>
@@ -488,18 +488,18 @@ export default function ReputationPage() {
 
             {/* Selected User Details */}
             {selectedUser && (
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-                <h3 className="font-semibold text-gray-900 mb-4">Trust Score Breakdown</h3>
+              <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+                <h3 className="font-semibold text-foreground mb-4">Trust Score Breakdown</h3>
                 <div className="space-y-3">
                   {trustScoreFactors.map((factor) => (
                     <div key={factor.factor}>
                       <div className="flex items-center justify-between text-sm mb-1">
-                        <span className="text-gray-600 dark:text-gray-400">{factor.factor}</span>
-                        <span className="font-medium text-gray-900 dark:text-white">
+                        <span className="text-muted-foreground">{factor.factor}</span>
+                        <span className="font-medium text-foreground">
                           {factor.score}/{factor.maxScore}
                         </span>
                       </div>
-                      <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                      <div className="h-2 bg-[#F1ECE3] rounded-full overflow-hidden">
                         <div
                           className="h-full bg-indigo-500 rounded-full"
                           style={{ width: `${(factor.score / factor.maxScore) * 100}%` }}
@@ -508,9 +508,9 @@ export default function ReputationPage() {
                     </div>
                   ))}
                 </div>
-                <div className="mt-4 pt-4 border-t border-gray-100">
+                <div className="mt-4 pt-4 border-t border-[#F0EBE1]">
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-gray-900 dark:text-white">Total Score</span>
+                    <span className="font-medium text-foreground">Total Score</span>
                     <span className={`text-2xl font-bold ${getTrustScoreColor(selectedUser.trust_score)}`}>
                       {selectedUser.trust_score}
                     </span>
@@ -520,7 +520,7 @@ export default function ReputationPage() {
                   <button className="flex-1 px-3 py-2 bg-indigo-600 text-white text-sm rounded-lg hover:bg-indigo-700">
                     Award Badge
                   </button>
-                  <button className="px-3 py-2 border border-gray-300 text-gray-700 text-sm rounded-lg hover:bg-gray-50 dark:bg-gray-900">
+                  <button className="px-3 py-2 border border-[#E4DED2] text-foreground text-sm rounded-lg hover:bg-background">
                     Issue Warning
                   </button>
                 </div>
@@ -552,9 +552,9 @@ export default function ReputationPage() {
           </div>
 
           {/* Badge Grid */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">All Badges</h2>
+              <h2 className="text-lg font-semibold text-foreground">All Badges</h2>
               <button
                 onClick={() => setShowBadgeModal(true)}
                 className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 flex items-center gap-2"
@@ -570,7 +570,7 @@ export default function ReputationPage() {
                 <div
                   key={badge.id}
                   className={`p-4 rounded-xl border-2 ${
-                    badge.is_active ? 'border-gray-200 bg-white' : 'border-gray-100 bg-gray-50 opacity-60'
+                    badge.is_active ? 'border-[#ECE6DC] bg-white' : 'border-[#F0EBE1] bg-background opacity-60'
                   }`}
                 >
                   <div className="flex items-start justify-between">
@@ -589,10 +589,10 @@ export default function ReputationPage() {
                       {badge.category}
                     </span>
                   </div>
-                  <h3 className="font-semibold text-gray-900 mt-3">{badge.name}</h3>
-                  <p className="text-sm text-gray-500 mt-1">{badge.description}</p>
-                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
-                    <span className="text-sm text-gray-500 dark:text-gray-400">{badge.earned_count} earned</span>
+                  <h3 className="font-semibold text-foreground mt-3">{badge.name}</h3>
+                  <p className="text-sm text-muted-foreground mt-1">{badge.description}</p>
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-[#F0EBE1]">
+                    <span className="text-sm text-muted-foreground">{badge.earned_count} earned</span>
                     <button className="text-sm text-indigo-600 hover:text-indigo-700">Edit</button>
                   </div>
                 </div>
@@ -606,11 +606,11 @@ export default function ReputationPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Violations List */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
-              <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Active Violations</h2>
+            <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] dark:border-[#33291f]">
+              <div className="p-4 border-b border-[#ECE6DC] dark:border-[#33291f]">
+                <h2 className="text-lg font-semibold text-foreground">Active Violations</h2>
               </div>
-              <div className="divide-y divide-gray-100">
+              <div className="divide-y divide-[#F0EBE1]">
                 {usersWithViolations.map((user) =>
                   user.violations.map((violation) => (
                     <div key={violation.id} className="p-4">
@@ -631,7 +631,7 @@ export default function ReputationPage() {
                           </div>
                           <div>
                             <div className="flex items-center gap-2">
-                              <span className="font-medium text-gray-900 dark:text-white">{user.name}</span>
+                              <span className="font-medium text-foreground">{user.name}</span>
                               <span className={`text-xs px-2 py-0.5 rounded-full capitalize ${
                                 violation.type === 'warning' ? 'bg-yellow-100 text-yellow-700' :
                                 violation.type === 'suspension' ? 'bg-orange-100 text-orange-700' :
@@ -640,15 +640,15 @@ export default function ReputationPage() {
                                 {violation.type}
                               </span>
                             </div>
-                            <p className="text-sm text-gray-600 mt-1">{violation.reason}</p>
-                            <p className="text-xs text-gray-400 mt-1">
+                            <p className="text-sm text-muted-foreground mt-1">{violation.reason}</p>
+                            <p className="text-xs text-muted-foreground mt-1">
                               Issued by {violation.issued_by} on {new Date(violation.issued_at).toLocaleDateString()}
                               {violation.expires_at && ` · Expires ${new Date(violation.expires_at).toLocaleDateString()}`}
                             </p>
                           </div>
                         </div>
                         <div className="flex gap-2">
-                          <button className="px-3 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">
+                          <button className="px-3 py-1 text-sm text-muted-foreground hover:bg-[#F1ECE3] rounded-lg">
                             Review
                           </button>
                           <button className="px-3 py-1 text-sm text-red-600 hover:bg-red-50 rounded-lg">
@@ -665,8 +665,8 @@ export default function ReputationPage() {
 
           {/* Violations Stats */}
           <div className="space-y-6">
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-              <h3 className="font-semibold text-gray-900 mb-4">Violation Trend</h3>
+            <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+              <h3 className="font-semibold text-foreground mb-4">Violation Trend</h3>
               <ResponsiveContainer width="100%" height={200}>
                 <LineChart data={trustScoreTrend}>
                   <CartesianGrid strokeDasharray="3 3" />
@@ -678,15 +678,15 @@ export default function ReputationPage() {
               </ResponsiveContainer>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-              <h3 className="font-semibold text-gray-900 mb-4">Issue New Violation</h3>
+            <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+              <h3 className="font-semibold text-foreground mb-4">Issue New Violation</h3>
               <div className="space-y-3">
                 <input
                   type="text"
                   placeholder="Search user..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg text-sm"
                 />
-                <select className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                <select className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg text-sm">
                   <option value="">Select violation type</option>
                   <option value="warning">Warning</option>
                   <option value="suspension">Suspension</option>
@@ -695,7 +695,7 @@ export default function ReputationPage() {
                 <textarea
                   placeholder="Reason for violation..."
                   rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg text-sm"
                 />
                 <button className="w-full px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">
                   Issue Violation
@@ -709,39 +709,39 @@ export default function ReputationPage() {
       {/* Create Badge Modal */}
       {showBadgeModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 w-full max-w-md">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Create New Badge</h2>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl p-6 w-full max-w-md">
+            <h2 className="text-lg font-semibold text-foreground mb-4">Create New Badge</h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Badge Name</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Badge Name</label>
                 <input
                   type="text"
                   placeholder="e.g., Super Exchanger"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Description</label>
                 <textarea
                   placeholder="What does this badge represent?"
                   rows={2}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
-                <select className="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                <label className="block text-sm font-medium text-foreground mb-1">Category</label>
+                <select className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg">
                   <option value="milestone">Milestone</option>
                   <option value="achievement">Achievement</option>
                   <option value="special">Special</option>
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Criteria</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Criteria</label>
                 <input
                   type="text"
                   placeholder="e.g., successful_exchanges >= 100"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                 />
               </div>
             </div>
@@ -751,7 +751,7 @@ export default function ReputationPage() {
               </button>
               <button
                 onClick={() => setShowBadgeModal(false)}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 dark:bg-gray-900"
+                className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background"
               >
                 Cancel
               </button>

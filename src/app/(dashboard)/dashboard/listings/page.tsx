@@ -114,7 +114,7 @@ function ListingActionMenu({ listing, onAction }: { listing: Listing; onAction: 
     <div className="relative">
       <button
         onClick={() => setMenuOpen(!menuOpen)}
-        className="p-1.5 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+        className="p-1.5 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#2a2118] rounded-lg"
       >
         <MoreVertical className="w-4 h-4" />
       </button>
@@ -125,13 +125,13 @@ function ListingActionMenu({ listing, onAction }: { listing: Listing; onAction: 
             className="fixed inset-0 z-10"
             onClick={() => setMenuOpen(false)}
           ></div>
-          <div className="absolute right-0 mt-1 w-44 bg-white dark:bg-gray-700 rounded-lg shadow-lg z-20 py-1">
+          <div className="absolute right-0 mt-1 w-44 bg-white dark:bg-[#2a2118] rounded-lg shadow-lg z-20 py-1">
             <button
               onClick={() => {
                 onAction('view', listing);
                 setMenuOpen(false);
               }}
-              className="flex items-center gap-2 w-full px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+              className="flex items-center gap-2 w-full px-3 py-2 text-sm text-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#33291f]"
             >
               <Eye className="w-4 h-4" />
               View Details
@@ -142,7 +142,7 @@ function ListingActionMenu({ listing, onAction }: { listing: Listing; onAction: 
                   onAction('approve', listing);
                   setMenuOpen(false);
                 }}
-                className="flex items-center gap-2 w-full px-3 py-2 text-sm text-green-600 dark:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-600"
+                className="flex items-center gap-2 w-full px-3 py-2 text-sm text-green-600 dark:text-green-400 hover:bg-[#F1ECE3] dark:hover:bg-[#33291f]"
               >
                 <CheckCircle className="w-4 h-4" />
                 Approve
@@ -153,7 +153,7 @@ function ListingActionMenu({ listing, onAction }: { listing: Listing; onAction: 
                 onAction(listing.is_flagged ? 'unflag' : 'flag', listing);
                 setMenuOpen(false);
               }}
-              className="flex items-center gap-2 w-full px-3 py-2 text-sm text-yellow-600 dark:text-yellow-400 hover:bg-gray-100 dark:hover:bg-gray-600"
+              className="flex items-center gap-2 w-full px-3 py-2 text-sm text-yellow-600 dark:text-yellow-400 hover:bg-[#F1ECE3] dark:hover:bg-[#33291f]"
             >
               <Flag className="w-4 h-4" />
               {listing.is_flagged ? 'Unflag' : 'Flag'}
@@ -163,7 +163,7 @@ function ListingActionMenu({ listing, onAction }: { listing: Listing; onAction: 
                 onAction('delete', listing);
                 setMenuOpen(false);
               }}
-              className="flex items-center gap-2 w-full px-3 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-600"
+              className="flex items-center gap-2 w-full px-3 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-[#F1ECE3] dark:hover:bg-[#33291f]"
             >
               <Trash2 className="w-4 h-4" />
               Delete
@@ -378,72 +378,72 @@ export default function ListingsPage() {
     <div className="space-y-6">
       {/* Page header */}
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+        <h1 className="text-3xl font-bold text-foreground">
           Listings Management
         </h1>
-        <p className="text-gray-600 dark:text-gray-400 mt-2">
+        <p className="text-muted-foreground mt-2">
           Moderate and manage book listings on the platform
         </p>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-4">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
-              <BookOpen className="w-5 h-5 text-amber-600" />
+              <BookOpen className="w-5 h-5 text-primary" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 Total Listings
               </p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+              <p className="text-2xl font-bold text-foreground">
                 {meta.total}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-4">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
               <CheckCircle className="w-5 h-5 text-green-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 Approved
               </p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+              <p className="text-2xl font-bold text-foreground">
                 {listings.filter((l) => l.is_approved).length}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-4">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
               <XCircle className="w-5 h-5 text-orange-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 Pending
               </p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+              <p className="text-2xl font-bold text-foreground">
                 {listings.filter((l) => !l.is_approved).length}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-4">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-red-50 dark:bg-red-900/20 rounded-lg">
               <Flag className="w-5 h-5 text-red-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Flagged</p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+              <p className="text-sm text-muted-foreground">Flagged</p>
+              <p className="text-2xl font-bold text-foreground">
                 {listings.filter((l) => l.is_flagged).length}
               </p>
             </div>
@@ -452,18 +452,18 @@ export default function ListingsPage() {
       </div>
 
       {/* Filters and search */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+      <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
         <div className="flex flex-col md:flex-row gap-4">
           {/* Search */}
           <div className="flex-1">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground dark:text-muted-foreground" />
               <input
                 type="text"
                 placeholder="Search by title, author, ISBN..."
                 value={searchQuery}
                 onChange={(e) => handleFilterChange(setSearchQuery, e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full pl-10 pr-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
           </div>
@@ -472,7 +472,7 @@ export default function ListingsPage() {
           <select
             value={filterStatus}
             onChange={(e) => handleFilterChange(setFilterStatus, e.target.value as 'all' | 'active' | 'inactive')}
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <option value="all">All Status</option>
             <option value="active">Active</option>
@@ -483,7 +483,7 @@ export default function ListingsPage() {
           <select
             value={filterApproval}
             onChange={(e) => handleFilterChange(setFilterApproval, e.target.value as 'all' | 'approved' | 'pending')}
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <option value="all">All Approval</option>
             <option value="approved">Approved</option>
@@ -494,7 +494,7 @@ export default function ListingsPage() {
           <select
             value={String(filterFlagged)}
             onChange={(e) => handleFilterChange(setFilterFlagged, e.target.value === 'all' ? 'all' : e.target.value === 'true')}
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <option value="all">All Listings</option>
             <option value="true">Flagged Only</option>
@@ -509,18 +509,18 @@ export default function ListingsPage() {
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600"></div>
         </div>
       ) : listings && listings.length > 0 ? (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow overflow-hidden">
           {/* Table Header with Limit Selector */}
-          <div className="flex items-center justify-between px-6 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
+          <div className="flex items-center justify-between px-6 py-3 border-b border-[#ECE6DC] dark:border-[#33291f] bg-background dark:bg-[#2a2118]/50">
             <div className="flex items-center gap-2">
-              <label htmlFor="limit" className="text-sm text-gray-600 dark:text-gray-400">
+              <label htmlFor="limit" className="text-sm text-muted-foreground">
                 Show:
               </label>
               <select
                 id="limit"
                 value={limit}
                 onChange={(e) => handleLimitChange(Number(e.target.value) as typeof LIMIT_OPTIONS[number])}
-                className="px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="px-2 py-1 text-sm border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 {LIMIT_OPTIONS.map((option) => (
                   <option key={option} value={option}>
@@ -528,54 +528,54 @@ export default function ListingsPage() {
                   </option>
                 ))}
               </select>
-              <span className="text-sm text-gray-600 dark:text-gray-400">entries</span>
+              <span className="text-sm text-muted-foreground">entries</span>
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-sm text-muted-foreground">
               Showing {((meta.page - 1) * meta.limit) + 1} to {Math.min(meta.page * meta.limit, meta.total)} of {meta.total}
             </div>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50 dark:bg-gray-700/50">
+              <thead className="bg-background dark:bg-[#2a2118]/50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Book
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Category
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Condition
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Type
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Price
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Seller
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-center text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Views
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Listed
                   </th>
-                  <th className="px-6 py-3 text-right text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-right text-xs font-semibold text-muted-foreground dark:text-foreground uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+              <tbody className="divide-y divide-[#ECE6DC] dark:divide-[#33291f]">
                 {listings.map((listing) => (
                   <tr
                     key={listing.id}
-                    className={`hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors ${listing.is_flagged ? 'bg-red-50 dark:bg-red-900/10' : ''}`}
+                    className={`hover:bg-background dark:hover:bg-[#2a2118]/30 transition-colors ${listing.is_flagged ? 'bg-red-50 dark:bg-red-900/10' : ''}`}
                   >
                     {/* Book Info */}
                     <td className="px-6 py-4">
@@ -588,19 +588,19 @@ export default function ListingsPage() {
                               className="w-full h-full object-cover rounded"
                             />
                           ) : (
-                            <BookOpen className="w-5 h-5 text-amber-600" />
+                            <BookOpen className="w-5 h-5 text-primary" />
                           )}
                         </div>
                         <div className="min-w-0">
                           <div className="flex items-center gap-1.5">
-                            <p className="font-medium text-gray-900 dark:text-white truncate max-w-[180px]">
+                            <p className="font-medium text-foreground truncate max-w-[180px]">
                               {listing.book_title}
                             </p>
                             {listing.is_flagged && (
                               <Flag className="w-3.5 h-3.5 text-red-500 flex-shrink-0" />
                             )}
                           </div>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 truncate max-w-[180px]">
+                          <p className="text-xs text-muted-foreground truncate max-w-[180px]">
                             by {listing.book_author}
                           </p>
                         </div>
@@ -621,7 +621,7 @@ export default function ListingsPage() {
 
                     {/* Exchange Type */}
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-xs text-gray-600 dark:text-gray-400">
+                      <span className="text-xs text-muted-foreground">
                         {listing.exchange_preference === 'swap' ? 'Swap' : listing.exchange_preference === 'sell' ? 'Sell' : 'Both'}
                       </span>
                     </td>
@@ -629,11 +629,11 @@ export default function ListingsPage() {
                     {/* Price */}
                     <td className="px-6 py-4 whitespace-nowrap">
                       {listing.price ? (
-                        <span className="text-sm font-medium text-gray-900 dark:text-white">
+                        <span className="text-sm font-medium text-foreground">
                           GH₵{listing.price}
                         </span>
                       ) : (
-                        <span className="text-sm text-gray-400 dark:text-gray-500">—</span>
+                        <span className="text-sm text-muted-foreground dark:text-muted-foreground">—</span>
                       )}
                     </td>
 
@@ -645,11 +645,11 @@ export default function ListingsPage() {
                     {/* Seller */}
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div>
-                        <p className="text-sm text-gray-900 dark:text-white">
+                        <p className="text-sm text-foreground">
                           {listing.user.first_name} {listing.user.last_name}
                         </p>
                         {listing.user.city && (
-                          <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
+                          <p className="text-xs text-muted-foreground flex items-center gap-1">
                             <MapPin className="w-3 h-3" />
                             {listing.user.city}
                           </p>
@@ -660,11 +660,11 @@ export default function ListingsPage() {
                     {/* Views */}
                     <td className="px-6 py-4 whitespace-nowrap text-center">
                       <div className="flex items-center justify-center gap-3 text-sm">
-                        <span className="text-gray-900 dark:text-white" title="Views">
+                        <span className="text-foreground" title="Views">
                           {listing.views_count || 0}
                         </span>
-                        <span className="text-gray-400 dark:text-gray-500">/</span>
-                        <span className="text-amber-600" title="Interested">
+                        <span className="text-muted-foreground dark:text-muted-foreground">/</span>
+                        <span className="text-primary" title="Interested">
                           {listing.interested_count || 0}
                         </span>
                       </div>
@@ -672,7 +672,7 @@ export default function ListingsPage() {
 
                     {/* Date */}
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm text-gray-600 dark:text-gray-400">
+                      <span className="text-sm text-muted-foreground">
                         {new Date(listing.created_at).toLocaleDateString('en-US', {
                           month: 'short',
                           day: 'numeric',
@@ -692,9 +692,9 @@ export default function ListingsPage() {
           </div>
 
           {/* Pagination Controls */}
-          <div className="flex items-center justify-between px-6 py-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
+          <div className="flex items-center justify-between px-6 py-4 border-t border-[#ECE6DC] dark:border-[#33291f] bg-background dark:bg-[#2a2118]/50">
             {/* Results info - left */}
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-sm text-muted-foreground">
               Showing {((meta.page - 1) * meta.limit) + 1} to {Math.min(meta.page * meta.limit, meta.total)} of {meta.total}
             </div>
 
@@ -703,7 +703,7 @@ export default function ListingsPage() {
               <button
                 onClick={() => setPage(1)}
                 disabled={meta.page === 1}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#33291f] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                 title="First page"
               >
                 <ChevronsLeft className="w-5 h-5" />
@@ -712,7 +712,7 @@ export default function ListingsPage() {
               <button
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                 disabled={meta.page === 1}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#33291f] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                 title="Previous page"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -750,7 +750,7 @@ export default function ListingsPage() {
 
                   return pages.map((pageNum, idx) =>
                     pageNum === '...' ? (
-                      <span key={`ellipsis-${idx}`} className="px-2 text-gray-400 dark:text-gray-500">
+                      <span key={`ellipsis-${idx}`} className="px-2 text-muted-foreground dark:text-muted-foreground">
                         ...
                       </span>
                     ) : (
@@ -759,8 +759,8 @@ export default function ListingsPage() {
                         onClick={() => setPage(pageNum as number)}
                         className={`min-w-[36px] h-9 px-3 text-sm font-medium rounded-lg transition-colors ${
                           meta.page === pageNum
-                            ? 'bg-amber-500 text-white'
-                            : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-600'
+                            ? 'bg-primary text-white'
+                            : 'text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#33291f]'
                         }`}
                       >
                         {pageNum}
@@ -773,7 +773,7 @@ export default function ListingsPage() {
               <button
                 onClick={() => setPage((p) => Math.min(meta.totalPages, p + 1))}
                 disabled={meta.page === meta.totalPages}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#33291f] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                 title="Next page"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -782,7 +782,7 @@ export default function ListingsPage() {
               <button
                 onClick={() => setPage(meta.totalPages)}
                 disabled={meta.page === meta.totalPages}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#33291f] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                 title="Last page"
               >
                 <ChevronsRight className="w-5 h-5" />
@@ -791,12 +791,12 @@ export default function ListingsPage() {
           </div>
         </div>
       ) : (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-12 text-center">
-          <BookOpen className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-12 text-center">
+          <BookOpen className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
+          <h3 className="text-lg font-semibold text-foreground mb-2">
             No listings found
           </h3>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-muted-foreground">
             Try adjusting your search or filters
           </p>
         </div>
@@ -861,11 +861,11 @@ function ListingDetailsModal({
 
   return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto my-8">
+      <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto my-8">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700 sticky top-0 bg-white dark:bg-gray-800 z-10">
+        <div className="flex items-center justify-between p-6 border-b border-[#ECE6DC] dark:border-[#33291f] sticky top-0 bg-white dark:bg-[#241c16] z-10">
           <div className="flex items-center gap-3">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+            <h2 className="text-xl font-bold text-foreground">
               Listing Details
             </h2>
             {displayListing.is_flagged && (
@@ -882,7 +882,7 @@ function ListingDetailsModal({
           </div>
           <button
             onClick={onClose}
-            className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+            className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-muted-foreground hover:bg-[#F1ECE3] dark:hover:bg-[#2a2118] rounded-lg transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -898,7 +898,7 @@ function ListingDetailsModal({
               {/* Left Column - Images */}
               <div>
                 {/* Main Image */}
-                <div className="relative aspect-[3/4] bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden">
+                <div className="relative aspect-[3/4] bg-[#F1ECE3] dark:bg-[#2a2118] rounded-lg overflow-hidden">
                   {images.length > 0 ? (
                     <>
                       <img
@@ -938,7 +938,7 @@ function ListingDetailsModal({
                     </>
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
-                      <BookOpen className="w-24 h-24 text-gray-400 dark:text-gray-500" />
+                      <BookOpen className="w-24 h-24 text-muted-foreground dark:text-muted-foreground" />
                     </div>
                   )}
                 </div>
@@ -971,14 +971,14 @@ function ListingDetailsModal({
               <div className="space-y-6">
                 {/* Book Info */}
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  <h3 className="text-2xl font-bold text-foreground">
                     {displayListing.book_title}
                   </h3>
-                  <p className="text-lg text-gray-600 dark:text-gray-400 mt-1">
+                  <p className="text-lg text-muted-foreground mt-1">
                     by {displayListing.book_author}
                   </p>
                   {displayListing.book_isbn && (
-                    <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">
+                    <p className="text-sm text-muted-foreground mt-1">
                       ISBN: {displayListing.book_isbn}
                     </p>
                   )}
@@ -1013,7 +1013,7 @@ function ListingDetailsModal({
                 {/* Price */}
                 {displayListing.price && (
                   <div className="flex items-center gap-2">
-                    <span className="text-3xl font-bold text-amber-600">
+                    <span className="text-3xl font-bold text-primary">
                       GH₵{displayListing.price}
                     </span>
                   </div>
@@ -1021,49 +1021,49 @@ function ListingDetailsModal({
 
                 {/* Description */}
                 <div>
-                  <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-2">
+                  <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-2">
                     Description
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-400">
+                  <p className="text-muted-foreground">
                     {displayListing.description}
                   </p>
                 </div>
 
                 {/* Stats */}
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 text-center">
+                  <div className="bg-background dark:bg-[#2a2118]/50 rounded-lg p-4 text-center">
                     <Eye className="w-6 h-6 text-blue-500 mx-auto mb-2" />
-                    <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                    <p className="text-2xl font-bold text-foreground">
                       {displayListing.views_count || 0}
                     </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">Views</p>
+                    <p className="text-xs text-muted-foreground">Views</p>
                   </div>
-                  <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 text-center">
+                  <div className="bg-background dark:bg-[#2a2118]/50 rounded-lg p-4 text-center">
                     <Heart className="w-6 h-6 text-red-500 mx-auto mb-2" />
-                    <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                    <p className="text-2xl font-bold text-foreground">
                       {displayListing.interested_count || 0}
                     </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">Interested</p>
+                    <p className="text-xs text-muted-foreground">Interested</p>
                   </div>
                 </div>
 
                 {/* Seller Info */}
                 <div>
-                  <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-3">
+                  <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-3">
                     Listed By
                   </h4>
-                  <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4">
+                  <div className="bg-background dark:bg-[#2a2118]/50 rounded-lg p-4">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-semibold">
                         {displayListing.user.first_name?.[0]}
                         {displayListing.user.last_name?.[0]}
                       </div>
                       <div>
-                        <p className="font-medium text-gray-900 dark:text-white">
+                        <p className="font-medium text-foreground">
                           {displayListing.user.first_name} {displayListing.user.last_name}
                         </p>
                         {displayListing.user.city && (
-                          <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
+                          <p className="text-sm text-muted-foreground flex items-center gap-1">
                             <MapPin className="w-3 h-3" />
                             {displayListing.user.city}
                           </p>
@@ -1074,7 +1074,7 @@ function ListingDetailsModal({
                 </div>
 
                 {/* Listing Date */}
-                <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Calendar className="w-4 h-4" />
                   Listed on {new Date(displayListing.created_at).toLocaleDateString('en-US', {
                     year: 'numeric',
@@ -1086,7 +1086,7 @@ function ListingDetailsModal({
             </div>
 
             {/* Actions */}
-            <div className="flex flex-wrap items-center justify-between gap-4 mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex flex-wrap items-center justify-between gap-4 mt-8 pt-6 border-t border-[#ECE6DC] dark:border-[#33291f]">
               <div className="flex items-center gap-3">
                 {!displayListing.is_approved && (
                   <button
@@ -1101,7 +1101,7 @@ function ListingDetailsModal({
                   onClick={() => onAction(displayListing.is_flagged ? 'unflag' : 'flag')}
                   className={`flex items-center gap-2 px-4 py-2 font-medium rounded-lg transition-colors ${
                     displayListing.is_flagged
-                      ? 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                      ? 'bg-[#F1ECE3] dark:bg-[#2a2118] text-foreground hover:bg-[#ECE6DC] dark:hover:bg-[#33291f]'
                       : 'bg-yellow-50 dark:bg-yellow-900/20 text-yellow-600 dark:text-yellow-400 hover:bg-yellow-100 dark:hover:bg-yellow-900/30'
                   }`}
                 >
@@ -1119,7 +1119,7 @@ function ListingDetailsModal({
 
               <button
                 onClick={onClose}
-                className="px-4 py-2 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
+                className="px-4 py-2 text-foreground bg-white dark:bg-[#2a2118] border border-[#E4DED2] dark:border-[#33291f] rounded-lg hover:bg-background dark:hover:bg-[#33291f] transition-colors"
               >
                 Close
               </button>

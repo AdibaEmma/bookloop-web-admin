@@ -104,34 +104,34 @@ function RegionCard({ region, isSelected, onClick }: { region: RegionData; isSel
       className={`p-4 rounded-lg cursor-pointer transition-all ${
         isSelected
           ? 'bg-amber-50 dark:bg-amber-900/20 border-2 border-amber-500'
-          : 'bg-white dark:bg-gray-800 border-2 border-transparent hover:border-amber-300'
+          : 'bg-white dark:bg-[#241c16] border-2 border-transparent hover:border-amber-300'
       } shadow`}
     >
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-2">
           <div className={`w-3 h-3 rounded-full ${getIntensityColor(region.exchanges)}`} />
-          <h4 className="font-medium text-gray-900 dark:text-white">{region.name}</h4>
+          <h4 className="font-medium text-foreground">{region.name}</h4>
         </div>
         <span className={`text-xs font-medium px-2 py-1 rounded ${
           region.growth >= 10
             ? 'bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-300'
-            : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300'
+            : 'bg-[#F1ECE3] text-foreground dark:bg-[#2a2118] dark:text-foreground'
         }`}>
           {region.growth >= 0 ? '+' : ''}{region.growth}%
         </span>
       </div>
       <div className="grid grid-cols-3 gap-2 text-sm">
         <div>
-          <p className="text-gray-500 dark:text-gray-400">Users</p>
-          <p className="font-semibold text-gray-900 dark:text-white">{region.users.toLocaleString()}</p>
+          <p className="text-muted-foreground">Users</p>
+          <p className="font-semibold text-foreground">{region.users.toLocaleString()}</p>
         </div>
         <div>
-          <p className="text-gray-500 dark:text-gray-400">Listings</p>
-          <p className="font-semibold text-gray-900 dark:text-white">{region.listings.toLocaleString()}</p>
+          <p className="text-muted-foreground">Listings</p>
+          <p className="font-semibold text-foreground">{region.listings.toLocaleString()}</p>
         </div>
         <div>
-          <p className="text-gray-500 dark:text-gray-400">Exchanges</p>
-          <p className="font-semibold text-gray-900 dark:text-white">{region.exchanges.toLocaleString()}</p>
+          <p className="text-muted-foreground">Exchanges</p>
+          <p className="font-semibold text-foreground">{region.exchanges.toLocaleString()}</p>
         </div>
       </div>
     </div>
@@ -162,7 +162,7 @@ function GhanaMapVisualization({ regions, selectedRegion, onRegionClick }: {
   };
 
   return (
-    <div className="relative w-full h-[500px] bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden">
+    <div className="relative w-full h-[500px] bg-[#F1ECE3] dark:bg-[#2a2118] rounded-lg overflow-hidden">
       {/* Map background */}
       <div className="absolute inset-0 flex items-center justify-center">
         <svg viewBox="0 0 400 500" className="w-full h-full max-w-md">
@@ -209,31 +209,31 @@ function GhanaMapVisualization({ regions, selectedRegion, onRegionClick }: {
       </div>
 
       {/* Legend */}
-      <div className="absolute bottom-4 left-4 bg-white dark:bg-gray-800 rounded-lg p-3 shadow">
-        <p className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">Exchange Activity</p>
+      <div className="absolute bottom-4 left-4 bg-white dark:bg-[#241c16] rounded-lg p-3 shadow">
+        <p className="text-xs font-medium text-foreground mb-2">Exchange Activity</p>
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1">
             <div className="w-3 h-3 rounded-full bg-green-200" />
-            <span className="text-xs text-gray-500 dark:text-gray-400">Low</span>
+            <span className="text-xs text-muted-foreground">Low</span>
           </div>
           <div className="flex items-center gap-1">
             <div className="w-3 h-3 rounded-full bg-yellow-500" />
-            <span className="text-xs text-gray-500 dark:text-gray-400">Medium</span>
+            <span className="text-xs text-muted-foreground">Medium</span>
           </div>
           <div className="flex items-center gap-1">
             <div className="w-3 h-3 rounded-full bg-red-500" />
-            <span className="text-xs text-gray-500 dark:text-gray-400">High</span>
+            <span className="text-xs text-muted-foreground">High</span>
           </div>
         </div>
       </div>
 
       {/* Controls */}
       <div className="absolute top-4 right-4 flex flex-col gap-2">
-        <button className="p-2 bg-white dark:bg-gray-800 rounded-lg shadow hover:bg-gray-50 dark:hover:bg-gray-700">
-          <Layers className="w-4 h-4 text-gray-600 dark:text-gray-400" />
+        <button className="p-2 bg-white dark:bg-[#241c16] rounded-lg shadow hover:bg-background dark:hover:bg-[#2a2118]">
+          <Layers className="w-4 h-4 text-muted-foreground" />
         </button>
-        <button className="p-2 bg-white dark:bg-gray-800 rounded-lg shadow hover:bg-gray-50 dark:hover:bg-gray-700">
-          <Eye className="w-4 h-4 text-gray-600 dark:text-gray-400" />
+        <button className="p-2 bg-white dark:bg-[#241c16] rounded-lg shadow hover:bg-background dark:hover:bg-[#2a2118]">
+          <Eye className="w-4 h-4 text-muted-foreground" />
         </button>
       </div>
     </div>
@@ -256,11 +256,11 @@ export default function HeatMapsPage() {
       {/* Page header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+          <h1 className="text-3xl font-bold text-foreground flex items-center gap-3">
             <MapPin className="w-8 h-8 text-amber-500" />
             Geographic Heat Maps
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">
+          <p className="text-muted-foreground mt-2">
             Visualize exchange activity and user distribution across Ghana
           </p>
         </div>
@@ -268,20 +268,20 @@ export default function HeatMapsPage() {
           <select
             value={metricType}
             onChange={(e) => setMetricType(e.target.value as any)}
-            className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-sm"
+            className="px-3 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-sm"
           >
             <option value="exchanges">Exchanges</option>
             <option value="users">Users</option>
             <option value="listings">Listings</option>
             <option value="revenue">Revenue</option>
           </select>
-          <div className="flex rounded-lg overflow-hidden border border-gray-300 dark:border-gray-600">
+          <div className="flex rounded-lg overflow-hidden border border-[#E4DED2] dark:border-[#33291f]">
             <button
               onClick={() => setViewType('map')}
               className={`px-3 py-2 text-sm ${
                 viewType === 'map'
-                  ? 'bg-amber-500 text-white'
-                  : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                  ? 'bg-primary text-white'
+                  : 'bg-white dark:bg-[#2a2118] text-foreground'
               }`}
             >
               Map
@@ -290,8 +290,8 @@ export default function HeatMapsPage() {
               onClick={() => setViewType('treemap')}
               className={`px-3 py-2 text-sm ${
                 viewType === 'treemap'
-                  ? 'bg-amber-500 text-white'
-                  : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                  ? 'bg-primary text-white'
+                  : 'bg-white dark:bg-[#2a2118] text-foreground'
               }`}
             >
               Treemap
@@ -300,14 +300,14 @@ export default function HeatMapsPage() {
               onClick={() => setViewType('list')}
               className={`px-3 py-2 text-sm ${
                 viewType === 'list'
-                  ? 'bg-amber-500 text-white'
-                  : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                  ? 'bg-primary text-white'
+                  : 'bg-white dark:bg-[#2a2118] text-foreground'
               }`}
             >
               List
             </button>
           </div>
-          <button className="flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors">
+          <button className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
             <Download className="w-4 h-4" />
             Export
           </button>
@@ -316,56 +316,56 @@ export default function HeatMapsPage() {
 
       {/* Summary cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
           <div className="flex items-center gap-3 mb-2">
             <Users className="w-5 h-5 text-blue-500" />
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Users</span>
+            <span className="text-sm font-medium text-muted-foreground">Total Users</span>
           </div>
-          <p className="text-3xl font-bold text-gray-900 dark:text-white">
+          <p className="text-3xl font-bold text-foreground">
             {ghanaRegions.reduce((sum, r) => sum + r.users, 0).toLocaleString()}
           </p>
           <p className="text-sm text-green-600 mt-1">+12.5% from last month</p>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
           <div className="flex items-center gap-3 mb-2">
             <BookOpen className="w-5 h-5 text-amber-500" />
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Listings</span>
+            <span className="text-sm font-medium text-muted-foreground">Total Listings</span>
           </div>
-          <p className="text-3xl font-bold text-gray-900 dark:text-white">
+          <p className="text-3xl font-bold text-foreground">
             {ghanaRegions.reduce((sum, r) => sum + r.listings, 0).toLocaleString()}
           </p>
           <p className="text-sm text-green-600 mt-1">+8.3% from last month</p>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
           <div className="flex items-center gap-3 mb-2">
             <RefreshCw className="w-5 h-5 text-green-500" />
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Exchanges</span>
+            <span className="text-sm font-medium text-muted-foreground">Total Exchanges</span>
           </div>
-          <p className="text-3xl font-bold text-gray-900 dark:text-white">
+          <p className="text-3xl font-bold text-foreground">
             {ghanaRegions.reduce((sum, r) => sum + r.exchanges, 0).toLocaleString()}
           </p>
           <p className="text-sm text-green-600 mt-1">+15.2% from last month</p>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
           <div className="flex items-center gap-3 mb-2">
             <MapPin className="w-5 h-5 text-purple-500" />
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Active Regions</span>
+            <span className="text-sm font-medium text-muted-foreground">Active Regions</span>
           </div>
-          <p className="text-3xl font-bold text-gray-900 dark:text-white">
+          <p className="text-3xl font-bold text-foreground">
             {ghanaRegions.length}
           </p>
-          <p className="text-sm text-gray-500 mt-1">All regions active</p>
+          <p className="text-sm text-muted-foreground mt-1">All regions active</p>
         </div>
       </div>
 
       {/* Main visualization */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Map/Treemap view */}
-        <div className="lg:col-span-2 bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+        <div className="lg:col-span-2 bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
+          <h3 className="text-lg font-semibold text-foreground mb-4">
             {viewType === 'map' && 'Regional Activity Map'}
             {viewType === 'treemap' && 'Activity Distribution'}
             {viewType === 'list' && 'Region Rankings'}
@@ -438,28 +438,28 @@ export default function HeatMapsPage() {
                   className={`flex items-center justify-between p-4 rounded-lg cursor-pointer transition-colors ${
                     selectedRegion === region.name
                       ? 'bg-amber-50 dark:bg-amber-900/20'
-                      : 'bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700'
+                      : 'bg-background dark:bg-[#2a2118]/50 hover:bg-[#F1ECE3] dark:hover:bg-[#2a2118]'
                   }`}
                 >
                   <div className="flex items-center gap-4">
                     <span className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
                       index < 3
-                        ? 'bg-amber-500 text-white'
-                        : 'bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300'
+                        ? 'bg-primary text-white'
+                        : 'bg-[#ECE6DC] dark:bg-[#33291f] text-foreground'
                     }`}>
                       {index + 1}
                     </span>
                     <div>
-                      <p className="font-medium text-gray-900 dark:text-white">{region.name}</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">{region.capital}</p>
+                      <p className="font-medium text-foreground">{region.name}</p>
+                      <p className="text-sm text-muted-foreground">{region.capital}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-6">
                     <div className="text-right">
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                      <p className="text-sm text-muted-foreground">
                         {metricType.charAt(0).toUpperCase() + metricType.slice(1)}
                       </p>
-                      <p className="font-semibold text-gray-900 dark:text-white">
+                      <p className="font-semibold text-foreground">
                         {metricType === 'revenue' ? `GH₵${region[metricType].toLocaleString()}` : region[metricType].toLocaleString()}
                       </p>
                     </div>
@@ -478,93 +478,93 @@ export default function HeatMapsPage() {
         <div className="space-y-6">
           {/* Selected region details */}
           {selectedRegionData ? (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
+              <h3 className="text-lg font-semibold text-foreground mb-4">
                 {selectedRegionData.name}
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-500 dark:text-gray-400">Capital</span>
-                  <span className="font-medium text-gray-900 dark:text-white">{selectedRegionData.capital}</span>
+                  <span className="text-muted-foreground">Capital</span>
+                  <span className="font-medium text-foreground">{selectedRegionData.capital}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-500 dark:text-gray-400">Users</span>
-                  <span className="font-medium text-gray-900 dark:text-white">{selectedRegionData.users.toLocaleString()}</span>
+                  <span className="text-muted-foreground">Users</span>
+                  <span className="font-medium text-foreground">{selectedRegionData.users.toLocaleString()}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-500 dark:text-gray-400">Listings</span>
-                  <span className="font-medium text-gray-900 dark:text-white">{selectedRegionData.listings.toLocaleString()}</span>
+                  <span className="text-muted-foreground">Listings</span>
+                  <span className="font-medium text-foreground">{selectedRegionData.listings.toLocaleString()}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-500 dark:text-gray-400">Exchanges</span>
-                  <span className="font-medium text-gray-900 dark:text-white">{selectedRegionData.exchanges.toLocaleString()}</span>
+                  <span className="text-muted-foreground">Exchanges</span>
+                  <span className="font-medium text-foreground">{selectedRegionData.exchanges.toLocaleString()}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-500 dark:text-gray-400">Revenue</span>
-                  <span className="font-medium text-gray-900 dark:text-white">GH₵{selectedRegionData.revenue.toLocaleString()}</span>
+                  <span className="text-muted-foreground">Revenue</span>
+                  <span className="font-medium text-foreground">GH₵{selectedRegionData.revenue.toLocaleString()}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-500 dark:text-gray-400">Meetup Spots</span>
-                  <span className="font-medium text-gray-900 dark:text-white">{selectedRegionData.activeSpots}</span>
+                  <span className="text-muted-foreground">Meetup Spots</span>
+                  <span className="font-medium text-foreground">{selectedRegionData.activeSpots}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-500 dark:text-gray-400">Growth</span>
+                  <span className="text-muted-foreground">Growth</span>
                   <span className={`font-medium ${selectedRegionData.growth >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                     {selectedRegionData.growth >= 0 ? '+' : ''}{selectedRegionData.growth}%
                   </span>
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
-                <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Top Cities</h4>
+              <div className="mt-6 pt-4 border-t border-[#ECE6DC] dark:border-[#33291f]">
+                <h4 className="text-sm font-medium text-foreground mb-3">Top Cities</h4>
                 <div className="space-y-2">
                   {cityData
                     .filter(c => c.region === selectedRegionData.name)
                     .slice(0, 5)
                     .map(city => (
                       <div key={city.name} className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600 dark:text-gray-400">{city.name}</span>
-                        <span className="font-medium text-gray-900 dark:text-white">{city.exchanges} exchanges</span>
+                        <span className="text-muted-foreground">{city.name}</span>
+                        <span className="font-medium text-foreground">{city.exchanges} exchanges</span>
                       </div>
                     ))}
                 </div>
               </div>
             </div>
           ) : (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 text-center">
-              <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-              <p className="text-gray-500 dark:text-gray-400">
+            <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6 text-center">
+              <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
+              <p className="text-muted-foreground">
                 Select a region to view details
               </p>
             </div>
           )}
 
           {/* Top regions list */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+          <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
+            <h3 className="text-lg font-semibold text-foreground mb-4">
               Top Performing Regions
             </h3>
             <div className="space-y-3">
               {sortedRegions.slice(0, 5).map((region, index) => (
                 <div
                   key={region.name}
-                  className="flex items-center gap-3 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700/50 p-2 rounded-lg"
+                  className="flex items-center gap-3 cursor-pointer hover:bg-background dark:hover:bg-[#2a2118]/50 p-2 rounded-lg"
                   onClick={() => setSelectedRegion(region.name)}
                 >
                   <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
                     index === 0
-                      ? 'bg-amber-500 text-white'
+                      ? 'bg-primary text-white'
                       : index === 1
                       ? 'bg-gray-400 text-white'
                       : index === 2
                       ? 'bg-amber-700 text-white'
-                      : 'bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300'
+                      : 'bg-[#ECE6DC] dark:bg-[#33291f] text-foreground'
                   }`}>
                     {index + 1}
                   </span>
                   <div className="flex-1">
-                    <p className="text-sm font-medium text-gray-900 dark:text-white">{region.name}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                    <p className="text-sm font-medium text-foreground">{region.name}</p>
+                    <p className="text-xs text-muted-foreground">
                       {region[metricType].toLocaleString()} {metricType}
                     </p>
                   </div>
@@ -576,8 +576,8 @@ export default function HeatMapsPage() {
       </div>
 
       {/* Regional comparison chart */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+      <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
+        <h3 className="text-lg font-semibold text-foreground mb-4">
           Regional Comparison
         </h3>
         <ResponsiveContainer width="100%" height={400}>

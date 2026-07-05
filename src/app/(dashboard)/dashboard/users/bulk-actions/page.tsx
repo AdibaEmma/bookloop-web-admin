@@ -123,8 +123,8 @@ export default function BulkActionsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Bulk User Actions</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">Bulk User Actions</h1>
+          <p className="text-muted-foreground mt-1">
             Select multiple users to perform batch operations
           </p>
         </div>
@@ -132,20 +132,20 @@ export default function BulkActionsPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Total Users</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">{mockUsers.length}</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Total Users</p>
+          <p className="text-2xl font-bold text-foreground mt-1">{mockUsers.length}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Filtered Results</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">{filteredUsers.length}</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Filtered Results</p>
+          <p className="text-2xl font-bold text-foreground mt-1">{filteredUsers.length}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Selected</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Selected</p>
           <p className="text-2xl font-bold text-indigo-600 mt-1">{selectedUsers.size}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Active Users</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Active Users</p>
           <p className="text-2xl font-bold text-green-600 mt-1">
             {mockUsers.filter((u) => u.is_active).length}
           </p>
@@ -198,7 +198,7 @@ export default function BulkActionsPage() {
               </button>
               <button
                 onClick={() => handleAction('export')}
-                className="px-3 py-1.5 border border-gray-300 text-gray-700 text-sm rounded-lg hover:bg-gray-50 dark:bg-gray-900"
+                className="px-3 py-1.5 border border-[#E4DED2] text-foreground text-sm rounded-lg hover:bg-background"
               >
                 Export
               </button>
@@ -221,13 +221,13 @@ export default function BulkActionsPage() {
             placeholder="Search users..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+            className="w-full px-4 py-2 border border-[#E4DED2] rounded-lg"
           />
         </div>
         <select
           value={filterRegion}
           onChange={(e) => setFilterRegion(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg"
+          className="px-3 py-2 border border-[#E4DED2] rounded-lg"
         >
           <option value="all">All Regions</option>
           {regions.map((region) => (
@@ -239,7 +239,7 @@ export default function BulkActionsPage() {
         <select
           value={filterStatus}
           onChange={(e) => setFilterStatus(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg"
+          className="px-3 py-2 border border-[#E4DED2] rounded-lg"
         >
           <option value="all">All Status</option>
           <option value="active">Active</option>
@@ -248,7 +248,7 @@ export default function BulkActionsPage() {
         <select
           value={filterVerified}
           onChange={(e) => setFilterVerified(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg"
+          className="px-3 py-2 border border-[#E4DED2] rounded-lg"
         >
           <option value="all">All Verification</option>
           <option value="verified">Verified</option>
@@ -258,24 +258,24 @@ export default function BulkActionsPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* User List */}
-        <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 dark:border-gray-700">
-          <div className="p-4 border-b border-gray-200 flex items-center justify-between">
+        <div className="lg:col-span-2 bg-white rounded-xl border border-[#ECE6DC] dark:border-[#33291f]">
+          <div className="p-4 border-b border-[#ECE6DC] flex items-center justify-between">
             <label className="flex items-center gap-2">
               <input
                 type="checkbox"
                 checked={selectedUsers.size === filteredUsers.length && filteredUsers.length > 0}
                 onChange={toggleSelectAll}
-                className="rounded border-gray-300"
+                className="rounded border-[#E4DED2]"
               />
-              <span className="text-sm text-gray-700 dark:text-gray-300">Select all</span>
+              <span className="text-sm text-foreground">Select all</span>
             </label>
-            <span className="text-sm text-gray-500 dark:text-gray-400">{filteredUsers.length} users</span>
+            <span className="text-sm text-muted-foreground">{filteredUsers.length} users</span>
           </div>
-          <div className="divide-y divide-gray-100 max-h-[500px] overflow-y-auto">
+          <div className="divide-y divide-[#F0EBE1] max-h-[500px] overflow-y-auto">
             {filteredUsers.map((user) => (
               <div
                 key={user.id}
-                className={`p-4 flex items-center gap-4 hover:bg-gray-50 cursor-pointer ${
+                className={`p-4 flex items-center gap-4 hover:bg-background cursor-pointer ${
                   selectedUsers.has(user.id) ? 'bg-indigo-50' : ''
                 }`}
                 onClick={() => toggleUser(user.id)}
@@ -284,7 +284,7 @@ export default function BulkActionsPage() {
                   type="checkbox"
                   checked={selectedUsers.has(user.id)}
                   onChange={() => toggleUser(user.id)}
-                  className="rounded border-gray-300"
+                  className="rounded border-[#E4DED2]"
                   onClick={(e) => e.stopPropagation()}
                 />
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white font-medium">
@@ -292,7 +292,7 @@ export default function BulkActionsPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <p className="font-medium text-gray-900 dark:text-white">
+                    <p className="font-medium text-foreground">
                       {user.first_name} {user.last_name}
                     </p>
                     {user.is_verified && (
@@ -301,12 +301,12 @@ export default function BulkActionsPage() {
                       </svg>
                     )}
                   </div>
-                  <p className="text-sm text-gray-500 truncate">{user.email}</p>
+                  <p className="text-sm text-muted-foreground truncate">{user.email}</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm text-gray-600 dark:text-gray-400">{user.location?.region}</p>
+                  <p className="text-sm text-muted-foreground">{user.location?.region}</p>
                   <span className={`text-xs px-2 py-0.5 rounded-full ${
-                    user.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500 dark:text-gray-400'
+                    user.is_active ? 'bg-green-100 text-green-700' : 'bg-[#F1ECE3] text-muted-foreground'
                   }`}>
                     {user.is_active ? 'Active' : 'Inactive'}
                   </span>
@@ -318,13 +318,13 @@ export default function BulkActionsPage() {
 
         {/* Recent Actions */}
         <div className="space-y-6">
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-            <h3 className="font-semibold text-gray-900 mb-4">Recent Bulk Actions</h3>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+            <h3 className="font-semibold text-foreground mb-4">Recent Bulk Actions</h3>
             <div className="space-y-3">
               {recentActions.map((action) => (
-                <div key={action.id} className="p-3 bg-gray-50 rounded-lg">
+                <div key={action.id} className="p-3 bg-background rounded-lg">
                   <div className="flex items-center justify-between mb-1">
-                    <p className="text-sm font-medium text-gray-900 dark:text-white">{action.action}</p>
+                    <p className="text-sm font-medium text-foreground">{action.action}</p>
                     <span className={`text-xs px-2 py-0.5 rounded-full ${
                       action.status === 'success' ? 'bg-green-100 text-green-700' :
                       action.status === 'partial' ? 'bg-yellow-100 text-yellow-700' :
@@ -333,10 +333,10 @@ export default function BulkActionsPage() {
                       {action.status}
                     </span>
                   </div>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                  <p className="text-xs text-muted-foreground">
                     {action.users_affected} users · {action.performed_by}
                   </p>
-                  <p className="text-xs text-gray-400 mt-1">
+                  <p className="text-xs text-muted-foreground mt-1">
                     {new Date(action.performed_at).toLocaleString()}
                   </p>
                 </div>
@@ -344,8 +344,8 @@ export default function BulkActionsPage() {
             </div>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-            <h3 className="font-semibold text-gray-900 mb-4">Quick Filters</h3>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+            <h3 className="font-semibold text-foreground mb-4">Quick Filters</h3>
             <div className="space-y-2">
               <button
                 onClick={() => {
@@ -353,7 +353,7 @@ export default function BulkActionsPage() {
                   setFilterRegion('all');
                   setFilterVerified('all');
                 }}
-                className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="w-full text-left px-3 py-2 text-sm text-foreground hover:bg-background rounded-lg"
               >
                 Inactive users (30+ days)
               </button>
@@ -363,7 +363,7 @@ export default function BulkActionsPage() {
                   setFilterStatus('all');
                   setFilterRegion('all');
                 }}
-                className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="w-full text-left px-3 py-2 text-sm text-foreground hover:bg-background rounded-lg"
               >
                 Unverified users
               </button>
@@ -373,7 +373,7 @@ export default function BulkActionsPage() {
                   setFilterRegion('all');
                   setFilterVerified('all');
                 }}
-                className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="w-full text-left px-3 py-2 text-sm text-foreground hover:bg-background rounded-lg"
               >
                 Active users only
               </button>
@@ -383,7 +383,7 @@ export default function BulkActionsPage() {
                   setFilterStatus('all');
                   setFilterVerified('all');
                 }}
-                className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="w-full text-left px-3 py-2 text-sm text-foreground hover:bg-background rounded-lg"
               >
                 Greater Accra region
               </button>
@@ -395,37 +395,37 @@ export default function BulkActionsPage() {
       {/* Action Modal */}
       {showActionModal && selectedAction && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 w-full max-w-md">
-            <h2 className="text-lg font-semibold text-gray-900 mb-2">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl p-6 w-full max-w-md">
+            <h2 className="text-lg font-semibold text-foreground mb-2">
               {getActionDetails(selectedAction).title}
             </h2>
-            <p className="text-sm text-gray-500 mb-4">
+            <p className="text-sm text-muted-foreground mb-4">
               {getActionDetails(selectedAction).description}
             </p>
 
-            <div className="p-3 bg-gray-50 rounded-lg mb-4">
-              <p className="text-sm text-gray-700 dark:text-gray-300">
+            <div className="p-3 bg-background rounded-lg mb-4">
+              <p className="text-sm text-foreground">
                 This action will affect <span className="font-bold">{selectedUsers.size}</span> user{selectedUsers.size > 1 ? 's' : ''}
               </p>
             </div>
 
             {(selectedAction === 'send_email' || selectedAction === 'send_notification') && (
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Message</label>
                 <textarea
                   value={actionMessage}
                   onChange={(e) => setActionMessage(e.target.value)}
                   placeholder="Enter your message..."
                   rows={4}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                 />
               </div>
             )}
 
             {selectedAction === 'add_to_segment' && (
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Select Segment</label>
-                <select className="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                <label className="block text-sm font-medium text-foreground mb-1">Select Segment</label>
+                <select className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg">
                   <option value="">Choose a segment...</option>
                   <option value="power_traders">Power Traders</option>
                   <option value="new_enthusiasts">New Enthusiasts</option>
@@ -456,7 +456,7 @@ export default function BulkActionsPage() {
               </button>
               <button
                 onClick={() => setShowActionModal(false)}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 dark:bg-gray-900"
+                className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background"
               >
                 Cancel
               </button>

@@ -280,17 +280,17 @@ export default function SegmentsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">User Segmentation</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">User Segmentation</h1>
+          <p className="text-muted-foreground mt-1">
             Create and manage user segments for targeted engagement
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <div className="flex bg-gray-100 rounded-lg p-1">
+          <div className="flex bg-[#F1ECE3] rounded-lg p-1">
             <button
               onClick={() => setViewMode('overview')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'overview' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
+                viewMode === 'overview' ? 'bg-white shadow text-foreground' : 'text-muted-foreground'
               }`}
             >
               Overview
@@ -298,7 +298,7 @@ export default function SegmentsPage() {
             <button
               onClick={() => setViewMode('compare')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'compare' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
+                viewMode === 'compare' ? 'bg-white shadow text-foreground' : 'text-muted-foreground'
               }`}
             >
               Compare
@@ -306,7 +306,7 @@ export default function SegmentsPage() {
             <button
               onClick={() => setViewMode('builder')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'builder' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
+                viewMode === 'builder' ? 'bg-white shadow text-foreground' : 'text-muted-foreground'
               }`}
             >
               Builder
@@ -326,24 +326,24 @@ export default function SegmentsPage() {
 
       {/* Summary Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Total Segments</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">{mockSegments.length}</p>
-          <p className="text-xs text-gray-500 mt-1">Active segments</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Total Segments</p>
+          <p className="text-2xl font-bold text-foreground mt-1">{mockSegments.length}</p>
+          <p className="text-xs text-muted-foreground mt-1">Active segments</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Segmented Users</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">{totalUsers.toLocaleString()}</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Segmented Users</p>
+          <p className="text-2xl font-bold text-foreground mt-1">{totalUsers.toLocaleString()}</p>
           <p className="text-xs text-green-600 mt-1">92% of total users</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Largest Segment</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">Casual Browsers</p>
-          <p className="text-xs text-gray-500 mt-1">2,456 users (45%)</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Largest Segment</p>
+          <p className="text-2xl font-bold text-foreground mt-1">Casual Browsers</p>
+          <p className="text-xs text-muted-foreground mt-1">2,456 users (45%)</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Fastest Growing</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">New Enthusiasts</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Fastest Growing</p>
+          <p className="text-2xl font-bold text-foreground mt-1">New Enthusiasts</p>
           <p className="text-xs text-green-600 mt-1">+34.2% this month</p>
         </div>
       </div>
@@ -352,7 +352,7 @@ export default function SegmentsPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Segment List */}
           <div className="lg:col-span-2 space-y-4">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">All Segments</h2>
+            <h2 className="text-lg font-semibold text-foreground">All Segments</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {mockSegments.map((segment) => (
                 <button
@@ -361,7 +361,7 @@ export default function SegmentsPage() {
                   className={`p-4 rounded-xl border-2 text-left transition-all ${
                     selectedSegment?.id === segment.id
                       ? 'border-indigo-500 bg-indigo-50'
-                      : 'border-gray-200 bg-white hover:border-gray-300'
+                      : 'border-[#ECE6DC] bg-white hover:border-[#E4DED2]'
                   }`}
                 >
                   <div className="flex items-start justify-between">
@@ -382,18 +382,18 @@ export default function SegmentsPage() {
                       {segment.growth}%
                     </span>
                   </div>
-                  <h3 className="font-semibold text-gray-900 mt-3">{segment.name}</h3>
-                  <p className="text-sm text-gray-500 mt-1 line-clamp-2">{segment.description}</p>
+                  <h3 className="font-semibold text-foreground mt-3">{segment.name}</h3>
+                  <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{segment.description}</p>
                   <div className="flex items-center justify-between mt-4">
                     <div>
-                      <p className="text-lg font-bold text-gray-900 dark:text-white">
+                      <p className="text-lg font-bold text-foreground">
                         {segment.user_count.toLocaleString()}
                       </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">Users</p>
+                      <p className="text-xs text-muted-foreground">Users</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-lg font-semibold text-gray-700 dark:text-gray-300">{segment.avgEngagement}%</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">Engagement</p>
+                      <p className="text-lg font-semibold text-foreground">{segment.avgEngagement}%</p>
+                      <p className="text-xs text-muted-foreground">Engagement</p>
                     </div>
                   </div>
                 </button>
@@ -404,8 +404,8 @@ export default function SegmentsPage() {
           {/* Segment Distribution & Details */}
           <div className="space-y-6">
             {/* Distribution Chart */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-              <h3 className="font-semibold text-gray-900 mb-4">Segment Distribution</h3>
+            <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+              <h3 className="font-semibold text-foreground mb-4">Segment Distribution</h3>
               <ResponsiveContainer width="100%" height={250}>
                 <PieChart>
                   <Pie
@@ -429,9 +429,9 @@ export default function SegmentsPage() {
                   <div key={seg.name} className="flex items-center justify-between text-sm">
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 rounded-full" style={{ backgroundColor: seg.color }} />
-                      <span className="text-gray-600 dark:text-gray-400">{seg.name}</span>
+                      <span className="text-muted-foreground">{seg.name}</span>
                     </div>
-                    <span className="font-medium text-gray-900 dark:text-white">
+                    <span className="font-medium text-foreground">
                       {((seg.value / totalUsers) * 100).toFixed(1)}%
                     </span>
                   </div>
@@ -441,29 +441,29 @@ export default function SegmentsPage() {
 
             {/* Selected Segment Details */}
             {selectedSegment && (
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
+              <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-semibold text-gray-900 dark:text-white">{selectedSegment.name}</h3>
+                  <h3 className="font-semibold text-foreground">{selectedSegment.name}</h3>
                   <button className="text-sm text-indigo-600 hover:text-indigo-700">Edit</button>
                 </div>
 
                 <div className="space-y-4">
                   {/* Criteria */}
                   <div>
-                    <p className="text-xs text-gray-500 uppercase tracking-wide mb-2">Criteria</p>
+                    <p className="text-xs text-muted-foreground uppercase tracking-wide mb-2">Criteria</p>
                     <div className="flex flex-wrap gap-2">
                       {selectedSegment.criteria.activity_level && (
-                        <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                        <span className="px-2 py-1 bg-[#F1ECE3] text-foreground text-xs rounded-full">
                           Activity: {selectedSegment.criteria.activity_level}
                         </span>
                       )}
                       {selectedSegment.criteria.min_exchanges && (
-                        <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                        <span className="px-2 py-1 bg-[#F1ECE3] text-foreground text-xs rounded-full">
                           Min exchanges: {selectedSegment.criteria.min_exchanges}
                         </span>
                       )}
                       {selectedSegment.criteria.regions && (
-                        <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                        <span className="px-2 py-1 bg-[#F1ECE3] text-foreground text-xs rounded-full">
                           Regions: {selectedSegment.criteria.regions.length}
                         </span>
                       )}
@@ -473,14 +473,14 @@ export default function SegmentsPage() {
                   {/* Metrics */}
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">Avg Lifetime Value</p>
-                      <p className="text-lg font-bold text-gray-900 dark:text-white">
+                      <p className="text-xs text-muted-foreground">Avg Lifetime Value</p>
+                      <p className="text-lg font-bold text-foreground">
                         GH₵{selectedSegment.avgLifetimeValue}
                       </p>
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">Engagement Score</p>
-                      <p className="text-lg font-bold text-gray-900 dark:text-white">
+                      <p className="text-xs text-muted-foreground">Engagement Score</p>
+                      <p className="text-lg font-bold text-foreground">
                         {selectedSegment.avgEngagement}%
                       </p>
                     </div>
@@ -488,7 +488,7 @@ export default function SegmentsPage() {
 
                   {/* Top Regions */}
                   <div>
-                    <p className="text-xs text-gray-500 uppercase tracking-wide mb-2">Top Regions</p>
+                    <p className="text-xs text-muted-foreground uppercase tracking-wide mb-2">Top Regions</p>
                     <div className="flex flex-wrap gap-2">
                       {selectedSegment.topRegions.map((region) => (
                         <span
@@ -502,11 +502,11 @@ export default function SegmentsPage() {
                   </div>
 
                   {/* Actions */}
-                  <div className="pt-4 border-t border-gray-100 flex gap-2">
+                  <div className="pt-4 border-t border-[#F0EBE1] flex gap-2">
                     <button className="flex-1 px-3 py-2 bg-indigo-600 text-white text-sm rounded-lg hover:bg-indigo-700">
                       Send Campaign
                     </button>
-                    <button className="px-3 py-2 border border-gray-300 text-gray-700 text-sm rounded-lg hover:bg-gray-50 dark:bg-gray-900">
+                    <button className="px-3 py-2 border border-[#E4DED2] text-foreground text-sm rounded-lg hover:bg-background">
                       Export
                     </button>
                   </div>
@@ -520,8 +520,8 @@ export default function SegmentsPage() {
       {viewMode === 'compare' && (
         <div className="space-y-6">
           {/* Comparison Chart */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-6">Segment Comparison</h2>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+            <h2 className="text-lg font-semibold text-foreground mb-6">Segment Comparison</h2>
             <ResponsiveContainer width="100%" height={400}>
               <BarChart
                 data={comparisonMetrics}
@@ -542,8 +542,8 @@ export default function SegmentsPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Radar Comparison */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-              <h3 className="font-semibold text-gray-900 mb-4">Engagement Profile</h3>
+            <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+              <h3 className="font-semibold text-foreground mb-4">Engagement Profile</h3>
               <ResponsiveContainer width="100%" height={350}>
                 <RadarChart data={radarData}>
                   <PolarGrid />
@@ -576,8 +576,8 @@ export default function SegmentsPage() {
             </div>
 
             {/* Segment Recommendations */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-              <h3 className="font-semibold text-gray-900 mb-4">Recommendations by Segment</h3>
+            <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+              <h3 className="font-semibold text-foreground mb-4">Recommendations by Segment</h3>
               <div className="space-y-4">
                 <div className="p-4 bg-indigo-50 rounded-lg border border-indigo-100">
                   <div className="flex items-center gap-2 mb-2">
@@ -606,12 +606,12 @@ export default function SegmentsPage() {
                     Re-engagement campaign with personalized book recommendations needed urgently.
                   </p>
                 </div>
-                <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 dark:border-gray-700">
+                <div className="p-4 bg-background rounded-lg border border-[#ECE6DC] dark:border-[#33291f]">
                   <div className="flex items-center gap-2 mb-2">
-                    <div className="w-3 h-3 rounded-full bg-gray-500" />
-                    <span className="font-medium text-gray-900 dark:text-white">Casual Browsers</span>
+                    <div className="w-3 h-3 rounded-full bg-background0" />
+                    <span className="font-medium text-foreground">Casual Browsers</span>
                   </div>
-                  <p className="text-sm text-gray-700 dark:text-gray-300">
+                  <p className="text-sm text-foreground">
                     Highlight success stories and simplify first listing process to convert.
                   </p>
                 </div>
@@ -624,11 +624,11 @@ export default function SegmentsPage() {
       {viewMode === 'builder' && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Segment Builder */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-6">Create New Segment</h2>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+            <h2 className="text-lg font-semibold text-foreground mb-6">Create New Segment</h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-foreground mb-1">
                   Segment Name
                 </label>
                 <input
@@ -636,12 +636,12 @@ export default function SegmentsPage() {
                   value={newSegment.name}
                   onChange={(e) => setNewSegment({ ...newSegment, name: e.target.value })}
                   placeholder="e.g., High-Value Collectors"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-foreground mb-1">
                   Description
                 </label>
                 <textarea
@@ -649,12 +649,12 @@ export default function SegmentsPage() {
                   onChange={(e) => setNewSegment({ ...newSegment, description: e.target.value })}
                   placeholder="Describe who this segment targets..."
                   rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2">
                   Activity Level
                 </label>
                 <div className="flex flex-wrap gap-2">
@@ -673,7 +673,7 @@ export default function SegmentsPage() {
                       className={`px-3 py-1.5 rounded-lg text-sm capitalize transition-colors ${
                         newSegment.criteria?.activity_level === level
                           ? 'bg-indigo-600 text-white'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          : 'bg-[#F1ECE3] text-foreground hover:bg-[#ECE6DC]'
                       }`}
                     >
                       {level}
@@ -684,7 +684,7 @@ export default function SegmentsPage() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-foreground mb-1">
                     Min Exchanges
                   </label>
                   <input
@@ -700,11 +700,11 @@ export default function SegmentsPage() {
                       })
                     }
                     placeholder="0"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-foreground mb-1">
                     Max Exchanges
                   </label>
                   <input
@@ -720,13 +720,13 @@ export default function SegmentsPage() {
                       })
                     }
                     placeholder="Unlimited"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Regions</label>
+                <label className="block text-sm font-medium text-foreground mb-2">Regions</label>
                 <div className="flex flex-wrap gap-2">
                   {['Greater Accra', 'Ashanti', 'Western', 'Central', 'Eastern', 'Northern'].map(
                     (region) => (
@@ -745,7 +745,7 @@ export default function SegmentsPage() {
                         className={`px-3 py-1.5 rounded-lg text-sm transition-colors ${
                           newSegment.criteria?.regions?.includes(region)
                             ? 'bg-indigo-600 text-white'
-                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            : 'bg-[#F1ECE3] text-foreground hover:bg-[#ECE6DC]'
                         }`}
                       >
                         {region}
@@ -757,7 +757,7 @@ export default function SegmentsPage() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-foreground mb-1">
                     Registered After
                   </label>
                   <input
@@ -769,11 +769,11 @@ export default function SegmentsPage() {
                         criteria: { ...newSegment.criteria, registered_after: e.target.value },
                       })
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-foreground mb-1">
                     Registered Before
                   </label>
                   <input
@@ -785,7 +785,7 @@ export default function SegmentsPage() {
                         criteria: { ...newSegment.criteria, registered_before: e.target.value },
                       })
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                   />
                 </div>
               </div>
@@ -794,7 +794,7 @@ export default function SegmentsPage() {
                 <button className="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
                   Create Segment
                 </button>
-                <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                <button className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background transition-colors">
                   Preview
                 </button>
               </div>
@@ -802,38 +802,38 @@ export default function SegmentsPage() {
           </div>
 
           {/* Preview Panel */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-6">Segment Preview</h2>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+            <h2 className="text-lg font-semibold text-foreground mb-6">Segment Preview</h2>
             <div className="space-y-4">
-              <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 dark:border-gray-700">
+              <div className="p-4 bg-background rounded-lg border border-[#ECE6DC] dark:border-[#33291f]">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500 dark:text-gray-400">Estimated Users</span>
-                  <span className="text-2xl font-bold text-gray-900 dark:text-white">~1,250</span>
+                  <span className="text-sm text-muted-foreground">Estimated Users</span>
+                  <span className="text-2xl font-bold text-foreground">~1,250</span>
                 </div>
-                <p className="text-xs text-gray-500 mt-1">Based on current criteria</p>
+                <p className="text-xs text-muted-foreground mt-1">Based on current criteria</p>
               </div>
 
               <div>
-                <h3 className="text-sm font-medium text-gray-700 mb-3">Sample Users</h3>
+                <h3 className="text-sm font-medium text-foreground mb-3">Sample Users</h3>
                 <div className="space-y-3">
                   {sampleUsers.slice(0, 3).map((user) => (
                     <div
                       key={user.id}
-                      className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg"
+                      className="flex items-center gap-3 p-3 bg-background rounded-lg"
                     >
                       <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white font-medium">
                         {user.first_name[0]}
                         {user.last_name[0]}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="font-medium text-gray-900 truncate">
+                        <p className="font-medium text-foreground truncate">
                           {user.first_name} {user.last_name}
                         </p>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                        <p className="text-sm text-muted-foreground">
                           {user.location?.city} · {user.stats?.total_exchanges} exchanges
                         </p>
                       </div>
-                      <span className="text-xs text-gray-400 dark:text-gray-500">
+                      <span className="text-xs text-muted-foreground dark:text-muted-foreground">
                         {user.stats?.rating?.toFixed(1)} ★
                       </span>
                     </div>
@@ -841,24 +841,24 @@ export default function SegmentsPage() {
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-gray-100">
-                <h3 className="text-sm font-medium text-gray-700 mb-3">Quick Stats</h3>
+              <div className="pt-4 border-t border-[#F0EBE1]">
+                <h3 className="text-sm font-medium text-foreground mb-3">Quick Stats</h3>
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="text-center p-3 bg-gray-50 rounded-lg">
-                    <p className="text-lg font-bold text-gray-900 dark:text-white">68%</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">Avg Engagement</p>
+                  <div className="text-center p-3 bg-background rounded-lg">
+                    <p className="text-lg font-bold text-foreground">68%</p>
+                    <p className="text-xs text-muted-foreground">Avg Engagement</p>
                   </div>
-                  <div className="text-center p-3 bg-gray-50 rounded-lg">
-                    <p className="text-lg font-bold text-gray-900 dark:text-white">GH₵45</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">Avg LTV</p>
+                  <div className="text-center p-3 bg-background rounded-lg">
+                    <p className="text-lg font-bold text-foreground">GH₵45</p>
+                    <p className="text-xs text-muted-foreground">Avg LTV</p>
                   </div>
-                  <div className="text-center p-3 bg-gray-50 rounded-lg">
-                    <p className="text-lg font-bold text-gray-900 dark:text-white">4.5</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">Avg Rating</p>
+                  <div className="text-center p-3 bg-background rounded-lg">
+                    <p className="text-lg font-bold text-foreground">4.5</p>
+                    <p className="text-xs text-muted-foreground">Avg Rating</p>
                   </div>
-                  <div className="text-center p-3 bg-gray-50 rounded-lg">
-                    <p className="text-lg font-bold text-gray-900 dark:text-white">72%</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">30d Retention</p>
+                  <div className="text-center p-3 bg-background rounded-lg">
+                    <p className="text-lg font-bold text-foreground">72%</p>
+                    <p className="text-xs text-muted-foreground">30d Retention</p>
                   </div>
                 </div>
               </div>
@@ -870,9 +870,9 @@ export default function SegmentsPage() {
       {/* Create Segment Modal */}
       {showCreateModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 w-full max-w-md">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Create Segment</h2>
-            <p className="text-sm text-gray-500 mb-4">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl p-6 w-full max-w-md">
+            <h2 className="text-lg font-semibold text-foreground mb-4">Quick Create Segment</h2>
+            <p className="text-sm text-muted-foreground mb-4">
               Use the Builder tab for full segment creation with all options.
             </p>
             <div className="flex gap-3">
@@ -887,7 +887,7 @@ export default function SegmentsPage() {
               </button>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 dark:bg-gray-900"
+                className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background"
               >
                 Cancel
               </button>

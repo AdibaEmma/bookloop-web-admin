@@ -124,7 +124,7 @@ export default function SystemHealthPage() {
       case 'down':
         return 'bg-red-500';
       default:
-        return 'bg-gray-500';
+        return 'bg-background0';
     }
   };
 
@@ -137,7 +137,7 @@ export default function SystemHealthPage() {
       case 'down':
         return 'bg-red-100 text-red-700';
       default:
-        return 'bg-gray-100 text-gray-700 dark:text-gray-300';
+        return 'bg-[#F1ECE3] text-foreground';
     }
   };
 
@@ -150,7 +150,7 @@ export default function SystemHealthPage() {
       case 'minor':
         return 'bg-yellow-100 text-yellow-700 border-yellow-200';
       default:
-        return 'bg-gray-100 text-gray-700 dark:text-gray-300';
+        return 'bg-[#F1ECE3] text-foreground';
     }
   };
 
@@ -165,19 +165,19 @@ export default function SystemHealthPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">System Health</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">System Health</h1>
+          <p className="text-muted-foreground mt-1">
             Monitor system performance and service status
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <span className="text-sm text-gray-500 dark:text-gray-400">
+          <span className="text-sm text-muted-foreground">
             Last updated: {lastUpdate.toLocaleTimeString()}
           </span>
           <select
             value={refreshInterval}
             onChange={(e) => setRefreshInterval(parseInt(e.target.value))}
-            className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+            className="px-3 py-2 border border-[#E4DED2] rounded-lg text-sm"
           >
             <option value={10}>Refresh: 10s</option>
             <option value={30}>Refresh: 30s</option>
@@ -200,27 +200,27 @@ export default function SystemHealthPage() {
           <div className="flex items-center gap-4">
             <div className={`w-4 h-4 rounded-full ${getStatusColor(systemHealth.status)} animate-pulse`} />
             <div>
-              <h2 className="text-xl font-semibold text-gray-900 capitalize">
+              <h2 className="text-xl font-semibold text-foreground capitalize">
                 All Systems {systemHealth.status === 'healthy' ? 'Operational' : systemHealth.status}
               </h2>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-muted-foreground mt-1">
                 {mockServices.filter(s => s.status === 'healthy').length}/{mockServices.length} services healthy
               </p>
             </div>
           </div>
           <div className="text-right">
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">{systemHealth.uptime}%</p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Uptime (30 days)</p>
+            <p className="text-3xl font-bold text-foreground">{systemHealth.uptime}%</p>
+            <p className="text-sm text-muted-foreground">Uptime (30 days)</p>
           </div>
         </div>
       </div>
 
       {/* Key Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">CPU Usage</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">CPU Usage</p>
           <div className="flex items-end justify-between mt-1">
-            <p className="text-2xl font-bold text-gray-900 dark:text-white">{systemHealth.cpu_usage}%</p>
+            <p className="text-2xl font-bold text-foreground">{systemHealth.cpu_usage}%</p>
             <div className="w-16 h-8">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={cpuData.slice(-10)}>
@@ -230,10 +230,10 @@ export default function SystemHealthPage() {
             </div>
           </div>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Memory Usage</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Memory Usage</p>
           <div className="flex items-end justify-between mt-1">
-            <p className="text-2xl font-bold text-gray-900 dark:text-white">{systemHealth.memory_usage}%</p>
+            <p className="text-2xl font-bold text-foreground">{systemHealth.memory_usage}%</p>
             <div className="w-16 h-8">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={memoryData.slice(-10)}>
@@ -243,28 +243,28 @@ export default function SystemHealthPage() {
             </div>
           </div>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">API Latency</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">{systemHealth.api_latency}ms</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">API Latency</p>
+          <p className="text-2xl font-bold text-foreground mt-1">{systemHealth.api_latency}ms</p>
           <p className="text-xs text-green-600 mt-1">Normal</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Error Rate</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">{systemHealth.error_rate}%</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Error Rate</p>
+          <p className="text-2xl font-bold text-foreground mt-1">{systemHealth.error_rate}%</p>
           <p className="text-xs text-green-600 mt-1">Below threshold</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Active Connections</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">{systemHealth.active_connections.toLocaleString()}</p>
-          <p className="text-xs text-gray-500 mt-1">WebSocket + API</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Active Connections</p>
+          <p className="text-2xl font-bold text-foreground mt-1">{systemHealth.active_connections.toLocaleString()}</p>
+          <p className="text-xs text-muted-foreground mt-1">WebSocket + API</p>
         </div>
       </div>
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* CPU & Memory */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Resource Usage (Last Hour)</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Resource Usage (Last Hour)</h3>
           <ResponsiveContainer width="100%" height={250}>
             <AreaChart data={cpuData}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -285,8 +285,8 @@ export default function SystemHealthPage() {
         </div>
 
         {/* Response Times */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Response Times (Last 24h)</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Response Times (Last 24h)</h3>
           <ResponsiveContainer width="100%" height={250}>
             <LineChart data={responseTimeData}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -304,19 +304,19 @@ export default function SystemHealthPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Services Status */}
-        <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 dark:border-gray-700">
-          <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-            <h3 className="font-semibold text-gray-900 dark:text-white">Service Status</h3>
+        <div className="lg:col-span-2 bg-white rounded-xl border border-[#ECE6DC] dark:border-[#33291f]">
+          <div className="p-4 border-b border-[#ECE6DC] dark:border-[#33291f]">
+            <h3 className="font-semibold text-foreground">Service Status</h3>
           </div>
-          <div className="divide-y divide-gray-100">
+          <div className="divide-y divide-[#F0EBE1]">
             {mockServices.map((service) => (
               <div key={service.name} className="p-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className={`w-3 h-3 rounded-full ${getStatusColor(service.status)}`} />
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">{service.name}</span>
+                  <span className="text-sm font-medium text-foreground">{service.name}</span>
                 </div>
                 <div className="flex items-center gap-4">
-                  <span className="text-sm text-gray-500 dark:text-gray-400">{service.latency}ms</span>
+                  <span className="text-sm text-muted-foreground">{service.latency}ms</span>
                   <span className={`text-xs px-2 py-1 rounded-full capitalize ${getStatusBg(service.status)}`}>
                     {service.status}
                   </span>
@@ -327,15 +327,15 @@ export default function SystemHealthPage() {
         </div>
 
         {/* Recent Incidents */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
-          <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-            <h3 className="font-semibold text-gray-900 dark:text-white">Recent Incidents</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] dark:border-[#33291f]">
+          <div className="p-4 border-b border-[#ECE6DC] dark:border-[#33291f]">
+            <h3 className="font-semibold text-foreground">Recent Incidents</h3>
           </div>
           <div className="p-4 space-y-4">
             {recentIncidents.map((incident) => (
-              <div key={incident.id} className="p-3 bg-gray-50 rounded-lg">
+              <div key={incident.id} className="p-3 bg-background rounded-lg">
                 <div className="flex items-start justify-between mb-2">
-                  <h4 className="text-sm font-medium text-gray-900 dark:text-white">{incident.title}</h4>
+                  <h4 className="text-sm font-medium text-foreground">{incident.title}</h4>
                   <span className={`text-xs px-2 py-0.5 rounded-full border capitalize ${getSeverityColor(incident.severity)}`}>
                     {incident.severity}
                   </span>
@@ -348,15 +348,15 @@ export default function SystemHealthPage() {
                   }`}>
                     {incident.status}
                   </span>
-                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                  <span className="text-xs text-muted-foreground">
                     {new Date(incident.started_at).toLocaleString()}
                   </span>
                 </div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">
+                <div className="text-xs text-muted-foreground">
                   {incident.updates[0]?.message}
                 </div>
                 {incident.services.map((svc) => (
-                  <span key={svc} className="inline-block mt-2 text-xs px-2 py-0.5 bg-gray-200 text-gray-700 rounded">
+                  <span key={svc} className="inline-block mt-2 text-xs px-2 py-0.5 bg-[#ECE6DC] text-foreground rounded">
                     {svc}
                   </span>
                 ))}
@@ -371,8 +371,8 @@ export default function SystemHealthPage() {
       </div>
 
       {/* Error Rate Chart */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-        <h3 className="font-semibold text-gray-900 mb-4">Errors & Warnings (Last 24h)</h3>
+      <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+        <h3 className="font-semibold text-foreground mb-4">Errors & Warnings (Last 24h)</h3>
         <ResponsiveContainer width="100%" height={200}>
           <AreaChart data={errorData}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -402,25 +402,25 @@ export default function SystemHealthPage() {
 
       {/* Database Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Database Size</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">2.4 GB</p>
-          <p className="text-xs text-gray-500 mt-1">Of 10 GB allocated</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Database Size</p>
+          <p className="text-2xl font-bold text-foreground mt-1">2.4 GB</p>
+          <p className="text-xs text-muted-foreground mt-1">Of 10 GB allocated</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Active Queries</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">23</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Active Queries</p>
+          <p className="text-2xl font-bold text-foreground mt-1">23</p>
           <p className="text-xs text-green-600 mt-1">Normal load</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Cache Hit Rate</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Cache Hit Rate</p>
           <p className="text-2xl font-bold text-green-600 mt-1">94.5%</p>
-          <p className="text-xs text-gray-500 mt-1">Redis cache</p>
+          <p className="text-xs text-muted-foreground mt-1">Redis cache</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Storage Used</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">45.6 GB</p>
-          <p className="text-xs text-gray-500 mt-1">Media files</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Storage Used</p>
+          <p className="text-2xl font-bold text-foreground mt-1">45.6 GB</p>
+          <p className="text-xs text-muted-foreground mt-1">Media files</p>
         </div>
       </div>
     </div>

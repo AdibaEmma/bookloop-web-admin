@@ -198,7 +198,7 @@ export default function CommunitySuggestionsPage() {
       under_review: 'bg-blue-100 text-blue-700',
       approved: 'bg-green-100 text-green-700',
       rejected: 'bg-red-100 text-red-700',
-      duplicate: 'bg-gray-100 text-gray-600 dark:text-gray-400',
+      duplicate: 'bg-[#F1ECE3] text-muted-foreground',
     };
     return (
       <span className={`px-2 py-0.5 text-xs rounded-full ${styles[status]}`}>
@@ -268,8 +268,8 @@ export default function CommunitySuggestionsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Community-Suggested Spots</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">Community-Suggested Spots</h1>
+          <p className="text-muted-foreground mt-1">
             Review and approve exchange locations suggested by the community
           </p>
         </div>
@@ -280,24 +280,24 @@ export default function CommunitySuggestionsPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Total Suggestions</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">{stats.total}</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Total Suggestions</p>
+          <p className="text-2xl font-bold text-foreground mt-1">{stats.total}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Pending Review</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Pending Review</p>
           <p className="text-2xl font-bold text-yellow-600 mt-1">{stats.pending}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Under Review</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Under Review</p>
           <p className="text-2xl font-bold text-blue-600 mt-1">{stats.underReview}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Approved</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Approved</p>
           <p className="text-2xl font-bold text-green-600 mt-1">{stats.approved}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Rejected</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Rejected</p>
           <p className="text-2xl font-bold text-red-600 mt-1">{stats.rejected}</p>
         </div>
       </div>
@@ -310,13 +310,13 @@ export default function CommunitySuggestionsPage() {
             placeholder="Search spots..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+            className="w-full px-4 py-2 border border-[#E4DED2] rounded-lg"
           />
         </div>
         <select
           value={filterStatus}
           onChange={(e) => setFilterStatus(e.target.value as SuggestionStatus | 'all')}
-          className="px-3 py-2 border border-gray-300 rounded-lg"
+          className="px-3 py-2 border border-[#E4DED2] rounded-lg"
         >
           <option value="all">All Status</option>
           <option value="pending">Pending</option>
@@ -328,7 +328,7 @@ export default function CommunitySuggestionsPage() {
         <select
           value={filterType}
           onChange={(e) => setFilterType(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg"
+          className="px-3 py-2 border border-[#E4DED2] rounded-lg"
         >
           <option value="all">All Types</option>
           {types.map((type) => (
@@ -338,7 +338,7 @@ export default function CommunitySuggestionsPage() {
         <select
           value={filterRegion}
           onChange={(e) => setFilterRegion(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg"
+          className="px-3 py-2 border border-[#E4DED2] rounded-lg"
         >
           <option value="all">All Regions</option>
           {regions.map((region) => (
@@ -357,7 +357,7 @@ export default function CommunitySuggestionsPage() {
               className={`bg-white rounded-xl border-2 p-4 cursor-pointer transition-all ${
                 selectedSuggestion?.id === suggestion.id
                   ? 'border-indigo-500 bg-indigo-50'
-                  : 'border-gray-200 hover:border-gray-300'
+                  : 'border-[#ECE6DC] hover:border-[#E4DED2]'
               }`}
             >
               <div className="flex items-start justify-between">
@@ -365,17 +365,17 @@ export default function CommunitySuggestionsPage() {
                   <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
                     suggestion.status === 'approved' ? 'bg-green-100 text-green-600' :
                     suggestion.status === 'rejected' ? 'bg-red-100 text-red-600' :
-                    'bg-gray-100 text-gray-600 dark:text-gray-400'
+                    'bg-[#F1ECE3] text-muted-foreground'
                   }`}>
                     {getTypeIcon(suggestion.type)}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="font-semibold text-gray-900 dark:text-white">{suggestion.name}</h3>
+                      <h3 className="font-semibold text-foreground">{suggestion.name}</h3>
                       {getStatusBadge(suggestion.status)}
                     </div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">{suggestion.address}</p>
-                    <p className="text-xs text-gray-400 dark:text-gray-500">{suggestion.city}, {suggestion.region}</p>
+                    <p className="text-sm text-muted-foreground">{suggestion.address}</p>
+                    <p className="text-xs text-muted-foreground dark:text-muted-foreground">{suggestion.city}, {suggestion.region}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
@@ -394,23 +394,23 @@ export default function CommunitySuggestionsPage() {
                 </div>
               </div>
 
-              <p className="text-sm text-gray-600 mt-3 line-clamp-2">{suggestion.description}</p>
+              <p className="text-sm text-muted-foreground mt-3 line-clamp-2">{suggestion.description}</p>
 
               {suggestion.amenities.length > 0 && (
                 <div className="flex flex-wrap gap-1 mt-3">
                   {suggestion.amenities.slice(0, 4).map((amenity) => (
-                    <span key={amenity} className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-full">
+                    <span key={amenity} className="px-2 py-0.5 bg-[#F1ECE3] text-muted-foreground text-xs rounded-full">
                       {amenity}
                     </span>
                   ))}
                   {suggestion.amenities.length > 4 && (
-                    <span className="text-xs text-gray-400 dark:text-gray-500">+{suggestion.amenities.length - 4} more</span>
+                    <span className="text-xs text-muted-foreground dark:text-muted-foreground">+{suggestion.amenities.length - 4} more</span>
                   )}
                 </div>
               )}
 
-              <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
-                <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+              <div className="flex items-center justify-between mt-3 pt-3 border-t border-[#F0EBE1]">
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <span>Suggested by {suggestion.suggested_by.name}</span>
                   <span>·</span>
                   <span>{new Date(suggestion.created_at).toLocaleDateString()}</span>
@@ -440,84 +440,84 @@ export default function CommunitySuggestionsPage() {
         <div className="space-y-4">
           {selectedSuggestion ? (
             <>
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-                <h3 className="font-semibold text-gray-900 mb-3">Spot Details</h3>
+              <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+                <h3 className="font-semibold text-foreground mb-3">Spot Details</h3>
                 <div className="space-y-3 text-sm">
                   <div>
-                    <p className="text-gray-500 dark:text-gray-400">Type</p>
-                    <p className="text-gray-900 capitalize">{selectedSuggestion.type.replace('_', ' ')}</p>
+                    <p className="text-muted-foreground">Type</p>
+                    <p className="text-foreground capitalize">{selectedSuggestion.type.replace('_', ' ')}</p>
                   </div>
                   <div>
-                    <p className="text-gray-500 dark:text-gray-400">Operating Hours</p>
-                    <p className="text-gray-900 dark:text-white">{selectedSuggestion.operating_hours || 'Not specified'}</p>
+                    <p className="text-muted-foreground">Operating Hours</p>
+                    <p className="text-foreground">{selectedSuggestion.operating_hours || 'Not specified'}</p>
                   </div>
                   <div>
-                    <p className="text-gray-500 dark:text-gray-400">Photos</p>
-                    <p className="text-gray-900 dark:text-white">{selectedSuggestion.photos.length} uploaded</p>
+                    <p className="text-muted-foreground">Photos</p>
+                    <p className="text-foreground">{selectedSuggestion.photos.length} uploaded</p>
                   </div>
                   <div>
-                    <p className="text-gray-500 dark:text-gray-400">Amenities</p>
+                    <p className="text-muted-foreground">Amenities</p>
                     <div className="flex flex-wrap gap-1 mt-1">
                       {selectedSuggestion.amenities.length > 0 ? (
                         selectedSuggestion.amenities.map((a) => (
                           <span key={a} className="px-2 py-0.5 bg-indigo-50 text-indigo-700 text-xs rounded-full">{a}</span>
                         ))
                       ) : (
-                        <span className="text-gray-400 dark:text-gray-500">None listed</span>
+                        <span className="text-muted-foreground dark:text-muted-foreground">None listed</span>
                       )}
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-                <h3 className="font-semibold text-gray-900 mb-3">Contributor</h3>
+              <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+                <h3 className="font-semibold text-foreground mb-3">Contributor</h3>
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white font-medium">
                     {selectedSuggestion.suggested_by.name.charAt(0)}
                   </div>
                   <div>
-                    <p className="font-medium text-gray-900 dark:text-white">{selectedSuggestion.suggested_by.name}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">{selectedSuggestion.suggested_by.email}</p>
+                    <p className="font-medium text-foreground">{selectedSuggestion.suggested_by.name}</p>
+                    <p className="text-xs text-muted-foreground">{selectedSuggestion.suggested_by.email}</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+                <div className="flex items-center gap-4 text-sm text-muted-foreground">
                   <span>{selectedSuggestion.suggested_by.total_suggestions} suggestions</span>
                   <span>{selectedSuggestion.suggested_by.approved_suggestions} approved</span>
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-                <h3 className="font-semibold text-gray-900 mb-3">Community Feedback</h3>
+              <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+                <h3 className="font-semibold text-foreground mb-3">Community Feedback</h3>
                 <div className="flex items-center gap-4 mb-4">
                   <div className="flex items-center gap-1">
                     <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="font-medium text-gray-900 dark:text-white">{selectedSuggestion.upvotes}</span>
-                    <span className="text-gray-500 text-sm">upvotes</span>
+                    <span className="font-medium text-foreground">{selectedSuggestion.upvotes}</span>
+                    <span className="text-muted-foreground text-sm">upvotes</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <svg className="w-5 h-5 text-red-600" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="font-medium text-gray-900 dark:text-white">{selectedSuggestion.downvotes}</span>
-                    <span className="text-gray-500 text-sm">downvotes</span>
+                    <span className="font-medium text-foreground">{selectedSuggestion.downvotes}</span>
+                    <span className="text-muted-foreground text-sm">downvotes</span>
                   </div>
                 </div>
                 {selectedSuggestion.comments.length > 0 ? (
                   <div className="space-y-3">
                     {selectedSuggestion.comments.map((comment, index) => (
-                      <div key={index} className="p-2 bg-gray-50 rounded-lg">
-                        <p className="text-sm text-gray-700 dark:text-gray-300">{comment.text}</p>
-                        <p className="text-xs text-gray-400 mt-1">
+                      <div key={index} className="p-2 bg-background rounded-lg">
+                        <p className="text-sm text-foreground">{comment.text}</p>
+                        <p className="text-xs text-muted-foreground mt-1">
                           {comment.user} · {new Date(comment.created_at).toLocaleDateString()}
                         </p>
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <p className="text-sm text-gray-500 dark:text-gray-400">No comments yet</p>
+                  <p className="text-sm text-muted-foreground">No comments yet</p>
                 )}
               </div>
 
@@ -532,8 +532,8 @@ export default function CommunitySuggestionsPage() {
               )}
             </>
           ) : (
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6 text-center text-gray-500 dark:text-gray-400">
-              <svg className="w-12 h-12 mx-auto text-gray-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6 text-center text-muted-foreground">
+              <svg className="w-12 h-12 mx-auto text-muted-foreground mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
@@ -546,25 +546,25 @@ export default function CommunitySuggestionsPage() {
       {/* Review Modal */}
       {showReviewModal && selectedSuggestion && reviewAction && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 w-full max-w-md">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl p-6 w-full max-w-md">
+            <h2 className="text-lg font-semibold text-foreground mb-4">
               {reviewAction === 'approve' ? 'Approve Spot' : 'Reject Spot'}
             </h2>
 
-            <div className="p-3 bg-gray-50 rounded-lg mb-4">
-              <p className="font-medium text-gray-900 dark:text-white">{selectedSuggestion.name}</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">{selectedSuggestion.address}</p>
+            <div className="p-3 bg-background rounded-lg mb-4">
+              <p className="font-medium text-foreground">{selectedSuggestion.name}</p>
+              <p className="text-sm text-muted-foreground">{selectedSuggestion.address}</p>
             </div>
 
             {reviewAction === 'reject' && (
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Rejection Reason</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Rejection Reason</label>
                 <textarea
                   value={rejectionReason}
                   onChange={(e) => setRejectionReason(e.target.value)}
                   placeholder="Explain why this spot is being rejected..."
                   rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                 />
               </div>
             )}
@@ -594,7 +594,7 @@ export default function CommunitySuggestionsPage() {
                   setReviewAction(null);
                   setRejectionReason('');
                 }}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 dark:bg-gray-900"
+                className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background"
               >
                 Cancel
               </button>

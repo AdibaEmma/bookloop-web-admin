@@ -164,7 +164,7 @@ export default function PayoutsPage() {
       case 'failed':
         return 'bg-red-100 text-red-700';
       default:
-        return 'bg-gray-100 text-gray-700 dark:text-gray-300';
+        return 'bg-[#F1ECE3] text-foreground';
     }
   };
 
@@ -178,13 +178,13 @@ export default function PayoutsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Payout Management</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">Payout Management</h1>
+          <p className="text-muted-foreground mt-1">
             Process and track user payouts
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 flex items-center gap-2">
+          <button className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background flex items-center gap-2">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
@@ -258,8 +258,8 @@ export default function PayoutsPage() {
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Monthly Payouts</h3>
+        <div className="lg:col-span-2 bg-white rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">Monthly Payouts</h3>
           <ResponsiveContainer width="100%" height={250}>
             <BarChart data={monthlyPayouts}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -273,8 +273,8 @@ export default function PayoutsPage() {
             </BarChart>
           </ResponsiveContainer>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">By Payment Method</h3>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+          <h3 className="font-semibold text-foreground mb-4">By Payment Method</h3>
           <ResponsiveContainer width="100%" height={200}>
             <PieChart>
               <Pie
@@ -298,9 +298,9 @@ export default function PayoutsPage() {
               <div key={method.name} className="flex items-center justify-between text-sm">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: method.color }} />
-                  <span className="text-gray-600 dark:text-gray-400">{method.name}</span>
+                  <span className="text-muted-foreground">{method.name}</span>
                 </div>
-                <span className="font-medium text-gray-900 dark:text-white">{method.value}%</span>
+                <span className="font-medium text-foreground">{method.value}%</span>
               </div>
             ))}
           </div>
@@ -315,13 +315,13 @@ export default function PayoutsPage() {
             placeholder="Search by name or email..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+            className="w-full px-4 py-2 border border-[#E4DED2] rounded-lg"
           />
         </div>
         <select
           value={filterStatus}
           onChange={(e) => setFilterStatus(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg"
+          className="px-3 py-2 border border-[#E4DED2] rounded-lg"
         >
           <option value="all">All Status</option>
           <option value="pending">Pending</option>
@@ -332,7 +332,7 @@ export default function PayoutsPage() {
         <select
           value={filterMethod}
           onChange={(e) => setFilterMethod(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg"
+          className="px-3 py-2 border border-[#E4DED2] rounded-lg"
         >
           <option value="all">All Methods</option>
           <option value="momo">Mobile Money</option>
@@ -341,46 +341,46 @@ export default function PayoutsPage() {
       </div>
 
       {/* Payouts Table */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 overflow-hidden">
+      <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] overflow-hidden">
         <table className="w-full">
-          <thead className="bg-gray-50 dark:bg-gray-900">
+          <thead className="bg-background">
             <tr>
-              <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase">User</th>
-              <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase">Amount</th>
-              <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase">Method</th>
-              <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase">Account</th>
-              <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase">Status</th>
-              <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase">Date</th>
-              <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase">Actions</th>
+              <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">User</th>
+              <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Amount</th>
+              <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Method</th>
+              <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Account</th>
+              <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Status</th>
+              <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Date</th>
+              <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-100">
+          <tbody className="divide-y divide-[#F0EBE1]">
             {filteredPayouts.map((payout) => (
-              <tr key={payout.id} className="hover:bg-gray-50 dark:bg-gray-900">
+              <tr key={payout.id} className="hover:bg-background">
                 <td className="py-4 px-4">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white text-xs font-medium">
                       {payout.user.first_name[0]}{payout.user.last_name[0]}
                     </div>
                     <div>
-                      <p className="font-medium text-gray-900 dark:text-white">{payout.user.first_name} {payout.user.last_name}</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">{payout.user.email}</p>
+                      <p className="font-medium text-foreground">{payout.user.first_name} {payout.user.last_name}</p>
+                      <p className="text-xs text-muted-foreground">{payout.user.email}</p>
                     </div>
                   </div>
                 </td>
                 <td className="py-4 px-4">
-                  <p className="font-semibold text-gray-900 dark:text-white">GH₵{payout.amount.toLocaleString()}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">Fee: GH₵{payout.transaction_fee}</p>
+                  <p className="font-semibold text-foreground">GH₵{payout.amount.toLocaleString()}</p>
+                  <p className="text-xs text-muted-foreground">Fee: GH₵{payout.transaction_fee}</p>
                 </td>
                 <td className="py-4 px-4">
-                  <span className="text-sm text-gray-700 capitalize">{payout.method.replace('_', ' ')}</span>
+                  <span className="text-sm text-foreground capitalize">{payout.method.replace('_', ' ')}</span>
                   {payout.account_details.provider && (
-                    <p className="text-xs text-gray-500 dark:text-gray-400">{payout.account_details.provider}</p>
+                    <p className="text-xs text-muted-foreground">{payout.account_details.provider}</p>
                   )}
                 </td>
                 <td className="py-4 px-4">
-                  <p className="text-sm text-gray-700 dark:text-gray-300">{payout.account_details.account_number}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">{payout.account_details.account_name}</p>
+                  <p className="text-sm text-foreground">{payout.account_details.account_number}</p>
+                  <p className="text-xs text-muted-foreground">{payout.account_details.account_name}</p>
                 </td>
                 <td className="py-4 px-4">
                   <span className={`text-xs px-2 py-1 rounded-full capitalize ${getStatusColor(payout.status)}`}>
@@ -388,8 +388,8 @@ export default function PayoutsPage() {
                   </span>
                 </td>
                 <td className="py-4 px-4">
-                  <p className="text-sm text-gray-700 dark:text-gray-300">{new Date(payout.created_at).toLocaleDateString()}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">{new Date(payout.created_at).toLocaleTimeString()}</p>
+                  <p className="text-sm text-foreground">{new Date(payout.created_at).toLocaleDateString()}</p>
+                  <p className="text-xs text-muted-foreground">{new Date(payout.created_at).toLocaleTimeString()}</p>
                 </td>
                 <td className="py-4 px-4">
                   {payout.status === 'pending' && (
@@ -409,7 +409,7 @@ export default function PayoutsPage() {
                     </button>
                   )}
                   {payout.status === 'completed' && (
-                    <button className="px-3 py-1 border border-gray-300 text-gray-700 text-sm rounded-lg hover:bg-gray-50 dark:bg-gray-900">
+                    <button className="px-3 py-1 border border-[#E4DED2] text-foreground text-sm rounded-lg hover:bg-background">
                       Receipt
                     </button>
                   )}
@@ -423,42 +423,42 @@ export default function PayoutsPage() {
       {/* Process Modal */}
       {showProcessModal && selectedPayout && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 w-full max-w-md">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Process Payout</h2>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl p-6 w-full max-w-md">
+            <h2 className="text-lg font-semibold text-foreground mb-4">Process Payout</h2>
 
-            <div className="p-4 bg-gray-50 rounded-lg mb-4">
+            <div className="p-4 bg-background rounded-lg mb-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-gray-600 dark:text-gray-400">Recipient</span>
-                <span className="font-medium text-gray-900 dark:text-white">
+                <span className="text-muted-foreground">Recipient</span>
+                <span className="font-medium text-foreground">
                   {selectedPayout.user.first_name} {selectedPayout.user.last_name}
                 </span>
               </div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-gray-600 dark:text-gray-400">Amount</span>
-                <span className="font-bold text-gray-900 dark:text-white">GH₵{selectedPayout.amount}</span>
+                <span className="text-muted-foreground">Amount</span>
+                <span className="font-bold text-foreground">GH₵{selectedPayout.amount}</span>
               </div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-gray-600 dark:text-gray-400">Transaction Fee</span>
-                <span className="text-gray-700 dark:text-gray-300">-GH₵{selectedPayout.transaction_fee}</span>
+                <span className="text-muted-foreground">Transaction Fee</span>
+                <span className="text-foreground">-GH₵{selectedPayout.transaction_fee}</span>
               </div>
-              <div className="flex items-center justify-between pt-2 border-t border-gray-200 dark:border-gray-700">
-                <span className="text-gray-600 dark:text-gray-400">Net Amount</span>
+              <div className="flex items-center justify-between pt-2 border-t border-[#ECE6DC] dark:border-[#33291f]">
+                <span className="text-muted-foreground">Net Amount</span>
                 <span className="font-bold text-green-600">GH₵{selectedPayout.net_amount}</span>
               </div>
             </div>
 
             <div className="space-y-3 mb-4">
               <div>
-                <p className="text-xs text-gray-500 mb-1">Payment Method</p>
-                <p className="text-sm font-medium text-gray-900 capitalize">
+                <p className="text-xs text-muted-foreground mb-1">Payment Method</p>
+                <p className="text-sm font-medium text-foreground capitalize">
                   {selectedPayout.method.replace('_', ' ')}
                   {selectedPayout.account_details.provider && ` (${selectedPayout.account_details.provider})`}
                 </p>
               </div>
               <div>
-                <p className="text-xs text-gray-500 mb-1">Account</p>
-                <p className="text-sm font-medium text-gray-900 dark:text-white">{selectedPayout.account_details.account_number}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">{selectedPayout.account_details.account_name}</p>
+                <p className="text-xs text-muted-foreground mb-1">Account</p>
+                <p className="text-sm font-medium text-foreground">{selectedPayout.account_details.account_number}</p>
+                <p className="text-xs text-muted-foreground">{selectedPayout.account_details.account_name}</p>
               </div>
             </div>
 
@@ -471,7 +471,7 @@ export default function PayoutsPage() {
               </button>
               <button
                 onClick={() => setShowProcessModal(false)}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 dark:bg-gray-900"
+                className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background"
               >
                 Cancel
               </button>

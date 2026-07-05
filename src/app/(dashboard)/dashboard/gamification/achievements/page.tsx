@@ -214,7 +214,7 @@ export default function AchievementsPage() {
   const getRarityColor = (rarity: AchievementRarity) => {
     switch (rarity) {
       case 'common':
-        return 'bg-gray-100 text-gray-700 border-gray-300';
+        return 'bg-[#F1ECE3] text-foreground border-[#E4DED2]';
       case 'rare':
         return 'bg-blue-100 text-blue-700 border-blue-300';
       case 'epic':
@@ -250,8 +250,8 @@ export default function AchievementsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Achievement Management</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">Achievement Management</h1>
+          <p className="text-muted-foreground mt-1">
             Create and manage user achievements and badges
           </p>
         </div>
@@ -268,20 +268,20 @@ export default function AchievementsPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Total Achievements</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">{stats.total}</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Total Achievements</p>
+          <p className="text-2xl font-bold text-foreground mt-1">{stats.total}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Active</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Active</p>
           <p className="text-2xl font-bold text-green-600 mt-1">{stats.active}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Total Earned</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Total Earned</p>
           <p className="text-2xl font-bold text-indigo-600 mt-1">{stats.totalEarned.toLocaleString()}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">Legendary</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-4">
+          <p className="text-xs text-muted-foreground">Legendary</p>
           <p className="text-2xl font-bold text-yellow-600 mt-1">{stats.legendary}</p>
         </div>
       </div>
@@ -294,13 +294,13 @@ export default function AchievementsPage() {
             placeholder="Search achievements..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+            className="w-full px-4 py-2 border border-[#E4DED2] rounded-lg"
           />
         </div>
         <select
           value={filterCategory}
           onChange={(e) => setFilterCategory(e.target.value as AchievementCategory | 'all')}
-          className="px-3 py-2 border border-gray-300 rounded-lg"
+          className="px-3 py-2 border border-[#E4DED2] rounded-lg"
         >
           <option value="all">All Categories</option>
           <option value="exchange">Exchange</option>
@@ -312,7 +312,7 @@ export default function AchievementsPage() {
         <select
           value={filterRarity}
           onChange={(e) => setFilterRarity(e.target.value as AchievementRarity | 'all')}
-          className="px-3 py-2 border border-gray-300 rounded-lg"
+          className="px-3 py-2 border border-[#E4DED2] rounded-lg"
         >
           <option value="all">All Rarity</option>
           <option value="common">Common</option>
@@ -323,7 +323,7 @@ export default function AchievementsPage() {
         <select
           value={filterStatus}
           onChange={(e) => setFilterStatus(e.target.value as 'all' | 'active' | 'inactive')}
-          className="px-3 py-2 border border-gray-300 rounded-lg"
+          className="px-3 py-2 border border-[#E4DED2] rounded-lg"
         >
           <option value="all">All Status</option>
           <option value="active">Active</option>
@@ -340,7 +340,7 @@ export default function AchievementsPage() {
             className={`bg-white rounded-xl border-2 p-4 cursor-pointer transition-all hover:shadow-md ${
               selectedAchievement?.id === achievement.id
                 ? 'border-indigo-500'
-                : 'border-gray-200 dark:border-gray-700'
+                : 'border-[#ECE6DC] dark:border-[#33291f]'
             } ${!achievement.is_active ? 'opacity-60' : ''}`}
           >
             <div className="flex items-start justify-between mb-3">
@@ -352,9 +352,9 @@ export default function AchievementsPage() {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="font-semibold text-gray-900 dark:text-white">{achievement.name}</h3>
+                    <h3 className="font-semibold text-foreground">{achievement.name}</h3>
                     {achievement.is_hidden && (
-                      <svg className="w-4 h-4 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 text-muted-foreground dark:text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
                       </svg>
                     )}
@@ -367,7 +367,7 @@ export default function AchievementsPage() {
               <button
                 onClick={(e) => { e.stopPropagation(); toggleActive(achievement.id); }}
                 className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${
-                  achievement.is_active ? 'bg-indigo-600' : 'bg-gray-200'
+                  achievement.is_active ? 'bg-indigo-600' : 'bg-[#ECE6DC]'
                 }`}
               >
                 <span
@@ -378,9 +378,9 @@ export default function AchievementsPage() {
               </button>
             </div>
 
-            <p className="text-sm text-gray-500 mb-3">{achievement.description}</p>
+            <p className="text-sm text-muted-foreground mb-3">{achievement.description}</p>
 
-            <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+            <div className="flex items-center justify-between text-xs text-muted-foreground">
               <div className="flex items-center gap-1">
                 <span>{getCategoryIcon(achievement.category)}</span>
                 <span className="capitalize">{achievement.category}</span>
@@ -394,8 +394,8 @@ export default function AchievementsPage() {
             </div>
 
             {achievement.reward && (
-              <div className="mt-3 pt-3 border-t border-gray-100 flex items-center gap-2">
-                <span className="text-xs text-gray-500 dark:text-gray-400">Reward:</span>
+              <div className="mt-3 pt-3 border-t border-[#F0EBE1] flex items-center gap-2">
+                <span className="text-xs text-muted-foreground">Reward:</span>
                 <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded-full">
                   {achievement.reward.type === 'points' ? `${achievement.reward.value} pts` :
                    achievement.reward.type === 'badge' ? `🏅 ${achievement.reward.value}` :
@@ -409,12 +409,12 @@ export default function AchievementsPage() {
 
       {/* Detail Sidebar */}
       {selectedAchievement && (
-        <div className="fixed inset-y-0 right-0 w-96 bg-white border-l border-gray-200 shadow-xl z-40 overflow-y-auto">
-          <div className="p-4 border-b border-gray-200 flex items-center justify-between sticky top-0 bg-white">
-            <h3 className="font-semibold text-gray-900 dark:text-white">Achievement Details</h3>
+        <div className="fixed inset-y-0 right-0 w-96 bg-white border-l border-[#ECE6DC] shadow-xl z-40 overflow-y-auto">
+          <div className="p-4 border-b border-[#ECE6DC] flex items-center justify-between sticky top-0 bg-white">
+            <h3 className="font-semibold text-foreground">Achievement Details</h3>
             <button
               onClick={() => setSelectedAchievement(null)}
-              className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400"
+              className="p-1 text-muted-foreground hover:text-muted-foreground"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -429,31 +429,31 @@ export default function AchievementsPage() {
               }`}>
                 {selectedAchievement.icon}
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mt-3">{selectedAchievement.name}</h3>
+              <h3 className="text-lg font-semibold text-foreground mt-3">{selectedAchievement.name}</h3>
               <span className={`inline-block px-3 py-1 text-sm rounded-full border mt-2 ${getRarityColor(selectedAchievement.rarity)}`}>
                 {selectedAchievement.rarity}
               </span>
             </div>
 
-            <p className="text-sm text-gray-600 text-center">{selectedAchievement.description}</p>
+            <p className="text-sm text-muted-foreground text-center">{selectedAchievement.description}</p>
 
             {/* Stats */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="p-3 bg-gray-50 rounded-lg text-center">
+              <div className="p-3 bg-background rounded-lg text-center">
                 <p className="text-2xl font-bold text-indigo-600">{selectedAchievement.total_earned.toLocaleString()}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Users Earned</p>
+                <p className="text-xs text-muted-foreground">Users Earned</p>
               </div>
-              <div className="p-3 bg-gray-50 rounded-lg text-center">
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">{selectedAchievement.criteria.target}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Target</p>
+              <div className="p-3 bg-background rounded-lg text-center">
+                <p className="text-2xl font-bold text-foreground">{selectedAchievement.criteria.target}</p>
+                <p className="text-xs text-muted-foreground">Target</p>
               </div>
             </div>
 
             {/* Criteria */}
             <div>
-              <h4 className="font-medium text-gray-900 mb-2">Criteria</h4>
-              <div className="p-3 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-700 dark:text-gray-300">
+              <h4 className="font-medium text-foreground mb-2">Criteria</h4>
+              <div className="p-3 bg-background rounded-lg">
+                <p className="text-sm text-foreground">
                   <span className="font-medium">{selectedAchievement.criteria.type.replace(/_/g, ' ')}</span>
                   {' ≥ '}
                   <span className="font-bold">{selectedAchievement.criteria.target}</span>
@@ -464,7 +464,7 @@ export default function AchievementsPage() {
             {/* Reward */}
             {selectedAchievement.reward && (
               <div>
-                <h4 className="font-medium text-gray-900 mb-2">Reward</h4>
+                <h4 className="font-medium text-foreground mb-2">Reward</h4>
                 <div className="p-3 bg-green-50 rounded-lg">
                   <p className="text-sm text-green-700">
                     <span className="font-medium capitalize">{selectedAchievement.reward.type.replace('_', ' ')}:</span>{' '}
@@ -476,31 +476,31 @@ export default function AchievementsPage() {
 
             {/* Settings */}
             <div className="space-y-3">
-              <h4 className="font-medium text-gray-900 dark:text-white">Settings</h4>
-              <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                <span className="text-sm text-gray-600 dark:text-gray-400">Active</span>
+              <h4 className="font-medium text-foreground">Settings</h4>
+              <div className="flex items-center justify-between p-3 bg-background rounded-lg">
+                <span className="text-sm text-muted-foreground">Active</span>
                 <span className={`px-2 py-0.5 text-xs rounded-full ${
-                  selectedAchievement.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-200 text-gray-600 dark:text-gray-400'
+                  selectedAchievement.is_active ? 'bg-green-100 text-green-700' : 'bg-[#ECE6DC] text-muted-foreground'
                 }`}>
                   {selectedAchievement.is_active ? 'Yes' : 'No'}
                 </span>
               </div>
-              <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                <span className="text-sm text-gray-600 dark:text-gray-400">Hidden</span>
+              <div className="flex items-center justify-between p-3 bg-background rounded-lg">
+                <span className="text-sm text-muted-foreground">Hidden</span>
                 <span className={`px-2 py-0.5 text-xs rounded-full ${
-                  selectedAchievement.is_hidden ? 'bg-purple-100 text-purple-700' : 'bg-gray-200 text-gray-600 dark:text-gray-400'
+                  selectedAchievement.is_hidden ? 'bg-purple-100 text-purple-700' : 'bg-[#ECE6DC] text-muted-foreground'
                 }`}>
                   {selectedAchievement.is_hidden ? 'Yes' : 'No'}
                 </span>
               </div>
-              <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                <span className="text-sm text-gray-600 dark:text-gray-400">Category</span>
-                <span className="text-sm text-gray-900 capitalize">{selectedAchievement.category}</span>
+              <div className="flex items-center justify-between p-3 bg-background rounded-lg">
+                <span className="text-sm text-muted-foreground">Category</span>
+                <span className="text-sm text-foreground capitalize">{selectedAchievement.category}</span>
               </div>
             </div>
 
             {/* Actions */}
-            <div className="flex gap-2 pt-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex gap-2 pt-4 border-t border-[#ECE6DC] dark:border-[#33291f]">
               <button className="flex-1 px-3 py-2 bg-indigo-600 text-white text-sm rounded-lg hover:bg-indigo-700">
                 Edit Achievement
               </button>
@@ -515,12 +515,12 @@ export default function AchievementsPage() {
       {/* Create Modal */}
       {showCreateModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Create Achievement</h2>
+              <h2 className="text-lg font-semibold text-foreground">Create Achievement</h2>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="p-1 text-gray-400 hover:text-gray-600 dark:text-gray-400"
+                className="p-1 text-muted-foreground hover:text-muted-foreground"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -531,45 +531,45 @@ export default function AchievementsPage() {
             <div className="space-y-4">
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Icon</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Icon</label>
                   <input
                     type="text"
                     value={newAchievement.icon}
                     onChange={(e) => setNewAchievement({ ...newAchievement, icon: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-center text-2xl"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg text-center text-2xl"
                     maxLength={2}
                   />
                 </div>
                 <div className="col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Name</label>
                   <input
                     type="text"
                     value={newAchievement.name}
                     onChange={(e) => setNewAchievement({ ...newAchievement, name: e.target.value })}
                     placeholder="Achievement name"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Description</label>
                 <textarea
                   value={newAchievement.description}
                   onChange={(e) => setNewAchievement({ ...newAchievement, description: e.target.value })}
                   placeholder="Describe how to earn this achievement..."
                   rows={2}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Category</label>
                   <select
                     value={newAchievement.category}
                     onChange={(e) => setNewAchievement({ ...newAchievement, category: e.target.value as AchievementCategory })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                   >
                     <option value="exchange">Exchange</option>
                     <option value="listing">Listing</option>
@@ -579,11 +579,11 @@ export default function AchievementsPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Rarity</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Rarity</label>
                   <select
                     value={newAchievement.rarity}
                     onChange={(e) => setNewAchievement({ ...newAchievement, rarity: e.target.value as AchievementRarity })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                   >
                     <option value="common">Common</option>
                     <option value="rare">Rare</option>
@@ -595,11 +595,11 @@ export default function AchievementsPage() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Criteria Type</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Criteria Type</label>
                   <select
                     value={newAchievement.criteria_type}
                     onChange={(e) => setNewAchievement({ ...newAchievement, criteria_type: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                   >
                     <option value="exchanges_completed">Exchanges Completed</option>
                     <option value="listings_created">Listings Created</option>
@@ -609,24 +609,24 @@ export default function AchievementsPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Target</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Target</label>
                   <input
                     type="number"
                     value={newAchievement.criteria_target}
                     onChange={(e) => setNewAchievement({ ...newAchievement, criteria_target: parseInt(e.target.value) })}
                     min={1}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Reward Type</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Reward Type</label>
                   <select
                     value={newAchievement.reward_type}
                     onChange={(e) => setNewAchievement({ ...newAchievement, reward_type: e.target.value as any })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                   >
                     <option value="points">Points</option>
                     <option value="badge">Badge</option>
@@ -635,13 +635,13 @@ export default function AchievementsPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Reward Value</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Reward Value</label>
                   <input
                     type="text"
                     value={newAchievement.reward_value}
                     onChange={(e) => setNewAchievement({ ...newAchievement, reward_value: e.target.value })}
                     placeholder={newAchievement.reward_type === 'points' ? '100' : 'badge_name'}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                   />
                 </div>
               </div>
@@ -652,9 +652,9 @@ export default function AchievementsPage() {
                   id="is_hidden"
                   checked={newAchievement.is_hidden}
                   onChange={(e) => setNewAchievement({ ...newAchievement, is_hidden: e.target.checked })}
-                  className="rounded border-gray-300"
+                  className="rounded border-[#E4DED2]"
                 />
-                <label htmlFor="is_hidden" className="text-sm text-gray-700 dark:text-gray-300">Hidden Achievement</label>
+                <label htmlFor="is_hidden" className="text-sm text-foreground">Hidden Achievement</label>
               </div>
             </div>
 
@@ -667,7 +667,7 @@ export default function AchievementsPage() {
               </button>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 dark:bg-gray-900"
+                className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background"
               >
                 Cancel
               </button>
