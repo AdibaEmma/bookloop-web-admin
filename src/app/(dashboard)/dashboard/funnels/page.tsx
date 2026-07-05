@@ -193,7 +193,7 @@ export default function FunnelsPage() {
       case 'low':
         return 'bg-green-100 text-green-700';
       default:
-        return 'bg-gray-100 text-gray-700 dark:text-gray-300';
+        return 'bg-[#F1ECE3] text-foreground';
     }
   };
 
@@ -202,8 +202,8 @@ export default function FunnelsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">User Behavior Funnels</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">User Behavior Funnels</h1>
+          <p className="text-muted-foreground mt-1">
             Track user journeys and identify conversion opportunities
           </p>
         </div>
@@ -211,18 +211,18 @@ export default function FunnelsPage() {
           <select
             value={dateRange}
             onChange={(e) => setDateRange(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+            className="px-3 py-2 border border-[#E4DED2] rounded-lg text-sm"
           >
             <option value="7d">Last 7 days</option>
             <option value="30d">Last 30 days</option>
             <option value="90d">Last 90 days</option>
             <option value="all">All time</option>
           </select>
-          <div className="flex bg-gray-100 rounded-lg p-1">
+          <div className="flex bg-[#F1ECE3] rounded-lg p-1">
             <button
               onClick={() => setViewMode('funnel')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'funnel' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
+                viewMode === 'funnel' ? 'bg-white shadow text-foreground' : 'text-muted-foreground'
               }`}
             >
               Funnel
@@ -230,7 +230,7 @@ export default function FunnelsPage() {
             <button
               onClick={() => setViewMode('comparison')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'comparison' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
+                viewMode === 'comparison' ? 'bg-white shadow text-foreground' : 'text-muted-foreground'
               }`}
             >
               Compare
@@ -238,7 +238,7 @@ export default function FunnelsPage() {
             <button
               onClick={() => setViewMode('cohort')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'cohort' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
+                viewMode === 'cohort' ? 'bg-white shadow text-foreground' : 'text-muted-foreground'
               }`}
             >
               Cohort
@@ -259,21 +259,21 @@ export default function FunnelsPage() {
             className={`p-4 rounded-xl border-2 text-left transition-all ${
               selectedFunnel.id === funnel.id
                 ? 'border-indigo-500 bg-indigo-50'
-                : 'border-gray-200 bg-white hover:border-gray-300'
+                : 'border-[#ECE6DC] bg-white hover:border-[#E4DED2]'
             }`}
           >
-            <h3 className="font-semibold text-gray-900 dark:text-white">{funnel.name}</h3>
-            <p className="text-sm text-gray-500 mt-1">{funnel.description}</p>
+            <h3 className="font-semibold text-foreground">{funnel.name}</h3>
+            <p className="text-sm text-muted-foreground mt-1">{funnel.description}</p>
             <div className="flex items-center justify-between mt-3">
               <div>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">{funnel.overallConversion}%</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Overall conversion</p>
+                <p className="text-2xl font-bold text-foreground">{funnel.overallConversion}%</p>
+                <p className="text-xs text-muted-foreground">Overall conversion</p>
               </div>
               <div className="text-right">
-                <p className="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                <p className="text-lg font-semibold text-foreground">
                   {funnel.totalUsers.toLocaleString()}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Total users</p>
+                <p className="text-xs text-muted-foreground">Total users</p>
               </div>
             </div>
           </button>
@@ -283,10 +283,10 @@ export default function FunnelsPage() {
       {viewMode === 'funnel' && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Main Funnel Visualization */}
-          <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 p-6">
+          <div className="lg:col-span-2 bg-white rounded-xl border border-[#ECE6DC] p-6">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">{selectedFunnel.name}</h2>
-              <span className="text-sm text-gray-500 dark:text-gray-400">{selectedFunnel.period}</span>
+              <h2 className="text-lg font-semibold text-foreground">{selectedFunnel.name}</h2>
+              <span className="text-sm text-muted-foreground">{selectedFunnel.period}</span>
             </div>
 
             {/* Horizontal Funnel */}
@@ -303,11 +303,11 @@ export default function FunnelsPage() {
                   >
                     <div className="flex items-center gap-4">
                       <div className="w-40 flex-shrink-0">
-                        <p className="text-sm font-medium text-gray-900 dark:text-white">{stage.name}</p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">{stage.count.toLocaleString()} users</p>
+                        <p className="text-sm font-medium text-foreground">{stage.name}</p>
+                        <p className="text-xs text-muted-foreground">{stage.count.toLocaleString()} users</p>
                       </div>
                       <div className="flex-1">
-                        <div className="relative h-10 bg-gray-100 rounded-lg overflow-hidden">
+                        <div className="relative h-10 bg-[#F1ECE3] rounded-lg overflow-hidden">
                           <div
                             className="absolute inset-y-0 left-0 rounded-lg transition-all duration-500"
                             style={{
@@ -317,7 +317,7 @@ export default function FunnelsPage() {
                             }}
                           />
                           <div className="absolute inset-0 flex items-center justify-end pr-3">
-                            <span className="text-sm font-semibold text-gray-900 dark:text-white">
+                            <span className="text-sm font-semibold text-foreground">
                               {stage.conversionRate}%
                             </span>
                           </div>
@@ -331,8 +331,8 @@ export default function FunnelsPage() {
                     </div>
                     {index < selectedFunnel.stages.length - 1 && (
                       <div className="ml-44 my-1 flex items-center gap-2">
-                        <div className="h-4 w-px bg-gray-300" />
-                        <span className="text-xs text-gray-400 dark:text-gray-500">{stage.avgTimeToNext}</span>
+                        <div className="h-4 w-px bg-[#E4DED2]" />
+                        <span className="text-xs text-muted-foreground dark:text-muted-foreground">{stage.avgTimeToNext}</span>
                       </div>
                     )}
                   </button>
@@ -346,42 +346,42 @@ export default function FunnelsPage() {
             {selectedStage ? (
               <>
                 {/* Stage Stats */}
-                <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-                  <h3 className="font-semibold text-gray-900 mb-4">{selectedStage.name}</h3>
+                <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+                  <h3 className="font-semibold text-foreground mb-4">{selectedStage.name}</h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                      <p className="text-2xl font-bold text-foreground">
                         {selectedStage.count.toLocaleString()}
                       </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">Users reached</p>
+                      <p className="text-sm text-muted-foreground">Users reached</p>
                     </div>
                     <div>
                       <p className="text-2xl font-bold text-green-600">
                         {selectedStage.conversionRate}%
                       </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">Conversion rate</p>
+                      <p className="text-sm text-muted-foreground">Conversion rate</p>
                     </div>
                     <div>
                       <p className="text-2xl font-bold text-red-600">{selectedStage.dropOffRate}%</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">Drop-off rate</p>
+                      <p className="text-sm text-muted-foreground">Drop-off rate</p>
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-gray-900 dark:text-white">{selectedStage.avgTimeToNext}</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">Avg. time to next</p>
+                      <p className="text-2xl font-bold text-foreground">{selectedStage.avgTimeToNext}</p>
+                      <p className="text-sm text-muted-foreground">Avg. time to next</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Drop-off Reasons */}
                 {stageDropOffs.length > 0 && (
-                  <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-                    <h3 className="font-semibold text-gray-900 mb-4">Drop-off Reasons</h3>
+                  <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+                    <h3 className="font-semibold text-foreground mb-4">Drop-off Reasons</h3>
                     <div className="space-y-3">
                       {stageDropOffs.map((reason, index) => (
                         <div key={index} className="flex items-center justify-between">
                           <div className="flex-1">
-                            <p className="text-sm text-gray-900 dark:text-white">{reason.reason}</p>
-                            <div className="mt-1 h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <p className="text-sm text-foreground">{reason.reason}</p>
+                            <div className="mt-1 h-2 bg-[#F1ECE3] rounded-full overflow-hidden">
                               <div
                                 className="h-full bg-red-400 rounded-full"
                                 style={{ width: `${reason.percentage}%` }}
@@ -389,8 +389,8 @@ export default function FunnelsPage() {
                             </div>
                           </div>
                           <div className="ml-4 text-right">
-                            <p className="text-sm font-semibold text-gray-900 dark:text-white">{reason.percentage}%</p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">{reason.count} users</p>
+                            <p className="text-sm font-semibold text-foreground">{reason.percentage}%</p>
+                            <p className="text-xs text-muted-foreground">{reason.count} users</p>
                           </div>
                         </div>
                       ))}
@@ -399,10 +399,10 @@ export default function FunnelsPage() {
                 )}
               </>
             ) : (
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-                <div className="text-center text-gray-500 dark:text-gray-400">
+              <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+                <div className="text-center text-muted-foreground">
                   <svg
-                    className="w-12 h-12 mx-auto text-gray-300"
+                    className="w-12 h-12 mx-auto text-muted-foreground"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -420,20 +420,20 @@ export default function FunnelsPage() {
             )}
 
             {/* Insights */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-              <h3 className="font-semibold text-gray-900 mb-4">Insights & Recommendations</h3>
+            <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+              <h3 className="font-semibold text-foreground mb-4">Insights & Recommendations</h3>
               <div className="space-y-3">
                 {stageInsights.map((insight, index) => (
-                  <div key={index} className="p-3 bg-gray-50 rounded-lg">
+                  <div key={index} className="p-3 bg-background rounded-lg">
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs font-medium text-gray-500 dark:text-gray-400">{insight.stage}</span>
+                      <span className="text-xs font-medium text-muted-foreground">{insight.stage}</span>
                       <span
                         className={`text-xs px-2 py-0.5 rounded-full ${getImpactColor(insight.impact)}`}
                       >
                         {insight.impact} impact
                       </span>
                     </div>
-                    <p className="text-sm text-gray-900 dark:text-white">{insight.insight}</p>
+                    <p className="text-sm text-foreground">{insight.insight}</p>
                     <p className="text-xs text-indigo-600 mt-1">{insight.action}</p>
                   </div>
                 ))}
@@ -446,8 +446,8 @@ export default function FunnelsPage() {
       {viewMode === 'comparison' && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Funnel Comparison Chart */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-6">Funnel Comparison</h2>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+            <h2 className="text-lg font-semibold text-foreground mb-6">Funnel Comparison</h2>
             <ResponsiveContainer width="100%" height={400}>
               <BarChart
                 data={[
@@ -497,8 +497,8 @@ export default function FunnelsPage() {
           </div>
 
           {/* Conversion Trend */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-6">Conversion Trend Over Time</h2>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+            <h2 className="text-lg font-semibold text-foreground mb-6">Conversion Trend Over Time</h2>
             <ResponsiveContainer width="100%" height={400}>
               <LineChart data={conversionTrend} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -537,23 +537,23 @@ export default function FunnelsPage() {
           {/* Summary Stats */}
           <div className="lg:col-span-2 grid grid-cols-3 gap-4">
             {funnels.map((funnel) => (
-              <div key={funnel.id} className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-                <h3 className="text-sm font-medium text-gray-500 mb-3">{funnel.name}</h3>
+              <div key={funnel.id} className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+                <h3 className="text-sm font-medium text-muted-foreground mb-3">{funnel.name}</h3>
                 <div className="flex items-end justify-between">
                   <div>
-                    <p className="text-3xl font-bold text-gray-900 dark:text-white">{funnel.overallConversion}%</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Overall conversion</p>
+                    <p className="text-3xl font-bold text-foreground">{funnel.overallConversion}%</p>
+                    <p className="text-sm text-muted-foreground">Overall conversion</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                    <p className="text-lg font-semibold text-foreground">
                       {funnel.stages[funnel.stages.length - 1].count.toLocaleString()}
                     </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">Completed</p>
+                    <p className="text-xs text-muted-foreground">Completed</p>
                   </div>
                 </div>
                 <div className="mt-4 flex items-center gap-2">
                   <span className="text-green-500 text-sm">+2.3%</span>
-                  <span className="text-xs text-gray-500 dark:text-gray-400">vs. previous period</span>
+                  <span className="text-xs text-muted-foreground">vs. previous period</span>
                 </div>
               </div>
             ))}
@@ -564,29 +564,29 @@ export default function FunnelsPage() {
       {viewMode === 'cohort' && (
         <div className="space-y-6">
           {/* Cohort Analysis */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-6">Cohort Analysis</h2>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+            <h2 className="text-lg font-semibold text-foreground mb-6">Cohort Analysis</h2>
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-gray-200 dark:border-gray-700">
-                    <th className="text-left py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">Cohort</th>
-                    <th className="text-center py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">
+                  <tr className="border-b border-[#ECE6DC] dark:border-[#33291f]">
+                    <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">Cohort</th>
+                    <th className="text-center py-3 px-4 text-sm font-medium text-muted-foreground">
                       Registered
                     </th>
-                    <th className="text-center py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">
+                    <th className="text-center py-3 px-4 text-sm font-medium text-muted-foreground">
                       Profile Complete
                     </th>
-                    <th className="text-center py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">
+                    <th className="text-center py-3 px-4 text-sm font-medium text-muted-foreground">
                       First Listing
                     </th>
-                    <th className="text-center py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">
+                    <th className="text-center py-3 px-4 text-sm font-medium text-muted-foreground">
                       First Exchange
                     </th>
-                    <th className="text-center py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">
+                    <th className="text-center py-3 px-4 text-sm font-medium text-muted-foreground">
                       Completed
                     </th>
-                    <th className="text-center py-3 px-4 text-sm font-medium text-gray-500 dark:text-gray-400">
+                    <th className="text-center py-3 px-4 text-sm font-medium text-muted-foreground">
                       Repeat User
                     </th>
                   </tr>
@@ -603,8 +603,8 @@ export default function FunnelsPage() {
                     };
 
                     return (
-                      <tr key={cohort.cohort} className="border-b border-gray-100">
-                        <td className="py-3 px-4 text-sm font-medium text-gray-900 dark:text-white">
+                      <tr key={cohort.cohort} className="border-b border-[#F0EBE1]">
+                        <td className="py-3 px-4 text-sm font-medium text-foreground">
                           {cohort.cohort}
                         </td>
                         <td className="py-3 px-4 text-center">
@@ -666,8 +666,8 @@ export default function FunnelsPage() {
           </div>
 
           {/* Cohort Retention Chart */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-6">Cohort Retention Over Time</h2>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+            <h2 className="text-lg font-semibold text-foreground mb-6">Cohort Retention Over Time</h2>
             <ResponsiveContainer width="100%" height={400}>
               <AreaChart data={cohortData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />

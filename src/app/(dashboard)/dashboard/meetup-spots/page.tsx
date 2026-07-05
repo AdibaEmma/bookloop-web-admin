@@ -62,7 +62,7 @@ function CategoryBadge({ category }: { category: string }) {
     cafe: 'bg-amber-100 text-amber-700 dark:bg-amber-900/20 dark:text-amber-300',
     public_space: 'bg-purple-100 text-purple-700 dark:bg-purple-900/20 dark:text-purple-300',
     educational: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/20 dark:text-indigo-300',
-    other: 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300',
+    other: 'bg-[#F1ECE3] text-foreground dark:bg-[#2a2118] dark:text-muted-foreground',
   };
 
   const labels = {
@@ -91,7 +91,7 @@ function SafetyRating({ rating }: { rating?: number }) {
       {stars.map((filled, i) => (
         <div
           key={i}
-          className={`w-3 h-3 rounded-full ${filled ? 'bg-green-500' : 'bg-gray-300 dark:bg-gray-600'}`}
+          className={`w-3 h-3 rounded-full ${filled ? 'bg-green-500' : 'bg-[#E4DED2] dark:bg-[#33291f]'}`}
         />
       ))}
     </div>
@@ -132,7 +132,7 @@ function SpotActionMenu({ spot, onAction }: { spot: MeetupSpot; onAction: (actio
     <div className="relative">
       <button
         onClick={() => setMenuOpen(!menuOpen)}
-        className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+        className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-foreground hover:bg-background dark:hover:bg-[#2a2118] rounded-lg"
       >
         <MoreVertical className="w-5 h-5" />
       </button>
@@ -143,13 +143,13 @@ function SpotActionMenu({ spot, onAction }: { spot: MeetupSpot; onAction: (actio
             className="fixed inset-0 z-10"
             onClick={() => setMenuOpen(false)}
           ></div>
-          <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-700 rounded-lg shadow-lg z-20 py-1">
+          <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-[#2a2118] rounded-lg shadow-lg z-20 py-1">
             <button
               onClick={() => {
                 onAction('details', spot);
                 setMenuOpen(false);
               }}
-              className="flex items-center gap-2 w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+              className="flex items-center gap-2 w-full px-4 py-2 text-sm text-foreground hover:bg-background dark:hover:bg-[#33291f]"
             >
               <Eye className="w-4 h-4" />
               View Details
@@ -159,7 +159,7 @@ function SpotActionMenu({ spot, onAction }: { spot: MeetupSpot; onAction: (actio
                 onAction('map', spot);
                 setMenuOpen(false);
               }}
-              className="flex items-center gap-2 w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+              className="flex items-center gap-2 w-full px-4 py-2 text-sm text-foreground hover:bg-background dark:hover:bg-[#33291f]"
             >
               <Navigation className="w-4 h-4" />
               View on Map
@@ -169,7 +169,7 @@ function SpotActionMenu({ spot, onAction }: { spot: MeetupSpot; onAction: (actio
                 onAction('edit', spot);
                 setMenuOpen(false);
               }}
-              className="flex items-center gap-2 w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+              className="flex items-center gap-2 w-full px-4 py-2 text-sm text-foreground hover:bg-background dark:hover:bg-[#33291f]"
             >
               <Edit className="w-4 h-4" />
               Edit Spot
@@ -180,7 +180,7 @@ function SpotActionMenu({ spot, onAction }: { spot: MeetupSpot; onAction: (actio
                   onAction('verify', spot);
                   setMenuOpen(false);
                 }}
-                className="flex items-center gap-2 w-full px-4 py-2 text-sm text-green-600 dark:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-600"
+                className="flex items-center gap-2 w-full px-4 py-2 text-sm text-green-600 dark:text-green-400 hover:bg-background dark:hover:bg-[#33291f]"
               >
                 <CheckCircle className="w-4 h-4" />
                 Verify Spot
@@ -191,7 +191,7 @@ function SpotActionMenu({ spot, onAction }: { spot: MeetupSpot; onAction: (actio
                 onAction(spot.is_active ? 'deactivate' : 'activate', spot);
                 setMenuOpen(false);
               }}
-              className={`flex items-center gap-2 w-full px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 ${
+              className={`flex items-center gap-2 w-full px-4 py-2 text-sm hover:bg-background dark:hover:bg-[#33291f] ${
                 spot.is_active
                   ? 'text-yellow-600 dark:text-yellow-400'
                   : 'text-green-600 dark:text-green-400'
@@ -214,7 +214,7 @@ function SpotActionMenu({ spot, onAction }: { spot: MeetupSpot; onAction: (actio
                 onAction('delete', spot);
                 setMenuOpen(false);
               }}
-              className="flex items-center gap-2 w-full px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-600"
+              className="flex items-center gap-2 w-full px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-background dark:hover:bg-[#33291f]"
             >
               <Trash2 className="w-4 h-4" />
               Delete
@@ -249,19 +249,19 @@ function MeetupSpotDetailsModal({
 
   return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex items-center justify-between p-6 border-b border-[#ECE6DC] dark:border-[#33291f]">
           <div className="flex items-center gap-3">
-            <div className={`p-3 rounded-lg ${spot.is_verified ? 'bg-green-50 dark:bg-green-900/20' : 'bg-gray-100 dark:bg-gray-700'}`}>
+            <div className={`p-3 rounded-lg ${spot.is_verified ? 'bg-green-50 dark:bg-green-900/20' : 'bg-background dark:bg-[#2a2118]'}`}>
               {spot.is_verified ? (
                 <Shield className="w-6 h-6 text-green-600" />
               ) : (
-                <MapPin className="w-6 h-6 text-gray-600 dark:text-gray-400" />
+                <MapPin className="w-6 h-6 text-muted-foreground" />
               )}
             </div>
             <div>
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+              <h2 className="text-xl font-bold text-foreground">
                 {spot.name}
               </h2>
               <div className="flex items-center gap-2 mt-1">
@@ -272,7 +272,7 @@ function MeetupSpotDetailsModal({
           </div>
           <button
             onClick={onClose}
-            className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+            className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-foreground hover:bg-background dark:hover:bg-[#2a2118] rounded-lg transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -282,37 +282,37 @@ function MeetupSpotDetailsModal({
         <div className="p-6 space-y-6">
           {/* Description */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
+            <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">
               Description
             </h3>
-            <p className="text-gray-700 dark:text-gray-300">{spot.description}</p>
+            <p className="text-foreground">{spot.description}</p>
           </div>
 
           {/* Location Details */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+            <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
               Location Details
             </h3>
-            <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 space-y-3">
+            <div className="bg-background dark:bg-[#2a2118]/50 rounded-lg p-4 space-y-3">
               <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-gray-400 mt-0.5" />
+                <MapPin className="w-5 h-5 text-muted-foreground mt-0.5" />
                 <div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Address</p>
-                  <p className="text-gray-900 dark:text-white">{spot.address}</p>
+                  <p className="text-sm text-muted-foreground">Address</p>
+                  <p className="text-foreground">{spot.address}</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Navigation className="w-5 h-5 text-gray-400 mt-0.5" />
+                <Navigation className="w-5 h-5 text-muted-foreground mt-0.5" />
                 <div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">City & Region</p>
-                  <p className="text-gray-900 dark:text-white">{spot.city}, {spot.region}</p>
+                  <p className="text-sm text-muted-foreground">City & Region</p>
+                  <p className="text-foreground">{spot.city}, {spot.region}</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-gray-400 mt-0.5" />
+                <MapPin className="w-5 h-5 text-muted-foreground mt-0.5" />
                 <div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Coordinates</p>
-                  <p className="text-gray-900 dark:text-white font-mono text-sm">
+                  <p className="text-sm text-muted-foreground">Coordinates</p>
+                  <p className="text-foreground font-mono text-sm">
                     {lat.toFixed(6)}, {lng.toFixed(6)}
                   </p>
                 </div>
@@ -322,41 +322,41 @@ function MeetupSpotDetailsModal({
 
           {/* Stats Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 text-center">
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+            <div className="bg-background dark:bg-[#2a2118]/50 rounded-lg p-4 text-center">
+              <p className="text-2xl font-bold text-foreground">
                 {spot.usage_count || 0}
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Times Used</p>
+              <p className="text-sm text-muted-foreground">Times Used</p>
             </div>
-            <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 text-center">
+            <div className="bg-background dark:bg-[#2a2118]/50 rounded-lg p-4 text-center">
               <div className="flex justify-center mb-1">
                 <SafetyRating rating={spot.safety_rating} />
               </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Safety Rating</p>
+              <p className="text-sm text-muted-foreground">Safety Rating</p>
             </div>
-            <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 text-center">
-              <p className="text-lg font-semibold text-gray-900 dark:text-white">
+            <div className="bg-background dark:bg-[#2a2118]/50 rounded-lg p-4 text-center">
+              <p className="text-lg font-semibold text-foreground">
                 {categoryLabels[spot.category] || spot.category}
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Category</p>
+              <p className="text-sm text-muted-foreground">Category</p>
             </div>
-            <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 text-center">
-              <p className="text-lg font-semibold text-gray-900 dark:text-white">
+            <div className="bg-background dark:bg-[#2a2118]/50 rounded-lg p-4 text-center">
+              <p className="text-lg font-semibold text-foreground">
                 {new Date(spot.created_at).toLocaleDateString()}
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Created</p>
+              <p className="text-sm text-muted-foreground">Created</p>
             </div>
           </div>
 
           {/* Map Preview Placeholder */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+            <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
               Location Preview
             </h3>
-            <div className="bg-gray-100 dark:bg-gray-700 rounded-lg h-48 flex items-center justify-center">
+            <div className="bg-background dark:bg-[#2a2118] rounded-lg h-48 flex items-center justify-center">
               <button
                 onClick={() => onAction('map', spot)}
-                className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-600 rounded-lg shadow hover:shadow-md transition-shadow text-gray-700 dark:text-gray-200"
+                className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-[#33291f] rounded-lg shadow hover:shadow-md transition-shadow text-foreground dark:text-foreground"
               >
                 <Navigation className="w-5 h-5" />
                 Open in Google Maps
@@ -366,7 +366,7 @@ function MeetupSpotDetailsModal({
         </div>
 
         {/* Actions Footer */}
-        <div className="flex items-center justify-between p-6 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
+        <div className="flex items-center justify-between p-6 border-t border-[#ECE6DC] dark:border-[#33291f] bg-background dark:bg-[#2a2118]/50">
           <div className="flex items-center gap-2">
             {!spot.is_verified && (
               <button
@@ -410,7 +410,7 @@ function MeetupSpotDetailsModal({
                 onAction('edit', spot);
                 onClose();
               }}
-              className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg text-foreground hover:bg-background dark:hover:bg-[#33291f] transition-colors"
             >
               <Edit className="w-4 h-4" />
               Edit
@@ -660,16 +660,16 @@ export default function MeetupSpotsPage() {
       {/* Page header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+          <h1 className="text-3xl font-bold text-foreground">
             Meetup Spots Management
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">
+          <p className="text-muted-foreground mt-2">
             Manage safe locations for book exchanges
           </p>
         </div>
         <button
           onClick={() => setShowAddModal(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold rounded-lg hover:from-amber-600 hover:to-orange-700 transition-all"
+          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary to-primary text-white font-semibold rounded-lg hover:from-amber-600 hover:to-orange-700 transition-all"
         >
           <Plus className="w-5 h-5" />
           Add Meetup Spot
@@ -678,60 +678,60 @@ export default function MeetupSpotsPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-4">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
-              <MapPin className="w-5 h-5 text-amber-600" />
+              <MapPin className="w-5 h-5 text-primary" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 Total Spots
               </p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+              <p className="text-2xl font-bold text-foreground">
                 {spots?.length || 0}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-4">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
               <Shield className="w-5 h-5 text-green-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Verified</p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+              <p className="text-sm text-muted-foreground">Verified</p>
+              <p className="text-2xl font-bold text-foreground">
                 {spots?.filter((s) => s.is_verified).length || 0}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-4">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
               <CheckCircle className="w-5 h-5 text-blue-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Active</p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+              <p className="text-sm text-muted-foreground">Active</p>
+              <p className="text-2xl font-bold text-foreground">
                 {spots?.filter((s) => s.is_active).length || 0}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-4">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
               <Navigation className="w-5 h-5 text-purple-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-muted-foreground">
                 Total Usage
               </p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+              <p className="text-2xl font-bold text-foreground">
                 {spots?.reduce((sum, s) => sum + (s.usage_count || 0), 0) || 0}
               </p>
             </div>
@@ -740,18 +740,18 @@ export default function MeetupSpotsPage() {
       </div>
 
       {/* Filters and search */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+      <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Search */}
           <div className="lg:col-span-1">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground dark:text-muted-foreground" />
               <input
                 type="text"
                 placeholder="Search spots..."
                 value={searchQuery}
                 onChange={(e) => handleFilterChange(setSearchQuery, e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full pl-10 pr-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
           </div>
@@ -760,7 +760,7 @@ export default function MeetupSpotsPage() {
           <select
             value={filterStatus}
             onChange={(e) => handleFilterChange(setFilterStatus, e.target.value as 'all' | 'active' | 'inactive')}
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <option value="all">All Status</option>
             <option value="active">Active</option>
@@ -771,7 +771,7 @@ export default function MeetupSpotsPage() {
           <select
             value={filterVerified}
             onChange={(e) => handleFilterChange(setFilterVerified, e.target.value as 'all' | 'verified' | 'unverified')}
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <option value="all">All Verification</option>
             <option value="verified">Verified</option>
@@ -782,7 +782,7 @@ export default function MeetupSpotsPage() {
           <select
             value={filterCategory}
             onChange={(e) => handleFilterChange(setFilterCategory, e.target.value as MeetupSpot['category'] | 'all')}
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <option value="all">All Categories</option>
             <option value="library">Library</option>
@@ -801,18 +801,18 @@ export default function MeetupSpotsPage() {
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600"></div>
         </div>
       ) : spots && spots.length > 0 ? (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow overflow-hidden">
           {/* Table Header with Limit Selector */}
-          <div className="flex items-center justify-between px-6 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
+          <div className="flex items-center justify-between px-6 py-3 border-b border-[#ECE6DC] dark:border-[#33291f] bg-background dark:bg-[#2a2118]/50">
             <div className="flex items-center gap-2">
-              <label htmlFor="limit" className="text-sm text-gray-600 dark:text-gray-400">
+              <label htmlFor="limit" className="text-sm text-muted-foreground">
                 Show:
               </label>
               <select
                 id="limit"
                 value={limit}
                 onChange={(e) => handleLimitChange(Number(e.target.value) as typeof LIMIT_OPTIONS[number])}
-                className="px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="px-2 py-1 text-sm border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 {LIMIT_OPTIONS.map((option) => (
                   <option key={option} value={option}>
@@ -820,69 +820,69 @@ export default function MeetupSpotsPage() {
                   </option>
                 ))}
               </select>
-              <span className="text-sm text-gray-600 dark:text-gray-400">entries</span>
+              <span className="text-sm text-muted-foreground">entries</span>
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-sm text-muted-foreground">
               Showing {((meta.page - 1) * meta.limit) + 1} to {Math.min(meta.page * meta.limit, meta.total)} of {meta.total}
             </div>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50 dark:bg-gray-700">
+              <thead className="bg-background dark:bg-[#2a2118]">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     Spot
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     Location
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     Category
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     Safety
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     Usage
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     Created
                   </th>
-                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-right text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+              <tbody className="divide-y divide-[#ECE6DC] dark:divide-[#33291f]">
                 {spots.map((spot) => {
                   const [lat, lng] = spot.location.coordinates.slice().reverse();
                   return (
                     <tr
                       key={spot.id}
-                      className={`hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors ${!spot.is_active ? 'opacity-60' : ''}`}
+                      className={`hover:bg-background dark:hover:bg-[#2a2118]/50 transition-colors ${!spot.is_active ? 'opacity-60' : ''}`}
                     >
                       {/* Spot Name & Description */}
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
-                          <div className={`p-2 rounded-lg flex-shrink-0 ${spot.is_verified ? 'bg-green-50 dark:bg-green-900/20' : 'bg-gray-100 dark:bg-gray-700'}`}>
+                          <div className={`p-2 rounded-lg flex-shrink-0 ${spot.is_verified ? 'bg-green-50 dark:bg-green-900/20' : 'bg-background dark:bg-[#2a2118]'}`}>
                             {spot.is_verified ? (
                               <Shield className="w-5 h-5 text-green-600" />
                             ) : (
-                              <MapPin className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+                              <MapPin className="w-5 h-5 text-muted-foreground" />
                             )}
                           </div>
                           <div className="min-w-0">
                             <button
                               onClick={() => setSelectedSpot(spot)}
-                              className="font-medium text-gray-900 dark:text-white hover:text-amber-600 dark:hover:text-amber-400 transition-colors text-left"
+                              className="font-medium text-foreground hover:text-primary dark:hover:text-amber-400 transition-colors text-left"
                             >
                               {spot.name}
                             </button>
-                            <p className="text-sm text-gray-500 dark:text-gray-400 truncate max-w-xs">
+                            <p className="text-sm text-muted-foreground truncate max-w-xs">
                               {spot.description}
                             </p>
                           </div>
@@ -892,8 +892,8 @@ export default function MeetupSpotsPage() {
                       {/* Location */}
                       <td className="px-6 py-4">
                         <div className="text-sm">
-                          <p className="text-gray-900 dark:text-white">{spot.city}</p>
-                          <p className="text-gray-500 dark:text-gray-400">{spot.region}</p>
+                          <p className="text-foreground">{spot.city}</p>
+                          <p className="text-muted-foreground">{spot.region}</p>
                         </div>
                       </td>
 
@@ -914,14 +914,14 @@ export default function MeetupSpotsPage() {
 
                       {/* Usage Count */}
                       <td className="px-6 py-4">
-                        <span className="text-sm font-medium text-gray-900 dark:text-white">
+                        <span className="text-sm font-medium text-foreground">
                           {spot.usage_count || 0}
                         </span>
-                        <span className="text-sm text-gray-500 dark:text-gray-400 ml-1">times</span>
+                        <span className="text-sm text-muted-foreground ml-1">times</span>
                       </td>
 
                       {/* Created Date */}
-                      <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+                      <td className="px-6 py-4 text-sm text-muted-foreground">
                         {new Date(spot.created_at).toLocaleDateString()}
                       </td>
 
@@ -937,9 +937,9 @@ export default function MeetupSpotsPage() {
           </div>
 
           {/* Pagination Controls */}
-          <div className="flex items-center justify-between px-6 py-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
+          <div className="flex items-center justify-between px-6 py-4 border-t border-[#ECE6DC] dark:border-[#33291f] bg-background dark:bg-[#2a2118]/50">
             {/* Results info - left */}
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-sm text-muted-foreground">
               Showing {((meta.page - 1) * meta.limit) + 1} to {Math.min(meta.page * meta.limit, meta.total)} of {meta.total}
             </div>
 
@@ -948,7 +948,7 @@ export default function MeetupSpotsPage() {
               <button
                 onClick={() => setPage(1)}
                 disabled={meta.page === 1}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-foreground hover:bg-background dark:hover:bg-[#33291f] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                 title="First page"
               >
                 <ChevronsLeft className="w-5 h-5" />
@@ -957,7 +957,7 @@ export default function MeetupSpotsPage() {
               <button
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                 disabled={meta.page === 1}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-foreground hover:bg-background dark:hover:bg-[#33291f] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                 title="Previous page"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -995,7 +995,7 @@ export default function MeetupSpotsPage() {
 
                   return pages.map((pageNum, idx) =>
                     pageNum === '...' ? (
-                      <span key={`ellipsis-${idx}`} className="px-2 text-gray-400 dark:text-gray-500">
+                      <span key={`ellipsis-${idx}`} className="px-2 text-muted-foreground dark:text-muted-foreground">
                         ...
                       </span>
                     ) : (
@@ -1004,8 +1004,8 @@ export default function MeetupSpotsPage() {
                         onClick={() => setPage(pageNum as number)}
                         className={`min-w-[36px] h-9 px-3 text-sm font-medium rounded-lg transition-colors ${
                           meta.page === pageNum
-                            ? 'bg-amber-500 text-white'
-                            : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-600'
+                            ? 'bg-primary text-white'
+                            : 'text-muted-foreground hover:bg-background dark:hover:bg-[#33291f]'
                         }`}
                       >
                         {pageNum}
@@ -1018,7 +1018,7 @@ export default function MeetupSpotsPage() {
               <button
                 onClick={() => setPage((p) => Math.min(meta.totalPages, p + 1))}
                 disabled={meta.page === meta.totalPages}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-foreground hover:bg-background dark:hover:bg-[#33291f] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                 title="Next page"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -1027,7 +1027,7 @@ export default function MeetupSpotsPage() {
               <button
                 onClick={() => setPage(meta.totalPages)}
                 disabled={meta.page === meta.totalPages}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-foreground hover:bg-background dark:hover:bg-[#33291f] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                 title="Last page"
               >
                 <ChevronsRight className="w-5 h-5" />
@@ -1036,17 +1036,17 @@ export default function MeetupSpotsPage() {
           </div>
         </div>
       ) : (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-12 text-center">
-          <MapPin className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-12 text-center">
+          <MapPin className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
+          <h3 className="text-lg font-semibold text-foreground mb-2">
             No meetup spots found
           </h3>
-          <p className="text-gray-600 dark:text-gray-400 mb-4">
+          <p className="text-muted-foreground mb-4">
             Try adjusting your search or filters
           </p>
           <button
             onClick={() => setShowAddModal(true)}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold rounded-lg hover:from-amber-600 hover:to-orange-700 transition-all"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary to-primary text-white font-semibold rounded-lg hover:from-amber-600 hover:to-orange-700 transition-all"
           >
             <Plus className="w-5 h-5" />
             Add First Meetup Spot
@@ -1201,20 +1201,20 @@ function AddMeetupSpotModal({
 
   return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto my-8">
+      <div className="bg-white dark:bg-[#241c16] rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto my-8">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700 sticky top-0 bg-white dark:bg-gray-800 z-10">
+        <div className="flex items-center justify-between p-6 border-b border-[#ECE6DC] dark:border-[#33291f] sticky top-0 bg-white dark:bg-[#241c16] z-10">
           <div>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+            <h2 className="text-xl font-bold text-foreground">
               Add New Meetup Spot
             </h2>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            <p className="text-sm text-muted-foreground mt-1">
               Create a safe location for book exchanges
             </p>
           </div>
           <button
             onClick={onClose}
-            className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+            className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-foreground hover:bg-background dark:hover:bg-[#2a2118] rounded-lg transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -1224,7 +1224,7 @@ function AddMeetupSpotModal({
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
           {/* Basic Info Section */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
               Basic Information
             </h3>
             <div className="space-y-4">
@@ -1232,7 +1232,7 @@ function AddMeetupSpotModal({
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  className="block text-sm font-medium text-foreground mb-1"
                 >
                   Spot Name <span className="text-red-500">*</span>
                 </label>
@@ -1243,10 +1243,10 @@ function AddMeetupSpotModal({
                   value={formData.name}
                   onChange={handleInputChange}
                   placeholder="e.g., Central Library"
-                  className={`w-full px-4 py-2.5 border rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 ${
+                  className={`w-full px-4 py-2.5 border rounded-lg bg-white dark:bg-[#2a2118] text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary ${
                     errors.name
                       ? 'border-red-500'
-                      : 'border-gray-300 dark:border-gray-600'
+                      : 'border-[#E4DED2] dark:border-[#33291f]'
                   }`}
                 />
                 {errors.name && (
@@ -1258,7 +1258,7 @@ function AddMeetupSpotModal({
               <div>
                 <label
                   htmlFor="description"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  className="block text-sm font-medium text-foreground mb-1"
                 >
                   Description <span className="text-red-500">*</span>
                 </label>
@@ -1269,10 +1269,10 @@ function AddMeetupSpotModal({
                   onChange={handleInputChange}
                   rows={3}
                   placeholder="Describe the location, facilities, and why it's safe for meetups..."
-                  className={`w-full px-4 py-2.5 border rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none ${
+                  className={`w-full px-4 py-2.5 border rounded-lg bg-white dark:bg-[#2a2118] text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none ${
                     errors.description
                       ? 'border-red-500'
-                      : 'border-gray-300 dark:border-gray-600'
+                      : 'border-[#E4DED2] dark:border-[#33291f]'
                   }`}
                 />
                 {errors.description && (
@@ -1284,7 +1284,7 @@ function AddMeetupSpotModal({
               <div>
                 <label
                   htmlFor="category"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  className="block text-sm font-medium text-foreground mb-1"
                 >
                   Category <span className="text-red-500">*</span>
                 </label>
@@ -1293,7 +1293,7 @@ function AddMeetupSpotModal({
                   name="category"
                   value={formData.category}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="w-full px-4 py-2.5 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                   <option value="library">Library</option>
                   <option value="community_center">Community Center</option>
@@ -1308,7 +1308,7 @@ function AddMeetupSpotModal({
 
           {/* Location Section */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
               Location Details
             </h3>
             <div className="space-y-4">
@@ -1316,7 +1316,7 @@ function AddMeetupSpotModal({
               <div>
                 <label
                   htmlFor="address"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  className="block text-sm font-medium text-foreground mb-1"
                 >
                   Street Address <span className="text-red-500">*</span>
                 </label>
@@ -1327,10 +1327,10 @@ function AddMeetupSpotModal({
                   value={formData.address}
                   onChange={handleInputChange}
                   placeholder="e.g., 123 Main Street"
-                  className={`w-full px-4 py-2.5 border rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 ${
+                  className={`w-full px-4 py-2.5 border rounded-lg bg-white dark:bg-[#2a2118] text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary ${
                     errors.address
                       ? 'border-red-500'
-                      : 'border-gray-300 dark:border-gray-600'
+                      : 'border-[#E4DED2] dark:border-[#33291f]'
                   }`}
                 />
                 {errors.address && (
@@ -1343,7 +1343,7 @@ function AddMeetupSpotModal({
                 <div>
                   <label
                     htmlFor="city"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    className="block text-sm font-medium text-foreground mb-1"
                   >
                     City <span className="text-red-500">*</span>
                   </label>
@@ -1354,10 +1354,10 @@ function AddMeetupSpotModal({
                     value={formData.city}
                     onChange={handleInputChange}
                     placeholder="e.g., Accra"
-                    className={`w-full px-4 py-2.5 border rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 ${
+                    className={`w-full px-4 py-2.5 border rounded-lg bg-white dark:bg-[#2a2118] text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary ${
                       errors.city
                         ? 'border-red-500'
-                        : 'border-gray-300 dark:border-gray-600'
+                        : 'border-[#E4DED2] dark:border-[#33291f]'
                     }`}
                   />
                   {errors.city && (
@@ -1368,7 +1368,7 @@ function AddMeetupSpotModal({
                 <div>
                   <label
                     htmlFor="region"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    className="block text-sm font-medium text-foreground mb-1"
                   >
                     Region <span className="text-red-500">*</span>
                   </label>
@@ -1377,10 +1377,10 @@ function AddMeetupSpotModal({
                     name="region"
                     value={formData.region}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-2.5 border rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500 ${
+                    className={`w-full px-4 py-2.5 border rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary ${
                       errors.region
                         ? 'border-red-500'
-                        : 'border-gray-300 dark:border-gray-600'
+                        : 'border-[#E4DED2] dark:border-[#33291f]'
                     }`}
                   >
                     <option value="">Select Region</option>
@@ -1401,7 +1401,7 @@ function AddMeetupSpotModal({
                 <div>
                   <label
                     htmlFor="latitude"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    className="block text-sm font-medium text-foreground mb-1"
                   >
                     Latitude <span className="text-red-500">*</span>
                   </label>
@@ -1412,10 +1412,10 @@ function AddMeetupSpotModal({
                     value={formData.latitude}
                     onChange={handleInputChange}
                     placeholder="e.g., 5.6037"
-                    className={`w-full px-4 py-2.5 border rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 ${
+                    className={`w-full px-4 py-2.5 border rounded-lg bg-white dark:bg-[#2a2118] text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary ${
                       errors.latitude
                         ? 'border-red-500'
-                        : 'border-gray-300 dark:border-gray-600'
+                        : 'border-[#E4DED2] dark:border-[#33291f]'
                     }`}
                   />
                   {errors.latitude && (
@@ -1426,7 +1426,7 @@ function AddMeetupSpotModal({
                 <div>
                   <label
                     htmlFor="longitude"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    className="block text-sm font-medium text-foreground mb-1"
                   >
                     Longitude <span className="text-red-500">*</span>
                   </label>
@@ -1437,10 +1437,10 @@ function AddMeetupSpotModal({
                     value={formData.longitude}
                     onChange={handleInputChange}
                     placeholder="e.g., -0.1870"
-                    className={`w-full px-4 py-2.5 border rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 ${
+                    className={`w-full px-4 py-2.5 border rounded-lg bg-white dark:bg-[#2a2118] text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary ${
                       errors.longitude
                         ? 'border-red-500'
-                        : 'border-gray-300 dark:border-gray-600'
+                        : 'border-[#E4DED2] dark:border-[#33291f]'
                     }`}
                   />
                   {errors.longitude && (
@@ -1450,7 +1450,7 @@ function AddMeetupSpotModal({
               </div>
 
               {/* Help text for coordinates */}
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <p className="text-xs text-muted-foreground">
                 Tip: You can get coordinates from Google Maps by right-clicking on a location.
               </p>
             </div>
@@ -1458,11 +1458,11 @@ function AddMeetupSpotModal({
 
           {/* Safety Section */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
               Safety Assessment
             </h3>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+              <label className="block text-sm font-medium text-foreground mb-3">
                 Initial Safety Rating
               </label>
               <div className="flex items-center gap-2">
@@ -1476,13 +1476,13 @@ function AddMeetupSpotModal({
                     className={`w-10 h-10 rounded-full border-2 transition-all ${
                       formData.safety_rating >= rating
                         ? 'bg-green-500 border-green-500 text-white'
-                        : 'bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400'
+                        : 'bg-white dark:bg-[#2a2118] border-[#E4DED2] dark:border-[#33291f] text-muted-foreground'
                     }`}
                   >
                     {rating}
                   </button>
                 ))}
-                <span className="ml-3 text-sm text-gray-600 dark:text-gray-400">
+                <span className="ml-3 text-sm text-muted-foreground">
                   {formData.safety_rating === 1 && 'Poor'}
                   {formData.safety_rating === 2 && 'Fair'}
                   {formData.safety_rating === 3 && 'Good'}
@@ -1494,19 +1494,19 @@ function AddMeetupSpotModal({
           </div>
 
           {/* Actions */}
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#ECE6DC] dark:border-[#33291f]">
             <button
               type="button"
               onClick={onClose}
               disabled={isSubmitting}
-              className="px-4 py-2.5 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors disabled:opacity-50"
+              className="px-4 py-2.5 text-foreground bg-white dark:bg-[#2a2118] border border-[#E4DED2] dark:border-[#33291f] rounded-lg hover:bg-background dark:hover:bg-[#33291f] transition-colors disabled:opacity-50"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold rounded-lg hover:from-amber-600 hover:to-orange-700 transition-all disabled:opacity-50"
+              className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-primary to-primary text-white font-semibold rounded-lg hover:from-amber-600 hover:to-orange-700 transition-all disabled:opacity-50"
             >
               {isSubmitting ? (
                 <>

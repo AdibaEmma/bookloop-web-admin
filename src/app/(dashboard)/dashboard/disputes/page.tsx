@@ -175,7 +175,7 @@ export default function DisputesPage() {
       case 'escalated':
         return 'bg-red-100 text-red-700';
       default:
-        return 'bg-gray-100 text-gray-700 dark:text-gray-300';
+        return 'bg-[#F1ECE3] text-foreground';
     }
   };
 
@@ -190,7 +190,7 @@ export default function DisputesPage() {
       case 'low':
         return 'bg-green-100 text-green-700 border-green-200';
       default:
-        return 'bg-gray-100 text-gray-700 dark:text-gray-300';
+        return 'bg-[#F1ECE3] text-foreground';
     }
   };
 
@@ -263,8 +263,8 @@ export default function DisputesPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Dispute Resolution Center</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">Dispute Resolution Center</h1>
+          <p className="text-muted-foreground mt-1">
             Manage and resolve user disputes fairly and efficiently
           </p>
         </div>
@@ -272,28 +272,28 @@ export default function DisputesPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Open</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Open</p>
           <p className="text-2xl font-bold text-blue-600 mt-1">{disputeStats.open}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Investigating</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Investigating</p>
           <p className="text-2xl font-bold text-yellow-600 mt-1">{disputeStats.investigating}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">In Mediation</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">In Mediation</p>
           <p className="text-2xl font-bold text-orange-600 mt-1">{disputeStats.mediation}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Resolved</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Resolved</p>
           <p className="text-2xl font-bold text-green-600 mt-1">{disputeStats.resolved}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Avg Resolution</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">{disputeStats.avgResolutionTime}</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Avg Resolution</p>
+          <p className="text-2xl font-bold text-foreground mt-1">{disputeStats.avgResolutionTime}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Satisfaction</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Satisfaction</p>
           <p className="text-2xl font-bold text-green-600 mt-1">{disputeStats.satisfactionRate}%</p>
         </div>
       </div>
@@ -306,7 +306,7 @@ export default function DisputesPage() {
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+              className="px-3 py-2 border border-[#E4DED2] rounded-lg text-sm"
             >
               <option value="all">All Status</option>
               <option value="open">Open</option>
@@ -318,7 +318,7 @@ export default function DisputesPage() {
             <select
               value={filterCategory}
               onChange={(e) => setFilterCategory(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+              className="px-3 py-2 border border-[#E4DED2] rounded-lg text-sm"
             >
               <option value="all">All Categories</option>
               <option value="item_not_as_described">Item Not As Described</option>
@@ -330,7 +330,7 @@ export default function DisputesPage() {
             <select
               value={filterPriority}
               onChange={(e) => setFilterPriority(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+              className="px-3 py-2 border border-[#E4DED2] rounded-lg text-sm"
             >
               <option value="all">All Priorities</option>
               <option value="urgent">Urgent</option>
@@ -349,7 +349,7 @@ export default function DisputesPage() {
                 className={`w-full p-4 rounded-xl border-2 text-left transition-all ${
                   selectedDispute?.id === dispute.id
                     ? 'border-indigo-500 bg-indigo-50'
-                    : 'border-gray-200 bg-white hover:border-gray-300'
+                    : 'border-[#ECE6DC] bg-white hover:border-[#E4DED2]'
                 }`}
               >
                 <div className="flex items-start justify-between mb-2">
@@ -360,9 +360,9 @@ export default function DisputesPage() {
                     {dispute.priority}
                   </span>
                 </div>
-                <h3 className="font-medium text-gray-900 text-sm">{dispute.reason}</h3>
-                <p className="text-xs text-gray-500 mt-1 line-clamp-2">{dispute.description}</p>
-                <div className="flex items-center justify-between mt-3 text-xs text-gray-400 dark:text-gray-500">
+                <h3 className="font-medium text-foreground text-sm">{dispute.reason}</h3>
+                <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{dispute.description}</p>
+                <div className="flex items-center justify-between mt-3 text-xs text-muted-foreground dark:text-muted-foreground">
                   <span>{dispute.initiator_name}</span>
                   <span>{getTimeSince(dispute.created_at)}</span>
                 </div>
@@ -376,7 +376,7 @@ export default function DisputesPage() {
           {selectedDispute ? (
             <div className="space-y-6">
               {/* Dispute Header */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
+              <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div className={`p-2 rounded-lg ${
@@ -387,8 +387,8 @@ export default function DisputesPage() {
                       {getCategoryIcon(selectedDispute.category)}
                     </div>
                     <div>
-                      <h2 className="text-lg font-semibold text-gray-900 dark:text-white">{selectedDispute.reason}</h2>
-                      <p className="text-sm text-gray-500 capitalize">
+                      <h2 className="text-lg font-semibold text-foreground">{selectedDispute.reason}</h2>
+                      <p className="text-sm text-muted-foreground capitalize">
                         {selectedDispute.category.replace(/_/g, ' ')} · {selectedDispute.book_title}
                       </p>
                     </div>
@@ -404,34 +404,34 @@ export default function DisputesPage() {
                 </div>
 
                 {/* Parties Involved */}
-                <div className="grid grid-cols-2 gap-4 py-4 border-y border-gray-100">
+                <div className="grid grid-cols-2 gap-4 py-4 border-y border-[#F0EBE1]">
                   <div>
-                    <p className="text-xs text-gray-500 mb-2">Initiator</p>
+                    <p className="text-xs text-muted-foreground mb-2">Initiator</p>
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs font-medium">
                         {selectedDispute.initiator_name.split(' ').map(n => n[0]).join('')}
                       </div>
-                      <span className="text-sm font-medium text-gray-900 dark:text-white">{selectedDispute.initiator_name}</span>
+                      <span className="text-sm font-medium text-foreground">{selectedDispute.initiator_name}</span>
                     </div>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 mb-2">Recipient</p>
+                    <p className="text-xs text-muted-foreground mb-2">Recipient</p>
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white text-xs font-medium">
                         {selectedDispute.recipient_name.split(' ').map(n => n[0]).join('')}
                       </div>
-                      <span className="text-sm font-medium text-gray-900 dark:text-white">{selectedDispute.recipient_name}</span>
+                      <span className="text-sm font-medium text-foreground">{selectedDispute.recipient_name}</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Exchange Details */}
                 <div className="mt-4">
-                  <p className="text-xs text-gray-500 mb-2">Exchange Details</p>
-                  <div className="p-3 bg-gray-50 rounded-lg">
+                  <p className="text-xs text-muted-foreground mb-2">Exchange Details</p>
+                  <div className="p-3 bg-background rounded-lg">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-700 dark:text-gray-300">{selectedDispute.book_title}</span>
-                      <span className="text-sm font-medium text-gray-900 capitalize">
+                      <span className="text-sm text-foreground">{selectedDispute.book_title}</span>
+                      <span className="text-sm font-medium text-foreground capitalize">
                         {selectedDispute.exchange_type}
                         {selectedDispute.exchange_amount && ` · GH₵${selectedDispute.exchange_amount}`}
                       </span>
@@ -441,23 +441,23 @@ export default function DisputesPage() {
 
                 {/* Description */}
                 <div className="mt-4">
-                  <p className="text-xs text-gray-500 mb-2">Description</p>
-                  <p className="text-sm text-gray-700 dark:text-gray-300">{selectedDispute.description}</p>
+                  <p className="text-xs text-muted-foreground mb-2">Description</p>
+                  <p className="text-sm text-foreground">{selectedDispute.description}</p>
                 </div>
 
                 {/* Evidence */}
                 {selectedDispute.evidence.length > 0 && (
                   <div className="mt-4">
-                    <p className="text-xs text-gray-500 mb-2">Evidence ({selectedDispute.evidence.length})</p>
+                    <p className="text-xs text-muted-foreground mb-2">Evidence ({selectedDispute.evidence.length})</p>
                     <div className="flex gap-2 flex-wrap">
                       {selectedDispute.evidence.map((ev) => (
                         <div key={ev.id} className="relative group">
-                          <div className="w-20 h-20 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 dark:border-gray-700">
-                            <svg className="w-8 h-8 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <div className="w-20 h-20 bg-[#F1ECE3] rounded-lg flex items-center justify-center border border-[#ECE6DC] dark:border-[#33291f]">
+                            <svg className="w-8 h-8 text-muted-foreground dark:text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
                           </div>
-                          <p className="text-xs text-gray-500 mt-1 truncate w-20">{ev.description}</p>
+                          <p className="text-xs text-muted-foreground mt-1 truncate w-20">{ev.description}</p>
                         </div>
                       ))}
                     </div>
@@ -493,7 +493,7 @@ export default function DisputesPage() {
                     <button className="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700">
                       Escalate
                     </button>
-                    <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 dark:bg-gray-900">
+                    <button className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background">
                       Assign
                     </button>
                   </div>
@@ -501,9 +501,9 @@ export default function DisputesPage() {
               </div>
 
               {/* Messages */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
-                <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Communication History</h3>
+              <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] dark:border-[#33291f]">
+                <div className="p-4 border-b border-[#ECE6DC] dark:border-[#33291f]">
+                  <h3 className="font-semibold text-foreground">Communication History</h3>
                 </div>
                 <div className="p-4 max-h-80 overflow-y-auto space-y-4">
                   {selectedDispute.messages.length > 0 ? (
@@ -521,7 +521,7 @@ export default function DisputesPage() {
                         </div>
                         <div className={`flex-1 ${msg.sender_role === 'admin' ? 'text-right' : ''}`}>
                           <div className="flex items-center gap-2 mb-1">
-                            <span className="text-sm font-medium text-gray-900 dark:text-white">{msg.sender_name}</span>
+                            <span className="text-sm font-medium text-foreground">{msg.sender_name}</span>
                             <span className={`text-xs px-1.5 py-0.5 rounded ${
                               msg.sender_role === 'admin' ? 'bg-indigo-100 text-indigo-700' :
                               msg.sender_role === 'initiator' ? 'bg-blue-100 text-blue-700' :
@@ -529,10 +529,10 @@ export default function DisputesPage() {
                             }`}>
                               {msg.sender_role}
                             </span>
-                            <span className="text-xs text-gray-400 dark:text-gray-500">{formatDate(msg.created_at)}</span>
+                            <span className="text-xs text-muted-foreground dark:text-muted-foreground">{formatDate(msg.created_at)}</span>
                           </div>
-                          <p className={`text-sm text-gray-700 p-3 rounded-lg inline-block ${
-                            msg.sender_role === 'admin' ? 'bg-indigo-50' : 'bg-gray-50 dark:bg-gray-900'
+                          <p className={`text-sm text-foreground p-3 rounded-lg inline-block ${
+                            msg.sender_role === 'admin' ? 'bg-indigo-50' : 'bg-background'
                           }`}>
                             {msg.message}
                           </p>
@@ -540,18 +540,18 @@ export default function DisputesPage() {
                       </div>
                     ))
                   ) : (
-                    <p className="text-center text-gray-500 py-4">No messages yet</p>
+                    <p className="text-center text-muted-foreground py-4">No messages yet</p>
                   )}
                 </div>
                 {selectedDispute.status !== 'resolved' && (
-                  <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+                  <div className="p-4 border-t border-[#ECE6DC] dark:border-[#33291f]">
                     <div className="flex gap-2">
                       <input
                         type="text"
                         value={newMessage}
                         onChange={(e) => setNewMessage(e.target.value)}
                         placeholder="Type a message..."
-                        className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                        className="flex-1 px-3 py-2 border border-[#E4DED2] rounded-lg text-sm"
                       />
                       <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
                         Send
@@ -562,9 +562,9 @@ export default function DisputesPage() {
               </div>
             </div>
           ) : (
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-12">
-              <div className="text-center text-gray-500 dark:text-gray-400">
-                <svg className="w-16 h-16 mx-auto text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-12">
+              <div className="text-center text-muted-foreground">
+                <svg className="w-16 h-16 mx-auto text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                 </svg>
                 <p className="mt-4 text-lg font-medium">Select a dispute to view details</p>
@@ -578,12 +578,12 @@ export default function DisputesPage() {
       {/* Resolution Modal */}
       {showResolutionModal && selectedDispute && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 w-full max-w-lg">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Resolve Dispute</h2>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl p-6 w-full max-w-lg">
+            <h2 className="text-lg font-semibold text-foreground mb-4">Resolve Dispute</h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Resolution Type</label>
-                <select className="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                <label className="block text-sm font-medium text-foreground mb-1">Resolution Type</label>
+                <select className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg">
                   <option value="refund">Full Refund to Initiator</option>
                   <option value="exchange_cancelled">Cancel Exchange</option>
                   <option value="in_favor_initiator">In Favor of Initiator</option>
@@ -593,27 +593,27 @@ export default function DisputesPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Resolution Details</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Resolution Details</label>
                 <textarea
                   placeholder="Describe the resolution and any actions taken..."
                   rows={4}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Additional Actions</label>
+                <label className="block text-sm font-medium text-foreground mb-2">Additional Actions</label>
                 <div className="space-y-2">
                   <label className="flex items-center gap-2">
-                    <input type="checkbox" className="rounded border-gray-300" />
-                    <span className="text-sm text-gray-700 dark:text-gray-300">Notify both parties</span>
+                    <input type="checkbox" className="rounded border-[#E4DED2]" />
+                    <span className="text-sm text-foreground">Notify both parties</span>
                   </label>
                   <label className="flex items-center gap-2">
-                    <input type="checkbox" className="rounded border-gray-300" />
-                    <span className="text-sm text-gray-700 dark:text-gray-300">Issue warning to violating party</span>
+                    <input type="checkbox" className="rounded border-[#E4DED2]" />
+                    <span className="text-sm text-foreground">Issue warning to violating party</span>
                   </label>
                   <label className="flex items-center gap-2">
-                    <input type="checkbox" className="rounded border-gray-300" />
-                    <span className="text-sm text-gray-700 dark:text-gray-300">Update trust scores</span>
+                    <input type="checkbox" className="rounded border-[#E4DED2]" />
+                    <span className="text-sm text-foreground">Update trust scores</span>
                   </label>
                 </div>
               </div>
@@ -627,7 +627,7 @@ export default function DisputesPage() {
               </button>
               <button
                 onClick={() => setShowResolutionModal(false)}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 dark:bg-gray-900"
+                className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background"
               >
                 Cancel
               </button>

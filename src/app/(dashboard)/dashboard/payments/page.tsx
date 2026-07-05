@@ -67,7 +67,7 @@ function StatusBadge({ status }: { status: Payment['status'] }) {
       icon: XCircle,
     },
     refunded: {
-      color: 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300',
+      color: 'bg-[#F1ECE3] text-foreground dark:bg-[#2a2118] dark:text-muted-foreground',
       icon: ArrowDownRight,
     },
   };
@@ -100,29 +100,29 @@ function PaymentMethodBadge({ method }: { method: Payment['payment_method'] }) {
 
 function PaymentRow({ payment, onView }: { payment: Payment; onView: (payment: Payment) => void }) {
   return (
-    <tr className="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+    <tr className="border-b border-[#ECE6DC] dark:border-[#33291f] hover:bg-background dark:hover:bg-[#2a2118]/50">
       <td className="px-6 py-4">
         <div>
-          <p className="text-sm font-medium text-gray-900 dark:text-white">
+          <p className="text-sm font-medium text-foreground">
             #{payment.id.slice(0, 8)}
           </p>
           {payment.transaction_reference && (
-            <p className="text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-xs text-muted-foreground">
               Ref: {payment.transaction_reference}
             </p>
           )}
         </div>
       </td>
       <td className="px-6 py-4">
-        <p className="text-sm text-gray-900 dark:text-white">
+        <p className="text-sm text-foreground">
           {payment.payer.first_name} {payment.payer.last_name}
         </p>
-        <p className="text-xs text-gray-500 dark:text-gray-400">
+        <p className="text-xs text-muted-foreground">
           → {payment.payee.first_name} {payment.payee.last_name}
         </p>
       </td>
       <td className="px-6 py-4">
-        <p className="text-sm font-semibold text-gray-900 dark:text-white">
+        <p className="text-sm font-semibold text-foreground">
           {payment.currency} {payment.amount.toFixed(2)}
         </p>
       </td>
@@ -133,17 +133,17 @@ function PaymentRow({ payment, onView }: { payment: Payment; onView: (payment: P
         <StatusBadge status={payment.status} />
       </td>
       <td className="px-6 py-4">
-        <p className="text-sm text-gray-600 dark:text-gray-400">
+        <p className="text-sm text-muted-foreground">
           {new Date(payment.created_at).toLocaleDateString()}
         </p>
-        <p className="text-xs text-gray-500 dark:text-gray-400">
+        <p className="text-xs text-muted-foreground">
           {new Date(payment.created_at).toLocaleTimeString()}
         </p>
       </td>
       <td className="px-6 py-4">
         <button
           onClick={() => onView(payment)}
-          className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+          className="p-2 text-muted-foreground hover:text-foreground dark:text-muted-foreground dark:hover:text-foreground hover:bg-background dark:hover:bg-[#2a2118] rounded-lg"
         >
           <Eye className="w-5 h-5" />
         </button>
@@ -301,14 +301,14 @@ export default function PaymentsPage() {
       {/* Page header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+          <h1 className="text-3xl font-bold text-foreground">
             Payments & Revenue
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">
+          <p className="text-muted-foreground mt-2">
             Monitor transactions and platform revenue
           </p>
         </div>
-        <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold rounded-lg hover:from-amber-600 hover:to-orange-700 transition-all">
+        <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary to-primary text-white font-semibold rounded-lg hover:from-amber-600 hover:to-orange-700 transition-all">
           <Download className="w-5 h-5" />
           Export Report
         </button>
@@ -316,13 +316,13 @@ export default function PaymentsPage() {
 
       {/* Stats cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              <p className="text-sm font-medium text-muted-foreground">
                 Total Revenue
               </p>
-              <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
+              <p className="text-3xl font-bold text-foreground mt-2">
                 GH₵{stats?.totalRevenue?.toLocaleString() || '0'}
               </p>
             </div>
@@ -335,19 +335,19 @@ export default function PaymentsPage() {
             <span className="text-sm font-medium ml-1 text-green-600">
               {stats?.revenueGrowth || '0%'}
             </span>
-            <span className="text-sm text-gray-600 dark:text-gray-400 ml-2">
+            <span className="text-sm text-muted-foreground ml-2">
               vs last month
             </span>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              <p className="text-sm font-medium text-muted-foreground">
                 Transactions
               </p>
-              <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
+              <p className="text-3xl font-bold text-foreground mt-2">
                 {stats?.totalTransactions?.toLocaleString() || '0'}
               </p>
             </div>
@@ -360,19 +360,19 @@ export default function PaymentsPage() {
             <span className="text-sm font-medium ml-1 text-green-600">
               {stats?.transactionGrowth || '0%'}
             </span>
-            <span className="text-sm text-gray-600 dark:text-gray-400 ml-2">
+            <span className="text-sm text-muted-foreground ml-2">
               vs last month
             </span>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              <p className="text-sm font-medium text-muted-foreground">
                 Avg. Transaction
               </p>
-              <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
+              <p className="text-3xl font-bold text-foreground mt-2">
                 GH₵{stats?.averageTransaction?.toFixed(2) || '0'}
               </p>
             </div>
@@ -381,30 +381,30 @@ export default function PaymentsPage() {
             </div>
           </div>
           <div className="mt-4 flex items-center">
-            <span className="text-sm text-gray-600 dark:text-gray-400">
+            <span className="text-sm text-muted-foreground">
               Based on {stats?.completedTransactions || 0} completed
             </span>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              <p className="text-sm font-medium text-muted-foreground">
                 Success Rate
               </p>
-              <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">
+              <p className="text-3xl font-bold text-foreground mt-2">
                 {stats?.completedTransactions && stats?.totalTransactions
                   ? ((stats.completedTransactions / stats.totalTransactions) * 100).toFixed(1)
                   : '0'}%
               </p>
             </div>
-            <div className="p-3 rounded-full bg-amber-500">
+            <div className="p-3 rounded-full bg-primary">
               <CheckCircle className="w-6 h-6 text-white" />
             </div>
           </div>
           <div className="mt-4 flex items-center">
-            <span className="text-sm text-gray-600 dark:text-gray-400">
+            <span className="text-sm text-muted-foreground">
               {stats?.completedTransactions || 0} of {stats?.totalTransactions || 0} successful
             </span>
           </div>
@@ -414,8 +414,8 @@ export default function PaymentsPage() {
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Revenue trend */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
+          <h3 className="text-lg font-semibold text-foreground mb-4">
             Revenue Trend
           </h3>
           <ResponsiveContainer width="100%" height={250}>
@@ -436,8 +436,8 @@ export default function PaymentsPage() {
         </div>
 
         {/* Payment methods */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+        <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
+          <h3 className="text-lg font-semibold text-foreground mb-4">
             Payment Methods
           </h3>
           <ResponsiveContainer width="100%" height={250}>
@@ -454,18 +454,18 @@ export default function PaymentsPage() {
       </div>
 
       {/* Filters */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+      <div className="bg-white dark:bg-[#241c16] rounded-lg shadow p-6">
         <div className="flex flex-col md:flex-row gap-4">
           {/* Search */}
           <div className="flex-1">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground dark:text-muted-foreground" />
               <input
                 type="text"
                 placeholder="Search by transaction ID or reference..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="w-full pl-10 pr-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
           </div>
@@ -474,7 +474,7 @@ export default function PaymentsPage() {
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value as any)}
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <option value="all">All Status</option>
             <option value="pending">Pending</option>
@@ -487,7 +487,7 @@ export default function PaymentsPage() {
           <select
             value={filterMethod}
             onChange={(e) => setFilterMethod(e.target.value as any)}
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-4 py-2 border border-[#E4DED2] dark:border-[#33291f] rounded-lg bg-white dark:bg-[#2a2118] text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <option value="all">All Methods</option>
             <option value="momo">Mobile Money</option>
@@ -498,7 +498,7 @@ export default function PaymentsPage() {
       </div>
 
       {/* Payments table */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+      <div className="bg-white dark:bg-[#241c16] rounded-lg shadow overflow-hidden">
         <div className="overflow-x-auto">
           {isLoading ? (
             <div className="flex h-64 items-center justify-center">
@@ -506,27 +506,27 @@ export default function PaymentsPage() {
             </div>
           ) : filteredPayments && filteredPayments.length > 0 ? (
             <table className="w-full">
-              <thead className="bg-gray-50 dark:bg-gray-700">
+              <thead className="bg-background dark:bg-[#2a2118]">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     Transaction
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     Parties
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     Amount
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     Method
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     Date
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
@@ -543,11 +543,11 @@ export default function PaymentsPage() {
             </table>
           ) : (
             <div className="p-12 text-center">
-              <CreditCard className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+              <CreditCard className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-foreground mb-2">
                 No payments found
               </h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-muted-foreground">
                 Try adjusting your search or filters
               </p>
             </div>

@@ -188,7 +188,7 @@ export default function FeatureFlagsPage() {
       case 'development':
         return 'bg-blue-100 text-blue-700';
       default:
-        return 'bg-gray-100 text-gray-700 dark:text-gray-300';
+        return 'bg-[#F1ECE3] text-foreground';
     }
   };
 
@@ -204,8 +204,8 @@ export default function FeatureFlagsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Feature Flags</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">Feature Flags</h1>
+          <p className="text-muted-foreground mt-1">
             Control feature rollouts and A/B testing
           </p>
         </div>
@@ -222,20 +222,20 @@ export default function FeatureFlagsPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Total Flags</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">{stats.total}</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Total Flags</p>
+          <p className="text-2xl font-bold text-foreground mt-1">{stats.total}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Enabled</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Enabled</p>
           <p className="text-2xl font-bold text-green-600 mt-1">{stats.enabled}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">In Production</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">{stats.production}</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">In Production</p>
+          <p className="text-2xl font-bold text-foreground mt-1">{stats.production}</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Full Rollout</p>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
+          <p className="text-sm text-muted-foreground">Full Rollout</p>
           <p className="text-2xl font-bold text-indigo-600 mt-1">{stats.fullRollout}</p>
         </div>
       </div>
@@ -248,7 +248,7 @@ export default function FeatureFlagsPage() {
             placeholder="Search flags..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+            className="w-full px-4 py-2 border border-[#E4DED2] rounded-lg"
           />
         </div>
         <div className="flex flex-wrap gap-2">
@@ -259,7 +259,7 @@ export default function FeatureFlagsPage() {
               className={`px-3 py-1.5 rounded-lg text-sm transition-colors ${
                 filterCategory === cat
                   ? 'bg-indigo-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  : 'bg-[#F1ECE3] text-foreground hover:bg-[#ECE6DC]'
               }`}
             >
               {cat}
@@ -269,7 +269,7 @@ export default function FeatureFlagsPage() {
         <select
           value={filterEnvironment}
           onChange={(e) => setFilterEnvironment(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg"
+          className="px-3 py-2 border border-[#E4DED2] rounded-lg"
         >
           <option value="all">All Environments</option>
           <option value="production">Production</option>
@@ -279,7 +279,7 @@ export default function FeatureFlagsPage() {
         <select
           value={filterStatus}
           onChange={(e) => setFilterStatus(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg"
+          className="px-3 py-2 border border-[#E4DED2] rounded-lg"
         >
           <option value="all">All Status</option>
           <option value="enabled">Enabled</option>
@@ -292,27 +292,27 @@ export default function FeatureFlagsPage() {
         {filteredFlags.map((flag) => (
           <div
             key={flag.id}
-            className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6"
+            className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6"
           >
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h3 className="font-semibold text-gray-900 dark:text-white">{flag.name}</h3>
-                  <span className="text-xs font-mono bg-gray-100 px-2 py-0.5 rounded text-gray-600 dark:text-gray-400">
+                  <h3 className="font-semibold text-foreground">{flag.name}</h3>
+                  <span className="text-xs font-mono bg-[#F1ECE3] px-2 py-0.5 rounded text-muted-foreground">
                     {flag.key}
                   </span>
                   <span className={`text-xs px-2 py-0.5 rounded-full ${getEnvironmentColor(flag.environment)}`}>
                     {flag.environment}
                   </span>
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 dark:text-gray-400">
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-[#F1ECE3] text-muted-foreground">
                     {flag.category}
                   </span>
                 </div>
-                <p className="text-sm text-gray-500 mb-4">{flag.description}</p>
+                <p className="text-sm text-muted-foreground mb-4">{flag.description}</p>
 
                 {/* Rollout Slider */}
                 <div className="flex items-center gap-4">
-                  <span className="text-sm text-gray-600 w-24">Rollout: {flag.rollout_percentage}%</span>
+                  <span className="text-sm text-muted-foreground w-24">Rollout: {flag.rollout_percentage}%</span>
                   <input
                     type="range"
                     min="0"
@@ -321,7 +321,7 @@ export default function FeatureFlagsPage() {
                     value={flag.rollout_percentage}
                     onChange={(e) => updateRollout(flag.id, parseInt(e.target.value))}
                     disabled={!flag.is_enabled}
-                    className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer disabled:opacity-50"
+                    className="flex-1 h-2 bg-[#ECE6DC] rounded-lg appearance-none cursor-pointer disabled:opacity-50"
                   />
                   <div className="flex gap-1">
                     {[0, 25, 50, 75, 100].map((pct) => (
@@ -332,7 +332,7 @@ export default function FeatureFlagsPage() {
                         className={`px-2 py-1 text-xs rounded ${
                           flag.rollout_percentage === pct
                             ? 'bg-indigo-600 text-white'
-                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                            : 'bg-[#F1ECE3] text-muted-foreground hover:bg-[#ECE6DC]'
                         } disabled:opacity-50`}
                       >
                         {pct}%
@@ -344,7 +344,7 @@ export default function FeatureFlagsPage() {
                 {/* Target Info */}
                 {(flag.target_segments || flag.target_users) && (
                   <div className="mt-3 flex items-center gap-2">
-                    <span className="text-xs text-gray-500 dark:text-gray-400">Targeting:</span>
+                    <span className="text-xs text-muted-foreground">Targeting:</span>
                     {flag.target_segments?.map((seg) => (
                       <span key={seg} className="text-xs px-2 py-0.5 bg-purple-100 text-purple-700 rounded-full">
                         {seg}
@@ -359,7 +359,7 @@ export default function FeatureFlagsPage() {
                 )}
 
                 {/* Meta Info */}
-                <div className="mt-3 flex items-center gap-4 text-xs text-gray-400 dark:text-gray-500">
+                <div className="mt-3 flex items-center gap-4 text-xs text-muted-foreground dark:text-muted-foreground">
                   <span>Created by {flag.created_by}</span>
                   <span>Updated {new Date(flag.updated_at).toLocaleDateString()}</span>
                   {flag.last_toggled_by && (
@@ -373,7 +373,7 @@ export default function FeatureFlagsPage() {
                 <button
                   onClick={() => toggleFlag(flag.id)}
                   className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                    flag.is_enabled ? 'bg-indigo-600' : 'bg-gray-200'
+                    flag.is_enabled ? 'bg-indigo-600' : 'bg-[#ECE6DC]'
                   }`}
                 >
                   <span
@@ -386,7 +386,7 @@ export default function FeatureFlagsPage() {
                 {/* Actions */}
                 <button
                   onClick={() => setSelectedFlag(flag)}
-                  className="p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg"
+                  className="p-2 text-muted-foreground hover:text-indigo-600 hover:bg-indigo-50 rounded-lg"
                 >
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -402,46 +402,46 @@ export default function FeatureFlagsPage() {
       {/* Create Modal */}
       {showCreateModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 w-full max-w-lg">
-            <h2 className="text-lg font-semibold text-gray-900 mb-6">Create Feature Flag</h2>
+          <div className="bg-white dark:bg-[#241c16] rounded-xl p-6 w-full max-w-lg">
+            <h2 className="text-lg font-semibold text-foreground mb-6">Create Feature Flag</h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Flag Key</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Flag Key</label>
                 <input
                   type="text"
                   value={newFlag.key}
                   onChange={(e) => setNewFlag({ ...newFlag, key: e.target.value.toLowerCase().replace(/\s/g, '_') })}
                   placeholder="e.g., new_feature"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg font-mono"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg font-mono"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Display Name</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Display Name</label>
                 <input
                   type="text"
                   value={newFlag.name}
                   onChange={(e) => setNewFlag({ ...newFlag, name: e.target.value })}
                   placeholder="e.g., New Feature"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Description</label>
                 <textarea
                   value={newFlag.description}
                   onChange={(e) => setNewFlag({ ...newFlag, description: e.target.value })}
                   placeholder="What does this flag control?"
                   rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Category</label>
                   <select
                     value={newFlag.category}
                     onChange={(e) => setNewFlag({ ...newFlag, category: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                   >
                     {categories.filter((c) => c !== 'All').map((cat) => (
                       <option key={cat} value={cat}>{cat}</option>
@@ -449,11 +449,11 @@ export default function FeatureFlagsPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Environment</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Environment</label>
                   <select
                     value={newFlag.environment}
                     onChange={(e) => setNewFlag({ ...newFlag, environment: e.target.value as 'development' | 'staging' | 'production' })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                   >
                     <option value="development">Development</option>
                     <option value="staging">Staging</option>
@@ -462,7 +462,7 @@ export default function FeatureFlagsPage() {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-foreground mb-1">
                   Initial Rollout: {newFlag.rollout_percentage}%
                 </label>
                 <input
@@ -472,7 +472,7 @@ export default function FeatureFlagsPage() {
                   step="5"
                   value={newFlag.rollout_percentage}
                   onChange={(e) => setNewFlag({ ...newFlag, rollout_percentage: parseInt(e.target.value) })}
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                  className="w-full h-2 bg-[#ECE6DC] rounded-lg appearance-none cursor-pointer"
                 />
               </div>
             </div>
@@ -482,7 +482,7 @@ export default function FeatureFlagsPage() {
               </button>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 dark:bg-gray-900"
+                className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background"
               >
                 Cancel
               </button>
@@ -494,14 +494,14 @@ export default function FeatureFlagsPage() {
       {/* Settings Modal */}
       {selectedFlag && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 w-full max-w-lg">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl p-6 w-full max-w-lg">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Flag Settings</h2>
+              <h2 className="text-lg font-semibold text-foreground">Flag Settings</h2>
               <button
                 onClick={() => setSelectedFlag(null)}
-                className="p-2 hover:bg-gray-100 rounded-lg"
+                className="p-2 hover:bg-background rounded-lg"
               >
-                <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -509,12 +509,12 @@ export default function FeatureFlagsPage() {
 
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Flag Key</label>
-                <p className="font-mono text-sm bg-gray-100 px-3 py-2 rounded-lg">{selectedFlag.key}</p>
+                <label className="block text-sm font-medium text-foreground mb-1">Flag Key</label>
+                <p className="font-mono text-sm bg-[#F1ECE3] px-3 py-2 rounded-lg">{selectedFlag.key}</p>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Target Segments</label>
-                <select multiple className="w-full px-3 py-2 border border-gray-300 rounded-lg h-24">
+                <label className="block text-sm font-medium text-foreground mb-1">Target Segments</label>
+                <select multiple className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg h-24">
                   <option value="power_traders">Power Traders</option>
                   <option value="new_enthusiasts">New Enthusiasts</option>
                   <option value="at_risk">At-Risk Users</option>
@@ -522,11 +522,11 @@ export default function FeatureFlagsPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Target User IDs (comma separated)</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Target User IDs (comma separated)</label>
                 <textarea
                   placeholder="user-1, user-2, user-3"
                   rows={2}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg font-mono text-sm"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg font-mono text-sm"
                 />
               </div>
             </div>

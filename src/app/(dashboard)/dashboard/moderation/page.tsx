@@ -165,7 +165,7 @@ export default function ModerationPage() {
       case 'low':
         return 'bg-green-100 text-green-700 border-green-200';
       default:
-        return 'bg-gray-100 text-gray-700 dark:text-gray-300';
+        return 'bg-[#F1ECE3] text-foreground';
     }
   };
 
@@ -226,17 +226,17 @@ export default function ModerationPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Moderation Queue</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">Moderation Queue</h1>
+          <p className="text-muted-foreground mt-1">
             Review flagged content and user reports
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <div className="flex bg-gray-100 rounded-lg p-1">
+          <div className="flex bg-[#F1ECE3] rounded-lg p-1">
             <button
               onClick={() => setViewMode('queue')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'queue' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
+                viewMode === 'queue' ? 'bg-white shadow text-foreground' : 'text-muted-foreground'
               }`}
             >
               Queue
@@ -244,7 +244,7 @@ export default function ModerationPage() {
             <button
               onClick={() => setViewMode('reports')}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === 'reports' ? 'bg-white shadow text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
+                viewMode === 'reports' ? 'bg-white shadow text-foreground' : 'text-muted-foreground'
               }`}
             >
               Reports
@@ -255,11 +255,11 @@ export default function ModerationPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Pending Review</p>
-              <p className="text-2xl font-bold text-gray-900 mt-1">{stats.pending}</p>
+              <p className="text-sm text-muted-foreground">Pending Review</p>
+              <p className="text-2xl font-bold text-foreground mt-1">{stats.pending}</p>
             </div>
             <div className="p-3 bg-indigo-100 rounded-lg">
               <svg className="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -268,10 +268,10 @@ export default function ModerationPage() {
             </div>
           </div>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Urgent Items</p>
+              <p className="text-sm text-muted-foreground">Urgent Items</p>
               <p className="text-2xl font-bold text-red-600 mt-1">{stats.urgent}</p>
             </div>
             <div className="p-3 bg-red-100 rounded-lg">
@@ -281,10 +281,10 @@ export default function ModerationPage() {
             </div>
           </div>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Escalated</p>
+              <p className="text-sm text-muted-foreground">Escalated</p>
               <p className="text-2xl font-bold text-orange-600 mt-1">{stats.escalated}</p>
             </div>
             <div className="p-3 bg-orange-100 rounded-lg">
@@ -294,11 +294,11 @@ export default function ModerationPage() {
             </div>
           </div>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-5">
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-5">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Auto-Flagged</p>
-              <p className="text-2xl font-bold text-gray-900 mt-1">{stats.autoFlagged}</p>
+              <p className="text-sm text-muted-foreground">Auto-Flagged</p>
+              <p className="text-2xl font-bold text-foreground mt-1">{stats.autoFlagged}</p>
             </div>
             <div className="p-3 bg-purple-100 rounded-lg">
               <svg className="w-6 h-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -318,7 +318,7 @@ export default function ModerationPage() {
               <select
                 value={filterType}
                 onChange={(e) => setFilterType(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                className="px-3 py-2 border border-[#E4DED2] rounded-lg text-sm"
               >
                 <option value="all">All Types</option>
                 <option value="listing">Listings</option>
@@ -329,7 +329,7 @@ export default function ModerationPage() {
               <select
                 value={filterPriority}
                 onChange={(e) => setFilterPriority(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                className="px-3 py-2 border border-[#E4DED2] rounded-lg text-sm"
               >
                 <option value="all">All Priorities</option>
                 <option value="urgent">Urgent</option>
@@ -340,7 +340,7 @@ export default function ModerationPage() {
               <select
                 value={filterStatus}
                 onChange={(e) => setFilterStatus(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                className="px-3 py-2 border border-[#E4DED2] rounded-lg text-sm"
               >
                 <option value="all">All Status</option>
                 <option value="pending">Pending</option>
@@ -359,7 +359,7 @@ export default function ModerationPage() {
                   className={`w-full p-4 rounded-xl border-2 text-left transition-all ${
                     selectedItem?.id === item.id
                       ? 'border-indigo-500 bg-indigo-50'
-                      : 'border-gray-200 bg-white hover:border-gray-300'
+                      : 'border-[#ECE6DC] bg-white hover:border-[#E4DED2]'
                   }`}
                 >
                   <div className="flex items-start gap-4">
@@ -376,29 +376,29 @@ export default function ModerationPage() {
                         <span className={`text-xs px-2 py-0.5 rounded-full border capitalize ${getPriorityColor(item.priority)}`}>
                           {item.priority}
                         </span>
-                        <span className="text-xs text-gray-500 capitalize">{item.type}</span>
+                        <span className="text-xs text-muted-foreground capitalize">{item.type}</span>
                         {item.auto_flagged && (
                           <span className="text-xs px-2 py-0.5 rounded-full bg-purple-100 text-purple-700">
                             AI Flagged
                           </span>
                         )}
-                        <span className="text-xs text-gray-400 dark:text-gray-500">{getTimeSince(item.created_at)}</span>
+                        <span className="text-xs text-muted-foreground dark:text-muted-foreground">{getTimeSince(item.created_at)}</span>
                       </div>
-                      <h3 className="font-medium text-gray-900 mt-1">{item.reason}</h3>
-                      <p className="text-sm text-gray-500 mt-1 line-clamp-2">{item.content_preview}</p>
+                      <h3 className="font-medium text-foreground mt-1">{item.reason}</h3>
+                      <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{item.content_preview}</p>
                       <div className="flex items-center gap-4 mt-2">
-                        <span className="text-xs text-gray-500 dark:text-gray-400">
+                        <span className="text-xs text-muted-foreground">
                           Target: <span className="font-medium">{item.target_user}</span>
                         </span>
                         {item.reporter_name && (
-                          <span className="text-xs text-gray-500 dark:text-gray-400">
+                          <span className="text-xs text-muted-foreground">
                             Reported by: <span className="font-medium">{item.reporter_name}</span>
                           </span>
                         )}
                       </div>
                       <div className="flex gap-1 mt-2">
                         {item.flags.map((flag) => (
-                          <span key={flag} className="text-xs px-2 py-0.5 bg-gray-100 text-gray-600 rounded">
+                          <span key={flag} className="text-xs px-2 py-0.5 bg-[#F1ECE3] text-muted-foreground rounded">
                             {flag.replace('_', ' ')}
                           </span>
                         ))}
@@ -414,9 +414,9 @@ export default function ModerationPage() {
           <div className="space-y-6">
             {selectedItem ? (
               <>
-                <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
+                <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-gray-900 dark:text-white">Item Details</h3>
+                    <h3 className="font-semibold text-foreground">Item Details</h3>
                     <span className={`text-xs px-2 py-1 rounded-full border capitalize ${getPriorityColor(selectedItem.priority)}`}>
                       {selectedItem.priority}
                     </span>
@@ -424,39 +424,39 @@ export default function ModerationPage() {
 
                   <div className="space-y-4">
                     <div>
-                      <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Type</p>
-                      <p className="text-sm font-medium text-gray-900 capitalize">{selectedItem.type}</p>
+                      <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Type</p>
+                      <p className="text-sm font-medium text-foreground capitalize">{selectedItem.type}</p>
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Reason</p>
-                      <p className="text-sm font-medium text-gray-900 dark:text-white">{selectedItem.reason}</p>
+                      <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Reason</p>
+                      <p className="text-sm font-medium text-foreground">{selectedItem.reason}</p>
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Content</p>
-                      <div className="p-3 bg-gray-50 rounded-lg">
-                        <p className="text-sm text-gray-700 dark:text-gray-300">{selectedItem.content_preview}</p>
+                      <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Content</p>
+                      <div className="p-3 bg-background rounded-lg">
+                        <p className="text-sm text-foreground">{selectedItem.content_preview}</p>
                       </div>
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Target User</p>
+                      <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Target User</p>
                       <div className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white text-xs font-medium">
                           {selectedItem.target_user.split(' ').map(n => n[0]).join('')}
                         </div>
-                        <span className="text-sm font-medium text-gray-900 dark:text-white">{selectedItem.target_user}</span>
+                        <span className="text-sm font-medium text-foreground">{selectedItem.target_user}</span>
                       </div>
                     </div>
                     {selectedItem.reporter_name && (
                       <div>
-                        <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Reported By</p>
-                        <span className="text-sm font-medium text-gray-900 dark:text-white">{selectedItem.reporter_name}</span>
+                        <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Reported By</p>
+                        <span className="text-sm font-medium text-foreground">{selectedItem.reporter_name}</span>
                       </div>
                     )}
                     <div>
-                      <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Flags</p>
+                      <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Flags</p>
                       <div className="flex flex-wrap gap-1">
                         {selectedItem.flags.map((flag) => (
-                          <span key={flag} className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded-full">
+                          <span key={flag} className="text-xs px-2 py-1 bg-[#F1ECE3] text-foreground rounded-full">
                             {flag.replace('_', ' ')}
                           </span>
                         ))}
@@ -465,8 +465,8 @@ export default function ModerationPage() {
                   </div>
                 </div>
 
-                <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-                  <h3 className="font-semibold text-gray-900 mb-4">Actions</h3>
+                <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+                  <h3 className="font-semibold text-foreground mb-4">Actions</h3>
                   <div className="space-y-2">
                     <button
                       onClick={() => handleAction('approve')}
@@ -488,7 +488,7 @@ export default function ModerationPage() {
                     </button>
                     <button
                       onClick={() => handleAction('escalate')}
-                      className="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 flex items-center justify-center gap-2"
+                      className="w-full px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background flex items-center justify-center gap-2"
                     >
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
@@ -498,22 +498,22 @@ export default function ModerationPage() {
                   </div>
                 </div>
 
-                <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-                  <h3 className="font-semibold text-gray-900 mb-4">Quick Notes</h3>
+                <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+                  <h3 className="font-semibold text-foreground mb-4">Quick Notes</h3>
                   <textarea
                     placeholder="Add notes for this review..."
                     rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
+                    className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg text-sm"
                   />
-                  <button className="mt-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 text-sm">
+                  <button className="mt-2 px-4 py-2 bg-[#F1ECE3] text-foreground rounded-lg hover:bg-[#ECE6DC] text-sm">
                     Save Note
                   </button>
                 </div>
               </>
             ) : (
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 p-6">
-                <div className="text-center text-gray-500 dark:text-gray-400">
-                  <svg className="w-12 h-12 mx-auto text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] p-6">
+                <div className="text-center text-muted-foreground">
+                  <svg className="w-12 h-12 mx-auto text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                   </svg>
                   <p className="mt-2">Select an item to review</p>
@@ -525,11 +525,11 @@ export default function ModerationPage() {
       )}
 
       {viewMode === 'reports' && (
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
-          <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">User Reports</h2>
+        <div className="bg-white dark:bg-[#241c16] rounded-xl border border-[#ECE6DC] dark:border-[#33291f]">
+          <div className="p-4 border-b border-[#ECE6DC] dark:border-[#33291f]">
+            <h2 className="text-lg font-semibold text-foreground">User Reports</h2>
           </div>
-          <div className="divide-y divide-gray-100">
+          <div className="divide-y divide-[#F0EBE1]">
             {mockReports.map((report) => (
               <div key={report.id} className="p-4">
                 <div className="flex items-start justify-between">
@@ -538,7 +538,7 @@ export default function ModerationPage() {
                       report.category === 'fraud' ? 'bg-red-100 text-red-600' :
                       report.category === 'fake' ? 'bg-yellow-100 text-yellow-600' :
                       report.category === 'harassment' ? 'bg-orange-100 text-orange-600' :
-                      'bg-gray-100 text-gray-600 dark:text-gray-400'
+                      'bg-[#F1ECE3] text-muted-foreground'
                     }`}>
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -546,7 +546,7 @@ export default function ModerationPage() {
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-medium text-gray-900 dark:text-white">{report.reason}</span>
+                        <span className="font-medium text-foreground">{report.reason}</span>
                         <span className={`text-xs px-2 py-0.5 rounded-full capitalize ${
                           report.status === 'open' ? 'bg-blue-100 text-blue-700' :
                           report.status === 'investigating' ? 'bg-yellow-100 text-yellow-700' :
@@ -555,8 +555,8 @@ export default function ModerationPage() {
                           {report.status}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-600 mt-1">{report.description}</p>
-                      <div className="flex items-center gap-4 mt-2 text-xs text-gray-500 dark:text-gray-400">
+                      <p className="text-sm text-muted-foreground mt-1">{report.description}</p>
+                      <div className="flex items-center gap-4 mt-2 text-xs text-muted-foreground">
                         <span>Type: <span className="font-medium capitalize">{report.type}</span></span>
                         <span>Category: <span className="font-medium capitalize">{report.category}</span></span>
                         <span>By: <span className="font-medium">{report.reporter_name}</span></span>
@@ -564,10 +564,10 @@ export default function ModerationPage() {
                       </div>
                       {report.evidence && report.evidence.length > 0 && (
                         <div className="mt-2 flex items-center gap-2">
-                          <svg className="w-4 h-4 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="w-4 h-4 text-muted-foreground dark:text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
                           </svg>
-                          <span className="text-xs text-gray-500 dark:text-gray-400">{report.evidence.length} attachment(s)</span>
+                          <span className="text-xs text-muted-foreground">{report.evidence.length} attachment(s)</span>
                         </div>
                       )}
                     </div>
@@ -576,7 +576,7 @@ export default function ModerationPage() {
                     <button className="px-3 py-1 text-sm bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
                       Investigate
                     </button>
-                    <button className="px-3 py-1 text-sm border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 dark:bg-gray-900">
+                    <button className="px-3 py-1 text-sm border border-[#E4DED2] text-foreground rounded-lg hover:bg-background">
                       Dismiss
                     </button>
                   </div>
@@ -590,40 +590,40 @@ export default function ModerationPage() {
       {/* Action Modal */}
       {showActionModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 w-full max-w-md">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <div className="bg-white dark:bg-[#241c16] rounded-xl p-6 w-full max-w-md">
+            <h2 className="text-lg font-semibold text-foreground mb-4">
               {actionType === 'approve' && 'Approve Content'}
               {actionType === 'reject' && 'Reject & Remove Content'}
               {actionType === 'escalate' && 'Escalate to Senior Moderator'}
             </h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-foreground mb-1">
                   {actionType === 'escalate' ? 'Reason for escalation' : 'Action notes'}
                 </label>
                 <textarea
                   placeholder={actionType === 'escalate' ? 'Why does this need senior review?' : 'Add notes about this decision...'}
                   rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-[#E4DED2] rounded-lg"
                 />
               </div>
               {actionType === 'reject' && (
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-foreground mb-1">
                     Additional action
                   </label>
                   <div className="space-y-2">
                     <label className="flex items-center gap-2">
-                      <input type="checkbox" className="rounded border-gray-300" />
-                      <span className="text-sm text-gray-700 dark:text-gray-300">Warn user</span>
+                      <input type="checkbox" className="rounded border-[#E4DED2]" />
+                      <span className="text-sm text-foreground">Warn user</span>
                     </label>
                     <label className="flex items-center gap-2">
-                      <input type="checkbox" className="rounded border-gray-300" />
-                      <span className="text-sm text-gray-700 dark:text-gray-300">Suspend user temporarily</span>
+                      <input type="checkbox" className="rounded border-[#E4DED2]" />
+                      <span className="text-sm text-foreground">Suspend user temporarily</span>
                     </label>
                     <label className="flex items-center gap-2">
-                      <input type="checkbox" className="rounded border-gray-300" />
-                      <span className="text-sm text-gray-700 dark:text-gray-300">Ban user permanently</span>
+                      <input type="checkbox" className="rounded border-[#E4DED2]" />
+                      <span className="text-sm text-foreground">Ban user permanently</span>
                     </label>
                   </div>
                 </div>
@@ -642,7 +642,7 @@ export default function ModerationPage() {
               </button>
               <button
                 onClick={() => setShowActionModal(false)}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 dark:bg-gray-900"
+                className="px-4 py-2 border border-[#E4DED2] text-foreground rounded-lg hover:bg-background"
               >
                 Cancel
               </button>
