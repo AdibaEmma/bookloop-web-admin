@@ -154,7 +154,11 @@ export default function GhanaCardKycPage() {
                 <div className="flex items-center justify-end gap-2">
                   <button
                     disabled={busy}
-                    onClick={() => decide.mutate({ id: u.id, action: 'reject' })}
+                    onClick={() => {
+                      if (confirm(`Reject ${u.full_name || 'this user'}'s Ghana Card verification?`)) {
+                        decide.mutate({ id: u.id, action: 'reject' });
+                      }
+                    }}
                     className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-red-200 text-red-600 text-xs hover:bg-red-50 disabled:opacity-50"
                   >
                     <X className="w-3.5 h-3.5" />
@@ -162,7 +166,11 @@ export default function GhanaCardKycPage() {
                   </button>
                   <button
                     disabled={busy}
-                    onClick={() => decide.mutate({ id: u.id, action: 'approve' })}
+                    onClick={() => {
+                      if (confirm(`Approve ${u.full_name || 'this user'}'s Ghana Card verification?`)) {
+                        decide.mutate({ id: u.id, action: 'approve' });
+                      }
+                    }}
                     className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-emerald-600 text-white text-xs hover:bg-emerald-700 disabled:opacity-50"
                   >
                     {busy ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Check className="w-3.5 h-3.5" />}

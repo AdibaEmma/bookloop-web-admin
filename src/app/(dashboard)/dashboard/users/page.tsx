@@ -327,6 +327,9 @@ export default function UsersPage() {
           break;
 
         case 'ban':
+          if (!confirm(`Ban ${user.first_name} ${user.last_name}? They will lose access immediately.`)) {
+            break;
+          }
           await apiClient.patch(`/users/${user.id}/ban`);
           toast.success(`${user.first_name} ${user.last_name} has been banned`);
           refetch();
