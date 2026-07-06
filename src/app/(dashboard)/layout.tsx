@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import apiClient from '@/lib/api-client';
 import Link from 'next/link';
 import {
   LayoutDashboard,
@@ -173,21 +174,13 @@ export default function DashboardLayout({
   };
 
   useEffect(() => {
-    // Check authentication only on client side
-    const checkAuth = () => {
+    // The route is already gated server-side by middleware; here we just hydrate
+    // the current admin via the proxy (which reads the httpOnly cookie).
+    const checkAuth = async () => {
       try {
-        const token = localStorage.getItem('admin_token');
-        const userData = localStorage.getItem('admin_user');
-
-        if (!token || !userData) {
-          router.push('/login');
-          return;
-        }
-
-        setUser(JSON.parse(userData));
-      } catch (error) {
-        // Handle JSON parse error or localStorage access error
-        console.error('Auth check failed:', error);
+        const res = await apiClient.get('/auth/me');
+        setUser(res.data?.result ?? res.data);
+      } catch {
         router.push('/login');
       } finally {
         setIsLoading(false);
@@ -197,12 +190,13 @@ export default function DashboardLayout({
     checkAuth();
   }, [router]);
 
-  const handleLogout = () => {
-    localStorage.removeItem('admin_token');
-    localStorage.removeItem('admin_refresh_token');
-    localStorage.removeItem('admin_token_expires_at');
-    localStorage.removeItem('admin_user');
-    router.push('/login');
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+    } finally {
+      router.push('/login');
+      router.refresh();
+    }
   };
 
   // Show loading spinner while checking auth

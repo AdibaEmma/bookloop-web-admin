@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
-import apiClient from '@/lib/api-client';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -16,33 +15,26 @@ export default function LoginPage() {
     setIsLoading(true);
 
     try {
-      const response = await apiClient.post('/auth/login', {
-        email,
-        password,
+      // The server route authenticates, enforces the admin role, and sets the
+      // httpOnly session cookies. No tokens are handled here.
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
       });
 
-      const { tokens, role, ...userData } = response.data.result;
-
-      // Check if user is admin
-      if (role !== 'admin') {
-        toast.error('Unauthorized: Admin access required');
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        toast.error(data?.message || 'Login failed. Please check your credentials.');
         setIsLoading(false);
         return;
       }
 
-      // Store tokens and user data
-      localStorage.setItem('admin_token', tokens.access_token);
-      localStorage.setItem('admin_refresh_token', tokens.refresh_token);
-      localStorage.setItem('admin_token_expires_at', String(Date.now() + (tokens.expires_in * 1000)));
-      localStorage.setItem('admin_user', JSON.stringify({ ...userData, role }));
-
       toast.success('Login successful!');
       router.push('/dashboard');
-    } catch (error: any) {
-      console.error('Login error:', error);
-      console.error('Error response:', error.response?.data);
-      toast.error(error.response?.data?.message || 'Login failed. Please check your credentials.');
-    } finally {
+      router.refresh();
+    } catch {
+      toast.error('Login failed. Please try again.');
       setIsLoading(false);
     }
   };

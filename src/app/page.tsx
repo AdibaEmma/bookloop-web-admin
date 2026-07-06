@@ -1,27 +1,12 @@
-'use client';
+import { redirect } from 'next/navigation';
+import { cookies } from 'next/headers';
+import { ACCESS_COOKIE } from '@/lib/auth-cookies';
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-
-export default function Home() {
-  const router = useRouter();
-
-  useEffect(() => {
-    // Check if user is logged in
-    const token = localStorage.getItem('admin_token');
-
-    if (token) {
-      // Redirect to dashboard if logged in
-      router.push('/dashboard');
-    } else {
-      // Redirect to login if not logged in
-      router.push('/login');
-    }
-  }, [router]);
-
-  return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600"></div>
-    </div>
-  );
+/**
+ * Entry point. Decided server-side from the session cookie so the browser never
+ * flashes the wrong screen: signed in → dashboard, otherwise → login.
+ */
+export default async function Home() {
+  const hasSession = Boolean((await cookies()).get(ACCESS_COOKIE)?.value);
+  redirect(hasSession ? '/dashboard' : '/login');
 }
