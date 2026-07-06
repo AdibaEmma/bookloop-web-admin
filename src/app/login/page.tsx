@@ -142,16 +142,6 @@ export default function LoginPage() {
               )}
             </button>
           </form>
-
-          {/* Footer */}
-          <div className="text-center text-sm text-gray-600 dark:text-gray-400">
-            <p>
-              Default credentials:{' '}
-              <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
-                admin@bookloop.com
-              </code>
-            </p>
-          </div>
         </div>
 
         {/* Version Info */}
