@@ -26,10 +26,24 @@ function unwrap<T>(data: any): T {
   return (data?.result ?? data?.data ?? data) as T;
 }
 
+/**
+ * Only allow http(s) URLs to reach an href/src. The card image URL comes from
+ * the API; a `javascript:`/`data:` value must never be reflected into a link.
+ */
+function safeHttpUrl(value: unknown): string | null {
+  if (typeof value !== 'string') return null;
+  try {
+    const u = new URL(value);
+    return u.protocol === 'http:' || u.protocol === 'https:' ? value : null;
+  } catch {
+    return null;
+  }
+}
+
 export default function GhanaCardKycPage() {
   const queryClient = useQueryClient();
 
-  const { data, isLoading, isFetching, refetch } = useQuery({
+  const { data, isLoading, isError, isFetching, refetch } = useQuery({
     queryKey: ['kyc-pending'],
     queryFn: async () => {
       const res = await apiClient.get('/users/kyc/pending');
@@ -101,6 +115,19 @@ export default function GhanaCardKycPage() {
           <div className="flex items-center justify-center py-16 text-muted-foreground">
             <Loader2 className="w-6 h-6 animate-spin" />
           </div>
+        ) : isError ? (
+          <div className="flex flex-col items-center justify-center py-16 text-center">
+            <h3 className="text-[15px] font-semibold text-foreground">Couldn&apos;t load submissions</h3>
+            <p className="text-sm text-muted-foreground mt-1">
+              Something went wrong reaching the server.
+            </p>
+            <button
+              onClick={() => refetch()}
+              className="mt-4 inline-flex items-center gap-2 h-[36px] px-3.5 rounded-[9px] border border-[#ECE6DC] bg-white text-[12.5px] font-semibold text-[#6B6055] hover:bg-background"
+            >
+              Try again
+            </button>
+          </div>
         ) : pending.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mb-3">
@@ -112,6 +139,7 @@ export default function GhanaCardKycPage() {
         ) : (
           pending.map((u) => {
             const busy = decide.isPending && decide.variables?.id === u.id;
+            const cardImg = safeHttpUrl(u.ghana_card_image);
             const initials = u.full_name?.split(' ').map((p) => p[0]).slice(0, 2).join('').toUpperCase() || '?';
             return (
               <div
@@ -141,10 +169,10 @@ export default function GhanaCardKycPage() {
                 <span className="text-[12.5px] text-muted-foreground">{new Date(u.submitted_at).toLocaleDateString()}</span>
 
                 {/* Photo */}
-                {u.ghana_card_image ? (
-                  <a href={u.ghana_card_image} target="_blank" rel="noopener noreferrer" title="Open full image">
+                {cardImg ? (
+                  <a href={cardImg} target="_blank" rel="noopener noreferrer" title="Open full image">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={u.ghana_card_image} alt="Ghana Card" className="w-16 h-11 rounded-md object-cover border border-[#ECE6DC]" />
+                    <img src={cardImg} alt="Ghana Card" className="w-16 h-11 rounded-md object-cover border border-[#ECE6DC]" />
                   </a>
                 ) : (
                   <span className="text-xs text-muted-foreground italic">none</span>
