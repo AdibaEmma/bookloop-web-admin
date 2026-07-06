@@ -15,15 +15,11 @@ export default function LoginPage() {
     e.preventDefault();
     setIsLoading(true);
 
-    console.log('Login attempt with:', { email, password: '***' });
-
     try {
       const response = await apiClient.post('/auth/login', {
         email,
         password,
       });
-
-      console.log('Login response:', response.data);
 
       const { tokens, role, ...userData } = response.data.result;
 
