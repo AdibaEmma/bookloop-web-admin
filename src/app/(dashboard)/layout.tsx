@@ -237,9 +237,8 @@ export default function DashboardLayout({
           {/* Logo */}
           <div className="flex items-center justify-between h-16 px-6 border-b border-[#ECE6DC] dark:border-[#33291f]">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-primary rounded-[10px] flex items-center justify-center">
-                <BookOpen className="w-5 h-5 text-primary-foreground" />
-              </div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo-mark.svg" alt="" className="w-9 h-9" />
               <div className="leading-none">
                 <div className="text-[15px] font-bold text-foreground">BookLoop</div>
                 <div className="text-[9px] font-semibold tracking-[1px] text-muted-foreground mt-0.5">ADMIN</div>
