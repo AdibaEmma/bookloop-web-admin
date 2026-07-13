@@ -487,7 +487,7 @@ export default function FunnelsPage() {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="stage" />
                 <YAxis unit="%" />
-                <Tooltip formatter={(value: number) => `${value}%`} />
+                <Tooltip formatter={(value) => `${Number(value ?? 0)}%`} />
                 <Legend />
                 <Bar dataKey="registration" name="Registration Funnel" fill="#6366f1" />
                 <Bar dataKey="listing" name="Listing Funnel" fill="#10b981" />
@@ -504,7 +504,7 @@ export default function FunnelsPage() {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="date" />
                 <YAxis unit="%" domain={[0, 100]} />
-                <Tooltip formatter={(value: number) => `${value}%`} />
+                <Tooltip formatter={(value) => `${Number(value ?? 0)}%`} />
                 <Legend />
                 <Line
                   type="monotone"

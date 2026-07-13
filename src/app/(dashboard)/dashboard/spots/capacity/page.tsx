@@ -331,7 +331,7 @@ export default function SpotCapacityPage() {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="hour" tick={{ fontSize: 10 }} />
               <YAxis tick={{ fontSize: 10 }} />
-              <Tooltip formatter={(value: number) => `${value}%`} />
+              <Tooltip formatter={(value) => `${Number(value ?? 0)}%`} />
               <Line type="monotone" dataKey="usage" stroke="#6366f1" strokeWidth={2} dot={false} />
             </LineChart>
           </ResponsiveContainer>

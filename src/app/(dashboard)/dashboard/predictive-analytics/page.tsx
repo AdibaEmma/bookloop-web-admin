@@ -450,7 +450,7 @@ export default function PredictiveAnalyticsPage() {
             <XAxis dataKey="month" />
             <YAxis />
             <Tooltip
-              formatter={(value: number) => [`GH₵${value.toLocaleString()}`, '']}
+              formatter={(value) => [`GH₵${Number(value ?? 0).toLocaleString()}`, '']}
             />
             <Legend />
             <Area

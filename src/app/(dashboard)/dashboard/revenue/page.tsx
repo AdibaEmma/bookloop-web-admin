@@ -368,7 +368,7 @@ export default function RevenueDashboardPage() {
               <XAxis dataKey="hour" tick={{ fontSize: 10 }} interval={1} />
               <YAxis tick={{ fontSize: 10 }} />
               <Tooltip
-                formatter={(value: number) => [`GH₵${value.toLocaleString()}`, 'Revenue']}
+                formatter={(value) => [`GH₵${Number(value ?? 0).toLocaleString()}`, 'Revenue']}
                 labelFormatter={(label) => `Time: ${label}`}
               />
               <Bar dataKey="revenue" fill="#6366f1" radius={[4, 4, 0, 0]} />
@@ -435,7 +435,7 @@ export default function RevenueDashboardPage() {
               <XAxis dataKey="date" tick={{ fontSize: 12 }} />
               <YAxis tick={{ fontSize: 12 }} />
               <Tooltip
-                formatter={(value: number, name: string) => [
+                formatter={(value: any, name: any) => [
                   `GH₵${value.toLocaleString()}`,
                   name === 'revenue' ? 'Current Period' : 'Previous Period',
                 ]}
@@ -500,7 +500,7 @@ export default function RevenueDashboardPage() {
                   <Cell key={`cell-${index}`} fill={entry.color} />
                 ))}
               </Pie>
-              <Tooltip formatter={(value: number) => `${value}%`} />
+              <Tooltip formatter={(value) => `${Number(value ?? 0)}%`} />
             </PieChart>
           </ResponsiveContainer>
           <div className="space-y-2 mt-4">

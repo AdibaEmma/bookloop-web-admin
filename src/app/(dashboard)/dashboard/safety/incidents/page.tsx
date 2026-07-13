@@ -296,7 +296,7 @@ export default function SafetyIncidentsPage() {
                   <Cell key={`cell-${index}`} fill={entry.color} />
                 ))}
               </Pie>
-              <Tooltip formatter={(value: number) => `${value}%`} />
+              <Tooltip formatter={(value) => `${Number(value ?? 0)}%`} />
             </PieChart>
           </ResponsiveContainer>
           <div className="space-y-1 mt-2">

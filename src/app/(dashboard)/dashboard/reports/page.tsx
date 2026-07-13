@@ -309,7 +309,7 @@ export default function ReportsPage() {
                   <Cell key={`cell-${index}`} fill={entry.color} />
                 ))}
               </Pie>
-              <Tooltip formatter={(value: number) => `${value}%`} />
+              <Tooltip formatter={(value) => `${Number(value ?? 0)}%`} />
             </PieChart>
           </ResponsiveContainer>
           <div className="space-y-2 mt-4">
